@@ -1,4 +1,4 @@
-# popgencrs
+# popgen
 A course on population genetics
 
 This repository contains materials for a course I taught for many
