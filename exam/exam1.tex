@@ -1,0 +1,238 @@
+% -*-latex-*-
+\documentclass[11pt,twocolumn]{article}
+\usepackage{fullpage,pictex,paralist,alltt,float}
+\usepackage{graphicx}
+\usepackage{ifthen}
+\usepackage{answers}
+\Opensolutionfile{answers}
+\Newassociation{answer}{Answr}{answers}
+\newcounter{iskey}
+\setcounter{iskey}{1}  % 1 for answer key; 0 for exam
+\newtheorem{exercise}{}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\Het}{\mathcal{H}}
+\newcommand{\monthname}[1]{\ifcase#1\or January\or February\or 
+  March\or April\or May\or June\or July\or August\or 
+  September\or October\or November\or December\fi}
+\renewcommand{\today}{\monthname{\month}\space\number\year}
+\setcounter{secnumdepth}{0}
+\begin{document}
+\begin{center}
+\Large
+\ifthenelse{\theiskey=1}{\textbf{Answer Key}}{%
+Name:\hspace{2.25in}\hfill\mbox{}}\\[1ex]
+\textbf{Exam~1 Anth/Biol 5221}\\
+\today
+\end{center}
+
+\paragraph{Instructions} 
+Write your name at the top of page~1 and your answers on the attached
+blank sheets. Number your answers.  Each question is worth 5 points.
+
+Before doing any calculations, ask yourself whether calculations are
+really needed. You may be able to answer the question faster without
+any calculation at all.
+
+\section*{Python}
+The questions in this section refer to Python~3 rather than Python~2.
+\begin{exercise}
+What is printed by the following?
+\begin{verbatim}
+s = 0
+for i in [3, 1, -1]:
+   s += i
+
+print("s:", s)
+\end{verbatim}
+\begin{answer}
+s: 3
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is printed by the following?
+\begin{verbatim}
+print(1/2)
+\end{verbatim}
+\begin{answer}
+0.5
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is printed by the following?
+\begin{verbatim}
+print("%d %s" % (5, 5*"*"))
+\end{verbatim}
+\begin{answer}
+5 \verb|*****|
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is printed by the following?
+\begin{verbatim}
+print(sum(range(3)))
+\end{verbatim}
+\begin{answer}
+3
+\end{answer}
+\end{exercise}
+
+\section{Probability}
+
+\begin{exercise}
+You toss a fair coin twice.  What is the probability of
+  observing a head and a tail in either order (HT or TH)?
+\begin{answer}
+$1/2$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+You toss two fair dice, one red and one black.  What is the
+probability that you observe either a red 5 or a black 1 (or
+both)?
+\begin{answer}
+$1/6 + 1/6 - 1/36 = 11/36$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+You toss a fair coin twice and observe $X$ heads.  What is the
+probability distribution of $X$? (You can answer this question either
+by (a)~giving the name of the distribution and the values of its
+parameters, (b)~writing out the formula for the distribution function,
+or (c)~making a table listing the possible values of $X$ together with
+their probabilities.)
+\begin{answer}
+There are several ways to answer: (1)~binomial with $N=2$, and
+$p=1/2$; or (2)~$\Pr(x) = {2\choose x} \left(\frac{1}{2}\right)^2$; or
+(3):
+\[\begin{array}{cc}
+X & P[X]\\ \hline
+0 & 1/4\\
+1 & 1/2\\
+2 & 1/4\\
+\end{array}\]
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  In his urn experiment, Kerrich drew two balls from an urn
+  \emph{without} replacement. Imagine a version of experiment in which
+  each trial begins with 3 red balls and 2 black ones.  What is the
+  probability that, in a single trial, both of the balls drawn are
+  red?
+\begin{answer}
+$3/5 \times 2/4 = 3/10$ (also accept 0.3)
+\end{answer}
+\end{exercise}
+
+\bigskip\noindent
+JEPr discussed the following probability distributions:
+(1)~binomial, (2)~Bernoulli, (3)~Poisson, (4)~uniform,
+(5)~exponential, and (6)~normal.  Which of these choices would be
+most appropriate in each of the following contexts?  (Just write
+down the name of the appropriate distribution.)
+
+\begin{exercise}
+The number of mutations in the mitochondrial genome along the lineage that
+separates you from your mother's mother's mother's mother. (Hint:
+mitochondria are inherited from the mother.)
+\begin{answer}
+Poisson
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+The weight of a female mouse, selected at random from among all those
+that live on the University of Utah campus.
+\begin{answer}
+normal
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+The number of even numbers seen in 10 tosses of a die.
+\begin{answer}
+binomial
+\end{answer}
+\end{exercise}
+
+\section*{Hardy-Weinberg}
+
+\bigskip\noindent
+At some SNP locus, a sample of 100 individuals includes 20 copies of
+genotype ``CC,'' 40 of ``CT,'' and 40 of ``TT.''  Please use these
+data in answering the following:
+\begin{exercise}
+What are the allele frequencies $p$ and $q$ of the two nucleotides (C
+and T)? 
+\begin{answer}
+For allele C, $p = 0.4$. For T, $q = 0.6$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the expected heterozygosity under random mating? (Use the
+simple formula, not the bias-corrected version presented in the online
+lecture notes.)
+\begin{answer}
+$H = 2pq \approx 0.48$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the observed heterozygosity?
+\begin{answer}
+$H_{obs} = 0.4$.
+\end{answer}
+\end{exercise}
+
+\section*{Drift, mutation, and heterozygosity}
+
+\begin{exercise}
+Consider a population in which $2N=100$, mating is at
+random, and genetic drift is the only evolutionary force at work. If
+heterozygosity equals $1/2$ in one generation, what is its expected value
+in the following generation?
+\begin{answer}
+\[
+\frac{1}{2} \times \left(1 - \frac{1}{100}\right) = \frac{99}{200} = 0.495
+\]
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  The Altai Neanderthal individual was heterozygous at about $1/5000$
+  of nucleotide sites. Suppose that the population was at
+  mutation-drift equilibrium, that the mutation rate was $u=10^{-8}$
+  per nucleotide site per generation, and use the symmetric biallelic
+  model of mutation. What does this imply about $N$? \emph{Hint}: for
+  this model of mutation, the equilibrium heterozygosity is $\hat H =
+  4Nu/(1+8Nu)$.
+\begin{answer}
+Solving $\hat H = 1/5000 = 4Nu/(1 +
+8Nu)$, we get $4Nu = 1/4998$. The problem says that $u =
+10^{-8}$, so $N \approx 5000$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the largest value that $\hat H$ can take in the model of
+infinite sites? (Hint: $\hat H$ is an increasing function of $4Nu$, so
+ask yourself what happens when $4Nu$ gets very, very large.)
+\begin{answer}
+Heterozygosity is maximal when $4Nu\rightarrow\infty$. For the
+model of infinite sites, this gives $\max\hat H = 1$.
+\end{answer}
+\end{exercise}
+
+\Closesolutionfile{answers}
+\ifthenelse{\theiskey=1}{\clearpage
+\section{Answer key}
+\mbox{}\\
+%\listanswers
+\IfFileExists{answers.tex}{\input{answers.tex}}{}}{}
+\end{document}

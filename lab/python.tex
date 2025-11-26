@@ -1,0 +1,77 @@
+\chapter{Using Python}
+In this lab, you will need to know about
+\begin{itemize}
+\item how to use a text editor
+\item genetic concepts: ``genotype,'' ``allele,'' ``locus,''
+  ``heterozygosity''  
+\item Python concepts: list, string, for, if, assignment
+  statements, print, float 
+\end{itemize}
+Python's on-line documentation is so good that you don't need to buy a
+book.\footnote{If you really want one, condsider \emph{Practical
+    Python}, by Magnus Lie Hetland, or \emph{Learning Python}, by
+  Mark Lutz and David Ascher.}  You will find everything you need at
+\url{http://docs.python.org}.  Point your browser there and follow the
+link to ``Tutorial.''  There is also a ``Library Reference''
+that you will use all the time after you know the basics.
+
+During the first few weeks of the course, you should read
+sections~1--5 and 7 of the tutorial.  For now, just read
+sections~1--3.  If you run into an unfamiliar concept, use Google to
+look it up.  For example, try typing the following into Google's
+search window:
+\begin{verbatim}
+string site:docs.python.org/tut
+\end{verbatim}
+
+As you read the tutorial, be sure to experiment by using the
+interpreter interactively.  The procedure for starting the interpreter
+differs on Windows, Mac, and linux.  On Mac OS10 and linux, you open a
+window to the command interpreter (or shell) and type
+\verb|python|.  On Windows, you should be able to do the same from the
+DOS prompt.  
+
+Use a text editor to create a file named ``heterozygosity.py,''
+  which consists of the following lines:
+\newpage
+\begin{verbatim}
+data = ['AA', 'AA', 'AT', 'TA', 'TA', 'AA', 'TA']
+
+heterozygosity = 0
+for genotype in data:
+    if genotype[0] != genotype[1]:
+        heterozygosity += 1
+heterozygosity /= float(len(data))
+print("Heterozygosity:", heterozygosity, "N:", len(data))
+\end{verbatim}
+The first line defines a variable called ``data,'' which contains a
+dummy data set: a list of genotypes.  You will soon encounter real
+data in exactly this format.  Each entry in the list represents the
+genotype of an individual at some hypothetical nucleotide site.
+
+These lines of code are a Python program that calculates the
+heterozygosity of the individuals in the data.  (The term
+``heterozygosity'' is defined in the text.)
+
+Once you have got the program typed in, the next step is to run it.
+At the command prompt, type ``python heterozygosity.py''.  If all goes
+well, you should see
+\begin{verbatim}
+Heterozygosity: 0.571428571429 N: 7
+\end{verbatim}
+This says that about 57\% of the sample is heterozygous, and there are
+7 individuals in the sample.
+
+Next, figure out how the program works.  Read it carefully.  Look up
+everything you don't understand in the Tutorial.
+
+\subsection*{Exercise}
+\begin{itemize}
+\item Use your text editor to put comments into the code,
+explaining what each line does.
+\item Change the program to incorporate the following data:
+\begin{verbatim}
+data = ['TA', 'AT', 'TA', TA', 'TA', 'TA', 'AA', 'TA']
+\end{verbatim}
+How does the program behave now?
+\end{itemize}

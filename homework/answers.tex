@@ -1,0 +1,1834 @@
+\begin{Answr}{1.1}
+$1/4$
+\end{Answr}
+\begin{Answr}{1.2}
+$1/4$
+\end{Answr}
+\begin{Answr}{1.3}
+$1/4$
+\end{Answr}
+\begin{Answr}{1.4}
+$1/2$
+\end{Answr}
+\begin{Answr}{1.5}
+3: THH, HTH, and HHT.
+\end{Answr}
+\begin{Answr}{1.6}
+There are 6 ways to choose 2 out of 4: ${4 \choose 2} = \frac{4!}{2!
+  \times 2!} = 24/[2 \times 2] = 6$.  They are: HHTT, HTHT, HTTH,
+THHT, THTH, and TTHH.
+\end{Answr}
+\begin{Answr}{1.7}
+$3 \times 1/2^3 = 3/8$
+\end{Answr}
+\begin{Answr}{1.8}
+$6 \times 1/2^4 = 6/16 = 3/8$
+\end{Answr}
+\begin{Answr}{1.9}
+$1/6 + 1/6 - 1/36 = 11/36$
+\end{Answr}
+\begin{Answr}{1.10}
+$1/6 + 1/6 = 1/3$.
+\end{Answr}
+\begin{Answr}{1.11}
+$1/6 \times 1/6 = 1/36$
+\end{Answr}
+\begin{Answr}{1.12}
+$1/2 \times 2/5 = 1/5$
+\end{Answr}
+\begin{Answr}{1.13}
+$1/2 \times 3/5 = 3/10$
+\end{Answr}
+\begin{Answr}{1.14}
+There are two ways to answer this question. The first is algebraic:
+point out that $X$ is a binomial distribution with parameters $N=3$
+and $p=1/2$. This implies that $X$ can take values 0, 1, 2, and 3; it
+takes value $x$ with probability $P_x = {3 \choose x} /8$. The second
+way to answer the question is to write the answer in tabular form:
+\[
+\begin{array}{cc}
+x & P_x\\ \hline
+0   & 1/8\\
+1   & 3/8\\
+2   & 3/8\\
+3   & 1/8\\
+\end{array}
+\]
+\end{Answr}
+\begin{Answr}{1.15}
+The hard way to answer this question is to evaluate $E[X]$ directly,
+using the numerical values of $\Pr[0]$, $\Pr[1]$, $\Pr[2]$, and
+$\Pr[3]$. The easy way is to point out that, because $X$ is binomial
+with $N=3$ and $p=1/2$, the mean is $E[X]=Np = 3/2$.
+\end{Answr}
+\begin{Answr}{1.16}
+The hard way to answer this question is to evaluate $V[X] = E[X^2] -
+E[X]^2$, or some similar expression. The easy way is to point out
+that, because $X$ is binomial with $N=3$ and $p=1/2$, the the variance
+is $V[X]=Np(1-p) = 3/4$.
+\end{Answr}
+\begin{Answr}{1.17}
+Freq. of sad: $80/200 = 2/5$
+\end{Answr}
+\begin{Answr}{1.18}
+Freq. of rainy: $100/200 = 1/2$
+\end{Answr}
+\begin{Answr}{1.19}
+Freq. of sad given rainy: $70/100 = 7/10$
+\end{Answr}
+\begin{Answr}{1.20}
+Freq. of rainy given sad: $70/80 = 7/8$
+\end{Answr}
+\begin{Answr}{1.21}
+    The quick way to answer this question is to notice that question
+    implies that $X$ is a Bernoulli random variable with parameter $p$
+    and that therefore $E[X] = p$ and $V[X] = p(1-p)$. It's only
+    slightly harder work from first principles. The probability
+    distribution of $X$, in tabular form, is
+    \[
+    \begin{array}{cc}
+      X & \Pr[X]\\ \hline
+      0 & 1-p\\
+      1 & p
+    \end{array}
+    \]
+    This implies that $E[X] = 0 \times (1-p) + 1 \times p = p$. For a
+    random variable that takes only the values 0 and 1, it is always
+    true that $E[X] = E[X^2]$, because $0^2=0$ and
+    $1^2=1$. Consequently, $E[X^2]$ also equals $p$. Recall that, for
+    any random variable, the variance equals $V = E[X^2] - E[X]^2$. In
+    the current case, this becomes $V = p - p^2 = p(1-p)$.
+\end{Answr}
+\begin{Answr}{1.22}
+$E[Y] = 2p$ and $V[Y] = 2p(1-p)$. There are two simple ways to get
+these results:
+\begin{enumerate}
+\item The question implies that $Y$ is binomial with $N=2$ and
+  probability parameter $p$. Consequently, $E[Y]=2p$ and $V[Y] =
+  2p(1-p)$.
+\item The question says that $Y$ is a sum of two independent values,
+  each of which is a Bernoulli random variable with mean $p$ and
+  variance $p(1-p)$. Therefore, $E[Y] = 2p$ and $V[Y] = 2p(1-p)$.
+\end{enumerate}
+There are also harder ways, which involve deriving the properties of
+the Binomial or Bernoulli distributions.
+\end{Answr}
+\begin{Answr}{1.23}
+Easy answer:~The distribution is binomial with $N=2$ and probability
+parameter $p=0.8$.
+Hard answer:~The distribution takes values 0, 1, and 2, with
+probabilities 0.04, 0.32, and 0.64.
+\end{Answr}
+\begin{Answr}{1.24}
+Because $X$ is binomial with $N=2$ and probability parameter $p=0.8$,
+its mean is $E[X] = 2p = 1.6$.
+\end{Answr}
+\begin{Answr}{1.25}
+Because $X$ is binomial with $N=2$ and probability parameter $p=0.8$,
+its, variance is $V[X] = 2p(1-p) = 0.32$ and its standard deviation is
+$\sqrt{(V[X])} = 0.566$.
+\end{Answr}
+\begin{Answr}{1.26}
+Answer not provided.
+\end{Answr}
+\begin{Answr}{1.27}
+Pr no deaths: $e^{-0.61} = 0.54$
+\end{Answr}
+\begin{Answr}{1.28}
+Pr one death: $0.61 e^{-0.61}$
+\end{Answr}
+\begin{Answr}{1.29}
+Pr at least one death: $1- e^{-0.61} = 0.46$
+\end{Answr}
+\begin{Answr}{1.30}
+\hbox{Pr 2 deaths}: $0.61^2 e^{-0.61}/2! = 0.101$
+\end{Answr}
+\begin{Answr}{1.31}
+Pr no child: $e^{-2} = 0.135$
+\end{Answr}
+\begin{Answr}{1.32}
+Pr 1 child: $2 e^{-2} = 0.27$.
+\end{Answr}
+\begin{Answr}{1.33}
+Pr at least 1 child: $1-e^{-2} = 0.865$.
+\end{Answr}
+\begin{Answr}{1.34}
+ This is exactly like Fig.~\ref{JEPr-fig.tree} of
+    JEPr, which presents the following probability distribution:
+\begin{center}
+\begin{tabular}{cc}
+Event & Prob\\ \hline
+RR & 1/6\\
+RG & 1/3\\
+GR & 1/3\\
+GG & 1/6\\
+\end{tabular}
+\end{center}
+where ``R'' and ``G'' stand for ``red'' and ``green'', ``RG'' means
+``1st ball red and 2nd green,'' and so on. For the current question,
+we translate ``R'' and ``G'' into into ``1'' and ``0,'' and we define
+$X$ and $Y$ to equal the values of ball~1 and ball~2. The probability
+distribution becomes
+\begin{center}
+\begin{tabular}{ccc}
+$X$ & $Y$ & $\Pr(X,Y)$\\ \hline
+1 & 1 & 1/6\\
+1 & 0 & 1/3\\
+0 & 1 & 1/3\\
+0 & 0 & 1/6\\
+\end{tabular}
+\end{center}
+\end{Answr}
+\begin{Answr}{1.35}
+$E[X] = 1/6 + 1/3 = 1/2$; $E[Y] = 1/6 + 1/3 = 1/2$.
+\end{Answr}
+\begin{Answr}{1.36}
+$E[X^2] = E[Y^2] = 1/2$, so $V[X] = E[X^2]- E[X]^2 = 1/2
+- 1/4 = 1/4$. $V[Y]$ is also =1/4.
+\end{Answr}
+\begin{Answr}{1.37}
+$E[XY] = 1/6$, so $C(X,Y) = E[XY] - E[X]E[Y] = 1/6 -
+1/2^2 = -1/12 \approx -0.0833$. It makes sense that the covariance
+should be negative, because if the first ball is red, then the second
+ball is less likey to be red.
+\end{Answr}
+\begin{Answr}{1.38}
+\begin{flushleft}
+\input{figtree1red}
+\end{flushleft}
+\end{Answr}
+\begin{Answr}{1.39}
+  The probability distribution of $X$ and $Y$ is shown on the right
+  side of the figure in the answer to exercise~\ref{ex.Ntree}. For
+  reference, it looks like this:
+    \[
+    \begin{array}{ccc}
+      X & Y & \Pr\\ \hline
+      1 & 1 & 0\\
+      1 & 0 & 1/N\\
+      0 & 1 & 1/N\\
+      0 & 0 & (N-2)/N
+      \end{array}
+    \]
+    Using this distribution,
+    \begin{eqnarray*}
+      E[X] &=& 1\times 0\\
+      && \mbox{} + 1 \times 1/N \\
+      && \mbox{} + 0\times 1/N\\
+      && \mbox{} + 0\times (N-2)/N\\
+      &=& 1/N
+    \end{eqnarray*}
+    This is also $E[X^2]$, because $X$ takes only the values 0 and 1,
+    and $X^2 = X$. Thus, $V[X] = E[X^2] - E[X]^2 = 1/N - 1/N^2 = (1/N)
+    (1-1/N)$. An alternative answer: these results follow because $X$
+  is a Bernoulli random variable with parameter $p=1/N$.
+\end{Answr}
+\begin{Answr}{1.40}
+  The probability distribution of $X$ and $Y$ is shown on the right
+  side of the figure in the answer to exercise~\ref{ex.Ntree}. For
+  reference, it looks like this:
+    \[
+    \begin{array}{ccc}
+      X & Y & \Pr\\ \hline
+      1 & 1 & 0\\
+      1 & 0 & 1/N\\
+      0 & 1 & 1/N\\
+      0 & 0 & (N-2)/N
+      \end{array}
+    \]
+    Using this distribution,
+    \begin{eqnarray*}
+      E[Y] &=& 1\times 0\\
+      && \mbox{} + 0 \times 1/N \\
+      && \mbox{} + 1\times 1/N\\
+      && \mbox{} + 0\times (N-2)/N\\
+      &=& 1/N
+    \end{eqnarray*}
+    This is also $E[Y^2]$, because $Y$ takes only the values 0 and 1,
+    and $Y^2 = Y$. Thus, $V[Y] = E[Y^2] - E[Y]^2 = 1/N - 1/N^2 = (1/N)
+    (1-1/N)$. An alternative answer: these results follow because $Y$
+  is a Bernoulli random variable with parameter $p=1/N$.
+\end{Answr}
+\begin{Answr}{1.41}
+After adding a column for the product of $X$ and $Y$, the probability
+distribution becomes
+\[
+\begin{array}{cccc}
+  X & Y & XY & \Pr\\ \hline
+  1 & 1 & 1 & 0\\
+  1 & 0 & 0 & 1/N\\
+  0 & 1 & 0 & 1/N\\
+  0 & 0 & 0 & (N-2)/N
+\end{array}
+\]
+The expected product of $X$ and $Y$ is
+\begin{eqnarray*}
+  E[XY] &=& 1\times 0\\
+  && \mbox{} + 0 \times (\hbox{\small the rest})\\
+  &=& 0
+\end{eqnarray*}
+Thus, $C[X,Y] = E[XY] - E[X] E[Y] = -1/N^2$
+\end{Answr}
+\begin{Answr}{1.42}
+$2/5$ or 0.4
+\end{Answr}
+\begin{Answr}{1.43}
+$(20/50) \times (19/49)$, or $38/245$, or 0.155.
+\end{Answr}
+\begin{Answr}{1.44}
+normal
+\end{Answr}
+\begin{Answr}{1.45}
+Poisson
+\end{Answr}
+\begin{Answr}{1.46}
+binomial
+\end{Answr}
+\begin{Answr}{2.1}
+$P_{CC} = 80/100 = 0.8$
+\end{Answr}
+\begin{Answr}{2.2}
+$P_{CD} = 15/100 = 0.15$
+\end{Answr}
+\begin{Answr}{2.3}
+$P_{DD} = 5/100 = 0.05$
+\end{Answr}
+\begin{Answr}{2.4}
+By gene counting, $p_C = 175/200 = 0.875$. By the formula, $p_C = 0.8
++ 0.15/2 = 0.875$.
+\end{Answr}
+\begin{Answr}{2.5}
+By gene counting, $p_D = 25/200 = 0.125$. By the formula, $p_D = 0.05
++ 0.15/2 = 0.125$.
+\end{Answr}
+\begin{Answr}{2.6}
+There is more than one correct answer. One approach begins with the
+observation that the frequency of $A_1$ is the same as the probability
+that a random gene copy chosen from a random individual is allele
+$A_1$.  Let us calculate this probability.
+
+With probability $P_{11}$, we choose genotype $A_1A_1$. In this case,
+we get allele $A_1$ with probability~1. With probability $P_{12}$, our
+individual is $A_1A_2$, and we then get $A_1$ with probability
+$1/2$. If we choose $A_2A_2$, we cannot possibly get $A_1$. Thus, the
+probability of $A_1$ is
+\[
+(P_{11} \times 1) + (P_{12} \times 1/2) + (P_{22} \times 0)
+ = P_{11} + P_{12}/2
+\]
+\end{Answr}
+\begin{Answr}{2.7}
+200
+\end{Answr}
+\begin{Answr}{2.8}
+For allele C, $p = 0.15 + 0.5/2 = 0.4$. For T, $q = 1-p = 0.6$
+\end{Answr}
+\begin{Answr}{2.9}
+$H = 2pq = 2\cdot 0.4 \cdot 0.6 \approx 0.48$.
+\end{Answr}
+\begin{Answr}{2.10}
+$H_{obs} = 0.5$.
+\end{Answr}
+\begin{Answr}{2.11}
+The observed genotype frequencies are $P_{11} = P_{12} = P_{22} =
+1/3$. The frequency of $A_1$ is $p = 1/2$.  Given $p$ the three
+expected genotype frequencies are $E[P_{11}] = p^2 = 1/4$, $E[P_{12}]
+= 2p(1-p) = 1/2$, and $E[P_{22}] = (1-p)^2 = 1/4$.
+\end{Answr}
+\begin{Answr}{2.12}
+Using (\ref{eq.F11}), $F = (P_{11} - p^2)/pq
+ = (1/3 - 1/4)/(1/4) = 1/3$. Using (\ref{eq.F12}), $F = -(P_{12} -
+ 2pq)/2pq =  -(1/3 - 1/2)/(1/2) = 1/3$. Using (\ref{eq.F22}), $F =
+ (P_{22} - q^2)/pq = (1/3 - 1/4)/(1/4) = 1/3$.
+\end{Answr}
+\begin{Answr}{2.13}
+$P_{11} = 0$, $P_{12} = 0.069444$, $P_{22} = 0.930556$, $p_1 =
+0.034722$, and $F = -0.035971$.
+\end{Answr}
+\begin{Answr}{2.14}
+$P_{11} = 0.726027$, $P_{12} = 0.260274$, $P_{22} = 0.013699$, $p_1 =
+0.856164$, and $F = -0.056762$.
+\end{Answr}
+\begin{Answr}{3.1}
+$m=2Np$, $V=2Np(1-p)$
+\end{Answr}
+\begin{Answr}{3.2}
+\[
+\frac{1}{2} \times \left(1 - \frac{1}{10}\right) = \frac{9}{20} = 0.45
+\]
+\end{Answr}
+\begin{Answr}{3.3}
+\[
+\frac{1}{2} \times \left(1 - \frac{1}{1000}\right) = \frac{999}{2000} = 0.4995
+\]
+\end{Answr}
+\begin{Answr}{3.4}
+$2N=17.93$.
+\end{Answr}
+\begin{Answr}{3.5}
+$H_0 (1-1/26)^9 (1-1/10)^9 = 0.14$, smaller than the observed value of
+$H_t$.  Variation in population size accelerates the decay of
+heterozygosity.
+\end{Answr}
+\begin{Answr}{3.6}
+Same as above.  We start with formulas like this:
+\begin{eqnarray*}
+H_9 &=& H_0 (1-1/26)^9\\
+H_{18} &=& H_9 (1-1/10)^9\\
+\end{eqnarray*}
+Substituting $H_9$ into the second equation gives
+\[
+H_{18} =  H_0 (1-1/26)^9(1-1/10)^9
+\]
+You can multiply in any order, so the answer to the second problem is
+the same as that of the first.
+\end{Answr}
+\begin{Answr}{3.7}
+$\log(0.1/H_0)/\log(1-1/18) = 28.64$
+\end{Answr}
+\begin{Answr}{3.8}
+\[ t = \frac{\ln(H_t/H_0)}{\ln(1 - 1/2N)} \]
+\end{Answr}
+\begin{Answr}{3.9}
+Here is the solution in Python:
+\begin{verbatim}
+>>> n = 2.0  # current population size
+>>> h = 1.0  # relative heterozygosity
+>>> while n < 1024.0:
+...     h *= 1-1/(2.0*n) # drift
+...     n *= 2.0         # pop growth
+...     print "H/H0 = %f" %h
+...
+H/H0 = 0.750000
+H/H0 = 0.656250
+H/H0 = 0.615234
+H/H0 = 0.596008
+H/H0 = 0.586696
+H/H0 = 0.582112
+H/H0 = 0.579838
+H/H0 = 0.578706
+H/H0 = 0.578141
+\end{verbatim}
+Note that most of the drift happens in the first few generations.
+Even a very severe bottleneck removes only a fraction of the variance,
+provided that recovery is rapid.
+\end{Answr}
+\begin{Answr}{3.10}
+  $4Nu = 36 \times 10^{-6}$, and the expected heterozygosity is
+  $4Nu/(1+4Nu)$, or 0.000036.  The expected number of heterozygous
+  flies is 16 times this number, or 0.00058, which rounds to 0. You
+  would probably see no heterozygous flies.
+\end{Answr}
+\begin{Answr}{3.11}
+$\theta = \hat H/(1-\hat H)$
+\end{Answr}
+\begin{Answr}{3.12}
+Heterozygosity is maximal when $\theta\rightarrow\infty$. For the
+model of infinite sites, this gives $\max\hat H = 1$.
+\end{Answr}
+\begin{Answr}{3.13}
+Heterozygosity is maximal when $\theta\rightarrow\infty$. For the
+symmetric biallelic model, $\max\hat H = 1/2$.
+\end{Answr}
+\begin{Answr}{3.14}
+  The calculation is based on Eqn.~\ref{eq.eqhetk}, because we are
+  using the symmetric biallelic model of mutation. The question tells
+  us that $k=2$ and $\hat H = 0.005$. Eqn~\ref{eq.eqhetk} becomes
+  $0.005 = \theta/(1 + 2\theta)$, or $\theta=0.00505$. And since
+  $\theta = 4Nu$, where $u = 2\times 10^{-7}$, we have $2N = 12626$.
+\end{Answr}
+\begin{Answr}{3.15}
+  The calculation is based on Eqn.~\ref{eq.eqhet}, because we are
+  using the model of infinite alleles.  The question tells us that
+  $\hat H = 1/3$, so Eqn~\ref{eq.eqhet} becomes $1/3 = \theta/(1 +
+  \theta)$, or $\theta=1/2$. And since $\theta = 4Nu$, where $u =
+  10^{-6}$, we have $N = 125000$.
+\end{Answr}
+\begin{Answr}{4.1}
+(a)~5, (b)~1 and 2, (c)~4, 5, and 6.
+\end{Answr}
+\begin{Answr}{4.2}
+For an interval with $i$ lines of descent, the expected duration in
+generations is $4N/[i(i-1)]$. For our problem, $2N=5000$. The expected
+duration is therefore.
+\begin{inparaenum}[(a)]
+\item $5000$ for 2 lines of descent,
+\item $1000/9 \approx 111$ for 10, and
+\item $10000/(1000 \times 999) = 10/999 \approx 0.01$ for 1000.
+\end{inparaenum}
+\end{Answr}
+\begin{Answr}{4.3}
+The duration of a coalescent interval is an exponential random
+variable. As there are only 2 lines of descent, the hazard is
+$h=1/2N$. As explained in JEPr, the mean of this random variable is
+$1/h = 2N$, the variance is $1/h^2 = 4N^2$, and the standard
+deviation (the square root of the variance) is $2N$. If $2N=5000$, the
+mean, variance, and standard deviation are 5000, 25,000,000, and 5000.
+\end{Answr}
+\begin{Answr}{4.4}
+We have 2 coalescent intervals, one with 3 lines of descent and the
+other with 2. The expected duration of the one with 3 lines of descent
+is $5000/3$ and the expected duration of the other is 5000
+generations. The expected depth of the tree is the sum of these, $5000
++ 5000/3 = 20000/3$. The easy way to get this answer is with the
+formula $4N(1-1/K)$, where $K=3$ is the number of gene copies in the
+modern sample. This gives the same answer, $10000 \times 2/3 =
+20000/3$.
+\end{Answr}
+\begin{Answr}{4.5}
+In a tree with sample of size 3, the expected total branch length is
+$4N(1 + 1/2) = 6N$. In our problem, $2N=5000$, so the answer is
+15,000.
+\end{Answr}
+\begin{Answr}{4.6}
+For an interval with $i$ lines of descent, the expected length in
+generations is $4N/[i(i-1)]$, and the total branch length within the
+interval is $i$ times this value, or $4N/(i-1)$. The expected number
+of mutations is $u$ times the total branch length, or $\theta/(i-1)$,
+where $\theta = 4Nu$. For our problem, $\theta=10$. The expected
+numbers of mutations are therefore
+\begin{inparaenum}[(a)]
+\item $10/1 = 10$ for 2 lines of descent,
+\item $10/9 = 1.11$ for 10, and
+\item $10/999 = 0.01$ for 1000.
+\end{inparaenum}
+\end{Answr}
+\begin{Answr}{4.7}
+\begin{minipage}{0.8\columnwidth}
+\begin{verbatim}
+----------
+          |----
+----------     |
+               |--
+------         |
+      |--------
+------
+\end{verbatim}
+\end{minipage}
+Lengths are $4N/i(i-1)$, so the lengths are $2N/6$, $2N/3$, and $2N$,
+for intervals 4, 3, and 2.  The expected depth of the tree is
+$4N(1-1/4) = 3N$.  The expected total branch length is $4N(1 + 1/2 +
+1/3) = 22N/3 = 7.33N$
+\end{Answr}
+\begin{Answr}{4.8}
+18.3
+\end{Answr}
+\begin{Answr}{4.9}
+25.93
+\end{Answr}
+\begin{Answr}{4.10}
+0.797
+\end{Answr}
+\begin{Answr}{4.11}
+Mean pairwise diff: $\pi = 5.51$ per sequence, and $\pi = 0.1378$ per
+site.
+\end{Answr}
+\begin{Answr}{4.12}
+Mean pairwise diff: $\pi=11.69$ per sequence, and $\pi = 0.29 $ per
+site.
+\end{Answr}
+\begin{Answr}{4.13}
+$S = 15$ per sequence or 0.375 per site
+\end{Answr}
+\begin{Answr}{4.14}
+$S = 30$ per sequence or 0.75 per site
+\end{Answr}
+\begin{Answr}{4.15}
+$\hat\theta_{\pi} = 5.51$ per sequence or 0.1378 per site.
+\end{Answr}
+\begin{Answr}{4.16}
+$\hat\theta_{\pi} = 11.69$ per sequence or 0.29 per site.
+\end{Answr}
+\begin{Answr}{4.17}
+$\hat\theta_S = 15/2.83 = 5.3$ per sequence or $0.375/2.83 = 0.133$
+  per site.
+\end{Answr}
+\begin{Answr}{4.18}
+$\hat\theta_S = 30/2.83 = 10.6$ per sequence or $0.75/2.83 = 0.265$
+  per site.
+\end{Answr}
+\begin{Answr}{4.19}
+ In per-site units, we need to compare $\hat\theta_{\pi}
+  = 0.1378$ and $\hat\theta_S = 0.133$.  These numbers don't differ too
+  much, so there is no obvious reason to reject the model
+  of neutral DNA in a randomly mating population of constant size.
+\end{Answr}
+\begin{Answr}{4.20}
+ In per-site units, we need to compare $\hat\theta_{\pi}
+  = 0.29$ and $\hat\theta_S = 0.265$.  These numbers don't differ too
+  much, so there is no obvious reason to reject the model
+  of neutral DNA in a randomly mating population of constant size.
+\end{Answr}
+\begin{Answr}{4.21}
+Table~\ref{tab.Aanswer} presents data set~A again, with an extra row
+at the top showing the minor allele counts:
+\begin{table*}
+\caption{Data set~A with counts of minor allele at top}
+\label{tab.Aanswer}
+\begin{verbatim}
+       12  3 4   14      44 3      2   41   11  1 <-counts
+seq01 AATATGGCAC CTCCCAACCC TCTAGCATAT ACCACTTACA
+seq02 .......T.. .C......TG C......C.. ..........
+seq03 ..C....... .......... .......... ..........
+seq04 .......T.. .C......TG C......... G.........
+seq05 .......... .......... .......... ..........
+seq06 .....A.... ........T. C......... G....C....
+seq07 ..C....T.. .C......TG C......... G.........
+seq08 .....A.T.. TC......TG C......... G.........
+seq09 .......... .......... C......... ..........
+seq10 .G...A.... ........T. C......C.. .T....C..G
+\end{verbatim}
+\end{table*}
+Tabulating the counts gives
+\begin{center}
+\begin{tabular}{cc}
+Minor  & Number\\
+allele & of\\
+count  & sites\\
+\hline
+1 & 6\\
+2 & 2\\
+3 & 2\\
+4 & 5
+\end{tabular}
+\end{center}
+\end{Answr}
+\begin{Answr}{4.22}
+Table~\ref{tab.Banswer} presents data set~B again, with an extra row
+at the top showing the minor allele counts:
+\begin{table*}
+\caption{Data set~B with counts of minor allele at top}
+\label{tab.Banswer}
+\begin{verbatim}
+      35 43  22  23112123 2 42 4311142 14 213  1 <-counts
+seq01 TGCCACTCCA ATCTCTCGCC AGATGGCATG CCTTATCGCG
+seq02 .......... G......... .A.C...GCA T.........
+seq03 .......... G......A.. .A.C...GC. T....C....
+seq04 C..TG..T.. .C.....A.. G......C.. TT.C......
+seq05 CA.TG..T.. .C....TA.. G......CC. TT.C......
+seq06 C...G..... CC..T..A.A ....AA.C.. TT..G.....
+seq07 CA.TG..... CC..TC.A.A ...CA..CC. TT...C....
+seq08 CA.TG...T. GCT....A.. G..C..TC.. T.......T.
+seq09 CA.TG..... GC.C..T... ...CA..C.A T.........
+seq10 CA.TG...T. .C.....A.. G..C...C.. T....C....
+\end{verbatim}
+\end{table*}
+Tabulating the counts gives
+\begin{center}
+\begin{tabular}{cc}
+Minor  & Number\\
+allele & of\\
+count  & sites\\
+\hline
+1 & 9\\
+2 & 9\\
+3 & 6\\
+4 & 5\\
+5 & 1
+\end{tabular}
+\end{center}
+\end{Answr}
+\begin{Answr}{4.23}
+  The expected numbers are $\hat\theta(1 + 1/9) = 5.89$ for singletons,
+  $\hat\theta(1/2 + 1/8) = 3.31$ for doubletons,
+  $\hat\theta(1/3 + 1/7) = 2.52$ for tripletons,
+  $\hat\theta(1/4 + 1/6) = 2.21$ for quadrupletons, and
+  $\hat\theta\times 1/5 = 1.1$ for quintupletons.
+\end{Answr}
+\begin{Answr}{4.24}
+  The expected numbers are $\hat\theta(1 + 1/9) = 11.78$ for singletons,
+  $\hat\theta(1/2 + 1/8) = 6.63$ for doubletons,
+  $\hat\theta(1/3 + 1/7) = 5.05$ for tripletons,
+  $\hat\theta(1/4 + 1/6) = 4.41$ for quadrupletons, and
+  $\hat\theta\times 1/5 = 2.12$ for quintupletons.
+\end{Answr}
+\begin{Answr}{4.25}
+  The genealogy below has all the lineages coalescing at the same
+  time, 6~units of mutational time ago. That is fine, but it would
+  also be fine to draw a genealogy in which the coalescent events
+  happened more gradually. Many of them should however be
+  clustered in a relatively brief interval ending 6 units of time ago.\\
+\begin{minipage}[t]{0.8\columnwidth}
+\begin{verbatim}
+-----------------------|
+-----------------------|
+-----------------------|
+-----------------------|
+-----------------------|---------
+-----------------------|
+-----------------------|
+-----------------------|
+-----------------------|
+-----------------------|
+
+|-------6 time units---|
+\end{verbatim}
+\end{minipage}
+\end{Answr}
+\begin{Answr}{4.26}
+Poisson with mean 3.
+\end{Answr}
+\begin{Answr}{4.27}
+Accept anything vaguely wave-shaped with a peak near 6 differences.\\
+\begin{minipage}[t]{0.8\columnwidth}
+\begin{verbatim}
+                       *
+                  *        *
+                  *            *
+               *
+       *   *                       *
+   *
+*                                      *
+
+0  1   2   3   4   5   6   7   8   9  10
+            Pairwise Differences
+\end{verbatim}
+\end{minipage}\\[0.5\baselineskip]
+\end{Answr}
+\begin{Answr}{4.28}
+ $\theta = 0.01$ for Europe and Asia; 0.0204 for Africa.
+\end{Answr}
+\begin{Answr}{4.29}
+There are $K(K-1)/2$ pairs of gene copies. Of these pairs, the number
+that differ is $1 \times (K-1) = K-1$. The contribution to $\pi$ is
+the fraction of pairs that differ, $2/K$.
+\end{Answr}
+\begin{Answr}{4.30}
+  Each segregating site (whether a singleton or not) increments the
+  value of $S$ by 1. Consequently, it increments $\hat\theta_S$ by
+$\left(\sum_{k=1}^{K-1} 1/k\right)^{-1}$.
+\end{Answr}
+\begin{Answr}{4.31}
+In the table below, $\Delta \hat\theta_S$ represents the contribution
+of a singleton site to $\hat\theta_S$ and $\Delta\hat\theta_{\pi}$ is
+the corresponding contribution to $\hat\theta_{\pi}$.
+\begin{center}
+\begin{tabular}{rcc}
+$K$ & $\Delta \hat\theta_S$ & $\Delta\hat\theta_{\pi}$\\ \hline
+2   & 1.000        & 1.000\\
+3   & 0.667        & 0.667\\
+4   & 0.545        & 0.500\\
+10  & 0.353        & 0.200\\
+100 & 0.193        & 0.020\\
+\end{tabular}
+\end{center}
+When $K>3$, each singleton site has a larger effect on $\Delta
+\hat\theta_S$ than on $\Delta\hat\theta_{\pi}$.
+\end{Answr}
+\begin{Answr}{4.32}
+  Many segregating sites will be singletons, which add more to
+  $\hat\theta_S$ than to $\hat\theta_{\pi}$.
+\end{Answr}
+\begin{Answr}{5.1}
+The mismatch distribution is likely to be unimodal, with a mode near
+8.
+\end{Answr}
+\begin{Answr}{5.2}
+The expanded population should have an excess of sites in which the
+derived allele is present in only one copy: an excess of singletons.
+\end{Answr}
+\begin{Answr}{5.3}
+The mismatch distribution is
+\begin{center}
+\begin{tabular}{rr}
+Differences & Pairs\\
+\hline
+0 & 0\\
+1 & 4\\
+2 & 7\\
+3 & 10\\
+4 & 9\\
+5 & 8\\
+6 & 3\\
+7 & 2\\
+8 & 2\\
+\hline
+\end{tabular}
+\end{center}
+\end{Answr}
+\begin{Answr}{5.4}
+The sum of the mismatch distribution is 45, which is also equal to
+  $10\times 9 / 2$.
+\end{Answr}
+\begin{Answr}{5.5}
+The mean pairwise difference is calculated from the mismatch
+distribution as
+\begin{eqnarray*}
+\pi &=& \sum_i i F_i \bigg / \left(\frac{K(K-1)}{2}\right)\\
+    &=& 172 / 45 = 3.82
+\end{eqnarray*}
+where $F_i$ is the number of pairs of sequences that differ by $i$ nucleotide
+sites and $K$ is the number of sequences.
+\end{Answr}
+\begin{Answr}{5.6}
+\begin{eqnarray*}
+\pi &=&
+\biggl(\overbrace{2\times 8}^{\hbox{\tiny site 0}}
++ \overbrace{4\times 6}^{\hbox{\tiny site 1}}
++ \overbrace{2\times 8}^{\hbox{\tiny site 2}}
++ \overbrace{2\times 8}^{\hbox{\tiny site 3}}
++ \overbrace{3\times 7}^{\hbox{\tiny site 4}}\\
+&&\mbox{}
++ \overbrace{2\times 8}^{\hbox{\tiny site 5}}
++ \overbrace{1\times 9}^{\hbox{\tiny site 6}}
++ \overbrace{1\times 9}^{\hbox{\tiny site 7}}
++ \overbrace{4\times 6}^{\hbox{\tiny site 8}}\\
+&&\mbox{}
++ \overbrace{3\times 7}^{\hbox{\tiny site 9}}\biggr) / 45
+= 172/45 = 3.82
+\end{eqnarray*}
+\end{Answr}
+\begin{Answr}{5.7}
+\begin{center}
+\input{figmmA}
+\end{center}
+The vertical axis $(F_i)$ is the fraction of pairs of DNA sequences
+that differ by the number of sites shown on the horizontal axis.
+\end{Answr}
+\begin{Answr}{5.8}
+\begin{center}
+\input{figmmB}
+\end{center}
+The vertical axis $(F_i)$ is the fraction of pairs of DNA sequences
+that differ by the number of sites shown on the horizontal axis.
+\end{Answr}
+\begin{Answr}{5.9}
+  For the 31 polymorphic sites, the frequencies of the ``minor
+  allele'' (the rarer of the two at each site) are 2, 1, 1, 1, 1, 1,
+  5, 1, 6, 1, 1, 6, 1, 1, 1, 3, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1, 5, 3, 2,
+  2, and 2. The folded observed spectrum is
+  \begin{center}
+    \begin{tabular}{rr}
+      Minor  & \\
+      allele & Observed\\
+      count  & spectrum\\ \hline
+      1 & 19\\
+      2 & 6\\
+      3 & 2\\
+      4 & 0\\
+      5 & 2\\
+      6 & 2\\
+      7 & 0\\
+      8 & 0\\
+      9 & 0\\
+     10 & 0
+    \end{tabular}
+\end{center}
+\end{Answr}
+\begin{Answr}{5.10}
+  For the 20 polymorphic sites, the frequencies of the ``minor
+  allele'' (the rarer of the two at each site) are 2, 7, 2, 6, 2, 2,
+  7, 7, 2, 5, 1, 1, 2, 1, 1, 7, 3, 1, 2, and 1.  The folded observed
+  spectrum is
+  \begin{center}
+    \begin{tabular}{rr}
+      Minor  & \\
+      allele & Observed\\
+      count  & spectrum\\ \hline
+      1 & 6\\
+      2 & 7\\
+      3 & 1\\
+      4 & 0\\
+      5 & 1\\
+      6 & 1\\
+      7 & 4\\
+      8 & 0\\
+      9 & 0\\
+      10 & 0
+    \end{tabular}
+  \end{center}
+\end{Answr}
+\begin{Answr}{5.11}
+  To estimate $\theta$, note that $S=31$, so $\hat\theta =
+  31/\sum_{i=1}^{K-1} 1/i = 8.73796$. The expected folded spectrum is
+\begin{center}
+\begin{tabular}{rr}
+\multicolumn{2}{c}{Data set~A}\\
+ Minor &\\
+allele &Expected\\
+ count &spectrum\\
+ \hline
+ 1 & 9.19785\\
+ 2 & 4.85442\\
+ 3 & 3.42665\\
+ 4 & 2.73061\\
+ 5 & 2.33012\\
+ 6 & 2.08047\\
+ 7 & 1.92043\\
+ 8 & 1.82041\\
+ 9 & 1.76524\\
+10 & 0.87380\\
+\hline
+\end{tabular}
+\end{center}
+\end{Answr}
+\begin{Answr}{5.12}
+  To estimate $\theta$, note that $S=20$, so $\hat\theta =
+  20/\sum_{i=1}^{K-1} 1/i = 5.63739$. The expected folded spectrum is
+  \begin{center}
+\begin{tabular}{rr}
+\multicolumn{2}{c}{Data set~B}\\
+ Minor &\\
+allele &Expected\\
+ count &spectrum\\
+ \hline
+ 1 & 5.93410\\
+ 2 & 3.13188\\
+ 3 & 2.21074\\
+ 4 & 1.76169\\
+ 5 & 1.50330\\
+ 6 & 1.34224\\
+ 7 & 1.23899\\
+ 8 & 1.17446\\
+ 9 & 1.13887\\
+10 & 0.56374\\
+\hline
+\end{tabular}
+\end{center}
+\end{Answr}
+\begin{Answr}{5.13}
+\begin{center}
+\input{figspecA}
+\end{center}
+The graph shows the observed spectrum as open circles and the expected
+one as a solid line.
+\end{Answr}
+\begin{Answr}{5.14}
+\begin{center}
+\input{figspecB}
+\end{center}
+The graph shows the observed spectrum as open circles and the expected
+one as a solid line.
+\end{Answr}
+\begin{Answr}{5.15}
+Data set~A came from an expanded population, and data set~B from a
+stationary one.
+\end{Answr}
+\begin{Answr}{6.1}
+Because mutations may occur on either of the two paths separating the
+two species from their common ancestor.
+\end{Answr}
+\begin{Answr}{6.2}
+The values below indicate that relative error is small when $p$ is
+less than about 0.1.\\
+{\centering
+\begin{tabular}{cc}
+ $p$ & relerr\\ \hline
+0.30 & 0.22\\
+0.20 & 0.14\\
+0.10 & 0.07\\
+0.08 & 0.05\\
+0.06 & 0.04\\
+0.05 & 0.03\\
+\hline
+\end{tabular}\\}
+\end{Answr}
+\begin{Answr}{6.3}
+For the chimpanzee-human data,
+\[
+u = K/2t = 0.01177/(12\times 10^{6}) = 0.98\times 10^{-9}
+\]
+That's a bit lower than the rates estimated for typical mammals.  But
+we hominins have had longer generation times. Suppose our ancestors
+had 20-year generations. Then the rate per generation would be
+\[
+u = 20 \times 0.98\times 10^{-9} \approx 2 \times 10^{-8}
+\]
+which is in good aggrement with other mammals.
+\end{Answr}
+\begin{Answr}{6.4}
+As with the Jukes-Cantor model, we begin with
+\begin{eqnarray*}
+q &=& e^{-2\lambda t} + (1 - e^{-2\lambda t})/2\\
+&=& \frac{1}{2} + \frac{1}{2}\,e^{-2\lambda t}
+\end{eqnarray*}
+When at least one perturbation has occurred, the sites are identical
+with probability 1/2. This accounts for the value ``1/2'' that appears
+above. Now substitute $2u=\lambda$ (because only half of perturbations
+are mutations), $p=1-q$, and $K = 2ut$:
+\[
+p = \frac{1}{2} - \frac{1}{2}\,e^{-2K}
+\]
+Solving for $K$ gives
+\[
+K = -\frac{1}{2}\,\log_e(1-2p)
+\]
+which is analogous to Eqn~\ref{eq.jukescantor}. This was introduced in
+1919 and is called ``Haldane's mapping function''
+\cite{Haldane:Distance}. It has often been used to make linkage maps
+of chromosomes.
+\end{Answr}
+\begin{Answr}{6.5}
+For the chimpanzee-human comparison, $p = 0.01167$. Plugging this into
+the 2-state formula gives $K=0.01180$.
+\end{Answr}
+\begin{Answr}{6.6}
+(a)~For the three species, Jukes-Cantor yields the following estimates
+  of $K$:\\
+\begin{tabular}{lrrrrr}
+                 &\multicolumn{3}{c}{$K$ estimates}\\
+                 & BN Rat& Mouse&Human\\
+\hline
+Brown Norway Rat &  ---&0.38  & 0.20\\
+Mouse            &     & ---  & 0.40\\
+Human            &     &      &  ---\\
+\hline
+\end{tabular}
+
+(b)~The mouse-human distance is \emph{much} larger than the rat-human
+distance. (We hope students will contemplate the causes of this
+difference, but grades will not be based on this issue.)
+\end{Answr}
+\begin{Answr}{7.1}
+\begin{inparaenum}[(a)]
+\item
+The mean relative fitness is $\bar w = (p^2\times 1) + (2pq\times 1.02) +
+(q^2\times 1.03) = 1.0279$.
+\item
+The marginal fitness of $A_1$ is $w_1 = p w_{11} + q w_{12} =
+1.018$. That of $A_2$ is $w_2 = p w_{12} + q w_{22} = 1.029$.
+\item
+  In the following generation, the expected frequency of $A_1$ is $p'
+  = (p^{2} w_{11} + pqw_{12})/\bar w$, as shown on Gillespie's
+  p.~62. This gives 0.099.
+\end{inparaenum}
+\end{Answr}
+\begin{Answr}{7.2}
+\begin{inparaenum}[(a)]
+\item
+The mean relative fitness is $\bar w = 1 - 2pqhs - q^2 s = 0.966$.
+\item
+The marginal fitness of $A_1$ is $w_1 = p + q(1-hs) = 0.996$. That of
+$A_2$ is $w_2 = p(1-hs) + q(1-s) = 0.959$.
+\item
+In the following generation, the expected frequency $A_1$ is $p' =
+(p^{2} w_{11} + pqw_{12})/\bar w$, as shown on Gillespie's p.~62. This
+gives 0.2061.
+\end{inparaenum}
+\end{Answr}
+\begin{Answr}{7.3}
+\begin{inparaenum}[(a)]
+\item
+The mean relative fitness is $\bar w = 1 - 2pqhs - q^2 s = 0.999$.
+\item
+The marginal fitness of $A_1$ is $w_1 = p + q(1-hs) = 1.0015$. That of
+$A_2$ is $w_2 = p(1-hs) + q(1-s) = 0.9965$.
+\item
+  In the following generation, the expected frequency $A_1$ is $p' =
+  (p^{2} w_{11} + pqw_{12})/\bar w$, as shown on Gillespie's
+  p.~62. This gives 0.501.
+\end{inparaenum}
+\end{Answr}
+\begin{Answr}{7.4}
+\begin{inparaenum}[(a)]
+\item Gillespie makes his fitnesses relative to that of genotype
+$A_1A_1$. To obtain these relative fitnesses, divide each absolute
+fitness by $W_{11}$. This gives relative fitnesses $w_{11}=1$, $w_{12} =
+0.769$, and $w_{22} = 0.692$. In Gillespie's fitness scheme, $w_{12} =
+1-hs$, and $w_{22} = 1-s$. This implies that $s = 1 - w_{22} = 0.308$,
+and $h = (1-w_{12})/s = 0.75$.
+
+\item Gillespie's Eqns.~3.2--3.3 express $\Delta_s p$ in terms of $p$,
+  $q=1-p$, $s$, $h$, and $\bar w = 1 - pqhs - q^2s$. Note that $q$ and
+  $\bar w$ depend on $p$ and must therefore be recalculated for each
+  value of $p$ that you graph. I did these calculations using a Python
+  script. Here are a few of the results in tabular form:
+
+{\centering\begin{tabular}{rr} $p$ & $\Delta_s p$\\ \hline
+      0.0000 &   0.0000\\
+      0.0417 &   0.0047\\
+      0.0833 &   0.0095\\
+      $\cdots$ & $\cdots$\\
+      0.9167 &   0.0170\\
+      0.9583 &   0.0090\\
+      1.0000 &   0.0000\\
+\end{tabular}\\}
+
+The graph of these results looks like this:
+
+{\centering\mbox{\beginpicture
+\setcoordinatesystem units <4cm, 70cm>
+\setplotarea x from 0 to 1, y from 0.0000 to 0.0455
+\axis left label {$\Delta_s p$}
+  ticks numbered from 0.00 to 0.04 by 0.01 /
+\axis bottom label {$p$}
+  ticks numbered from 0.00 to 1.00 by 0.25 /
+%       p       dp
+\plot
+   0.0000   0.0000
+   0.0417   0.0047
+   0.0833   0.0095
+   0.1250   0.0143
+   0.1667   0.0189
+   0.2083   0.0234
+   0.2500   0.0277
+   0.2917   0.0316
+   0.3333   0.0352
+   0.3750   0.0383
+   0.4167   0.0409
+   0.4583   0.0430
+   0.5000   0.0445
+   0.5417   0.0454
+   0.5833   0.0455
+   0.6250   0.0450
+   0.6667   0.0436
+   0.7083   0.0415
+   0.7500   0.0385
+   0.7917   0.0346
+   0.8333   0.0297
+   0.8750   0.0239
+   0.9167   0.0170
+   0.9583   0.0090
+   1.0000   0.0000
+/
+\endpicture}\\}
+
+\item
+Equilibria occur where $\Delta_s p = 0$. As the graph shows, the only
+such points are at $p=0$ and $p=1$. Only the second of these is
+stable. This is because $\Delta_s p>0$ whenever $0<p<1$. Consequently,
+$p$ always moves \emph{toward} the equilibrium at $p=1$ but \emph{away
+  from} the one at $p=0$.
+\end{inparaenum}
+\end{Answr}
+\begin{Answr}{7.5}
+\begin{inparaenum}[(a)]
+\item Gillespie makes his fitnesses relative to that of genotype
+$A_1A_1$. To obtain these relative fitnesses, divide each absolute
+fitness by $W_{11}$. This gives relative fitnesses $w_{11}=1$, $w_{12} =
+0.769$, and $w_{22} = 0.923$. In Gillespie's fitness scheme, $w_{12} =
+1-hs$, and $w_{22} = 1-s$. This implies that $s = 1 - w_{22} = 0.077$,
+and $h = (1-w_{12})/s = 3$.
+
+\item Gillespie's Eqns.~3.2--3.3 express $\Delta_s p$ in terms of $p$,
+  $q=1-p$, $s$, $h$, and $\bar w = 1 - pqhs - q^2s$. Note that $q$ and
+  $\bar w$ depend on $p$ and must therefore be recalculated for each
+  value of $p$ that you graph. I did these calculations using a Python
+  script. Here are a few of the results in tabular form:
+
+{\centering\begin{tabular}{rr} $p$ & $\Delta_s p$\\ \hline
+   0.0000  & --0.0000\\
+   0.0417  & --0.0060\\
+   0.0833  & --0.0101\\
+  $\cdots$ & $\cdots$\\
+   0.9167  & 0.0155\\
+   0.9583  & 0.0087\\
+   1.0000  & 0.0000\\
+\end{tabular}\\}
+
+The graph of these results looks like this:
+
+{\centering\mbox{\beginpicture
+\setcoordinatesystem units <4cm, 79.4cm>
+\setplotarea x from 0 to 1, y from -0.0136 to 0.0265
+\axis left label {$\Delta_s p$}
+  ticks numbered from -0.01 to 0.02 by 0.01 /
+\axis bottom label {$p$}
+  ticks numbered from 0.00 to 1.00 by 0.25 /
+\setdots
+\putrule from 0 0 to 1 0
+\setsolid
+%       p       dp
+\plot
+   0.0000  -0.0000
+   0.0417  -0.0060
+   0.0833  -0.0101
+   0.1250  -0.0126
+   0.1667  -0.0136
+   0.2083  -0.0133
+   0.2500  -0.0118
+   0.2917  -0.0094
+   0.3333  -0.0062
+   0.3750  -0.0025
+   0.4167   0.0017
+   0.4583   0.0061
+   0.5000   0.0104
+   0.5417   0.0146
+   0.5833   0.0184
+   0.6250   0.0217
+   0.6667   0.0242
+   0.7083   0.0259
+   0.7500   0.0265
+   0.7917   0.0259
+   0.8333   0.0240
+   0.8750   0.0205
+   0.9167   0.0155
+   0.9583   0.0087
+   1.0000   0.0000
+/
+\endpicture}\\}
+
+\item Equilibria occur where $\Delta_s p = 0$. There are three such
+  points: at $p=0$, at $p=1$, and at $p=0.4$.  $\Delta_s p$ is
+  positive to the right of the intermediate equilibrium but negative
+  to the left. Consequently, the intermediate equilibrium is unstable
+  and the two extreme equilibria are stable.
+\end{inparaenum}
+\end{Answr}
+\begin{Answr}{7.6}
+\begin{inparaenum}[(a)]
+\item Gillespie makes his fitnesses relative to that of genotype
+$A_1A_1$. To obtain these relative fitnesses, divide each absolute
+fitness by $W_{11}$. This gives relative fitnesses $w_{11}=1$, $w_{12} =
+1.111$, and $w_{22} = 0.889$. In Gillespie's fitness scheme, $w_{12} =
+1-hs$, and $w_{22} = 1-s$. This implies that $s = 1 - w_{22} = 0.111$,
+and $h = (1-w_{12})/s = -1$.
+
+\item Gillespie's Eqns.~3.2--3.3 express $\Delta_s p$ in terms of $p$,
+  $q=1-p$, $s$, $h$, and $\bar w = 1 - pqhs - q^2s$. Note that $q$ and
+  $\bar w$ depend on $p$ and must therefore be recalculated for each
+  value of $p$ that you graph. I did these calculations using a Python
+  script. Here are a few of the results in tabular form:
+
+{\centering\begin{tabular}{rr} $p$ & $\Delta_s p$\\ \hline
+   0.0000 & 0.0000\\
+   0.0417 & 0.0092\\
+   0.0833 & 0.0162\\
+  $\cdots$ & $\cdots$\\
+   0.9167 &--0.0063\\
+   0.9583 &--0.0039\\
+   1.0000 &--0.0000\\
+\end{tabular}\\}
+
+The graph of these results looks like this:
+
+{\centering\mbox{\beginpicture
+\setcoordinatesystem units <4cm, 85.6cm>
+\setplotarea x from 0 to 1, y from -0.01 to 0.0272
+\axis left label {$\Delta_s p$}
+  ticks numbered from -0.01 to 0.02 by 0.01 /
+\axis bottom label {$p$}
+  ticks numbered from 0.00 to 1.00 by 0.25 /
+\setdots
+\putrule from 0 0 to 1 0
+\setsolid
+%       p       dp
+\plot
+   0.0000   0.0000
+   0.0417   0.0092
+   0.0833   0.0162
+   0.1250   0.0213
+   0.1667   0.0247
+   0.2083   0.0266
+   0.2500   0.0272
+   0.2917   0.0267
+   0.3333   0.0253
+   0.3750   0.0232
+   0.4167   0.0205
+   0.4583   0.0173
+   0.5000   0.0139
+   0.5417   0.0103
+   0.5833   0.0067
+   0.6250   0.0032
+   0.6667  -0.0000
+   0.7083  -0.0028
+   0.7500  -0.0051
+   0.7917  -0.0068
+   0.8333  -0.0076
+   0.8750  -0.0075
+   0.9167  -0.0063
+   0.9583  -0.0039
+   1.0000  -0.0000
+/
+\endpicture}\\}
+
+\item
+Equilibria occur where $\Delta_s p = 0$. There are three such points:
+at $p=0$, at $p=1$, and at $p=2/3$.
+$\Delta_s p$ is positive to the left of the intermediate equilibrium
+but negative to the right. Consequently, the intermediate equilibrium
+is stable and the two extreme equilibria are unstable.
+\end{inparaenum}
+\end{Answr}
+\begin{Answr}{7.7}
+  No calculation is required. Because $A_2A_2$ has higher fitness than
+  $A_1A_1$ and the heterozygote is intermediate, $A_2$ will go to
+  fixation and the stable equilibrium frequency of $A_1$ is 0.
+\end{Answr}
+\begin{Answr}{7.8}
+  No calculation is required. Because the two homozygotes have equal
+  fitness and the heterozygote is superior, the stable equilibrium
+  frequency of $A_1$ is $1/2$.
+\end{Answr}
+\begin{Answr}{7.9}
+  No calculation is required. Because the heterozygote has lower
+  fitness than either homozygote, there are two stable
+  equilibria---one at which the frequency of $A_1$ is~0 and another at
+  which it is~1.
+\end{Answr}
+\begin{Answr}{7.10}
+$\hat p$, the equilibrium value of $p$, is equal to $(h-1)/(2h-1)$
+(see Gillespie's Eqn.~3.4). Here are a few values and then the graph:
+
+{\centering\begin{tabular}{rr} $h$ & $\hat p$\\ \hline
+ --1.0000 &  0.6667\\
+ --0.8421 &  0.6863\\
+ --0.6842 &  0.7111\\
+  $\cdots$ & $\cdots$\\
+  1.6842 &  0.2889\\
+  1.8421 &  0.3137\\
+  2.0000 &  0.3333\\
+\end{tabular}\\}
+
+{\centering\mbox{\beginpicture
+\setcoordinatesystem units <1.33cm, 4cm>
+\setplotarea x from -1 to 2, y from 0 to 1
+\axis left label {$\hat p$}
+  ticks numbered from 0.00 to 1.00 by 0.25 /
+\axis bottom label {$h$}
+  ticks numbered from -1.0 to 2.0 by 1 /
+\setdots
+\putrule from 0 0 to 1 0
+\setsolid
+%       h       phat
+\multiput {$\circ$} at
+ -1.0000   0.6667
+ -0.8421   0.6863
+ -0.6842   0.7111
+ -0.5263   0.7436
+ -0.3684   0.7879
+ -0.2105   0.8519
+ -0.0526   0.9524
+%  0.1053   1.1333
+%  0.2632   1.5556
+%  0.4211   3.6667
+%  0.5789  -2.6667
+%  0.7368  -0.5556
+%  0.8947  -0.1333
+  1.0526   0.0476
+  1.2105   0.1481
+  1.3684   0.2121
+  1.5263   0.2564
+  1.6842   0.2889
+  1.8421   0.3137
+  2.0000   0.3333
+/
+\endpicture}\\}
+
+(a)~Overdominance occurs when $h<0$ and generates a stable equilibrium
+within the interval $(0,1)$. (b)~Incomplete dominance occurs when
+$0<h<1$. In this case, selection is directional, and there are no
+internal equilibria. (c)~Underdominance occurs when $h>1$ and
+generates an unstable internal equilibrium. The only stable
+equilibria are at $p=0$ and $p=1$.
+\end{Answr}
+\begin{Answr}{7.11}
+The change per generation is $\Delta p \approx pq^2s - up$. At
+equilibrium between mutation and drift, this quantity equals
+zero. This implies that the equilibrium occurs at $\hat q =
+\sqrt{u/s}$.
+\end{Answr}
+\begin{Answr}{7.12}
+\begin{inparaenum}[\it (a)]
+\item In the first generation, the frequency of white flowers is
+  $P_{rr} = 200/1000 = 0.2$. At Hardy-Weinberg equilibrium, this
+  frequency is $q^2$, where $q$ is the frequency of allele $r$. This
+  implies that $q = \sqrt{0.2} = 0.447$. The frequency of allele $R$
+  is therefore $p = 1-q = 0.553$.
+\item In the 2nd generation, $P_{rr} = 250/1000 = 0.25$, so $q' =
+  \sqrt{0.25} = 0.5$, and $p'=1-q'=0.5$.
+\item Because $w_{RR} = w_{Rr} = 1$, Eqn.~\ref{eq.pprime} simplifies
+  to $p' = p/(1-q^2 s)$, or $s = (1-p/p')/q^2$. With our data, this is
+  $s = (1-0.553/0.5)/0.2 = -0.53$.
+\end{inparaenum}
+\end{Answr}
+\begin{Answr}{7.13}
+\begin{inparaenum}[\it (a)]
+\item In the first generation, the frequency of white flowers is
+  $P_{rr} = 100/1000 = 0.1$. At Hardy-Weinberg equilibrium, this
+  frequency is $q^2$, where $q$ is the frequency of allele $r$. This
+  implies that $q = \sqrt{0.1} = 0.316$. The frequency of allele $R$
+  is therefore $p = 1-q = 0.684$.
+\item In the 2nd generation, $P_{rr} = 95/1000 = 0.095$, so $q' =
+  \sqrt{0.095} = 0.308$, and $p'=1-q'=0.692$.
+\item Because $w_{RR} = w_{Rr} = 1$, Eqn.~\ref{eq.pprime} simplifies
+  to $p' = p/(1-q^2 s)$, or $s = (1-p/p')/q^2$. With our data, this is
+  $s = (1-0.684/0.692)/0.1 = 0.116$.
+\end{inparaenum}
+\end{Answr}
+\begin{Answr}{7.14}
+Because the number of new advantageous mutants is proportional to
+population size, but the fixation probability for such mutants is
+essentially independent of population size. The rate of adaptive
+evolution is thus proportional to population size.
+
+Some students may want to answer this question more formally, so here
+is the formal version: let $u$ represent the mutation rate for
+advantageous alleles whose fitness in heterozygotes is $1+s/2$,
+relative to that of the wild-type allele. The number of such mutations
+in the population as a whole is $2Nu$, and each of them has
+probability $s$ of ultimate fixation. For this category of adaptive
+mutations, the expected number fixed per generation is therefore
+$2Nus$, an increasing function of population size.
+\end{Answr}
+\begin{Answr}{7.15}
+With $s=-0.001$, the fixation probability is
+\begin{inparaenum}[(a)]
+\item $2.1\times 10^{-12}$ if $N=10000$;  or
+\item $1.57\times 10^{-4}$ if $N=1000$; or
+\item $4.5\times 10^{-3}$ if $N=100$.
+\end{inparaenum}
+\end{Answr}
+\begin{Answr}{7.16}
+The substitution rate per million years is $10^6 \times 2Nu $ times the
+answers from the preceding question.
+\begin{inparaenum}[(a)]
+\item $9.07\times 10^{-11}$ if $N=10000$;  or
+\item $6.89\times 10^{-4}$ if $N=1000$; or
+\item $1.99\times 10^{-3}$ if $N=100$.
+\end{inparaenum}
+\end{Answr}
+\begin{Answr}{7.17}
+With $s=0.001$, the fixation probability is
+\begin{inparaenum}[(a)]
+\item $1\times 10^{-3}$ if $N=10000$;  or
+\item $1.16\times 10^{-3}$ if $N=1000$; or
+\item $5.51\times 10^{-3}$ if $N=100$.
+\end{inparaenum}
+\end{Answr}
+\begin{Answr}{7.18}
+  The substitution rate per million years is $10^6 \times 2Nu $ times
+  the results from the \verb|pfix| function (Gillespie's Eqn.~3.22)
+  defined above.
+\begin{inparaenum}[(a)]
+\item 0.044 if $N=10000$;  or
+\item 0.0051 if $N=1000$; or
+\item 0.0024 if $N=100$.
+\end{inparaenum}
+\end{Answr}
+\begin{Answr}{7.19}
+\begin{inparaenum}[(a)]
+\item For $N=10000$: $\pi_1=0.0009995$, $s=0.001$,
+  $\mbox{relerr}=0.000500$;
+\item for $N= 1000$: $\pi_1=0.0011559$, $s=0.001$,
+  $\mbox{relerr}=0.134903$;
+\item for $N=  100$: $\pi_1=0.0055139$, $s=0.001$,
+  $\mbox{relerr}=0.818640$.
+\end{inparaenum}
+The approximation works well for $N=10000$, fairly well for $N=1000$,
+but poorly for $N=100$.
+\end{Answr}
+\begin{Answr}{8.1}
+\begin{inparaenum}[(a)]
+\item The gamete frequencies are $x_1=30/170 = 0.176$, $x_2= 70/170 = 0.412$,
+  $x_3=50/170 = 0.294$, and $x_4= 20/170=0.118$.
+\item The allele frequencies at the two loci are $p_A=x_1+x_2 = 0.588$, and
+  $p_B=x_1 + x_3 = 0.471$.
+\item $D = x_1x_4 - x_2x_3 = -0.1003$.
+\item $r^2 = D^2/[p_A(1-p_A)p_G(1-p_G)] = 0.167$.
+\end{inparaenum}
+\end{Answr}
+\begin{Answr}{8.2}
+\begin{inparaenum}[(a)]
+\item The gamete frequencies are $x_1=80/165=0.485$, $x_2= 30/165 = 0.182$,
+  $x_3=10/165 = 0.061$, and $x_4= 45/165 = 0.273$.
+\item The allele frequencies at the two loci are $p_A=x_1+x_2 = 0.667$, and
+  $p_B=x_1 + x_3 = 0.545$.
+\item $D=x_1x_4 - x_2x_3 = 0.121$.
+\item $r^2 = D^2/[p_A(1-p_A)p_G(1-p_G)] = 0.267$.
+\end{inparaenum}
+\end{Answr}
+\begin{Answr}{8.3}
+\begin{inparaenum}[(a)]
+\item $x_1=0.2$, $x_2=0.1$, $x_3=0.5$, and $x_4=0.2$.
+\item $p_A=x_1 + x_2 = 0.3$, and $p_G=x_1 + x_3 = 0.7$.
+\item $D = x_1x_4 - x_2x_3 = -0.01$.
+\item $r^2=D^2/[p_A(1-p_A)p_G(1-p_G)] = 0.0023$.
+\end{inparaenum}
+\end{Answr}
+\begin{Answr}{8.4}
+\begin{inparaenum}[(a)]
+\item $x_1=0.1$, $x_2=0.3$, $x_3=0.5$, and $x_4=0.1$.
+\item $p_A=x_1 + x_2 = 0.4$, and $p_G=x_1 + x_3 = 0.6$.
+\item $D = x_1x_4 - x_2x_3 = -0.14$.
+\item $r^2=D^2/[p_A(1-p_A)p_G(1-p_G)] = 0.3403$.
+\end{inparaenum}
+\end{Answr}
+\begin{Answr}{8.5}
+(a)~After 1 generation, $D = 0.2 \times 0.5 = 0.1$.
+(b)~After 3 generations, $D = 0.2 \times 0.5^3 =0.025$.
+\end{Answr}
+\begin{Answr}{8.6}
+(a)~After 1 generation, $D = 0.2997$.
+(b)~After 100 generations, $D = 0.2714$.
+\end{Answr}
+\begin{Answr}{8.7}
+\begin{eqnarray*}
+D &=& x_1 - (x_1+x_2)(x_1+x_3)\\
+  &=& x_1 - x_1^2 - x_1x_3-x_1x_2-x_2x_3
+\end{eqnarray*}
+At this point, all the numbers are in pairs except the lonely $x_1$ at
+the beginning.  Something has to be done about this lonely $x_1$,
+because we're trying to derive a formula in which \emph{all} the
+numbers are in pairs. To fix things, multiply the lonely $x_1$ by
+$x_1+x_2+x_3+x_4$.  This does not change anything because these
+numbers sum to 1.  We get
+\begin{eqnarray*}
+D &=& x_1^2+x_1x_2+x_1x_3+x_1x_4 - x_1^2 - x_1x_3\\
+  &&\mbox{} -x_1x_2-x_2x_3\\
+  &=& x_1x_4 -x_2x_3
+\end{eqnarray*}
+\end{Answr}
+\begin{Answr}{8.8}
+One approach is to add the two expressions on the right side. If both
+equations are correct, then this sum should equal $D-D=0$. Summing the
+two equations gives
+\begin{eqnarray*}
+D - D &=& x_1 - p_A p_B + x_2 - p_A (1-p_B)\\
+  &=& x_1 + x_2 - p_A(p_B + 1 - p_B)\\
+  &=& x_1 + x_2 - p_A\\
+  &=& p_A - p_A\\
+  &=& 0
+\end{eqnarray*}
+The two expressions sum to zero, so the two equations are equivalent.
+\end{Answr}
+\begin{Answr}{8.9}
+  (a)~$(x_1,x_2,x_3,x_4) = (0,1/2,1/2,0)$;
+  (b)~$D = x_1 x_4 - x_2 x_3 = -1/4$.
+\end{Answr}
+\begin{Answr}{8.10}
+The gametic fitnesses are $(w_1, w_2, w_3, w_4) = (1+s, 1+s, 1, 1)$,
+and mean fitness is $\bar w = \sum_i w_i x_i = 1+s/2$.
+\end{Answr}
+\begin{Answr}{8.11}
+\begin{eqnarray*}
+  x'_1 &=& (1+s) (0 +1/16)/(1+s/2)\\
+       &=& \left(\frac{1}{16}\right)
+           \left(\frac{1+s}{1+s/2}\right)\\
+x'_2 &=& (1+s) (1/2 -1/16)/(1+s/2)\\
+     &=& \left(\frac{7}{16}\right)
+         \left(\frac{1+s}{1+s/2}\right)\\
+x'_3 &=& (1/2 -1/16)/(1+s/2)\\
+     &=& \left(\frac{7}{16}\right)
+         \left(\frac{1}{1+s/2}\right)\\
+x'_4 &=& (0 +1/16)/(1+s/2)\\
+     &=& \left(\frac{1}{16}\right)
+         \left(\frac{1}{1+s/2}\right)
+\end{eqnarray*}
+To simplify this a little further, some students might assume that
+$s\ll 1$, so that $(1+s)/(1+s/2) \approx 1+s/2$ and $1/(1+s/2) \approx
+1-s/2$, ignoring terms of order $s^2$. That is OK too. With that
+approximation, the answers would be
+\begin{eqnarray*}
+x'_1 &\approx& (1/16)(1+s/2)\\
+x'_2   &\approx& (7/16)(1+s/2)\\
+x'_3   &\approx& (7/16)(1-s/2)\\
+x'_4   &\approx& (1/16)(1-s/2)
+\end{eqnarray*}
+\end{Answr}
+\begin{Answr}{8.12}
+(a)~Diversity should be lower at nearby loci. (b)~This effect is
+larger in regions of low recombination.
+\end{Answr}
+\begin{Answr}{8.13}
+$\lambda = 1.0101\times 10^{-8}$, which is within about 1\% of the
+  approximate value. The approximate formula is quite accurate.
+\end{Answr}
+\begin{Answr}{8.14}
+\begin{inparaenum}[(a)]
+\item The approximate formula gives $c = 10^{-8} \times 5\times 10^7
+  =0.5$.
+\item Haldane's mapping function gives $c = (1 - \exp(2 \times 10^{-8}
+  \times 5\times 10^7))/2 = 0.316$.
+\item The approximation is poor when the distance between loci is
+  large.
+\end{inparaenum}
+\end{Answr}
+\begin{Answr}{8.15}
+\begin{center}
+\mbox{\beginpicture
+\setcoordinatesystem units <1.2\columnwidth, 1.2\columnwidth>
+\setplotarea x from 0.0 to 0.5, y from 0.0 to 0.5
+\axis left label {$c$}
+  ticks numbered from 0.0 to 0.5 by  0.1 /
+\axis bottom label {$\lambda k$}
+  ticks numbered from 0.0 to 0.5 by 0.1 /
+\setdashes
+% Approximation: c = l*k
+\plot
+0 0
+0.5 0.5
+/
+\setsolid
+% Haldane's mapping function
+\plot
+0.000 0.000
+0.026 0.026
+0.053 0.050
+0.079 0.073
+0.105 0.095
+0.132 0.116
+0.158 0.135
+0.184 0.154
+0.211 0.172
+0.237 0.189
+0.263 0.205
+0.289 0.220
+0.316 0.234
+0.342 0.248
+0.368 0.261
+0.395 0.273
+0.421 0.285
+0.447 0.296
+0.474 0.306
+0.500 0.316
+/
+\endpicture}\\
+\end{center}
+This figure shows both
+\begin{inparaenum}[(a)]
+\item the approximation (dashes), and
+\item Haldane's mapping formula (solid line).
+\item The approximation looks good for $\lambda k <
+0.1$.  On a genome-wide average, $\lambda\approx10^{-8}$ for
+humans. Consequently,
+\item the approximation should work well when $k < 10^7$. In other
+  words, it should work for sites separated by no more than 10
+  megabases.
+\end{inparaenum}
+\end{Answr}
+\begin{Answr}{8.16}
+  We are looking for sites such that $c/s < 0.1$, or $c < 0.1s$, where
+  $c$ is the recombination rate between the site in question and the
+  selected site. For this problem, $s=0.001$, so $c < 10^{-4}$. We
+  established above that when $c$ less than 0.1 or so, it is
+  approximately equal to $\lambda k$, where $\lambda = 10^{-8}$, and
+  $k$ is the distance between the sites in base pairs. Our largest $c$
+  value is much smaller than 0.1, so we can use this approximate
+  formula. Using this formula, $c = 10^{-8} k < 10^{-4}$, so $k <
+  10,000$. Variance is removed from a region twice this size, because
+  the region extends for 10,000 bases each way from the selected
+  site. The size of the affected region is therefore 20,000 bases, or
+  20~kb.
+\end{Answr}
+\begin{Answr}{8.17}
+The affected region covers 2~Mb
+\end{Answr}
+\begin{Answr}{8.18}
+ $s=0.05$.
+\end{Answr}
+\begin{Answr}{8.19}
+There are many possible answers. Here are a few examples.
+\begin{inparaenum}[(a)]
+\item Sites 1--12 in sequences 41--42.
+\item Sites 1--15 in sequence 31.
+\item Sites 38-42 in sequences 40--49, excluding sequence 46.
+\end{inparaenum}
+\end{Answr}
+\begin{Answr}{8.20}
+There are many possible answers. Here are a few examples.
+\begin{inparaenum}[(a)]
+\item Sites 1--12 in sequences 41--42.
+\item Sites 1--15 in sequence 31.
+\item Sites 38-42 in sequences 40--49, excluding sequence 46.
+\end{inparaenum}
+\end{Answr}
+\begin{Answr}{9.1}
+The data tell us that
+$P_{11} = 100/500 = 0.2$, and $P_{12} = 200/500 = 0.4$, so the
+frequencies of alleles $A_1$ and $A_2$ are $p = P_{11} + P_{12}/2 =
+0.4$, and $q = 1-p = 0.6$. To calculate $F$, we might work with the
+formula for any of the three genotype frequencies. Let's use $P_{12} =
+2pq(1-F)$. Rearranging this gives $F = 1 - P_{12}/2pq$, which works
+out to equal 0.167.
+\end{Answr}
+\begin{Answr}{9.2}
+The data tell us that
+$P_{11} = 200/500 = 0.4$, and $P_{12} = 100/500 = 0.2$, so the
+frequencies of alleles $A_1$ and $A_2$ are $p = P_{11} + P_{12}/2 =
+0.5$, and $q = 1-p = 0.5$. To calculate $F$, we might work with the
+formula for any of the three genotype frequencies. Let's use $P_{12} =
+2pq(1-F)$. Rearranging this gives $F = 1 - P_{12}/2pq$, which works
+out to equal 0.6.
+\end{Answr}
+\begin{Answr}{9.3}
+$P_{11} = 0.156$
+\end{Answr}
+\begin{Answr}{9.4}
+$P_{11} = 0.313$
+\end{Answr}
+\begin{Answr}{9.5}
+1/8
+\end{Answr}
+\begin{Answr}{9.6}
+1/16
+\end{Answr}
+\begin{Answr}{9.7}
+$1/16$
+\end{Answr}
+\begin{Answr}{9.8}
+$P_{11} = 0.19$,
+$P_{12} = 0.42$, and
+$P_{22} = 0.39$.
+\end{Answr}
+\begin{Answr}{9.9}
+$P_{11} = 0.0156$,
+$P_{12} = 0.169$, and
+$P_{22} = 0.816$.
+\end{Answr}
+\begin{Answr}{9.10}
+$P_{11} = p^2 + pqf$,
+$P_{12} = 2pq(1-f)$, and
+$P_{22} = q^2 + pqf$.
+\end{Answr}
+\begin{Answr}{10.1}
+$G_S = 1-H_S$, and $G_T = 1-H_T$. Substituting these values into
+  equation~\ref{eq.Fst.G} gives
+\[
+F_{ST} = \frac{1-H_S - 1 + H_T}{1 - 1 + H_T} = \frac{H_T - H_S}{H_T},
+\]
+which is the same as equation~\ref{eq.Fst.H}.
+\end{Answr}
+\begin{Answr}{10.2}
+We will work with equation~\ref{eq.Fst.H}, which is a function of
+$H_S$ and $H_T$. Let us begin with the formula for $H_S$:
+\begin{eqnarray*}
+H_S &=& \sum c_i 2p_i(1-p_i)\\
+    &=& 2\sum c_i p_i - 2\sum c_i p_i^2\\
+    &=& 2p - 2\sum c_i p_i^2
+\end{eqnarray*}
+The sum here is a weighted average over subpopulations, so think of it
+as an expectation, and use the hint mentioned in the text of this
+question: $\sum c_i p_i^2 = V + p^2$, where $V$ is the variance of the
+$p_i$. This gives
+\begin{equation}
+H_S = 2p - 2p^2 - 2V = 2p(1-p) - 2V
+\label{eq.wahlund}
+\end{equation}
+By definition, $H_T= 2p(1-p)$. Substitute this, along with
+equation~\ref{eq.wahlund}, into equation~\ref{eq.Fst.H}, and you will
+get
+\begin{eqnarray*}
+F_{ST} &=& (H_T - H_S)/H_T\\
+      &=& \frac{2p(1-p) - 2p(1-p) + 2V}{2p(1-p)}\\
+      &=& V/p(1-p)
+\end{eqnarray*}
+\end{Answr}
+\begin{Answr}{10.3}
+The question only asks for $F_{ST}$, but I'm providing more detail:
+$H_S = 0.429123$,  $H_T=0.495905$, and $F_{ST}=0.134666$.
+\end{Answr}
+\begin{Answr}{10.4}
+The question only asks for $F_{ST}$, but I'm providing more detail:
+$H_S = 0.185367$,  $H_T=0.482516$, and $F_{ST}=0.615832$.
+\end{Answr}
+\begin{Answr}{10.5}
+The average is 0.375246. For these two loci, $F_{ST}$ is appreciably
+larger than it is for the average locus in Wright's (or anyone else's)
+data.
+\end{Answr}
+\begin{Answr}{10.6}
+$P_{AA} = 0.125$, $P_{Aa} = 0.25$, and $P_{aa} = 0.625$,
+\end{Answr}
+\begin{Answr}{10.7}
+$P_{AA} = 0.275$, $P_{Aa} = 0.45$, and $P_{aa} = 0.275$,
+\end{Answr}
+\begin{Answr}{10.8}
+It implies that $Nm=2$.
+\end{Answr}
+\begin{Answr}{11.1}
+In the absence of gene flow, patterns $yn$ and $xn$ arise only
+when the European, African, and Neanderthal lineages all coalesce
+within the ancestral population---a process called ``incomplete
+lineage sorting.'' In that case, the three lineages
+are equally likely to coalesce in any order, so all three site
+patterns are equally likely.
+\end{Answr}
+\begin{Answr}{12.1}
+Line~1: $\bar X = 3.94$; $V = 0.865$.
+\end{Answr}
+\begin{Answr}{12.2}
+Line~2: $\bar X = 4.48$; $V = 0.959$.
+\end{Answr}
+\begin{Answr}{12.3}
+Line~3: $\bar X = 3.99$; $V = 0.899$.
+\end{Answr}
+\begin{Answr}{12.4}
+Line~4: $\bar X = 3.55$; $V = 0.876$.
+\end{Answr}
+\begin{Answr}{12.5}
+Pooled: $\bar X = 3.99$; $V_P = 1.002$.
+\end{Answr}
+\begin{Answr}{12.6}
+Variance between lines: 0.1454.
+\end{Answr}
+\begin{Answr}{12.7}
+Variance w/i lines: 0.8998.
+\end{Answr}
+\begin{Answr}{12.8}
+  Between plus within: $0.1454 + 0.8998 = 1.04520$. In
+  question~\ref{it.pooledvar}, I got $V_P = 1.002$, which is pretty
+  close.
+\end{Answr}
+\begin{Answr}{12.9}
+According to exercise~\ref{it.VG}, $V_G = 0.1454$. According to
+exercise~\ref{it.pooledvar}, $V_P = 1.002$. The ratio of these is $H^2
+= V_G/V_P = 0.1451$.
+\end{Answr}
+\begin{Answr}{12.10}
+Broad-sense heritability.
+\end{Answr}
+\begin{Answr}{12.11}
+The realized heritability is $h^2 = 0.2/4 = 0.05$, because $0.2/4$ is
+the average response \emph{per generation} to selection. The
+broad-sense heritability estimated in exercise~\ref{ex.H} was much
+larger---0.1451---suggesting that there is a lot of non-additive
+genetic variance.
+\end{Answr}
+\begin{Answr}{12.12}
+$V_A = h^2 V_P = 0.05 \times 1.002 = 0.0501$. The dominance variance
+is $V_D = V_G - V_A = 0.1454 - 0.0501 = 0.0953$. Most of the genetic
+variance seems to be dominance variance. This is disappointing because
+selection responds only to additive variance.
+\end{Answr}
+\begin{Answr}{12.13}
+  The regression of offspring on mid-parent has slope $h^2$. (See
+  Gillespie's table~6.2, p.~149.) From exercise~\ref{it.h}, we know
+  that $h^2 = 0.05$. The regression line should have approximately
+  this slope.
+\end{Answr}
+\begin{Answr}{12.14}
+  The response to selection is $R = h^2 S$, as shown in Gillespie's
+  Eqn.~6.11. If you made $h^2$ larger while keeping $S$ the same, the
+  response would be larger. But this might be hard to do, because if
+  each plant is represented by its average seed weight, differences
+  among plants will probably be small. For this reason, it might be
+  necessary to reduce $S$ in order to make selection feasible.
+\end{Answr}
+\begin{Answr}{12.15}
+  The correlation between parent and offspring is $h^2/2$. Thus, we
+  estimate $h^2$ as twice the observed correlation. For stature, this
+  gives $h^2 = 1.014$. This cannot be literally correct, because $h^2$
+  cannot exceed~1. But all estimates contain error, and this error can
+  move the estimate outside the legal range. This estimate implies
+  that stature is highly heritable.
+\end{Answr}
+\begin{Answr}{12.16}
+  The correlation between parent and offspring is $h^2/2$. Thus, we
+  estimate $h^2$ as twice the observed correlation. For span, this
+  gives $h^2 = 0.904$.
+\end{Answr}
+\begin{Answr}{12.17}
+  The correlation between parent and offspring is $h^2/2$. Thus, we
+  estimate $h^2$ as twice the observed correlation. For cubit, this
+  gives $h^2 = 0.842$.
+\end{Answr}
+\begin{Answr}{12.18}
+The change per generation is $0.157 \times 28/10 = 0.4396$~in. If this
+represents a response to selection, then it should equal $V_A \beta$. The next
+step is to convert our estimate that $h^2 \approx 1$ into an estimate of $V_A$.
+We know that $h^2 = V_A/V_P$ (Gillespie's Eqn.~6.4), and we know that $V_P =
+6.26$ (table~\ref{tab.pearson} of this homework). This implies that $V_A
+\approx 6.26$ and that the selection gradient is $\beta \approx 0.4396 / 6.26 =
+0.07$. In words, this says that an extra inch of stature implies nearly a 10\%
+increase in fitness---\emph{very} strong selection. It seems implausible that
+small differences in stature could have such large effects on fitness. It is
+more likely that the observed trend reflects changes in the environment.
+\end{Answr}
+\begin{Answr}{12.19}
+The problem says that $h^2 = 0.8$ and that the phenotypic
+standard deviation is $\sqrt{V_P} = 1$. This implies that $V_P=1$. The
+problem also says that $h^2=0.8$. This implies that $V_A = h^2 V_P =
+0.8$. Finally, the response to selection is $R = V_A \beta$, and we
+know that $R=0.5$. Thus, $\beta = 0.5/0.8 = 0.625$.
+\end{Answr}

@@ -1,0 +1,212 @@
+\chapter{Simulating Gene Genealogies}
+\label{ch.coal1}
+This project introduces a procedure---a sort of recipe---for
+simulating genetic drift.  In computing, recipes are called
+``algorithms.''  The one below is called the ``coalescent algorithm.''
+It is based on the theory about gene genealogies that you have been
+learning in lecture and in the text.  We will give you a simple
+version of the algorithm and ask you to modify it.
+
+You used a different method to simulate genetic drift in
+Project~\ref{ch.drift}.  There, you kept track of each copy of every
+allele in the entire population.  In the new approach described here,
+we keep track only of the copies within our sample.  This is one of
+several reasons why the coalescent approach is so powerful.  This
+approach also differs from the traditional one in going backwards
+through time.
+
+As we travel forward in time, genetic drift reduces variation within
+populations and increases that between them.  Thus, we focus on these
+variables in forward-time simulations.  In backwards time, drift
+implies that individuals share ancestors.  The smaller the population,
+the more recent these ancestors are likely to be.  Thus, backward-time
+simulations focus on shared ancestors.  Yet in spite of this
+difference in focus, both kinds of simulation describe the same
+biology.
+
+\section{Exponential and Poisson random variates}
+\label{sec.exppois}
+In this project you will generate random variates from two probability
+distributions, the exponential and the Poisson.  (To refresh your
+memory about these, see \emph{Just Enough Probability}.)  The
+\texttt{random} module of the Python Standard Library contains a
+function called \texttt{expovariate}, which generates exponential
+random variates.  Python has no built-in generator for Poisson random
+variates, however, so we provide one called \texttt{poidev} in our
+module \texttt{pgen.py}.  You will need to download \texttt{pgen.py}
+from the class web site.  To make these functions available to Python,
+start your program with
+\begin{verbatim}
+from random import expovariate
+from pgen import poidev
+\end{verbatim}
+
+The \texttt{expovariate} function (described on
+page~\pageref{pg.expovariate}) returns a value drawn at random from
+the exponential distribution.  The single parameter of this
+distribution is called the hazard or the rate.  In this project, we
+will be interested the hazard of a coalescent event.  In class we
+discussed this hazard in the context of the standard model for neutral
+genes and constant population size.  For example, in a sample of two
+gene copies, the hazard of a coalescent event is $h = 1/2N$ per
+generation, where $2N$ is the number of gene copies in the population.
+We can use \texttt{expovariate} to simulate the time since the last
+common ancestor (LCA) of two random gene copies.  For example,
+\begin{verbatim}
+>>> from random import expovariate
+>>> twoN = 1000.0
+>>> expovariate(1.0/twoN)
+380.65658779723157
+\end{verbatim}
+Here, we handed \texttt{expovariate} a hazard of $1/2N$, and it
+returned a value of 380.66 generations.  Think of this as the number
+of generations since the LCA of a pair of gene copies drawn at random
+from a population in which $2N=1000$.  Do this a few times yourself in
+Python's interactive window to get a feel for how such intervals vary
+in length.
+
+To sample random values from the Poisson distribution, we use the
+\texttt{poidev} function, which is described on
+page~\pageref{pg.poidev}.  We will use this distribution to model the
+number of mutations that occur within a given gene genealogy.  In this
+context, the mean is $uL$, the product of the mutation rate $u$ and
+the total branch length $L$.  (The total branch length is the sum of
+the lengths of all branches within the genealogy.)  The command
+\texttt{poidev(u*L)} generates a random number that represents the
+number of mutations within such a genealogy.  Here are a couple of
+examples:
+\begin{verbatim}
+>>> from pgen import poidev
+>>> u = 1/1000
+>>> L = 4000
+>>> poidev(u*L)
+7
+>>> poidev(u*L)
+5
+\end{verbatim}
+The two returned values---7 and 5---represent the numbers of mutations
+within two random genealogies within which $L=4000$ and $u = 1/1000$.
+Do this a few times yourself.
+
+\paragraph{Combining the exponential and Poisson distributions}
+We usually do not know the lengths of branches in a gene genealogy.
+What we do know are the values of genetic statistics such as $S$, the
+number of segregating sites.  In class we discussed the model of
+infinite sites, which implies that $S$ equals the number of mutations
+that occurred along the genealogy.  How can we simulate that?
+
+Let us go back to the simplest case: the genealogy of a pair of
+neutral genes in a population consisting of $2N$ gene copies and with
+mutation rate $u$.  We proceed in two steps.  In the first step, we
+use \texttt{expovariate(1.0/twoN)} to get a random value of $t$, the
+depth of the genealogy.  Since there are two lines of descent, the
+total branch length is $L=2t$, and the expected number of mutations is
+$2ut$.  Next, we call \texttt{poidev(2*u*t)} to get the number of
+mutations along a random genealogy.  Here's an example:
+\begin{verbatim}
+>>> from pgen import poidev
+>>> from random import expovariate
+>>> u = 1/1000
+>>> twoN = 4000.0
+>>> poidev(2*u*expovariate(1.0/twoN))
+15
+\end{verbatim}
+The result---15---represents the number of mutations between a random
+pair of genes drawn from a population in which $2N=4000$ and
+$u=1/1000$.  Do this yourself a few times yourself.
+
+Usually, we work with much larger samples, and we cannot get $t$
+directly from \texttt{expovariate}.  In this project, you will use the
+coalescent algorithm to find the total branch length $(L)$ of a random
+gene genealogy.  Then you will use \texttt{poidev} to add mutations,
+just as in the preceding paragraphs.
+
+
+\section{The Coalescent Algorithm}
+The coalescent algorithm begins in the current generation with a
+sample of $K$ gene copies.  As we trace the ancestry of this sample
+backwards in time, it will occasionally happen that two of the
+ancestral genes are copies of a single gene in the previous
+generation.  This is called a coalescent event.  With each coalescent
+event, the number of ancestral gene copies is reduced by one until
+eventually only a single gene copy remains.  This is the LCA of all
+the genes in the sample.
+
+The time interval between two adjacent coalescent events is called a
+\emph{coalescent interval}.  As you learned in class, the length of
+each interval is an exponential random variable.  In the computer
+program, we can use this fact to step from interval to interval.  We
+need not concern ourselves with individual generations.
+
+As you learned in class, the hazard of a coalescent event is
+\[
+h = x(x-1)/4N
+\]
+per generation, where $2N$ is the number of gene copies in the
+population, and $x$ is the number (during some previous generation) of
+gene copies with descendants in the modern sample.  Below, we use this
+fact together with \texttt{expovariate} to obtain simulated lengths of
+coalescent intervals.
+
+The coalescent algorithm is very simple to code.  Here's a program
+called \verb|coal_depth.py|, which uses it:
+\listinginput[5]{1}{coal_depth.py} Download this program from the lab
+page of the class web site, and run it a few times.  At the end of
+each run, it reports the depth of a random gene tree.
+
+In this code, \texttt{K} represents the number of gene copies.  We set
+it initially to 30, the number of gene copies in the modern sample.
+This value is reduced by one with each coalescent interval.  The heart
+of the algorithm is the \texttt{while} loop in lines~8--13.  Each pass
+through that loop deals with one coalescent interval.  Within the
+loop, the program calculates the coalescent hazard and hands it to
+\texttt{expovariate}, which provides the length $(t)$ of the current
+coalescent interval.  This version of the program does nothing but add
+these values together to obtain the time since the LCA of the sample.
+At the very end of the loop, we subtract 1 from \texttt{K}, because
+after a coalescent event has occurred, there is 1 fewer lineage. As
+you modify this code, make sure this statement remains at the very end
+of the \texttt{while} loop.
+
+\subsection*{Exercise}
+
+\begin{enumerate}
+\item The code above generates simulated values of the tree's
+  depth---the number of generations from the present back to the LCA.
+  Modify the code so that instead of depth, it simulates the total
+  branch length $(L)$.  To see how to do this, consider an interval
+  during which there were 18 distinct gene copies in the tree.  If
+  that interval lasted 45 generations, then it would contribute 45 to
+  the depth of the tree, as shown in line~11 of the code above.
+  However, this interval would contribute $45 \times 18$ to $L$.
+  Modify the code accordingly.
+\item Once your program is producing random values of $L$, add a line
+  near the top that sets $u=0.001$.  Then, at the very end, use
+  \texttt{poidev} as explained above to get the number of mutations in
+  the genealogy.  (This number is a Poisson-distributed random
+  variable with mean $uL$.)  At this stage, the program should produce
+  a single line of output showing the number of mutations on a random
+  tree, given the population size and mutation rate.
+\item A few years ago, Jorde et al published data in which the number
+  of segregating sites was $S=82$ for a mitochondrial sample from 77
+  Asians.  This is a good estimate of the number of mutations in the
+  mitochondrial genealogy of these subjects.  In these data, the
+  mutation rate is thought to be about $u=0.001$ per sequence.  Let us
+  entertain the hypothesis that the Asian female population was
+  historically very small: say $2N=5000$.  Use these values to set
+  \texttt{u}, \texttt{twoN}, and \texttt{K} within your program, and
+  then run it 20 times, keeping track of the results.
+\item
+  Use these results together with the observed data $(S=82)$ to
+  evaluate the idea that the simulation model describes reality.  How
+  many of the simulated values are smaller than 82?  How many are
+  larger?  Does the observed value represent an unusual outcome, or is
+  it pretty typical of the simulated values?  
+\end{enumerate}
+In the last step above, we are not asking for any detailed
+quantitative analysis.  Just compare the observed to the simulated
+values and make a subjective judgement.  We'll show you in the next
+project how to put such conclusions on a firmer basis.  Your project
+report should include (1)~your program, (2)~the 20 simulated values of
+$S$, and (3)~a few sentences summarizing the conclusion that you
+reached in the last step.

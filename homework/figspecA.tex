@@ -1,0 +1,34 @@
+\mbox{\beginpicture
+\setcoordinatesystem units <0.2in,0.05in>
+\setplotarea x from 0 to 10, y from 0 to 19
+\axis left label {\lines{No.\cr of\cr sites}}  /
+\axis bottom label {Minor allele count}
+  ticks withvalues 1 5 10 / at 1 5 10 / /
+\plotheading{Spectrum A}
+% Observed folded spectrum
+\multiput {$\circ$} at
+ 1 19
+ 2  6
+ 3  2
+ 4  0
+ 5  2
+ 6  2
+ 7  0
+ 8  0
+ 9  0
+10  0
+/
+% Theoretical folded spectrum
+\plot
+ 1 9.19785
+ 2 4.85442
+ 3 3.42665
+ 4 2.73061
+ 5 2.33012
+ 6 2.08047
+ 7 1.92043
+ 8 1.82041
+ 9 1.76524
+10 0.87380
+/
+\endpicture}

@@ -1,0 +1,148 @@
+\chapter{Simulating Selection and Drift}
+\label{ch.seldrft}
+\setcounter{cenumEnumi}{0}
+In Project~\ref{ch.drift}, you incorporated the effect of mutation
+into a model of genetic drift.  Here, you will modify that code once
+again to incorporate the effect of selection and then use the
+resulting code in an experiment.
+
+In his section~3.1, Gillespie lays out the algebra of natural
+selection.  At the top of page~62, he presents a classical formula for
+the frequency $(p')$ of allele $A_1$ among offspring, given the
+genotypic fitnesses and the allele frequency of the parents:
+\begin{equation}
+p' = \frac{p^2 w_{11} + p(1-p) w_{12}}{\bar w}
+\label{eq.recur.seln}
+\end{equation}
+Here, $w_{ij}$ is the fitness of genotype $A_iA_j$, and
+\[
+\bar w = p^2 w_{11} + 2p(1-p)w_{12} + (1-p)^2 w_{22}
+\]
+is mean fitness.
+
+This formula gives the allele frequency expected among offspring in
+the absence of genetic drift.  In a finite population, however, there
+will also be variation around this expected value.  We can model this
+process using a modified version of the urn model of genetic drift.
+In the standard urn model, we are equally likely to choose any ball in
+the urn.  If $p$ is the fraction of balls that are black, then $p$ is
+also the probability that the ball we choose will be black.  Now,
+however, there is a bias: one allele has higher fitness than the
+other.  In the urn metaphor, balls of one color (say black) are more
+likely to be drawn.  A ball drawn from this biased urn is black with
+probability $p'$, as given by equation~\ref{eq.recur.seln}.  You will
+use this idea below in order to simulate the combined effects of
+selection and drift.  As you will see, the procedure is almost
+identical to the one you used in Project~\ref{ch.drift}, where you
+modeled the combined effects of mutation and drift.
+
+\subsection*{Exercise}
+\begin{cenum}
+\item Begin either with your code from Project~\ref{ch.drift}, or else
+  with a fresh copy of file \texttt{drift.py} from the class web site.
+  Next, modify this code so that it performs the simulation many
+  times.  You did this with the coalescent simulation in
+  Project~\ref{ch.stattest}, so you already know how.  You need
+  something along the following lines:
+\begin{listing}{1}
+twoN = 40             # population size
+nreps = 100           # number of replicates
+for rep in range(nreps):
+      p = 1.0/twoN
+      <then the "while loop" from the drift simulation>
+\end{listing}
+Note that line~5 is not real code.  You should replace it with 
+code from your own program.
+
+It will be useful to simplify the drift simulation a bit. In the
+previous lab, the inner loop began like this:
+\begin{verbatim}
+    while H > 0 and g < maxgen:
+\end{verbatim}
+This required that we define \texttt{H}, \texttt{maxgen}, and
+\texttt{g} ahead of time, and then keep the variables up to date. None
+of this is needed for the current lab, so get rid of the code defining
+and/or updating these variables, and replace the \texttt{while}
+statement above with
+\begin{verbatim}
+    while 0.0 < p < 1.0:
+\end{verbatim}
+This loop will continue until the allele we're tracking is either
+fixed or lost. It's simpler, because it doesn't require any additional
+variables. 
+
+With this set up, each run of the program will perform 100 replicate
+simulations.  So far, the program does not simulate selection.  It
+just does 100 runs of the drift simulation.  Later on, you will want
+to make \verb|nreps| much larger.  Notice that $p = 1/2N$ at the
+beginning of each replicate.  With this setup, we can interpret each
+replicate as a model of a newly arisen mutant allele.
+
+Make sure you understand why some variables (\texttt{twoN} and
+\texttt{nreps}) are set before the \texttt{for} loop, and the others
+are set within the loop but before any other code.  Beginners often
+get this sort of thing wrong, so make sure you understand what is
+happening here.  What would happen if \texttt{twoN} were set inside the
+\texttt{for} loop?\footnote{The code would still run correctly, but
+  not quite as fast.  This is because \texttt{twoN} is a constant
+  whose value never needs to change.}  What would happen if
+\texttt{nreps} were set inside the \texttt{for} loop?\footnote{You must
+  set \texttt{nreps} before you first use it, in the \texttt{range}
+  statement.  Otherwise the code will break.  Once \texttt{range}
+  executes, it doesn't matter whether you set \texttt{nreps} again,
+  although doing so is a waste of time.}  What would happen if
+\texttt{gen} and \texttt{p} were set before the \texttt{for} loop
+rather than within it?\footnote{On the second pass through the loop,
+  things would break because \texttt{gen} and \texttt{p} would begin
+  the loop with the values they had at the end of the first pass.}
+
+Once you understand the code, take out all the old print statements.
+At the very end---after all replicates have run---print the fraction
+of replicates in which $A_1$ was fixed $(p=1)$ rather than lost
+$(p=0)$.
+
+\item Now modify the program to implement the biased urn model that we
+  discussed above.  At the top of your program, define the following
+  constants: $2N=40$, $s = 0.1$, $h = 0.5$, $w_{11} = 1+s$, $w_{12} =
+  1 + hs$, and $w_{22} = 1$.  This says that $A_1$ is favored and that
+  there is no dominance.  $hs$ is the fitness advantage of
+  heterozygotes over $A_2A_2$ homozygotes. Note the difference between
+  this fitness scheme and the one in the text.
+
+Next, modify the value of $p$ just before the call to \texttt{bnldev},
+and then use this modified $p$ in the call to \texttt{bnldev}.  You
+did this in Project~\ref{ch.drift} in order to model mutation.  Now
+you will do it again (this time using Eqn~\ref{eq.recur.seln}) in
+order to model selection.  (Incidentally, you may be tempted to define
+a new variable called \verb|p'|.  This will not work, because the
+``\verb|'|'' character is illegal within Python names.  Use some other
+name instead, or simply redefine the variable \texttt{p}.)
+
+\item So far, you've got a program that runs the same simulation
+  \texttt{nreps} times.  Now you want to repeat that entire process
+  for each of the following values of $2N$: 500, 1000, 2000 and 4000.
+  This will involve enclosing the existing code in a \verb|for| loop,
+  as we illustrated in \verb|coin_ci.py| (see p.~\pageref{pg.coinci}
+  of Project~\ref{ch.stattest}).
+
+\item Once you have the program working, it is time to collect some data.
+Set \verb|nreps| to 10000, and run the simulation with each of the
+following values of $s$: 0, 0.001, and 0.02.  You will discover that
+this takes awhile for the case in which $s=0$.  Use the results to
+make a graph with $\log_{10} 2N$ on the horizontal axis and ``fraction
+fixed'' on the vertical.  Draw three lines: one connecting the points
+with $s=0$, one for $s=0.001$, and one for $s=0.02$.  Summarize the
+graph in words.  How does the probability of fixation respond to
+population size?  Write a paragraph interpreting your results using
+the theory discussed in Gillespie and in class.
+\end{cenum}
+
+Hint: To save yourself some work, you may want to ask Python to
+calculate the $\log_{10}$ values rather than using your calculator.
+To do this, put 
+\begin{verbatim}
+from math import log10
+\end{verbatim}
+at the top of your program.  Then \texttt{log10(100)} will give 
+$\log_{10} 100$ (which equals 2).
+

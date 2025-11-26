@@ -1,0 +1,246 @@
+\chapter{Simulating Genetic Drift and Mutation}
+\label{ch.drift}
+Allele frequencies change for several reasons, one of which is sheer
+chance. These random changes, which we call \emph{genetic drift},
+occur for many reasons. When a heterozygote produces a gamete, that
+gamete may inherit either of the two parental alleles---the choice
+between them is random. Similarly, there are random forces that affect
+how long we live, whether we succeed in mating, and how many children
+we produce if we do. All of these effects contribute to genetic drift,
+but population geneticists seldom try to model them in detail.
+
+Instead, we think of genetic drift more abstractly. To produce each
+new generation, we imagine that the genes of the parental generation
+are sampled to produce those of the offspring. The size of this sample
+equals the number of gene copies in the offspring generation. On
+average, the allele frequency of the offspring generation is the same
+as that of the parental generation, but in any particular case it will
+be slightly higher or lower. The smaller the sample, the larger these
+random changes are likely to be---the larger, in other words, is the
+effect of genetic drift.
+
+The conventional way to model genetic drift involves the ``urn''
+metaphor.  We think of the parental gene pool as an ``urn'' from which
+gametes (gene copies) are drawn at random, and we think of the
+offspring gene pool as an initially \emph{empty} urn to be populated
+by the gametes drawn from the parents. Probability theory tells us
+about the distributions of outcomes to expect, given the population
+size $(N)$ and the allele frequency $(p)$ among the parents. But what
+if we want to observe a particular instance of this process, or more
+to the point, a sequence of such instances, representing the long-term
+evolution of the population?  Before computers, this was very
+difficult. Now it's easy and enlightening.
+
+\section{The easy way to sample from an urn}
+\label{sec.sampleurn}
+
+Each time you draw a ball, it is red with a probability $(p)$ that
+equals the relative frequency of red balls within the urn.  This is
+just like tossing a coin, whose probability of ``heads'' is equal to
+$p$.  You already \emph{know} how to do that because we did it in a
+previous project.  Thus, you have all the tools you need to write a
+computer simulation of genetic drift.  In this project, however, we
+will show you an easier way.
+
+In that previous project, you tossed coins using Python's
+\texttt{random} function.  We could use that here again, but there's
+an easier way.  On the class website there is a file called
+\texttt{pgen.py} which contains several functions that we have written
+for you.  One of these is called
+\texttt{bnldev}\label{pg.blndev-intro}.  As explained on on
+page~\pageref{pg.bnldev}, \texttt{bnldev} generates random values
+(deviates) from the binomial distribution.  Before using it, you must
+\texttt{import} the \texttt{bnldev} function into your program.  After
+that, the command \texttt{bnldev(N,p)} will generate a binomial random
+deviate with parameters \texttt{N} (the number of trials) and
+\texttt{p} (the probability of ``success'' on each trial).
+
+Here is an example:
+%
+\verbatiminput{showbnldev.py} 
+%
+These three lines of code do five repetitions of Kerrich's coin
+experiment.  In each repetition, \texttt{bnldev(10000, 0.5)} simulates
+the entire process of tossing a fair coin 10000 times.  Try this on
+your computer.  You will be amazed at how fast it runs.
+
+\section{Iterating over a list}
+\label{sec.itlist}
+
+Before we get started in earnest, you need to learn a Python trick.
+Below, you will need to run a simulation repeatedly, each time with a
+different value of the mutation rate, $u$.  We want to show you two
+ways of doing that.  Instead of doing an entire simulation, each pass
+through the loop in my examples will simply print the current value of
+$u$.
+
+Here is the first approach:
+\begin{verbatim}
+u = [0.0001, 0.001, 0.01]
+
+for i in range(len(u)):
+    print(u[i])
+\end{verbatim}
+Consider how this works.  The \texttt{range} command generates the
+following list: \texttt{[0,1,2]}.\footnote{This is not quite true in
+  Python 3.x, but we don't need to worry about the difference.}  Then
+the \texttt{for} command iterates through this list.  It is not
+necessary, however, to go through this extra step.  The \texttt{for}
+command will iterate through \emph{any} list, whether it was produced
+by \texttt{range} or not.  Here is a re-write that avoids the
+\texttt{range} and \texttt{len} commands:
+\begin{verbatim}
+for u in [0.0001, 0.001, 0.01]:
+    print(u)
+\end{verbatim}
+The second approach is simpler, and not only because it leaves out
+\texttt{range} and \texttt{len}.  It also allows one to refer to the
+current mutation rate simply as \texttt{u} rather than using the more
+cumbersome \texttt{u[i]}.  Our bias in favor of the second method is
+pretty obvious, but you can use whichever method you please.
+
+\section{Simulating drift and mutation}
+On his own page~56, Gillespie presents a program that simulates
+genetic drift.  Here is an improved version, which uses
+\texttt{bnldev}: \listinginput[5]{1}{drift.py} You will find this code on
+the lab page of the course web site in a file called
+\texttt{drift.py}.  Download it and run it a few times.
+
+Once you get the program going, it should run to completion in 100
+generations or so.  The middle column of output is \texttt{p}, which
+should wobble around and end up either at 0 or 1.  Meanwhile,
+\texttt{H} declines fairly steadily from 0.5 to 0.
+
+Make sure you understand the code. Line~1 is not necessary if you're
+running a recent version of Python. It's there so that the code will
+run correctly under older versions of Python. In line~18, \texttt{x}
+is the number of copies of some allele (say $A_1$) in the new
+generation.  Using \texttt{x}, the program calculates new values of
+\texttt{p} and \texttt{H}.  Finally, it increments the count of
+generations and prints a line of output.
+
+This program simulates drift in its purest form---no other
+evolutionary force is involved.  In this exercise, you will add
+mutation into this simulation.  In the end, you will need to loop over
+several values of $u$, the mutation rate.  For the moment, however,
+start small by defining a single value.  Put the line \texttt{u =
+  0.01} just after line~6 in your program.  (Refer to the listing
+above for the line numbering.)  You have now defined a mutation rate.
+We will assume that the rate of mutation from $A_1$ to $A_2$ is the
+same as the rate from $A_2$ to $A_1$.  How should these assumptions be
+incorporated into the simulation?
+
+The mathematical details depend on the order of events during the life
+cycle.  Let us suppose that the life cycle has the following steps:
+\begin{enumerate}
+\item Each individual produces many many gametes.  Because there are
+  so many gametes, the frequency of $A_1$ among them is essentially
+  identical to that among parents.  In other words, there is no
+  genetic drift at this stage.  A fraction $u$ of the copies of $A_1$
+  become $A_2$, and a fraction $u$ of the $A_2$ become $A_1$.  As a
+  result, the frequency of $A_1$ becomes
+\[
+  p' = p(1-u) + (1-p)u.
+\]
+Among the gametes, a fraction $p$ were allele $A_1$.  Of these, a
+fraction $1-u$ failed to mutate and are therefore still $A_1$.  Thus,
+$p(1-u)$ is the fraction of the gametes that carried $A_1$ and did not
+change, whereas $(1-p)u$ is the fraction that were $A_2$ before
+mutation but are $A_1$ after.
+
+\item From these gametes, a smaller number $(2N)$ of gene copies is
+  chosen to become adults in the next generation.  This is where
+  drift happens.  In the new generation, the number of copies of $A_1$
+  among the adults is a binomial random variable with parameters $2N$
+  and $p'$. 
+\end{enumerate}
+
+\subsubsection*{Exercise}
+We are finally in a position to do something interesting.  When the
+mutation rate is very low, heterozygosity behaves as though there were
+no mutation at all---it declines to 0.  This is \emph{not} true,
+however, for larger values of $u$.  The question is, \emph{under what
+  circumstances is the effect of mutation large enough to matter?}  In
+other words, what is the smallest value of $u$ for which $H$ is
+appreciably greater than 0?  The answer will certainly depend on $u$,
+because $u$ measures the force of mutation.  It may also depend on
+$N$, if the answer turns out to depend on the force of mutation
+relative to that of drift.  To answer these questions, the first step
+is to put mutation into your drift program:
+\begin{enumerate}
+\item Modify your drift program so that mutation occurs in each
+  generation.  This will involve adding a line of code in between
+  lines~14 and~15 in the listing above.  Run your modified program a
+  few times.  It should still run to fixation, but it should take more
+  generations.
+\item
+  Modify your program so that it runs the simulation repeatedly, once
+  for each of the several mutation rates.  Use at least four rates,
+  which span the range from 0.0001 to 0.1, using the method discussed
+  above.  Think carefully about how you want to divide this interval
+  up. Do you want to space the rates evenly on an arithmetic scale?
+  On a logarithmic scale?\footnote{On an arithmetic scale, the
+    difference between each pair of adjacent mutation rates is the
+    same.  For example: 1,2,3, and 4 are equally spaced on an
+    arithmetic scale.  On a logarithmic scale, the \emph{ratios} are
+    the same.  For example: 1, 10, 100, and 1000.}  Does it matter?
+  You will need to add a \texttt{for} statement just after line~6.
+  This new loop will enclose lines~7--23 of the original program, and
+  those original lines will need to be indented.  Remove the print
+  statement (line~23).  The new program should have a single print
+  statement, which should execute at the end of each pass through the
+  outer loop.  It should print the current values of the following
+  quantities:
+\begin{center}
+\begin{tabular}{rl}
+$2N$            &twice population size\\
+$u$             &mutation rate per gene copy per generation\\
+$4Nu$           &twice the number of mutations per generation in the
+population as a whole\\
+$H$             &heterozygosity\\
+$g$             &count of generations
+\end{tabular}
+\end{center}
+Format\label{pg.useprintf} it so that the numbers line up in columns.
+In the output, pay close attention to the printed value of
+\texttt{gen}.  It tells you how many generations elapsed before either
+fixation of one allele or the other.  If neither allele was fixed,
+then \texttt{H} will be greater than~0, and \texttt{gen} will equal
+\texttt{maxgen}.
+\item
+Use this program in an effort to answer the question posed above.
+Search for the smallest value of $u$ (and $4Nu$) for which $H$ is
+appreciably greater than 0.  Let's call these the \emph{critical
+  values} of $u$ and $4Nu$.  To make your answers more precise, play
+around with the range of $u$ values in your simulation.  But do not
+get carried away.  We are not expecting high precision.  Just try for
+an answer that is correct within roughly a factor of 5.
+\item
+Having found the critical values under a specific assumption about
+$2N$, do it again with a larger value of $2N$---one that is 10 or 100
+times as large.  As population size increases, do the two critical
+values go up, go down, or stay about the same?  Is the pattern simpler
+in terms of $u$ or $2N$ or $4Nu$?
+\item
+Write a sentence or two summarizing the pattern in your results.
+Attempt to answer the question posed above.
+\end{enumerate}
+
+\paragraph{What to submit} Upload your code to Canvas as a plain-text
+file with extension \texttt{.py}. This is exactly the format produced
+by Idle; you shouldn't have to change anything. In future labs, you
+may need to write more than one program. If so, upload multiple files.
+In addition, upload a ``lab report''---a document in \texttt{.pdf} or
+\texttt{.docx} format, which contains relevant output and a paragraph
+or two explaining what you did and what you learned.
+
+\paragraph{What not to include in the lab report} The lab report
+should not include computer code. Neither should it include extraneous
+output.  While you're debugging a program, it's often useful to print
+the values of variables during 
+intermediate steps, or that print a line of output on each pass
+through a loop. This output does not belong in your lab report.
+Remove these \texttt{print} statements before generating the output
+that you will submit.
+
+

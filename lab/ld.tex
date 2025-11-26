@@ -1,0 +1,175 @@
+\chapter{Linkage Disequilibrium in the Human Genome}
+\label{ch.ld}
+In lab~\ref{ch.estld} we studied LD between neighboring SNPs.  In this
+lab we study larger regions of chromosome.  Each of you will study a
+different chromosome.  You'll compare the pattern of LD in three
+populations.  Later on, we (the TAs and lecturers) will compile the
+results and report back to the class.
+
+\section{Estimating $r$, $D$, and $d$}
+\label{sec.rDd}
+In lab~\ref{ch.estld}, you wrote code to estimate $r_D$, the
+correlation between diploid genotypic values.  This estimates the
+haploid correlation,
+\[
+r_H = \frac{D}{\sqrt{p_A(1-p_A)p_B(1-p_B)}}
+\]
+where $p_A$ and $p_B$ are allele frequencies at the two loci being
+compared, and $D = x_0 x_3 - x_1 x_2$ is the classic measure of
+linkage disequilibrium.  In lab~\ref{ch.estld}, we calculated the
+correlation $r_D$ between diploid genotypic values, which we then
+interpreted as an estimate of the haploid correlation $r_H$.
+
+We use that method again in the present lab, but now $r_H$ is only a
+means to an end.  We are really interested in another measure of LD,
+which we introduced earlier in the course.\footnote{Rogers, Alan
+  R. 2009. Why linkage disequilibrium helps us find selective
+  sweeps. Available on the class website.}  This statistic is called
+$d$ and equals the difference in the frequency of allele~$B$ within
+$A$-bearing and $a$-bearing gametes.\footnote{Nei, M \& W-H Li. 1980.
+  \emph{Genetical Research} 35(1):65--83} It is of particular interest
+because it is unaffected by changes in allele frequency at the $A$
+locus.  Algebraically,
+\begin{equation}
+d = r_H\sqrt{\frac{p_B(1-p_B)}{p_A(1-p_A)}}
+\label{eq.d}
+\end{equation}
+This suggests a method for estimating $d$ from genotypic data:
+(1)~use the genotypic data to estimate $r_D$; (2)~treat $r_D$ as an
+estimate of $r_H$ as you did last week; (3)~use Eqn.~\ref{eq.d} to
+convert $r_H$ into an estimate of $d$.
+
+\section{Smoothing data}
+\label{sec.smooth}
+
+In this lab, you will be comparing LD between tens of thousands of
+pairs of loci.  Without some way of simplifying the output, you would
+drown in data.  In the end, you will plot the results rather than just
+staring at numbers.  This will help, but it is not enough---the noise
+in the LD estimates would still obscure the pattern.  We can get rid
+of much of this noise by \emph{smoothing} the data.  This is the
+purpose of the \texttt{scatsmooth} function, which is available within
+\texttt{pgen.py}.
+
+There are many ways to smooth data, and \texttt{scatsmooth} implements
+perhaps the simplest.  It divides the $X$ axis into bins of equal
+width, and calculates the mean of $Y$ within each bin.  For example,
+suppose that we have data in two Python lists called \texttt{x} and
+\texttt{y}.  To smooth them, we could type
+\begin{leftindent}
+\begin{verbatim}
+>>> bin_x, bin_y, bin_n = scatsmooth(x, y, 5, 0, 40)
+\end{verbatim}
+\end{leftindent}
+As you can see, \texttt{scatsmooth} takes five arguments:
+\begin{inparaenum}[(1)]
+\item a list (\texttt{x}) of horizontal coordinate values,
+\item a list (\texttt{y}) of vertical coordinate values,
+\item the number of bins (5 in this case),
+\item the low end of the first bin, and
+\item the high end of the last bin.
+\end{inparaenum}  
+In this example, we have asked \texttt{scatsmooth} to divide the
+interval from~0 to~40 into~5 bins.  If you leave off the last two
+arguments, \texttt{scatsmooth} will calculate them from the data.
+\texttt{scatsmooth} returns three values, each of which is a list.
+The first (\verb|bin_x| in this example) contains the midpoints of the
+$X$-axis values of the bins.  The second (\verb|bin_y|) contains the
+mean $Y$-axis values.  The third returned list (\verb|bin_n|) contains
+the numbers of observations within the bins.  In your own code, you
+can name the returned values whatever you like; you don't need to call
+them \verb|bin_x|, \verb|bin_y|, and \verb|bin_n|.
+
+We can now manipulate the three returned lists any way we please.  For
+example, here is a listing that prints their values.
+\begin{leftindent}
+\begin{verbatim}
+>>> for xx, yy, nn in zip(bin_x, bin_y, bin_n):
+...     print("%8.3f %8.3f %4d" % (xx, yy, nn))
+... 
+   4.000    4.000    5
+  12.000   19.000   10
+  20.000   39.000   10
+  28.000   59.000   10
+  36.000   74.000    5
+\end{verbatim}
+\end{leftindent}
+Experiment with \texttt{scatsmooth} until you understand how it works.
+
+\section{An incomplete program}
+On the website, you will find a program called
+\texttt{dscaninc.py}, which is an incomplete version of the program
+you will need for this week's lab.  Here is the listing:
+\begin{leftindent}
+\listinginput[5]{1}{dscaninc.py}
+\end{leftindent}
+Lines~2--3 import everything you are likely to need.  If you do decide
+to import something else, put your import statement near those in
+lines~2--3.  Do not bury it farther down in your code.  The main loop
+of this program (lines~20--27) looks at a large number
+(\texttt{nreps}) of randomly-selected SNPs, which we will call ``focal
+SNPs.''  The inner loop (lines~22--27) reads along the chromosome,
+comparing the focal SNP to each other SNP within a window whose size
+(in kb) is given by the variable \texttt{window}.  For each
+comparison, the focal SNP is at position \texttt{i} within the data
+set, and the other SNP is at position \texttt{j}.  Line~23 sets
+\texttt{dist} equal to the distance (in kb) between the two SNPs.  At
+the bottom of the loop, both data values (\texttt{dist} and $|d|$) are
+appended to their respective lists.  In line~27, this involves a call
+to the \verb|get_d| function, which you will write.  In line~29 we
+have dropped out of the main loop, and both data lists are complete.
+The program prints a line of output and stops.
+
+\section*{Exercise}
+
+In this exercise, the goal is to examine the relationship between LD
+and the distance that separates loci on a chromosome.  You will study
+the LD-distance relationship in three different human populations.
+\setcounter{cenumEnumi}{0}
+\begin{cenum}
+\item We assume that you already know which chromosome you are working
+  with.  If not, refer to section~\ref{sec.randpopchrom} of
+  lab~\ref{ch.hapspec}.
+\item This week you will need HapMap data files for three populations,
+  \texttt{CEU}, \texttt{YRI}, and \texttt{JPT}.  Please download them
+  as explained in appendix~\ref{ch.gettingdata}.
+\item
+  Download \texttt{dscaninc.py} from the class web site and save it
+  as \texttt{dscan.py}.  Modify line~7 so that it specifies the
+  chromosome that you are studying.
+\item
+  Re-write \verb|get_d| so that it returns $|d|$, as explained
+  in section~\ref{sec.rDd}.  You will need to use your \texttt{cov}
+  function from last week.  Paste it into the program \emph{just
+    before} the definition of \verb|get_d|.
+\item At the end of the program, add code that uses
+  \texttt{scatsmooth} to smooth the data over the interval from 0 to
+  \texttt{window}, using 20 bins.  Treat \texttt{distvec} as your
+  $X$-axis variable and \texttt{dvec} as your $Y$-axis variable.
+  Then print the smoothed data in a table.  The table should contain a
+  row for each bin, one column for \texttt{dist}, one for $|d|$,
+  and one for $n$ (the numbers of observations within bins).
+\end{cenum}
+Make sure your program runs before proceeding.
+\begin{cenum}
+\item Set \texttt{nreps} to 500 and \texttt{window} to 200.  Run the
+  program once with \texttt{pop} set equal to each of the following
+  values: \texttt{CEU}, \texttt{YRI}, and \texttt{JPT}.  These
+  values refer to the European, African, and Japanese populations.
+\item Use the data to make a graph with \texttt{dist} on the
+  horizontal axis and $|d|$ on the vertical.  You should end up
+  with three curves---one for each population---on a single graph.
+  You may do this by hand, with \emph{Excel}, or however you please.
+  Label it so that we can tell which curve refers to which population.
+\item Write a paragraph or two describing the pattern in the data and
+  (if possible) suggesting an explanation.  Pay particular attention
+  to the differences (if any) between populations.
+\end{cenum}
+
+\paragraph*{What to turn in} 
+\begin{inparaenum}[(1)]
+\item your code,
+\item the output from the three runs, 
+\item the graph, and
+\item your prose describing and interpreting the results.
+\end{inparaenum}

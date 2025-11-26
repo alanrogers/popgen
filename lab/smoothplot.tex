@@ -1,0 +1,179 @@
+\section{Smoothing and graphing data}
+In this lab, you will be comparing LD between tens of thousands of
+pairs of loci.  Without some way of simplifying the output, you would
+drown in data.  It will help to graph the data rather than just
+staring at lists of numbers.  Below, you will use a function called
+\verb|charplot| (available in the \texttt{pgen.py} module) to plot LD
+against distance along the chromosome.  This will help, but it is not
+enough---the noise in the LD estimates would still obscure the
+pattern.  We can get rid of much of this noise by \emph{smoothing} the
+data.  This is the purpose of yet another function within
+\texttt{pgen.py}, called \texttt{expmovav}.
+
+We'll get to \texttt{expmovav} in a moment, but let's begin with
+\texttt{charplot}.  Here is a listing that shows how to use it:
+\begin{verbatim}
+from pgen import charplot
+
+x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+y = [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+charplot(x, y)
+\end{verbatim}
+When this program runs, it makes a scatter plot of the $(x_i, y_i)$
+values, with $x$ on the horizontal axis and $y$ on the vertical.  Try
+this yourself.
+
+%\begin{figure}
+%\tiny
+%\centering
+%\begin{minipage}{6cm}
+%\begin{verbatim}
+% 80 +------------+-----------+------------+------*
+%    |                                            |
+%    |                                            |
+%    |                                            |
+% 60 +                                       *    +
+%    |                                            |
+%    |                                            |
+%    |                                  *         |
+%    |                                            |
+% 40 +                             *              +
+%    |                                            |
+%    |                                            |
+%    |                        *                   |
+% 20 +                                            +
+%    |                   *                        |
+%    |              *                             |
+%    |         *                                  |
+%  0 *----*-------+-----------+------------+------+
+%   0.0          2.5         5.0          7.5
+%\end{verbatim}
+%\end{minipage}
+%\caption{Example \texttt{charplot} graphics}
+%\label{fig.charplot}
+%\end{figure}
+
+%\begin{figure}
+%\tiny
+%\centering
+%\begin{minipage}{6cm}
+%\begin{verbatim}
+%>>> from pgen import expmovav, charplot
+%>>> charplot(x,y)
+% 2.0 +---------*+*--------+----------+---------+-+
+%     |           *                               |
+%     |        *    *                             |
+% 1.5 +    ***** *                                +
+%     |       *  *   * * *                        |
+%     |* *       * *    * *                       |
+% 1.0 +  ** *   *   *****                         +
+%     *** *  *       **     **                   *|
+%     |   *                   *                 * *
+% 0.5 +                  *  **  *              ** +
+%     | *                 **                  ** **
+%     *                        **                 |
+% 0.0 +                          *  *       ***   +
+%     |                       *    * *     *      |
+%     |                        * ***   ** *   *   |
+%-0.5 +                         * * *     *       +
+%     |                               ** * **     |
+%     |                                ***        |
+%-1.0 +----------+---------+----------*---------+-+
+%    0.0        1.5       3.0        4.5       6.0
+%\end{verbatim}
+%\end{minipage}~~~~~~~~\begin{minipage}{6cm}
+%\begin{verbatim}
+%>>> smooth = expmovav(y)
+%>>> charplot(x,smooth)
+% 1.5 +--------**+*--------+----------+---------+-+
+%     |      *****                                |
+%     |    ***     **                             |
+%     |    **       **                            |
+%     |   *          ****                         |
+% 1.0 +  **             **                        +
+%     |**                **                       |
+%     |**                 *                       |
+%     *                    ***                    |
+% 0.5 +                     **                  **+
+%     *                       *                ****
+%     |                                        *  |
+%     |                       ***             *   |
+% 0.0 +                        *             **   +
+%     |                         **          **    |
+%     |                          ****      **     |
+%     |                             **    **      |
+%-0.5 +                               *** *       +
+%     +----------+---------+----------****------+--
+%    0.0        1.5       3.0        4.5       6.0
+%\end{verbatim}
+%\end{minipage}
+%\caption{Using \texttt{expmovav} and \texttt{charplot} to smooth and
+%  plot data}
+%\label{fig.charplot}
+%\end{figure}
+
+In that example, the data were very smooth and the pattern easy to
+see.  Let us construct a noisier data set.  The following snippet of
+Python code will build two Python lists, \texttt{x} and \texttt{y}.
+\begin{listing}{1}
+>>> from math import sin, pi
+>>> from random import random
+>>> from pgen import charplot, expmovav
+>>> x = [0.02*pi*i for i in range(0,101)]
+>>> y = [sin(xx) + 2*random() for xx in x]
+\end{listing}
+\texttt{x} ranges from 0 to $2\pi$.  Each value within \texttt{y}
+contains the sum of $\sin x$ and some random noise.  If you didn't
+follow the steps in this listing, don't worry.  Just type it in, and
+then use \texttt{charplot} as shown below to plot \texttt{y} against
+\texttt{x}:\newline
+\begin{listing}{6}
+>>> charplot(x,y)
+\end{listing}
+\begin{minipage}{\columnwidth}
+\begin{listing}{7}
+ 3 +--------*-+----------+----------+----------+-+
+   |       *  **   *                             |
+   |    ***  *   ** *                            |
+ 2 +   *    *  **  **    *                       +
+   ** * **           **                          |
+   | *            *    ** *                  *   |
+   * *   *   ** *   *   *  *  **                 *
+ 1 +* *   **     *         * *  ***           * *+
+   |   *              *  ** *             ** * * |
+   |                   *      * **  ***          |
+ 0 +                      *    **      * *  *  * *
+   |                        **     *     * *    *|
+   |                              * *** * * * *  |
+   |                               *             |
+-1 +----------+----------+----------+*--*------+-+
+  0.0        1.5        3.0        4.5        6.0
+\end{listing}
+\end{minipage}\\[7pt]
+You can see the wave of the sine curve, but only barely.  Let us use
+\texttt{expmovav} to create a smoothed version of \texttt{y} and then
+plot that.  The next listing shows how:
+\begin{listing}{26}
+>>> ysmooth = expmovav(y)
+>>> charplot(x,ysmooth)
+     +--------*-**--------+----------+---------+--
+ 2.0 +       * ******                            +
+     |   ** *  ** * ***                          |
+     |   * **      *   *                         |
+ 1.5 +  **             ****                      +
+     |***               **                       |
+ 1.0 *                    **                     +
+     *                     **                    |
+     |                     * *****           *   |
+ 0.5 +                       ******          *****
+     |                            *         ******
+ 0.0 +                             **  *  ***    +
+     |                             ********      |
+     |                               ** **       |
+-0.5 +----------+---------+----------+---------+-+
+    0.0        1.5       3.0        4.5       6.0
+\end{listing}
+Now the sine wave is much easier to see.  Experiment with
+\texttt{charplot} and \texttt{expmovav} until you understand how they
+work.

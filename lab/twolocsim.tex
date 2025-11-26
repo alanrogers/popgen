@@ -1,0 +1,250 @@
+\chapter{Simulating Selection and Drift at Two Loci}
+\label{ch.twolocsim}
+\setcounter{cenumEnumi}{0}
+This project is motivated by the current widespread interest in using
+\emph{linkage disequilibrium} (LD) to detect selective sweeps.  The
+goal is to find out how linkage disequilibrium (as measured by $r^2$)
+behaves when one locus is undergoing a selective sweep and the other
+is neutral.  You will build a simulation model involving selection,
+recombination, and drift at two loci.
+
+In the end, you will need to tabulate values of a continuous variable,
+$r^2$. We've written a Python class called \texttt{Tabulator}, which
+simplifies this task. See sec.~\ref{sec.tabcontinuous},
+p.~\pageref{sec.tabcontinuous}, for details.
+
+We assume that selection acts at one locus, where allele $A$ is
+favored over allele $a$.  At a linked locus, alleles $B$ and $b$ are
+neutral.  The simulation starts with $p_A = 1/2N$ and stops when $p_A
+\geq 1/2$.  At that point, it prints out $p_A$, $p_B$, and $r$.  By
+doing a number of replicate simulations, you will get a sense of how
+$r$ behaves when $p_A$ is near 1/2.  On the class website, you will
+find a program called \texttt{twolocinc.py}, which does most of this
+job.  Your task is to fill in the pieces that we have left out, and
+then to run the program a few times to collect data.  But first, we
+need to tell you about some nuts and bolts.
+
+\section{Sampling from the multinomial distribution}
+Thus far, our simulations have involved a single locus with two
+alleles.  To model drift in such a system, we used the metaphor of an
+urn containing balls of two colors.  Now we need to keep track of four
+types of chromosome (or gamete): $AB$, $Ab$, $aB$, and $ab$.  The urn
+metaphor still works, but now the urn contains balls of four types.
+In a slight modification of Gillespie's notation, we write the
+relative frequencies of the four gamete types as:
+\[
+\begin{array}{lcccc}
+\hbox{Gamete}      & AB & Ab & aB & ab \\
+\hbox{Rel.\ freq.} &x_0 & x_1 & x_2 & x_3
+\end{array}
+\]
+Our initial subscript is 0 (rather than 1) for consistency with
+subscripting in Python.
+
+Suppose the urn contains four types of balls in these frequencies.  You
+draw $2N$ balls at random from the urn, replacing each one and then
+shaking the urn before selecting the next ball.  Among the balls that
+you selected, we represent the number of each type as follows:
+\[
+\begin{array}{lcccc}
+\hbox{Gamete} & AB & Ab & aB & ab \\
+\hbox{Count}  &n_0 & n_1 & n_2 & n_3
+\end{array}
+\]
+In other words, $n_0$ is the number of balls of type $AB$ that were
+drawn from the urn, and so on.  Each time you repeat this experiment,
+the values in the array $[n_0, n_1, n_2, n_3]$ will vary at random.
+The probability distribution that describes this variation is called
+the \emph{multinomial}.  In the special case when there are only two
+types of balls, there is no difference between the multinomial and
+binomial distributions.  The multinomial distribution is more general
+because it applies regardless of the number of types of balls.
+
+We are not going to tell you much about the multinomial.  All your
+program needs to do is draw samples from it, and we have provided a
+function called \texttt{mnldev} that simplifies this task.  This
+function is described on page~\pageref{pg.mnldev}.  To use it, you
+need to specify the number of balls to draw, and the relative
+frequency of each type within the urn.  Here's an illustration:
+\begin{listing}{1}
+>>> from pgen import mnldev
+>>> mnldev(5, [0.2, 0.3, 0.5])
+[2, 0, 3]
+>>> mnldev(5, [0.2, 0.3, 0.5])
+[1, 1, 3]
+\end{listing}
+In these calls to \texttt{mnldev}, the first argument is the
+integer~5.  This says that we want to draw 5 balls.  The second
+argument is a list containing 3 relative frequencies.  For each call,
+\texttt{mnldev} returns a list of 3 integers that sums to 5.  These
+returned values are samples from the multinomial distribution.  They
+represent the numbers of balls drawn, with one number for each of the
+3 types.
+
+In your application, you will want to draw \texttt{twoN} balls from an
+urn whose relative frequencies are stored in a Python list called
+\texttt{x}.  The returned counts should be stored in a list called
+\texttt{n}.  Thus, the call to \texttt{mnldev} will look like
+\verb|n = mnldev(twoN, x)|.
+
+Ordinarily, a list of relative frequencies must be normalized so that
+it sums to 1.0.  Making sure that this is true often involves an extra
+step in computer code.  You can omit this step, because
+\texttt{mnldev} does the normalizing automatically.  The call
+\texttt{mnldev(5, [2, 3, 5])} is exactly the same as \texttt{mnldev(5,
+  [0.2, 0.3, 0.5])}.  We'll explain below how to use this trick to
+simplify your code.
+
+\section{An incomplete program}
+On the course website you'll find a program called
+\texttt{twolocinc.py}, which looks like this:
+\listinginput[3]{1}{twolocinc.py} This program will run, but it is
+incomplete.  It does neither recombination nor selection and does not
+calculate the value of $r^2$.  These are the parts you need to add.  But
+first, get it running.
+
+In its overall structure, this program is a lot like the one you wrote
+in Project~\ref{ch.seldrft}.  The top section defines parameters and
+prints them. Two of these deserve comment. We will simulate the
+history of a large number of newly-arisen mutations. Most of these
+will be quickly lost, and these we will ignore. We are interested in
+mutations that manage to increase to a frequency of 1/2. The parameter
+\texttt{nwant} specifies the number of these successful mutations that
+we want to study. The variable \texttt{ngot} holds the number of
+successful mutations we have encountered so far. The outer loop
+continues until \texttt{ngot == nwant}.
+
+The main part of the program consists of two nested loops. Each pass
+through the outer loop simulates the history of one mutation, which is
+initially present in only a single copy. The inner loop models the
+history of that mutant, and each pass through that loop corresponds to
+a single generation. The inner loop stops when either of the loci
+becomes monomorphic, or when the $A$ allele reaches a frequency of
+1/2.  This entire process is repeated many times---once for each
+mutant allele---under the control of the outer loop.  This new program
+differs from that of Project~\ref{ch.seldrft} in that there are four
+gamete types rather than just two alleles.
+
+This becomes apparent on line~21, which initializes a list containing
+the relative frequencies of the four gamete types.  In the one-locus
+model, you would have written \texttt{p = 1.0/twoN} at this point.
+The new code needs to make some assumption about the state of the
+population just before the initial mutation.  The one made by line~21
+is completely arbitrary: just before the mutation, allele $A$ didn't
+exist, and allele $B$ had frequency 0.5, so the four gamete
+frequencies were $x=[0,0,1/2,1/2]$. Then one of the $aB$ gametes
+mutated to become an $AB$.  The resulting list of gamete frequencies
+is $x=[1/2N,0,1/2-1/2N,1/2]$, as indicated on line~21.
+
+After setting the value of \texttt{x} on line~21, we set \texttt{pA}
+and \texttt{pB} on lines 22--23. These depend on \texttt{x} and must
+therefore be reset each time \texttt{x} changes, as seen on
+lines~28--29.
+
+Each pass through the inner loop (lines~24--32) corresponds to a
+single generation.  Based on current gamete frequencies, we sample
+from the multinomial distribution.  This yields a list of counts,
+which represent the number of copies of each gamete type in the next
+generation.  After converting these back into relative frequencies, we
+check to see if it is time to stop.  That is all there is to it.  If
+this seems familiar to you, that is probably because the program you
+wrote in Project~\ref{ch.seldrft} worked the same way.
+
+Note that lines~34--39 execute only after we drop out of the inner
+loop.  The \texttt{if} statement there makes sure that nothing prints
+unless both loci are polymorphic.  We are not interested in
+monomorphic cases. Line~38 adds the current value of $r^2$ to the
+Tabulator, and line~43 prints the tabulated values. (Tabulator is
+described in section~\ref{sec.tabcontinuous},
+p.~\pageref{sec.tabcontinuous}.)
+
+Make sure this program runs before you begin changing it.  With the
+current parameter values, you'll find that only a few of the
+replicates generate output. The program prints fitnesses, a
+recombination rate, and $r^2$, but these are misleading.  As it
+stands, there is no recombination and no selection, and $r^2$ is
+simply set to zero.  Your job is to rectify that.
+
+\subsection*{Exercise}
+\begin{cenum}
+\item \textbf{Recombination.}
+We're going to model recombination using a trick that you have already
+used twice before.  In Project~\ref{ch.drift}, you incorporated mutation
+into a simulation of drift by adjusting allele frequencies before
+calling \texttt{bnldev}.  Then in Project~\ref{ch.seldrft} you used the
+same trick in order to model selection.  Now you will use that trick
+once again to model recombination.  There is only one real difference.
+In those earlier projects, there were only two alleles so you only had to
+adjust the value of one allele frequency.  Now you must adjust the
+values of all four gamete frequencies and then call \texttt{mnldev}
+instead of \texttt{bnldev}.
+
+In his Eqn.~4.1 (p.~102), Gillespie shows how recombination changes
+the frequency of one gamete type.  There are analogous formulas for
+all four types:
+\begin{eqnarray*}
+x'_0 &=& x_0(1-c) + cp_Ap_B\\
+x'_1 &=& x_1(1-c) + cp_A(1-p_B)\\
+x'_2 &=& x_2(1-c) + c(1-p_A)p_B\\
+x'_3 &=& x_3(1-c) + c(1-p_A)(1-p_B)
+\end{eqnarray*}
+where $c$ is the recombination rate, $p_A$ is the frequency of $A$,
+and $p_B$ is the frequency of $B$.  By the time the program reaches
+line~20 in the code above, it knows the value of $c$ and all the
+values in the list $x$.  From these, it is easy to calculate $p_A =
+x_0 + x_1$ and $p_B = x_0 + x_2$.  This is all you need to evaluate
+the equations above, which yield the frequencies of gamete types
+\emph{after} recombination.  Add code that does this just after
+line~23 above.  However you decide to do this, make sure your results
+end up in the list named \texttt{x}.
+
+\item \textbf{Selection.}  Before calling \texttt{mnldev}, we need to
+  adjust the gamete frequencies once again---this time for the effect
+  of selection.  The idea is the same as before.  We have a
+  theoretical formula that converts pre-selection frequencies into
+  post-selection frequencies.  As input to this process, we use the
+  values in the Python list \texttt{x}, which have already been
+  adjusted for recombination.
+
+  For simplicity, assume that selection acts at the gamete stage
+  rather than the diploid stage.  (This makes our formulas a little
+  simpler than Gillespie's.)  After selection, the new gamete
+  frequencies are
+\[
+x'_i = x_i w_i/\bar w
+\]
+where $\bar w = \sum x_i w_i$ is the mean fitness.  You have all the
+$x_i$ and $w_i$ values, so it is easy to calculate $\bar w$.  Given
+$\bar w$, it is easy to calculate $x'_i$ for all four gamete types.
+
+But before you start, take another look at the formula.  In it, $\bar
+w$ plays the role of a normalizing constant.  It is there so that the
+new gamete frequencies will sum to 1.  As discussed above,
+\texttt{mnldev} will do this normalizing for us, so we don't have to.
+It is sufficient (and a little faster) to set $x'_i = x_i w_i$,
+without bothering to calculate $\bar w$.  With this simplification,
+the list that we hand to \texttt{mnldev} contains values that are
+proportional to gamete frequencies, and that is good enough.  Add code
+that does this just after line~24.  As before, make sure that your
+results end up in the list named \texttt{x}.
+
+\item \textbf{Linkage disequilibrium.}  You have one more change to
+  make.  One conventional measure of linkage disequilibrium is the
+  correlation between loci,
+\[
+r = \frac{x_0 x_3 - x_1 x_2}{\sqrt{p_A(1-p_A)p_B(1-p_B)}}
+\]
+Note that this $r$ is \emph{not} the recombination rate.  That is why
+we used a different symbol $(c)$ for that.  The numerator here equals
+$D$, a measure of LD that was discussed in lecture and in the text.
+Modify line~34 so that it calculates $r^2$.
+
+\item \textbf{Collect data.}  Set $2N=5000$ and $c=0.001$.  Run the
+  program once with $s=0/2N$, once with $s=10/2N$, and once with
+  $s=100/2N$.  (These correspond to $2Ns=0$, $2Ns=10$, and $2Ns=100$.)
+  The program will take awhile to run when $s=0$, because only a few
+  of the simulated mutations will reach a frequency of 1/2.  For each
+  value of $s$, Tabulator will print the frequency distribution of the
+  values of $r^2$.  How easy would it be to distinguish strong from
+  weak selection, based on the value of $r^2$?
+\end{cenum}

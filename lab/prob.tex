@@ -1,0 +1,111 @@
+\chapter{Probability}
+This lab is a set of exercises on probability.  For today only, you
+will not need a computer: just paper, pencil, and maybe a pocket
+calculator.  (Later labs will be different.)
+\begin{enumerate}
+\item You toss a fair coin twice.  What is the probability of
+  observing two heads?
+
+\item With the same coin experiment, what is the probability of a head
+  and a tail (in that order)?
+
+\item What is the probability of a tail and then a head?
+
+\item What about a head and a tail in either order?
+
+\item You toss a coin three times and observe 2 heads and a tail in
+  some order.  In how many ways can this happen?  (In other words, how
+  many sequences like ``HHT'' contains 2 ``H''s and one ``T''?)
+
+\item What is the probability of observing two heads and a tail (order
+  unspecified) in 3 tosses.
+
+\item You toss two fair dice, one red and one black.  What is the
+  probability that you observe either a red 4 or a black 6 (or both)?
+
+\item What is the probability that you observe both a red 4 
+  and a black 6?
+
+\item You toss a fair coin 3 times.  You receive \$1 for each head and
+  nothing for tails.  Let $X$ represent the number of dollars you
+  receive.  What is (a)~the probability distribution of $X$, (b)~its
+  mean, and (c)~its variance?
+
+\item In JEPr, you saw several tables of counts.  In this exercise,
+  you will construct one of your own by filling in the missing
+  portions of the one below.
+\begin{center}
+\begin{tabular}{lccc}
+       & \multicolumn{2}{c}{My mood}\\ \cline{2-3}
+Weather& Happy & Sad& Sum\\ 
+\hline 
+Rain   &       &    & 100\\
+Sun    &       &    & 100\\
+\hline
+Sum    &       &    & 200\\
+\end{tabular}
+\end{center}
+So far, this table tells us that it rained on 100 days and was sunny
+on another 100.  First fill in the blanks in the table, assuming that
+I am more likely to be happy when it is sunny than when it is rainy.
+Make sure that the rows for ``rain'' and ``sun'' each sum to 100.
+Then use the bottom row to fill in column sums.  Now use your table to
+calculate the \emph{unconditional} relative frequencies of (a)~sad
+and (b)~rainy, then the \emph{conditional} relative frequencies of
+(c)~sad given rainy and (d)~rainy given sad.  Is it true that
+$f(\hbox{rain}|\hbox{sad}) = f(\hbox{rain})$?  If not, does this imply
+that my mood influences the weather?
+
+\item Consider a locus with two alleles, $A$ and $a$, whose
+  frequencies are $p$ and $q=1-p$.  Suppose that you draw one gene
+  copy from this population at random.  Let $X=1$ if that gene is a
+  copy of $A$ and let $X=0$ otherwise.  What are (a)~the mean and
+  (b)~the variance of $X$, as a function of $p$?
+
+\item Consider a particular nucleotide site in the DNA of some
+  hypothetical population.  In this population, 80\% of chromosomes
+  have the nucleotide adenine (A) while 20\% have guanine (G).  In
+  other words, the relative frequency of allele A is 0.80.  We take
+  samples from this population, each of which consists of two
+  chromosomes drawn independently and at random.  In each sample, we
+  observe either AA, AG, or GG.  The number of A's in this sample is a
+  random variable, which I will call $X$.  This variable can take
+  values 0, 1, or 2.  What is the distribution of $X$?  What is the
+  mean?  What is the variance?  The standard deviation?  Sketch a
+  histogram of the distribution of $X$.
+
+\item JEPr describes Bortkiewicz's data on the frequency of deaths
+  caused by mule kicks in the Prussian army.  As you will recall,
+  those data are approximately Poisson, and the mean number of deaths
+  per corps-year was $\lambda = 0.61$.  What is the probability that
+  there will be zero such deaths during a given year for a given
+  corps?
+
+\item Humans and fish differ in 68 amino acids out of 141 in alpha
+  hemoglobin.  When they differ, there may have been undetected
+  intermediate changes as they diverged during evolution.  If changes
+  occur at random, what is the mean number of changes per amino acid
+  site?  The ancestral lines of fish and humans diverged about 400
+  million years ago.  Assuming that there have been 800 million years
+  of independent evolution of these lines, what is the rate of amino
+  acid substitution per year.  (This question is from a book by James
+  Crow.  In answering it, assume that the number of changes separating
+  human and fish is a Poisson random variable.  Use the data to estimate
+  the mean $(\lambda)$ of this distribution.  To get started, ask
+  yourself (a)~what is the probability that a Poisson random variable
+  is equal to 0, and (b)~what fraction of amino acid sites are
+  unchanged.) 
+
+%\item Congenital adrenal hypoplasia (CAH) is a genetic disease that can
+%  distort the external genetalia of females and can produce adrenal crises in
+%  victims of either sex.  There is a test for the disease, but it is not
+%  perfect.  5\% of affected individuals get negative test results, and 1\% of
+%  unaffected individuals get positive results.  Among the Yupik eskimo, 1
+%  individual in every 400 individuals has the disease.  
+%\begin{enumerate}
+%\item What is the probability that a Yupik eskimo \emph{has} the disease given
+%  that   he got a \emph{positive} test result?
+%\item What is the probability that a Yupik eskimo \emph{doesn't have} the
+%  disease given that he got a \emph{negative} test result?
+%\end{enumerate}
+\end{enumerate}

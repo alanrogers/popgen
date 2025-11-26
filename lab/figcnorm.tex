@@ -1,0 +1,59 @@
+% -*-latex-*-
+\begin{figure}
+\begin{center}
+\mbox{\beginpicture
+  \headingtoplotskip=0.5\baselineskip
+  \valuestolabelleading=0.4\baselineskip
+\setcoordinatesystem units <0.11\columnwidth,0.5\columnwidth>
+  \setplotarea x from -3 to 3,
+               y from 0 to 1
+  \axis bottom label {$x$} 
+   ticks withvalues {$x_0$} {$x_1$} /  at {-1.28} {1.28} / /
+  \axis left label {$F(x)$} 
+   ticks withvalues 0.1 0.9 / at 0.1 0.9 / /
+  \plotheading{Cumulative Distribution Function}
+% normal density
+\plot  
+-3.0000000 0.001349898
+-2.7500000 0.002979763
+-2.5000000 0.006209665
+-2.2500000 0.01222447
+-1.96      0.025
+-1.7500000 0.04005916
+-1.5000000 0.0668072
+-1.2500000 0.1056498
+-1.0000000 0.1586553
+-0.7500000 0.2266274
+-0.5000000 0.3085375
+-0.2500000 0.4012937
+ 0.0000000 0.5
+ 0.2500000 0.5987063
+ 0.5000000 0.6914625
+ 0.7500000 0.7733726
+ 1.0000000 0.8413447
+ 1.2500000 0.8943502
+ 1.5000000 0.9331928
+ 1.7500000 0.9599408
+ 1.96      0.975
+ 2.2500000 0.9877755
+ 2.5000000 0.9937903
+ 2.7500000 0.9970202
+ 3.0000000 0.9986501
+/
+% Straight lines
+\setdashes
+%\putrule from -1.96 0     to -1.96 0.025
+%\putrule from -3    0.025 to -1.96 0.025
+%\putrule from  1.96 0     to  1.96 0.975
+%\putrule from  -3   0.975 to  1.96 0.975
+\putrule from -1.28 0   to -1.28 0.1
+\putrule from -3    0.1 to -1.28 0.1
+\putrule from  1.28 0   to  1.28 0.9
+\putrule from  -3   0.9 to  1.28 0.9
+\endpicture}
+\end{center}
+\caption{Cumulative sampling distribution.  Dashed lines indicate
+  boundaries of rejection region for a two-tailed test with p-value
+  0.2.}
+\label{fig.cnorm}
+\end{figure}

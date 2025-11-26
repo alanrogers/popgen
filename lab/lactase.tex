@@ -1,0 +1,118 @@
+\chapter{Linkage Disequilibrium Near the Human Lactase Gene}
+\label{ch.lactase}
+\setcounter{cenumEnumi}{0}
+Most mammals are able to digest milk only during infancy.  Later in
+life, their bodies stop producing the enzyme \emph{lactase} and are
+thus unable to digest milk sugar (\emph{lactose}).  Some humans
+however continue to make lactase throughout life, a condition called
+\emph{lactase persistance}.  (It's opposite is \emph{lactose
+  intolerance}.) This condition is common in European (and some
+African) populations and seems to result from a single point-mutation
+in the promoter region of the lactase gene.  Todd Bersaglieri and his
+colleagues (\emph{Am.\ J.\ Hum.\ Genet.}, 74:1111--1120, 2004) argue
+that the European mutant arose a few thousand years ago and has been
+strongly favored by natural selection.  Their evidence for this comes
+from the amount of linkage disequilibrium (LD) in this genomic region.
+In this project, you'll see for yourself.  You will estimate LD in the
+region around the putative advantageous mutation and then compare this
+estimate to the LD on chromosome~2 as a whole.
+
+\section{An incomplete program}
+As usual, we provide code that does much of the work.  You will find
+this code on the class web site in a file called
+\texttt{lactaseinc.py}.  Here is what it looks like:
+%
+\listinginput[3]{1}{lactaseinc.py}
+%
+Lines~4--7 define several parameters.  The parameter \texttt{reach}
+determines determines the size of the window within which you will
+estimate LD.  In this initial version of the program, the window
+reaches from 5000 bases to the left of the focal SNP to 5000 bases to
+the right.  (That is why it is called ``\texttt{reach}.'')  The
+chromosome number is set to 99, so that we can use the dummy data file
+during debugging.  (See page~\pageref{sec.gettingdummy}.)  In the end,
+you'll want to set \texttt{chromosome = 2} in order to analyze the
+real data.  Line~7 identifies the SNP that is thought to be under
+selection.  This SNP was identified in the Bersaglieri paper mentioned
+above.  It's label is ``rs4988235,'' and in our data it lies at
+position specified on line~7 of the code above.  (This number may
+change in future versions of HapMap, but the label should remain the
+same.)
+
+In the HapMap data for this target SNP, one of the genotypes has a
+missing value. Our pgen software eliminates SNPs with missing values,
+so this site will not appear in our data. For this reason, the call to
+\verb|hds.find_position(focal_position)| will not find the target
+SNP. Instead, it will find the nearest SNP. That's OK, because there
+is so much LD in this region that SNPs in LD with the target SNP will
+also be in LD with this nearest SNP.
+
+Lines~9--11 define the stub of a function that is supposed to
+calculate $r^2$---except that it doesn't in this incomplete code.
+Replace this function definition with your own version from
+Project~\ref{ch.rsq}.  The function \verb|window_rsq| is new.  It takes
+three arguments, \verb|hds| (the data set), \texttt{mid} (an index
+into that data set), and \texttt{reach} (discussed above).  The
+function compares a central SNP (\verb|hds[mid]|) to each SNP in the
+region around it.  If no other SNPs are found in this region, the
+function returns \texttt{None}.  Otherwise it returns the average
+value of $r^2$ between the SNPs in this region and the central
+SNP. The calls to \verb|find_position| will seem mysterious, since you
+have not yet seen this function used.  If you are curious, see
+page~\pageref{pg.findposition}.
+
+In line~35, we are done defining things and ready to do real work.  In
+rapid succession, we define the dataset (\texttt{hds}), find the index
+(\texttt{focndx}) of the ``focal SNP'' (the one that is supposedly
+under selection), and calculate the mean value (\verb|rsq_mean_obs|)
+of $r^2$ within the region around this focal SNP.
+
+\subsection*{Exercise}
+\begin{cenum}
+\item Download the relevant files for the current project.  You will
+  need:
+\begin{inparaenum}
+\item \texttt{pgen.py},
+\item the incomplete Python program \texttt{lactaseinc.py},
+\item the HapMap data file for chromosome~2 in the European population
+  (\texttt{CEU}), and 
+\item the dummy data file for ``chromosome 99.''
+\end{inparaenum}
+For instructions on downloading HapMap data files, see
+appendix~\ref{ch.gettingdata}.  For instructions on getting the dummy
+data file, see page~\pageref{sec.gettingdummy}.
+\item Replace lines~10--11 with your own working copy of the
+  \texttt{get\_rsq} function.  You'll need the \texttt{cov} function
+  too. You won't need the \texttt{var} function, because variances
+  have already been calculated for you (see
+  pages~\pageref{pg.variance} and~\pageref{pg.snp.variance}).
+\end{cenum}
+At this point, your program should calculate the mean value of $r^2$
+in the region surrounding the putatitive selected SNP.
+\begin{cenum}
+\item Add code to the end of the program that calculates 
+\begin{enumerate}
+\item the mean $r^2$ value within 100 randomly selected
+  regions on chromosome~2,
+\item the fraction of these regions whose mean $r^2$ is greater than
+  or equal to the ``observed value,'' i.e.\ the value for the region
+  surrounding the putative selected SNP.
+\end{enumerate}
+\end{cenum}
+Hint: To calculate $r^2$ in randomly selected regions, choose random
+SNPs as we did in Project~\ref{ch.rsq}, and then hand each one to function
+\verb|window_rsq|.  To calculate the fraction of these values that is
+greater than or equal to the observed value, proceed as we did in
+Project~\ref{ch.stattest}.
+\begin{cenum}
+\item Now it is time to analyze real data, so set \texttt{chromosome}
+  equal to 2.  Then run the program with \texttt{reach} set to each of
+  the following values: 20,000, 200,000, and 1,000,000.
+  These runs will take longer, so be patient.
+\item Write a paragraph discussing the results.  Is the LD around the
+  lactase gene unusual on chromosome~2? If so, how far does the region
+  of unusual LD seem to reach? The answer to this question should be
+  based on the tail probabilities you calculated for the three values
+  of \texttt{reach}.
+\end{cenum}
+

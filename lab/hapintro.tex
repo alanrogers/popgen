@@ -1,0 +1,284 @@
+\chapter{Using HapMap}
+\label{ch.hapintro}
+Several large databases of human genetic variation have become
+available during the past decade, and they have revolutionized the
+field.  This project will introduce you to one of them, the HapMap.  The
+HapMap project has genotyped millions of single-nucleotide
+polymorphisms (SNPs) throughout the human genome within samples from
+several human populations.  You will learn how to download and
+manipulate these data, and will then use them to explore the
+relationship between observed and expected heterozygosity in HapMap
+SNPs. 
+
+\section{Choosing a population and chromosome at random}
+\label{sec.randpopchrom}
+The original HapMap provided data on the following populations:
+\begin{center}
+\begin{tabular}{cl}
+Label & Sample\\
+\hline
+\texttt{YRI} & 90~Yorubans from Nigeria\\
+\texttt{CEU} & 90~Utahns of western and northern European ancestry\\
+\texttt{CHB} & 45 Han Chinese from Beijing\\
+\texttt{JPT} & 44 Japanese from Tokyo\\
+\verb|JPT+CHB| & combined Chinese and Japanese samples
+\end{tabular}
+\label{pg.poptab}
+\end{center}
+Although recent releases of HapMap have added additional populations,
+we will focus on these.  The data from these populations are made
+available as plain text files, one for each chromosome within each
+population.  You will download one of these files onto your computer,
+but first you must figure out which one.  
+
+For this project, you will choose a chromosome and population at
+random.  To do so, cut and paste the following program into the Python
+interpreter, and run it once. \verbatiminput{ranpopchrom.py} It will
+tell you the number of your chromosome, and the name of your
+population.  This program uses two new
+functions---\texttt{choice}\label{pg.choice-intro} and
+\texttt{randrange}---from Python's \texttt{random} module.  We'll be
+using these at several points in this project, so you should
+experiment with them until you understand how they work.  They are
+described in section~\ref{sec.randommodule},
+page~\pageref{sec.randommodule}.
+
+\section{Downloading data}
+Now that you know your chromosome and population, you are ready to
+visit the HapMap web site.  This is a task that you'll need to do for
+several projects, so we've put the instructions into a self-contained
+appendix, which you'll find on page~\pageref{ch.gettingdata}.  
+Please download two data files: the one for your own chromosome and
+population, and also the one for chromosome~22, population
+\texttt{JPT}. 
+
+From here on, we'll assume that you have already downloaded the
+appropriate data file for this project.  We recommend that you put all
+relevant files into the \texttt{Documents} folder.  Before proceeding,
+make sure that the data file and \texttt{pgen.py} are both in the same
+folder (or directory), and that Python can execute the command
+\verb|from pgen import *| without generating an error.
+
+\section{Using the \texttt{pgen} module to work with HapMap data}
+\label{sec.pgenhapmapintro}
+The \texttt{pgen} module provides several tools for use with HapMap
+data files.  These are described in section~\ref{sec.pgenhapmap}
+(page~\pageref{sec.pgenhapmap}).  Here, we merely illustrate their
+use.  At the top of your program, you will need the line:
+\begin{leftindent}
+\begin{verbatim}
+from pgen import *
+\end{verbatim}
+\end{leftindent}
+The portion of the program that uses HapMap data should begin like
+this: 
+\begin{leftindent}
+\begin{verbatim}
+pop = "JPT"
+chromosome = 22
+hds = hapmap_dataset(hapmap_fname(chromosome, pop))
+\end{verbatim}
+\end{leftindent}
+Here, the call to \texttt{hapmap\_fname} tries to find the name of an
+appropriate HapMap data set---one for chromosome~22 and population
+\texttt{JPT}.  If it succeeds, it hands that name to
+\texttt{hapmap\_dataset}, which reads the file and stores it in a
+useful form (more on this in a moment).  In the last line, the
+assignment statement creates a variable called \texttt{hds}, which
+points to this data structure.  We use the name \texttt{hds} to help
+us remember that it refers to an object of type
+``\texttt{hapmap\_dataset},'' but you can use any name you please.
+
+But what exactly is an object of type ``\texttt{hapmap\_dataset}?''
+Well, it is a lot like a Python list.  Like a list, it has a length:
+\begin{leftindent}
+\begin{verbatim}
+>>> len(hds)
+11235
+\end{verbatim}
+\end{leftindent}
+And like a list, it also has a sequence of data values that we can
+access like this:
+\begin{leftindent}
+\begin{verbatim}
+>>> snp = hds[3]
+\end{verbatim}
+\end{leftindent}
+Now \texttt{snp} refers to the data value at position~3 within the
+data set.  This data value is an object of another specially-created
+type, called ``\texttt{hapmap\_snp}.''
+
+An object of type \texttt{hapmap\_snp} has a variety of types of data.
+Having defined \texttt{snp}, we can type
+\begin{leftindent}
+\begin{verbatim}
+>>> snp.chromosome
+'22'
+>>> snp.position
+14603201
+>>> snp.id
+'rs1041770'
+\end{verbatim}
+\end{leftindent}
+These commands report
+\begin{inparaenum}[(1)]
+\item the chromosome on which this SNP lies,
+\item the position of the SNP in base pairs, measured from the end of
+  the chromosome, and
+\item the ``rs-number,'' a name that uniquely identifies this SNP.
+\end{inparaenum}
+You might think that the rs-number was redundant, once we know the
+SNP's position.  However, the position values change a little with
+each new build of the data base, whereas the rs-numbers are invariant
+from build to build.\footnote{Occasionally, rs-numbers do change.  This
+  happens when it is discovered that two numbers actually refer to the
+  same SNP.  Then the higher number is retired, and lower number
+  becomes the official designation.}  Thus, the rs-number is essential
+if you want to find a SNP that is discussed in the literature.
+
+\texttt{hapmap\_snp} also contains all the genetic data for the SNP.
+For example,
+\begin{leftindent}
+\begin{verbatim}
+>>> snp.alleles
+['G', 'T']
+\end{verbatim}
+\end{leftindent}
+returns a list containing the two alleles that are present at this
+locus.  In the original data file, the genotype of each individual
+would have been represented as GG, GT, or TT.  In
+\texttt{hapmap\_snp}, these genotypes are recoded as numbers:
+\begin{leftindent}
+\begin{verbatim}
+>>> snp.gtype
+[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+ 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
+\end{verbatim}
+\end{leftindent}
+Each integer counts the number of copies of \texttt{alleles[0]} in one
+individual.  In these data, allele~0 is G, so the integers 0, 1, and
+2\label{pg.recoding} correspond to genotypes TT, TG, and GG.  Since
+the genotypes are now integers, they have a mean and a variance, which
+you can access like this:
+\begin{leftindent}
+\begin{verbatim}
+>>> snp.mean
+0.066666666666666666
+>>> snp.variance
+0.06222222222222222
+\end{verbatim}
+\label{pg.variance}
+\end{leftindent}
+Objects of type \texttt{hapmap\_snp} behave like lists.  The command
+\texttt{snp[3]} returns the genotypic value at position~3,
+\texttt{len(snp)} and \texttt{snp.sampleSize} both return the number
+of genotypes in the data, and \texttt{sum(snp)} returns the sum of the
+genotypic values.
+
+In these examples, \texttt{snp} is the name of a variable that points
+to an object of type \texttt{hapmap\_snp}.  But we could have used any
+other name just as well.  For example,
+\begin{leftindent}
+\begin{verbatim}
+>>> another_snp = hds[23]
+>>> another_snp.alleles
+['A', 'C']
+\end{verbatim}
+\end{leftindent}
+
+\subsection{Some examples}
+This section shows how \texttt{pgen}'s HapMap facilities can be used
+to solve problems.  Read them carefully, and try them out in Python's
+interactive interpreter.  They will all be useful later on.
+
+\paragraph{Working with \texttt{gtype}}
+In a miniature sample of 8 genotypes, \texttt{gtype} might look like
+this: 
+\begin{leftindent}
+\begin{verbatim}
+>>> snp.gtype
+[1, 0, 0, 1, 1, 2, 0, 1]
+\end{verbatim}
+\end{leftindent}
+Each number counts the copies of allele~0 in an individual genotype.
+The sum of these values---in this case 6---is the number of copies of
+this allele in the data set.  Since each genotype has two genes, the
+total number of genes is $2\times 8 = 16$.  The frequency of allele~0
+is therefore $p = 6/16$.  On the other hand, the average of the data
+values is $\bar x = 6/8$.  The allele frequency is exactly half the
+mean and is thus amazingly easy to calculate:
+\begin{leftindent}
+\begin{verbatim}
+>>> p = 0.5*snp.mean
+\end{verbatim}
+\end{leftindent}
+Just remember that this is the frequency of allele~0---the one that is
+listed first in \texttt{snp.alleles}.  
+
+\paragraph{Counting genes and genotypes}\label{pg.countgene}
+As explained above, the number of copies of allele~0 is just the sum
+of genotypic values:
+\begin{leftindent}
+\begin{verbatim}
+>>> n0 = sum(snp)
+\end{verbatim}
+\end{leftindent}
+What about the number of heterozygotes?  The variable
+\texttt{snp.gtype} is a Python list.  As such, it has a built-in
+method called \texttt{count} that will count the number of copies of
+any given value within the list.  In our data, every heterozygote is
+represented by the integer ``1.''  We can count the number of
+heterozygotes with a single command:
+\begin{leftindent}
+\begin{verbatim}
+>>> snp.gtype.count(1)
+\end{verbatim}
+\end{leftindent}
+Here, \texttt{count} is a built-in method that would work on any
+Python list. To calculate the frequency of heterozygotes:
+\begin{leftindent}
+\begin{verbatim}
+>>> snp.gtype.count(1)/snp.sampleSize
+\end{verbatim}
+\end{leftindent}
+
+\paragraph{Looping over SNPs}\label{pg.snploop} There are several ways
+to loop over the SNPs in a \texttt{hapmap\_dataset}.  If you want to
+include \emph{all} the SNPs, the code is very simple:
+\begin{leftindent}
+\begin{verbatim}
+>>> for snp in hds:
+...     print(snp.mean)
+\end{verbatim}
+\end{leftindent}
+This works because objects of type \texttt{hapmap\_snp} behave like
+lists.  Today's project involves making a graph.  If you tried to
+graph all the SNPs, the graph would be incomprehensible.
+Consequently, we will look only at a limited sample.  The easy way to
+do this is as follows:
+\begin{leftindent}
+\begin{verbatim}
+>>> for i in range(50):
+...     snp = choice(hds)
+...     print(snp.mean)
+\end{verbatim}
+\end{leftindent}
+This loop includes 50 SNPs chosen at random from among all those in
+the data.  The code makes use of the \texttt{choice} function, which
+we introduced on p.~\pageref{pg.choice-intro} and discuss more fully
+on p.~\pageref{pg.choice}.
+
+\subsection*{Exercise}
+Create a \texttt{hapmap\_dataset} for chromosome~22 of population
+\texttt{JPT}.  From this dataset, select the SNP whose index is 83,
+i.e.\ \texttt{hds[83]}.  Use this SNP to answer the following
+questions:
+\begin{inparaenum}[(1)]
+\item What is the nucleotide state (A, T, G, or C) of allele~0?
+\item How many copies of this allele are present?
+\item What is its relative frequency?
+\item What is the expected frequency of heterozygotes at
+  Hardy-Weinberg equilibrium?
+\item What is the observed frequency of hetetozygotes?
+\item What is the position (in base pairs) of this SNP on the chromosome?
+\end{inparaenum}

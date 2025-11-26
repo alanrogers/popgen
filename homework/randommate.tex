@@ -1,0 +1,230 @@
+\chapter{Random mating}
+\label{hw.randommate}
+
+\section{Frequencies of alleles and genotypes}
+
+\emph{Transferrin} is a protein involved in iron transport. Table
+\ref{tab.transferrin} shows the number of individuals in a baboon
+troop, grouped by transferrin genotype.  The relative frequency of
+each genotype is simply the number of individuals of that genotype
+divided by the total number of individuals.
+
+\begin{table}
+\centering
+\caption{Transferrin genotype frequencies in a baboon troop
+  \citep[p.~56]{Jolly:PAA-86}.}
+\label{tab.transferrin}
+\begin{tabular}{rrrr}
+\hline
+        &\multicolumn{3}{c}{Number of}\\ \cline{2-4}
+Genotype& individuals &allele $C$&allele $D$\\ \hline\hline
+$CC$    &          80 &      160&       0\\
+$CD$    &          15 &       15&      15\\
+$DD$    &           5 &        0&      10\\ \hline
+Total   &         100 &      175&      25\\ \hline
+\end{tabular}
+\end{table}
+
+\begin{exercise}
+What is the relative frequency, $P_{CC}$, of the $CC$ genotype?
+\begin{answer}
+$P_{CC} = 80/100 = 0.8$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the relative frequency of the $CD$ genotype?
+\begin{answer}
+$P_{CD} = 15/100 = 0.15$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the relative frequency of the $DD$ genotype?
+\begin{answer}
+$P_{DD} = 5/100 = 0.05$
+\end{answer}
+\end{exercise}
+
+There are two ways to calculate the allele frequency within a
+sample:
+\begin{enumerate}
+\item Divide the number of copies of one allele by the total number of
+  gene copies in the sample.
+\item If the locus has just two alleles, we can use the formula 
+\begin{equation}
+p_1 = P_{11} + P_{12}/2
+\label{eq.allelefrq}
+\end{equation}
+where $P_{11}$ and $P_{12}$ are the frequencies of genotypes $A_1A_1$
+and $A_1A_2$, and $p_1$ is the frequency of allele $A_1$.
+\end{enumerate}
+
+\begin{exercise}
+Use both methods to calculate the frequency, $p_C$ of the $C$ allele.
+\begin{answer}
+By gene counting, $p_C = 175/200 = 0.875$. By the formula, $p_C = 0.8
++ 0.15/2 = 0.875$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Use both methods to calculate the frequency, $p_D$ of the $D$ allele.
+\begin{answer}
+By gene counting, $p_D = 25/200 = 0.125$. By the formula, $p_D = 0.05
++ 0.15/2 = 0.125$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Prove that the two methods are equivalent.
+\begin{answer}
+There is more than one correct answer. One approach begins with the
+observation that the frequency of $A_1$ is the same as the probability
+that a random gene copy chosen from a random individual is allele
+$A_1$.  Let us calculate this probability.
+
+With probability $P_{11}$, we choose genotype $A_1A_1$. In this case,
+we get allele $A_1$ with probability~1. With probability $P_{12}$, our
+individual is $A_1A_2$, and we then get $A_1$ with probability
+$1/2$. If we choose $A_2A_2$, we cannot possibly get $A_1$. Thus, the
+probability of $A_1$ is
+\[
+(P_{11} \times 1) + (P_{12} \times 1/2) + (P_{22} \times 0)
+ = P_{11} + P_{12}/2
+\]
+\end{answer}
+\end{exercise}
+
+\bigskip\noindent
+At some SNP locus, a sample of 100 individuals includes 15 copies of
+genotype ``CC,'' 50 of ``CT,'' and 35 of ``TT.''  Please use these
+data in answering the following:
+\begin{exercise}
+What is the number of gene copies in this sample?  
+\begin{answer}
+200
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What are the allele frequencies $p$ and $q$ of the two nucleotides (C
+and T)? 
+\begin{answer}
+For allele C, $p = 0.15 + 0.5/2 = 0.4$. For T, $q = 1-p = 0.6$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the expected heterozygosity under random mating?
+\begin{answer}
+$H = 2pq = 2\cdot 0.4 \cdot 0.6 \approx 0.48$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the observed heterozygosity?
+\begin{answer}
+$H_{obs} = 0.5$.
+\end{answer}
+\end{exercise}
+
+\section{Using $F$-statistics}
+
+The observed and HW genotype frequencies are
+\begin{center}
+  \begin{tabular}{ccc}
+    & \multicolumn{2}{c}{Genotype Frequencies}\\ \cline{2-3}
+Genotype & Observed & Hardy-Weinberg\\ \hline
+$A_1A_1$ & $P_{11}$ & $p^2$ \\
+$A_1A_2$ & $P_{12}$ & $2pq$ \\
+$A_2A_2$ & $P_{22}$ & $q^2$ \\
+  \end{tabular}
+\end{center}
+In the HW formulas, $p$ and $q$ are the allele frequencies of the
+\emph{population} and are unknown.  We can, however, estimate them from our
+data by $\hat p = P_{11} + P_{12}/2$ and $\hat q=1-\hat p$.  Plugging these
+estimates into the HW formulas will provide estimates of the HW genotype
+frequencies, which can then be compared with $P_{11}$, $P_{12}$, and
+$P_{22}$. 
+
+To measure the deviation between observed and expected genotype frequencies,
+it is convenient to define a variable,
+$F$, which satisfies
+\begin{eqnarray*}
+  P_{11} &=& p^2 + pqF\\
+  P_{12} &=& 2pq - 2pqF\\
+  P_{22} &=& q^2 + pqF
+\end{eqnarray*}
+The three equations above provide three different ways to estimate $F$:
+\begin{eqnarray}
+  F &=& \frac{P_{11} - p^2}{pq}\label{eq.F11}\\
+  F &=& -\frac{P_{12} - 2pq}{2pq}\label{eq.F12}\\
+  F &=& \frac{P_{22} - q^2}{pq}\label{eq.F22}
+\end{eqnarray}
+All three formulas produce the same number.
+
+Consider the following data
+\begin{center}
+  \begin{tabular}{cc}
+             & Number\\
+    Genotype & of copies\\ \hline
+$A_1A_1$ & $n_{11} = 100$\\
+$A_1A_2$ & $n_{12} = 100$\\
+$A_2A_2$ & $n_{22} = 100$\\
+\end{tabular}
+\end{center}
+In other words, there are 100 copies of each of the three genotypes.  
+\begin{exercise}
+Use these data to calculate both the observed and the expected
+genotype frequencies.
+\begin{answer}
+The observed genotype frequencies are $P_{11} = P_{12} = P_{22} =
+1/3$. The frequency of $A_1$ is $p = 1/2$.  Given $p$ the three
+expected genotype frequencies are $E[P_{11}] = p^2 = 1/4$, $E[P_{12}]
+= 2p(1-p) = 1/2$, and $E[P_{22}] = (1-p)^2 = 1/4$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Next, calculate $F$ using each of formulas~\ref{eq.F11}, \ref{eq.F12},
+  and~\ref{eq.F22}.
+\begin{answer}
+Using (\ref{eq.F11}), $F = (P_{11} - p^2)/pq 
+ = (1/3 - 1/4)/(1/4) = 1/3$. Using (\ref{eq.F12}), $F = -(P_{12} -
+ 2pq)/2pq =  -(1/3 - 1/2)/(1/2) = 1/3$. Using (\ref{eq.F22}), $F =
+ (P_{22} - q^2)/pq = (1/3 - 1/4)/(1/4) = 1/3$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+In a sample of 72 individuals, we have the following genotype counts:
+$n_{11}= 0$,  $n_{12}= 5$, and $n_{22}=67$. What are $P_{11}$,
+$P_{12}$, $P_{22}$, $p_1$, and $F$?
+\begin{answer}
+$P_{11} = 0$, $P_{12} = 0.069444$, $P_{22} = 0.930556$, $p_1 =
+0.034722$, and $F = -0.035971$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+In another sample, we have the following genotype counts:
+$n_{11}= 53$,  $n_{12}= 19$, and $n_{22}=1$. What are $P_{11}$,
+$P_{12}$, $P_{22}$, $p_1$, and $F$?
+\begin{answer}
+$P_{11} = 0.726027$, $P_{12} = 0.260274$, $P_{22} = 0.013699$, $p_1 =
+0.856164$, and $F = -0.056762$.
+\end{answer}
+\end{exercise}
+
+\section{Final words}
+
+We have glossed over various technicalities in this homework
+assignment.  For example, the HW formulas $p^2$, $2p(1-p)$, and
+$(1-p)^2$ are correct when $p$ is the allele frequency \emph{in the
+  population}, but we have encouraged you to substitute the estimate
+of $p$ obtained from the data.  This introduces a small bias, which
+can be corrected by using suitably modified versions of the HW
+formulas.  For details, see \citet[p.~509]{Morton:TPB-2-507}.  Unless
+your sample is very small, however, the effect of this correction is
+small.

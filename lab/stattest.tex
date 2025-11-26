@@ -1,0 +1,343 @@
+\chapter{Using Simulation to Test a Statistical Hypothesis}
+\label{ch.stattest}
+\setcounter{cenumEnumi}{0}
+In Project~\ref{ch.coal1} you used a coalescent simulation to evaluate
+a hypothesis about $2N$ and $u$, two parameters that play central
+roles within population genetics.  Your evaluation was subjective
+because we did not ask for any formal statistical test.  In this
+project, you'll do it right.  But first, you need to learn some basic
+principles.  We begin with two definitions.
+
+\section{A statistic and its sampling distribution}
+
+All data have noise.  They are noisy because of measurement error,
+because of sampling error, and because of unpredictable factors
+involved in the phenomena we study.  This is why we need statistical
+methods in the first place.  Things that we calculate from data are
+called \emph{statistics}.  Familiar examples include the mean and
+variance of a sample.  Less familiar examples include estimates of the
+site frequency spectrum and the mismatch distribution.  When a gene
+genealogy is estimated from data, even that is a statistic.  Because
+they are based on noisy data, statistics are noisy too.  In this
+context, ``noise'' refers to random variation.  Scientists deal with
+such randomness using probability theory, and you should be familiar
+with that before reading further.  (See \emph{Just Enough
+  Probability}.)
+
+Scientific hypotheses are often tested by comparing a statistic to its
+sampling distribution.  To get this idea across, we re-visit a simple
+problem: that of tossing a coin.  As you learned in \emph{Just Enough
+  Probability}, John Kerrich tossed a coin 10,000 times and observed
+5070 heads.  This number is a statistic.  How could we use it to test
+a hypothesis?
+
+Suppose we suspected that Kerrich's coin was slightly unfair, that the
+probability $(p)$ of heads was 0.45 on each toss.  To test this idea,
+we would need to know whether the value that Kerrich observed is
+unusual in similar experiments for which $p$ really does equal 0.45.
+Suppose that we somehow managed to manufacture such a coin and then
+used it in 100,000 repetitions of Kerrich's experiment.  Suppose in
+addition that in none of these was the number of heads as large as
+Kerrich's value, 5070.  Then Kerrich's result would clearly rank as
+unusual, and this might lead us to doubt the original hypothesis that
+$p=0.45$.  This is the reasoning that usually underlies tests of
+statistical hypotheses.  The difficulty is that usually (as here)
+these repetitions are impossible to carry out.  There is no way to
+manufacture a coin for which $p$ is exactly 0.45.  Even if that were
+possible, who would volunteer to toss that coin $100,000 \times
+10,000 = \hbox{1 billion}$ times?
+
+Nonetheless, let's pretend that we had really done 100,000 repetitions
+of Kerrich's experiment under conditions that guarantee that $p=0.45$.
+We could calculate the number of heads from each repetition and then
+summarize these values using a \emph{frequency distribution}.  Since
+the number of repetitions was so large, this frequency distribution
+would approximate a special sort of probability distribution called a
+\emph{sampling distribution}.
+
+The sampling distribution of a statistic is its probability
+distribution, but only in a restricted sense: it is the probability
+distribution implied by a particular hypothesis.  Different hypotheses
+imply different sampling distributions, even for the same statistic.
+In our example, we assumed that $p=0.45$.  A different hypothesis
+would imply a different sampling distribution.
+
+In short, \emph{a sampling distribution is the probability
+  distribution of a statistic, as implied by a particular hypothesis}.
+
+\section{Using sampling distributions to test hypotheses}
+Let us postpone the question of how one gets a sampling distribution.
+For the moment, our focus is on using one to test a hypothesis.  It is
+sometimes useful to distinguish between a random variable and the
+particular values it may take.  In this section, we use upper case for
+the former and lower case for the latter.  Thus, $X$ represents a
+random variable and has a probability distribution, but $x$ is just a
+number.
+
+\input{fignorm}
+
+Figure~\ref{fig.norm} shows two ways to graph the sampling
+distribution of a hypothetical statistic, $X$.  In the left panel, the
+vertical axis shows the \emph{probability density function}, $f$.
+Areas under the curve correspond to probabilities in the sampling
+distribution of $X$.  The shape of this particular density function
+may look familiar, but that has no relevance here.  Sampling
+distributions can have any shape.
+
+In the density function in the left panel, the two ``tails'' of the
+distribution are shaded. These tails comprise only a small fraction of
+the total area under the curve. For this reason, the observed value of
+our statistic is unlikely to fall within either tail. If it does, then
+either (a)~we have observed an unusual chance event, or (b)~our
+hypothesis and its implied sampling distribution are incorrect.  When
+this happens, we say that the hypothesis has been rejected.
+
+This does not mean it is wrong, for correct hypotheses may be rejected
+too.  The probability of such an error is called $\alpha$ and is equal
+to the shaded area of the graph.  To minimize these errors, we usually
+choose small values of $\alpha$, such as 0.05 or 0.01.  In
+figure~\ref{fig.norm}, we have set $\alpha$ to a very large value
+(0.2) so that the shading is easy to see.
+
+The right panel of Figure~\ref{fig.norm} shows another way to graph
+the same sampling distribution.  The vertical axis shows $F(x)$, the
+probability of observing a value less than or equal to $x$.  This is
+called the \emph{cumulative distribution function}.  For example, in
+the figure's left panel, a fraction 0.1 of the area under the curve
+lies to the left of $x_0$ and a fraction 0.9 lies to the left of
+$x_1$.  Consequently, the right panel shows that $F(x_0) = 0.1$ and
+that $F(x_1)=0.9$.
+
+We explained above how $f$ can be used to test a statistical
+hypothesis: if the observed value falls within the shaded tails, then
+we reject.  This idea can be re-expressed in terms of $F$ because $F$
+and $f$ contain the same information.  In terms of $F$, we reject if
+\begin{equation}
+F(x\obs) \leq \alpha/2, \qquad \mbox{or} \qquad
+F(x\obs) \geq 1 -\alpha/2,
+\label{eq.stattest}
+\end{equation}
+where $x\obs$ is the observed value of the statistic, and $\alpha$ is
+the level of significance.\footnote{Consider first the left shaded
+  tail.  This tail contains half the shaded area and thus has
+  probability $\alpha/2$.  This means that $F(x_0) = \alpha/2$.  If
+  $x\obs$ falls within this tail, then it must be true that $F(x\obs)
+  \leq \alpha/2$.  We can reject any hypothesis for which this condition
+  is true.  Applying the same reasoning to the right shaded tail, we
+  reject if $F(x\obs) \geq 1-\alpha/2$.}  This is just another way of
+saying that the observed value fell into one of the tails. 
+
+In testing a statistical hypothesis, one can work either with the
+density function $(f)$ or with the cumulative distribution function
+$(F)$, but the latter approach is often easier.  We don't need to know
+the whole sampling distribution---just a single value, $F(x\obs)$.  As
+we shall see, this value is easy to estimate by computer simulation.
+
+\section{Sampling distributions from computer simulations} 
+Long ago there was only one way to figure out the sampling
+distribution implied by a hypothesis---it required a sharp pencil and
+a mathematical turn of mind.  That approach doesn't always work
+however, even for gifted mathematicians.  Fortunately there is now
+another way: we can estimate sampling distributions from computer
+simulations.
+
+In an informal way, you have done this already.  In
+Project~\ref{ch.coal1}, you generated several simulated values of a
+genetic statistic $(S)$ under a particular hypothesis about $u$ and
+$2N$.  You then compared these simulated values to the one $(S\obs =
+82)$ that Jorde obtained from real data.  Near the end of that
+assignment, we asked: ``How many of the simulated values are smaller
+than 82?  How many are larger?''  These are questions about
+$F(S\obs)$.  We then asked: ``Does the observed value represent an
+unusual outcome, or is it pretty typical of the simulated values?''
+In answering that question, you used the same logic that we explained
+above.  The approach is more formal this time, but the idea is the
+same.
+
+To see how this works in detail, let us return to our hypothesis about
+Kerrich's coin.  Our statistic $(x\obs)$ is the number of heads in
+10,000 tosses, which equalled 5070 in Kerrich's data.  We are
+interested in $F(x\obs)$ under the hypothesis that $p=0.45$.  The
+conditions of Kerrich's experiment imply that the number of heads is
+drawn from a binomial distribution.  This distribution has two
+parameters: the number $(N)$ of trials and the probability $(p)$ of
+``heads'' on each trial.  Our hypothesis assumes that $p=0.45$, and we
+can take $N=10,000$, because that is how many times Kerrich tossed the
+coin.  We need to calculate $F(5070)$ from a binomial distribution
+with these parameter values.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{cccc}
+Simulation & $x$ & Simulation & $x$ \\
+\hline
+ 1 & 4439 &  6 & 4508\\
+ 2 & 4474 &  7 & 4521\\
+ 3 & 4484 &  8 & 4527\\
+ 4 & 4489 &  9 & 4558\\
+ 5 & 4495 & 10 & 4566
+\end{tabular}
+\end{center}
+\caption{The number $(x)$ of heads in ten draws from the binomial
+  distribution with $N=10,000$ and $p=0.45$.}
+\label{tab.cointest}
+\end{table}
+
+We could do this calculation by summing across the binomial
+distribution function, but we'll do it here by computer simulation.
+The procedure is simple: over and over, we simulate Kerrich's
+experiment under the conditions of our hypothesis.  Each simulation
+generates a value of $x$, the number of heads.
+Table~\ref{tab.cointest} shows the result of 10 such simulations.  In
+every one, the simulated value of $x$ is smaller than $x\obs = 5070$,
+the value that Kerrich observed.  Already we begin to suspect that our
+hypothesis is inconsistent with the data.  Let us relate this to the
+probability, $F(x\obs)$, discussed above.
+
+As you know, probabilities are estimated by relative frequencies.  We
+can estimate $F(x\obs)$ as the relative frequency of observations such
+that $x \leq x\obs$.  Every one of the 10 observations in
+Table~\ref{tab.cointest} satisfies this condition.  Thus, we estimate
+$F(x\obs)$ as $10/10 = 1$.  Our sample is small, so this may not be a
+very good estimate.  But let us take it at face value for the moment.
+To test a hypothesis, we must first specify $\alpha$, so let us set
+$\alpha=0.05$.  With this significance level,
+equation~\ref{eq.stattest} says that we can reject if $F(x\obs)
+\leq 0.025$ or $\geq 0.975$.  Our estimate is $F(x\obs) = 1$, which is
+clearly greater than 0.975.  Thus, we reject the hypothesis---or we
+would do so if we trusted our estimate of $F(x\obs)$.
+
+A convincing answer will require many more simulations, a potentially
+tedious project.  Here is a program called \texttt{cointest.py}, which
+removes the tedium: \listinginput[5]{1}{cointest.py} In this code, each
+execution of line~10 repeats Kerrich's experiment, using the function
+\texttt{bnldev}.  (This function is described in
+Project~\ref{ch.drift} and documented more fully on
+p.~\pageref{pg.bnldev} of appendix~\ref{sec.randnum}.)  Lines~11--12
+count the number of such repetitions for which the outcome is less
+than or equal to the observed value 5070, and line~14 converts the
+resulting count into a fraction.  Download this code from the class
+web site and run it.  You should get something that looks like this:
+\begin{verbatim}
+F[5070] =  1.000 for hypothesis: p=0.45
+\end{verbatim}
+The critical piece here is the value 1.000.  This is the fraction of
+simulations for which the simulated value was less than or equal to
+Kerrich's value, 5070.  It estimates $F(x\obs)$.  Even in this larger
+sample, every simulation resulted in fewer heads than Kerrich saw.  If
+our hypothesis about $p$ is correct, then Kerrich saw something
+remarkable.  This is probably not what happened.  It seems more likely
+that our hypothesis about $p$ is way off the mark.
+
+This estimate of $F(x\obs)$ is a lot more reliable than the previous
+one, because it is based on 100 simulations rather than 10.  It would
+be more accurate still if we had done 10,000.  We did not start with
+10,000, because it's wise to keep the number small until you get the
+code running.  Try increasing \texttt{nreps} to 10,000.  Does it makes
+a difference?
+
+\subsection*{Exercise}
+\begin{cenum}
+\item Revise your coalescent code from Project~\ref{ch.coal1} so that
+  it tests the same hypothesis ($u=0.001$ and $2N=5000$) that we
+  considered there, using the same data ($S\obs = 82$, $K=77$).  To do
+  this, use \texttt{cointest.py} as your model.  Simply replace
+  line~10 with the simulation that you wrote in
+  Project~\ref{ch.coal1}.  Like \texttt{cointest.py}, your program
+  should produce a single line of output.  Show us the program and its
+  output, and write a sentence or two saying whether and why the
+  hypothesis can be rejected.
+\end{cenum}
+The tricky parts of this exercise are getting the indentation right
+and making sure that each variable is initialized where it needs to
+be.  
+
+Before proceeding, make sure you understand what this program does.
+In principle, it is exactly what you did in Project~\ref{ch.coal1}.
+The program does the same simulation many times and allows you to
+tell whether the observed value, $S\obs = 82$, is unusually large,
+unusually small, or typical, under a particular evolutionary
+hypothesis.
+
+\section{Confidence intervals}
+In the preceding section, we tested a single hypothesis about the
+value of $p$.  It would be more interesting to examine a range of $p$
+values in order to see which can be rejected and which cannot.  Here
+is a modified program called \verb|coin_ci.py|, which does this:
+\label{pg.coinci}\listinginput[5]{1}{coin_ci.py} Notice how little this
+differs from \texttt{cointest.py}.  Line~6 has been re-written, and
+lines~7--16 have been shifted to the right.  We also bumped
+\texttt{nreps} up to 1000.  Apart from these minor changes, the two
+programs are identical.  These changes create an additional loop,
+which does a separate test for each of the values of $p$ listed on
+line~6.  Make sure you understand why the values of \texttt{xobs} and
+\texttt{nreps} are set outside this loop, and why that of \texttt{F}
+is set inside it.
+
+Download this program and get it running.  Your output should look
+similar to this:
+\begin{verbatim}
+F[5070] =  1.000 for hypothesis: p=0.490
+F[5070] =  0.995 for hypothesis: p=0.495
+F[5070] =  0.921 for hypothesis: p=0.500
+F[5070] =  0.675 for hypothesis: p=0.505
+F[5070] =  0.259 for hypothesis: p=0.510
+F[5070] =  0.067 for hypothesis: p=0.515
+F[5070] =  0.004 for hypothesis: p=0.520
+F[5070] =  0.001 for hypothesis: p=0.525
+\end{verbatim}
+Each line of this output tests a different hypothesis.  We can reject
+the first two (at $\alpha=0.05$) because $F(x\obs) \geq 0.975$.  We
+can reject the last two because $F(x\obs) \leq 0.025$.  The hypotheses
+we \emph{cannot} reject include all values within the range $0.5 \leq
+p \leq 0.515$.  These values---the ones we cannot reject---are called
+the \emph{confidence interval} of $p$.
+
+There is a little ambiguity here.  We can reject $p=0.495$ but not
+$p=0.5$, so the lower boundary of the confidence interval must lie
+somewhere between these values.  Exactly where, we cannot say.  There
+is a similar ambiguity involving the upper boundary.  It is safe
+however to say that the confidence interval is enclosed by the
+slightly larger interval $0.495 < p < 0.52$.  The limits (0.495 and
+0.52) of this larger interval are clearly \emph{outside} the
+confidence interval, for we were able to reject them.  This is why we
+use the strict inequality symbol $(<)$.  To be conservative, it is
+good practice to use this larger interval when reporting a confidence
+interval.
+
+\subsection*{Exercise}
+\begin{cenum}
+\item Revise your coalescent code using \verb|coin_ci.py| as a model,
+  and estimate the confidence interval of $2N$.  Show us your code,
+  the output, and a brief explanation.  Your explanation does not have
+  to be long.  Just explain what you have learned about the parameter
+  $2N$.  Which hypotheses about $2N$ can we reject, and which are
+  still on the table?
+\end{cenum}
+
+At this point, we hope you can see (a)~that testing a statistical
+hypothesis just amounts to asking whether your observation is unusual,
+and (b)~that a confidence interval is just a summary of hypothesis
+tests.  The methods of statistics are complex, but the underlying
+ideas are simple.
+
+\section{$p$-hacking}
+This lab has introduced the classical approach to testing a
+statistical hypothesis. Although such tests play an important role in
+science, they can also mislead. To see how, we encourage you to spend
+some time with this website:
+\begin{verbatim}
+https://fivethirtyeight.com/features/science-isnt-broken
+\end{verbatim}
+The interactive tool there will enable you to prove either that
+Democrats are good for the economy or that Republicans are, depending
+on your own preconceptions.
+
+That bit is discouraging, but keep reading. The second part of the
+article describes a study in which 29 teams of scientists each used
+identical data in an effort to answer the same question: do referees
+give more red cards to dark-skinned soccer players than to
+light-skinned ones? The teams of scientists used different methods and
+got different answers. Yet if you focus on the results that were
+statistically significant, you'll find that they tell a consistent
+story.

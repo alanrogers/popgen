@@ -1,0 +1,349 @@
+% -*-latex-*-
+\documentclass[11pt]{article}
+\usepackage{fullpage,pictex,paralist,alltt,float}
+\usepackage{graphicx}
+\usepackage{ifthen}
+\usepackage{answers}
+\Opensolutionfile{answers}
+\Newassociation{answer}{Answr}{answers}
+\newcounter{iskey}
+\setcounter{iskey}{0}  % 1 for answer key; 0 for exam
+\newtheorem{exercise}{}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\Het}{\mathcal{H}}
+\newcommand{\monthname}[1]{\ifcase#1\or January\or February\or
+  March\or April\or May\or June\or July\or August\or
+  September\or October\or November\or December\fi}
+\renewcommand{\today}{\monthname{\month}\space\number\year}
+\setcounter{secnumdepth}{0}
+\begin{document}
+\begin{center}
+\Large
+\ifthenelse{\theiskey=1}{\textbf{Answer Key}}{%
+Name:\hspace{2.25in}\hfill\mbox{}}\\[1ex]
+\textbf{Exam~2 Anth/Biol 5221}\\
+\today
+\end{center}
+
+\paragraph{Instructions}
+Write your name at the top of page~1 and your answers on the attached
+blank sheets. Number your answers. Each question is worth 5 points.
+
+Before doing any calculations, ask yourself whether calculations are
+really needed. You may be able to answer the question faster without
+any calculation at all.
+
+\begin{table}[H]
+\caption{Values of $\sum_{i=1}^{K-1} 1/i$ for various values of $K$}
+\label{tab.Ssum}
+
+\medskip
+
+\centering
+\fbox{\begin{tabular}{rr@{\hspace{3em}}rr}
+$K$& $\sum_{i=1}^{K-1} 1/i$ & $K$& $\sum_{i=1}^{K-1} 1/i$\\[2pt]
+\hline
+ 2 & 1.0000 & 12 & 3.0199\\
+ 3 & 1.5000 & 13 & 3.1032\\
+ 4 & 1.8333 & 14 & 3.1801\\
+ 5 & 2.0833 & 15 & 3.2516\\
+ 6 & 2.2833 & 16 & 3.3182\\
+ 7 & 2.4500 & 17 & 3.3807\\
+ 8 & 2.5929 & 18 & 3.4396\\
+ 9 & 2.7179 & 19 & 3.4951\\
+10 & 2.8290 & 20 & 3.5477\\
+11 & 2.9290 & 21 & 3.5977\\
+\end{tabular}}
+\end{table}
+
+\section{Gene genealogies}
+
+The first few questions concern a sample of 4 gene copies. Assume
+random mating, selective neutrality, and constant diploid population
+size, $N$. With such a sample, there are 3 coalescent intervals: one
+with 4 lines of descent, one with 3, and one with 2.
+\begin{exercise}
+  What is the hazard of a coalescent event within each interval?
+  (Hint: your answers should include the symbol $N$.)
+\begin{answer}
+Hazards are $i(i-1)/4N$, which equals $6/2N$, $3/2N$, and $1/2N$
+generations, for intervals 4, 3, and 2.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the expected depth of the genealogy, or in other words, the
+expected time in generations back to the most recent common ancestor?
+\begin{answer}
+The expected depth of the tree is $4N(1-1/4) = 3N$ generations.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the expected total branch length in generations? (The sum of
+the lengths of all branches in the genealogy.)
+\begin{answer}
+  The expected total branch length is $4N(1 + 1/2 + 1/3) = 7.33N$
+  generations.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  How many mutations would you expect to see on such a tree, assuming
+  a mutation rate of $u$ per generation? (Hint: your answer should
+  include the symbols $N$ and $u$.)
+\begin{answer}
+$4Nu(1 + 1/2 + 1/3) = 7.33Nu$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Theory predicts that the values of $\pi$ and $S/\sum_{i=1}^{n-1}$
+should be similar, because both of these estimate the same parameter.
+Yet this was not true of the human data that we discussed in
+class. What might account for this discrepancy?
+\begin{answer}
+  The discrepancy might reflect selection, changes in population
+  size, or geographic population structure.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Why do large populations have more genetic variation than small ones?
+(Answer in words, not in formulas.)
+\begin{answer}
+There are several ways to answer this question, including
+\begin{inparaenum}[(a)]
+\item drift is weaker in large populations;
+\item in large populations, random pairs of gene copies are distantly
+  related and therefore have deep genealogies, which allow lots of
+  time for mutation;
+\item there is more random inbreeding in small populations.
+\end{inparaenum}
+Accept anything that makes sense.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Use the following data to calculate the mean pairwise difference
+  $(\Pi)$ per sequence:\\
+\noindent
+\begin{center}
+\begin{minipage}{2in}
+\begin{alltt}
+\begin{tabbing}
+seq01 \=AATA\kill
+seq01 \>AATA\\
+seq02 \>.T..\\
+seq03 \>.T.T\\
+seq04 \>....\\
+seq05 \>..CT
+\end{tabbing}
+\end{alltt}
+\end{minipage}
+\end{center}
+\begin{answer}
+The mean pairwise difference per sequence is
+\[
+\Pi = (2\times 3 + 1\times 4 + 3\times 2) \Bigg / {5 \choose 2}
+= 1.6
+\]
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+In a sample of 15 DNA sequences, the number of segregating sites is
+$S=10$. Use this to estimate $\theta$ (per sequence). (Hint: use
+table~\ref{tab.Ssum}.)
+\begin{answer}
+\[
+\hat\theta_S = \frac{10}{1 + 1/2 + 1/3 + \cdots 1/14}
+= \frac{10}{3.2516}
+= 3.075
+\]
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+In a sample of 12 DNA sequences, the number of segregating sites is
+$S=8$. Use this to estimate $\theta$ (per sequence). (Hint: use
+table~\ref{tab.Ssum}.)
+\begin{answer}
+\[
+\hat\theta_S = \frac{8}{1 + 1/2 + 1/3 + \cdots 1/11}
+= \frac{8}{3.0199} \approx 2.6491
+\]
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+In a sample of 20 DNA sequences, the mean pairwise difference per
+sequence is $\Pi = 5.12$. Use this to estimate $\theta$ (per
+sequence).
+\begin{answer}
+\[
+\hat\theta_{\pi} = \Pi = 5.12
+\]
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  Figure~\ref{fig.tree} shows two genealogies of neutral genes, one
+  from a population of constant size and the other from one that
+  expanded from a small initial size within the past few tens of
+  thousands of years.  Which one is more likely to be that of the
+  expanded population?  (Just write A or B.)
+\begin{answer}
+A is the expanded population.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Figure~\ref{fig.mismatch} shows two mismatch distributions.  Which is
+more likely to be that of the expanded population? (Just write A or B.)
+\begin{answer}
+B is the expanded population.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Figure~\ref{fig.spectrum} shows two site frequency spectra.  Which is
+more likely to be that of the expanded population? (Just write A or B.)
+\begin{answer}
+A is the expanded population.
+\end{answer}
+\end{exercise}
+
+\begin{figure}
+\begin{center}
+\input{figtree}
+\end{center}
+\caption{Two gene genealogies}\label{fig.tree}
+\end{figure}
+
+\begin{figure}
+\centering
+\input{figmm}
+\caption{Two mismatch distributions.}
+\label{fig.mismatch}
+\end{figure}
+
+\begin{figure}
+\centering
+\input{figspec}
+\caption{Two site frequency spectra.}
+\label{fig.spectrum}
+\end{figure}
+
+\section{Molecular evolution}
+
+\begin{exercise}
+  Suppose that two mtDNA sequences differ at 15 of 100 nucleotide
+  sites. Each of these differences arose by mutation along the gene
+  genealogy that connects the two sequences. However, the number of
+  mutations that occurred on this genealogy may differ from 15. If it
+  does, would you expect the number of mutations to be larger or
+  smaller than 15? Why? (Answer with words only. No calculations are
+  needed.)
+\begin{answer}
+  Larger than 15, because some mutations may be hidden by subsequent
+  mutations at the same nucleotide site.
+\end{answer}
+\end{exercise}
+
+\section{Selection in a large population}
+For these questions, we assume that three genotypes $A_1A_1$,
+$A_1A_2$, and $A_2A_2$ have fitnesses 1, 1, and 0, that the
+frequency of $A_1$ is $p=0.9$, and that the population is in
+Hardy-Weinberg equilibrium (before selection).
+\begin{exercise}
+What is the mean fitness, $\bar w$?
+\begin{answer}
+$\bar w = 0.99$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What are the marginal fitnesses, $w_1$ and $w_2$, of the two
+alleles?
+\begin{answer}
+$w_1 =1$; $w_2 =  0.9$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Which allele is being favored by natural selection?
+\begin{answer}
+Allele~1 is favored by selection.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the expected frequency, $p'$, of $A_1$ in the following
+generation?
+\begin{answer}
+$p' = (p^2 w_{11} + p q w_{12})/\bar w = 0.909$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Use the genotypic fitnesses given above to calculate $s$ and $h$,
+where $w_{11} = 1$, $w_{12} = 1-hs$, and $w_{22} = 1-s$.
+\begin{answer}
+$s = 1$; $h = 0$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Why are deleterious alleles more likely to be common if recessive than
+if dominant? (No formulas: words only.)
+\begin{answer}
+Deleterious recessives are hardly opposed by selection when rare, because
+rare alleles seldom form homozygotes.
+\end{answer}
+\end{exercise}
+
+\section{Selection and drift}
+Following the notation in Gillespie's section~3.9, I assume that $A_2$
+is the ``wild type'' allele, $A_1$ is the mutant allele, and genotypes
+$A_1A_1$, $A_1A_2$, and $A_2A_2$ have relative fitnesses $1+s$,
+$1+s/2$, and $1$. (This notation differs from Kimura's, which Jon
+presented in lecture.) Suppose that $A_1$ is a new mutation with
+frequency $1/2N$. Using Gillespie's notation for Kimura's formula, the
+probability that a new mutation will eventually fixed (i.e.\ will
+eventually reach a frequency of 100\%) is
+\[
+\pi_1\left(\frac{1}{2N}\right) = \frac{1-e^{-s}}{1-e^{-2Ns}}
+\]
+
+\begin{exercise}
+\label{ex.fixbad}
+For a newly-arisen deleterious mutation with $s = -0.001$, what is the
+probability of fixation in a population of size $N = 500$.
+\begin{answer}
+The fixation probability is $\pi_1(1/2N) = 0.00058$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+\label{ex.fixgood}
+Problem~\ref{ex.fixbad} was about deleterious mutations. Repeat it for
+advantageous mutations with $s=0.001$. Use Kimura's formula above, not
+the approximation that $\pi_1(1/2N) \approx s$. Also assume as before
+that $N = 500$.
+\begin{answer}
+The fixation probability is $\pi_1(1/2N) = 0.0016$.
+\end{answer}
+\end{exercise}
+
+\Closesolutionfile{answers}
+\ifthenelse{\theiskey=1}{\clearpage
+\section{Answer key}
+\mbox{}\\
+%\listanswers
+\IfFileExists{answers.tex}{\input{answers.tex}}{}}{\clearpage
+\hbox{}\newpage
+\hbox{}\newpage
+\hbox{}\newpage}
+\end{document}
+

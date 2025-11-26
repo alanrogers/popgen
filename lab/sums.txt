@@ -1,0 +1,117 @@
+SOME SIMPLE EXAMPLES WITH LOOPS AND LISTS
+
+This section will illustrate some of these ideas in a simple context: the problem of summing a series of numbers.  Type the following at Python's interactive prompt: 
+
+>>> 1+2+3+4+5
+
+Python will respond with the appropriate sum: 15.  You could also do this by using the while statement:
+
+>>> s = 0
+>>> i = 1
+>>> while i <= 5:
+...     s += i
+...     i += 1
+... 
+>>> print s
+15
+
+The first time through the while loop, i is equal to 1 and this value is added to s.  This changes the value of s from 0 (its initial value) to 1.  Next time through the loop, i is 2 and s becomes 1+2=3.  The loop executes 5 times, once for i=1, once for i=2, and so on up to i=5.  Do you see how this works?  If not, talk to one of us.  Don't go on until you understand every line.
+
+The "while loop" in this examples works, but it is tedious.  It is also dangerous: there are plenty of places to introduce an error.  Here is a rewrite that is a little shorter:
+
+>>> s = 0
+>>> for i in [1,2,3,4,5]:
+...     s += i
+... 
+>>> print s
+15
+
+This uses a "for loop" rather than a "while loop".  We don't have to worry about initializing i before the loop starts or about incrementing it within the loop.  Each time through the loop, i equals one of the values in the list [1,2,3,4,5]. This works well enough with short lists, but can you imagine summing the integers between 1 and 1000?  Clearly, we need some way to avoid writing out the whole list.  That is the purpose of the "range" statement.  Here are a couple of examples:
+
+>>> range(0,6)
+[0, 1, 2, 3, 4, 5]
+>>> range(6)
+[0, 1, 2, 3, 4, 5]
+>>> range(1,5)
+[1, 2, 3, 4]
+
+This command returns a list of consecutive integers.  If you omit the first of the two arguments, Python assumes that you want the list to begin with 0.  Otherwise, your list begins with the first argument and ends at the next integer smaller than the second argument.  We can use this to simplify the for loop above:
+
+>>> s = 0
+>>> for i in range(6):
+...     s += i
+... 
+>>> print s
+15
+
+This is shorter still, and we are thus even less likely to get it wrong.  Furthermore, it is easy to use this algorithm for larger sums:
+
+>>> s = 0
+>>> for i in range(1001):
+...     s += i
+... 
+>>> print s
+500500
+
+It is not often that we want to sum a sequence of consequtive integers.  More often, we have some sort of data stored in a list.  Consider the following code:
+
+>>> data = [12, 1, 33, 59, 18]
+>>> s = 0
+>>> for val in data:
+...     s += val
+... 
+>>> print s
+123
+
+We begin with data stored in a list.  Each time through the for loop, "val" equals one of the data values, and that value is added to s.  Here is another (and slightly less intuitive) way to do the same thing:
+
+>>> data = [12, 1, 33, 59, 18]
+>>> s = 0
+>>> for i in [0,1,2,3,4]:
+...     s += data[i]
+... 
+>>> print s
+123
+
+Here, i is called an "index variable".  It is not the quantity we want to add.  Instead, it is an "index" into the data array.  The first time through the loop, i=0 and we add data[0] to s; next time we add data[1]; and so on up to data[4].  Index variables are often the only way to solve the problem even though (as previous examples showed) they are not essential for this particular problem.  In the form I have written it, this algorithm has a flaw: I had to write out the entire list ([0,1,2,3,4]) of index values.  It would have been better to let the range function do the heavy lifting:
+
+>>> data = [12, 1, 33, 59, 18]
+>>> s = 0
+>>> for i in range(5):
+...     s += data[i]
+... 
+>>> print s
+123
+
+This is more convenient, but I still had to hand count the number of items in the list of data values.  What if I had counted wrong?  Wouldn't it be better to let Python do the counting?  That is the purpose of the "len" function.  Look:
+
+>>> len([0,2])
+2
+>>> len(['a', 3, 1])
+3
+
+The "len" function returns the number of items in a list (or nearly anything else).  Thus, we can sum the array of data values like this:
+
+>>> data = [12, 1, 33, 59, 18]
+>>> s = 0
+>>> for i in range(len(data)):
+...     s += data[i]
+... 
+>>> print s
+123
+
+In this code the "len" function returns 5, so the "range" function returns [0,1,2,3,4], exactly the list of indices we need.
+
+Now that you have waded through all this, I will confess that there are much easier ways to sum a list of numbers.  Consider:
+
+>>> sum([1,2,3,4,5])
+15
+>>> sum(data)
+123
+
+None of the previous pyrotechnics were really needed.  On the other hand, now you know a lot more than you did before about loops and lists.
+
+Exercise: Calculate the product of the integers between 1 and 10 using (a) a while loop, (b) a for loop, and (c) a for loop with indices into an array.
+
+Exercise: Repeat all three steps in order to calculate the product of the integers between 1 and 1000.
+

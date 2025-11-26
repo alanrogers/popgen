@@ -1,0 +1,127 @@
+\chapter{Were Wolf's dice fair? An approach using the variance.}
+\label{ch.wolf}
+This project expands on the one in section 3.5 of JEPy. It makes use
+of material that is explained in sec.~4 of JEPy, which you should read.
+
+\begin{table}
+\renewcommand{\tabcolsep}{3pt}
+\begin{center}
+\renewcommand{\arraystretch}{0.95}
+\begin{tabular}{rrrrrrrr} 
+    & \multicolumn{6}{c}{White}&\\ \cline{2-7}
+ Red & 1 & 2 & 3 & 4 & 5 & 6 & sum\\ 
+\hline
+\hline
+    1     & 547 & 587 & 500 & 462 & 621 & 690 & 3407\\
+    2     & 609 & 655 & 497 & 535 & 651 & 684 & 3631\\
+    3     & 514 & 540 & 468 & 438 & 587 & 629 & 3176\\
+    4     & 462 & 507 & 414 & 413 & 509 & 611 & 2916\\
+    5     & 551 & 562 & 499 & 506 & 658 & 672 & 3448\\
+    6     & 563 & 598 & 519 & 487 & 609 & 646 & 3422\\ \hline
+sum:     & 3246 & 3449 & 2897 & 2841 & 3635 & 3932 & 20000
+\end{tabular}
+\end{center}
+\caption{The results of 20,000 throws with two dice (Wolf 1850, cited
+  in JEPr)}
+\label{tab.dice}
+\end{table}
+
+We are interested in the results from Wolf's experiment, which is
+described in JEPr. Wolf tossed a pair of dice 20,000 times and
+obtained the results shown in table~\ref{tab.dice}.  If Wolf's dice
+were fair, each face of the die should appear on about $1/6$ of the
+20,000 rolls, or 3333 times. There is no reason to expect Wolf's data
+to agree exactly with this expectation, because after all, dice are
+random. But several of Wolf's marginal counts do look suspiciously far
+from 3333. The question is, are these discrepancies to larger than the
+ought to be if Wolf's dice were fair?
+
+In a previous lab (JEPy section~3.5), you addressed this problem by
+tabulating counts. Here, we take a different approach. Consider what
+we might expect of an unfair die. With such a die, some faces appear
+frequently and others rarely. There should therefore be large
+differences between the counts for different faces. We can measure
+this effect by calculating the variance of the counts for the 6 faces
+of each die.
+
+For example, the counts for the white die are 3246, 3449, 2897, 2841,
+3635, and 3932.  The variance of these numbers is 150531.56. If Wolf's
+white die were fair, we should expect to see comparable values fairly
+often in experiments with fair dice. But if Wolf's die were unfair, his
+variance should turn out to be unusually large.
+
+To study this question, you will modify the Python program shown
+below.  This code is available on the class web site, where it is
+called \texttt{wolfinc.py}.  To download it, find it on the website,
+right-click, and select ``save as.'' Then run it to see what it does.
+
+Rather than downloading from the website, you can also cut and paste
+from the text below. But there is danger here. When you cut and paste,
+you may end up with a file in which characters have been replaced by
+other characters that look similar. The document will look the same
+but may not execute.  Cut-and-paste usually works, but it is not
+reliable. To be safe, we recommend downloading files from the website.
+
+\begin{leftindent}
+\listinginput[5]{1}{wolfinc.py}
+\end{leftindent}
+When you run this program, you should get 12 lines of output. The
+first two report the variances of Wolf's two dice. The next 10 show
+the results of 10 simulated tosses of a fair die.
+
+The first line of this program makes the ``random'' function (a member
+of the ``random'' module) available to our program. Lines~3--12 define
+a function that calculates the variance of a list of
+numbers. Sec.~\ref{Pr-sec.variance} of JEPr explains variance, and
+sec.~4.4 of JEPy describes Python functions. Lines~14--15 define two
+Python lists, which contain the counts from both of Wolf's
+dice. Lines~17-18 calculate the variances of these lists, using the
+``var'' function defined above. Line~23 defines a variable called
+``\texttt{nreps},'' which is short for ``number of repetitions.'' This
+is the number of times we will repeat Wolf's experiment. Initially,
+\texttt{nreps} is only 10, because we don't want to drown in
+output. You will eventually want to make this number larger, in order
+to get accurate answers. 
+
+Lines~25--33 define a loop, which is executed
+repeatedly---\texttt{nreps} times---once for each repetition of Wolf's
+experiment. The loop is controlled by the first line, which uses
+\texttt{for} and \texttt{range}.  These are explained in JEPy. Within
+the loop, line~26 defines and initializes a list called
+\texttt{count}, which will keep track of the number of times each face
+of the die appears. Lines~28--30 do Wolf's experiment, and line~32
+calculates the variance. Finally, line~33 prints a line of
+output. This line is there only so that the loop will generate output
+when you first run the program. You'll want to remove this line when
+you get your modified code working.
+
+\subsubsection*{Exercise}
+\begin{enumerate}
+\item Add a variable called \verb|tail_r| to the program. This
+  variable should initially equal zero. Each time through the loop, if
+  \texttt{v} is greater than or equal to \texttt{Vr}, then add 1 to
+  \verb|tail_r|. Thus, \verb|tail_r| will count the number of
+  repetitions in which the simulated variance is at least as large as
+  the observed one. Before you modify the code, think carefully. Where
+  should \verb|tail_r| be defined and initialized? Inside the inner
+  loop? Before the inner loop but inside the outer one? Or before both
+  loops?
+\item Add another variable, \verb|tail_w|, to keep track of how often
+  the simulated variance is at least as large as \texttt{Vw}.
+\item At the end of the program, and outside of the \texttt{for} loop,
+  print two lines of output, one telling us what \emph{fraction} of
+  the time the simulated variance exceeded \texttt{Vr} and the other
+  doing the same for \texttt{Vw}. The print statements should include
+  text that explains what is being printed.
+\item Once this works, remove the \texttt{REMOVE ME} line, and
+  increase \texttt{nreps} first to 100 (make sure that works) and then
+  to 1000. If you go much over 1000, your program will take a long
+  time to run.
+\item Use the results to figure out whether either of Wolf's dice were
+  unfair.
+\end{enumerate}
+Hand in your computer program, its output, and a paragraph explaining
+your conclusions.
+
+
+  

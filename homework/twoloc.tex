@@ -1,0 +1,506 @@
+\chapter{Two Loci}
+\label{hw.twoloc}
+
+\begin{exercise}
+Consider the following data set:
+\begin{center}
+\begin{tabular}{lcccc}
+Haplotype: & $AB$ & $Ab$ & $aB$ & $ab$\\
+Count:     &   30     &   70     & 50       & 20
+\end{tabular}
+\end{center}
+Use these data to answer the following questions:
+\begin{inparaenum}[(a)]
+\item
+  What are the relative frequencies $(x_1, x_2, x_3, x_4)$ of the four
+  gamete types $(AB, Ab, aB, ab)$?
+\item
+ What are the frequencies $p_A$ and $p_B$ of alleles $A$ and $B$?
+\item
+ What is $D$?
+\item
+ What is the squared correlation, $r^2$, between loci? (Don't confuse
+ this $r$ with the recombination rate, which is also often called $r$.  See
+ Gillespie's p.~105.) 
+\end{inparaenum}
+\begin{answer}
+\begin{inparaenum}[(a)]
+\item The gamete frequencies are $x_1=30/170 = 0.176$, $x_2= 70/170 = 0.412$,
+  $x_3=50/170 = 0.294$, and $x_4= 20/170=0.118$.
+\item The allele frequencies at the two loci are $p_A=x_1+x_2 = 0.588$, and
+  $p_B=x_1 + x_3 = 0.471$. 
+\item $D = x_1x_4 - x_2x_3 = -0.1003$.
+\item $r^2 = D^2/[p_A(1-p_A)p_G(1-p_G)] = 0.167$.
+\end{inparaenum}
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Answer the same questions with these data:
+\begin{center}
+\begin{tabular}{lcccc}
+Haplotype: & $AB$ & $Ab$ & $aB$ & $ab$\\
+Count:     &   80     &   30     & 10       & 45
+\end{tabular}
+\end{center}
+\begin{answer}
+\begin{inparaenum}[(a)]
+\item The gamete frequencies are $x_1=80/165=0.485$, $x_2= 30/165 = 0.182$,
+  $x_3=10/165 = 0.061$, and $x_4= 45/165 = 0.273$.
+\item The allele frequencies at the two loci are $p_A=x_1+x_2 = 0.667$, and
+  $p_B=x_1 + x_3 = 0.545$. 
+\item $D=x_1x_4 - x_2x_3 = 0.121$.
+\item $r^2 = D^2/[p_A(1-p_A)p_G(1-p_G)] = 0.267$.
+\end{inparaenum}
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Answer the same questions as before, using the data below, and
+defining $x_1$, $x_2$, $x_3$, and $x_4$ to represent the relative
+frequencies of $AG$, $AC$, $TG$, and $TC$.
+\begin{center}
+\begin{tabular}{cc}
+Locus & Locus\\
+  1   &  2 \\
+\hline
+A & G\\
+A & G\\
+A & C\\
+T & G\\
+T & G\\
+T & G\\
+T & G\\
+T & G\\
+T & C\\
+T & C\\
+\end{tabular}
+\end{center}
+\begin{answer}
+\begin{inparaenum}[(a)]
+\item $x_1=0.2$, $x_2=0.1$, $x_3=0.5$, and $x_4=0.2$.
+\item $p_A=x_1 + x_2 = 0.3$, and $p_G=x_1 + x_3 = 0.7$.
+\item $D = x_1x_4 - x_2x_3 = -0.01$.
+\item $r^2=D^2/[p_A(1-p_A)p_G(1-p_G)] = 0.0023$.
+\end{inparaenum}
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Answer the same questions as before, using the data below, and
+defining $x_1$, $x_2$, $x_3$, and $x_4$ to represent the relative
+frequencies of $AG$, $AC$, $TG$, and $TC$.
+\begin{center}
+\begin{tabular}{cc}
+Locus & Locus\\
+  1   &  2 \\
+\hline
+A & G\\
+A & C\\
+A & C\\
+A & C\\
+T & G\\
+T & G\\
+T & G\\
+T & G\\
+T & G\\
+T & C\\
+\end{tabular}
+\end{center}
+\begin{answer}
+\begin{inparaenum}[(a)]
+\item $x_1=0.1$, $x_2=0.3$, $x_3=0.5$, and $x_4=0.1$.
+\item $p_A=x_1 + x_2 = 0.4$, and $p_G=x_1 + x_3 = 0.6$.
+\item $D = x_1x_4 - x_2x_3 = -0.14$.
+\item $r^2=D^2/[p_A(1-p_A)p_G(1-p_G)] = 0.3403$.
+\end{inparaenum}
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Suppose the recombination rate is $c=1/2$ and that $D=0.2$ in
+generation~0.  What would $D$ be after (a)~1 generation, and (b)~3
+generations? (Hint: in last displayed equation on p.~104, Gillespie's
+$r$ is my $c$.)
+\begin{answer}
+(a)~After 1 generation, $D = 0.2 \times 0.5 = 0.1$.
+(b)~After 3 generations, $D = 0.2 \times 0.5^3 =0.025$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Suppose the recombination rate is $c=1/1000$ and that $D=0.3$ in
+generation~0.  What would $D$ be after (a)~1 generation, and (b)~100
+generations? 
+\begin{answer}
+(a)~After 1 generation, $D = 0.2997$.
+(b)~After 100 generations, $D = 0.2714$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+$D$ can be defined in several ways, including
+\begin{eqnarray*}
+D &=& x_1 - p_A p_B\\
+  &=& x_1 x_4 - x_2 x_3
+\end{eqnarray*}
+Prove that these are equivalent.  (Hint: Start by writing $p_A$ and
+$p_B$ in terms of the $x_i$s.  Don't forget that $\sum x_i = 1$.)
+\begin{answer} 
+\begin{eqnarray*}
+D &=& x_1 - (x_1+x_2)(x_1+x_3)\\
+  &=& x_1 - x_1^2 - x_1x_3-x_1x_2-x_2x_3
+\end{eqnarray*}
+At this point, all the numbers are in pairs except the lonely $x_1$ at
+the beginning.  Something has to be done about this lonely $x_1$,
+because we're trying to derive a formula in which \emph{all} the
+numbers are in pairs. To fix things, multiply the lonely $x_1$ by
+$x_1+x_2+x_3+x_4$.  This does not change anything because these
+numbers sum to 1.  We get
+\begin{eqnarray*}
+D &=& x_1^2+x_1x_2+x_1x_3+x_1x_4 - x_1^2 - x_1x_3\\
+  &&\mbox{} -x_1x_2-x_2x_3\\
+  &=& x_1x_4 -x_2x_3
+\end{eqnarray*}
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+$D$ can be defined in several ways, including
+\begin{eqnarray*}
+D &=& x_1 - p_A p_B\\
+-D &=& x_2 - p_A (1-p_B)\\
+\end{eqnarray*}
+Prove that these are equivalent. (Hint: remember that $x_1$, $x_2$,
+$x_3$, and $x_4$ are the frequencies of gametes $AB$, $Ab$, $aB$, and
+$ab$.) 
+\begin{answer}
+One approach is to add the two expressions on the right side. If both
+equations are correct, then this sum should equal $D-D=0$. Summing the
+two equations gives
+\begin{eqnarray*}
+D - D &=& x_1 - p_A p_B + x_2 - p_A (1-p_B)\\
+  &=& x_1 + x_2 - p_A(p_B + 1 - p_B)\\
+  &=& x_1 + x_2 - p_A\\
+  &=& p_A - p_A\\
+  &=& 0
+\end{eqnarray*}
+The two expressions sum to zero, so the two equations are equivalent.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+\label{prob.2loc-xD}
+Suppose that, in generation~1, half the gametes are $A_1B_2$ and the
+other half are $A_2B_1$.  What are the values of (a)~the four gamete
+frequencies $(x_1,x_2,x_3,x_4)$ and (b)~the coefficient, $D$, of
+linkage disequilibrium?
+\begin{answer}
+  (a)~$(x_1,x_2,x_3,x_4) = (0,1/2,1/2,0)$; 
+  (b)~$D = x_1 x_4 - x_2 x_3 = -1/4$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+\label{prob.2loc-w}
+Now assume that selection operates at the gamete stage, that alleles
+$B_1$ and $B_2$ are neutral, that allele $A_1$ has fitness $1+s$
+relative to $A_2$. What are (a)~the four gametic fitnesses, $(w_1,
+w_2, w_3, w_4)$, and (b) the mean gametic fitness, $\bar w$. In
+calculating the mean, use the gametic relative frequencies
+$(x_1,x_2,x_3,x_4)$ that you calculated in
+problem~\ref{prob.2loc-xD}. Your answers will be functions of a single
+unknown value, $s$.
+\begin{answer}
+The gametic fitnesses are $(w_1, w_2, w_3, w_4) = (1+s, 1+s, 1, 1)$,
+and mean fitness is $\bar w = \sum_i w_i x_i = 1+s/2$. 
+\end{answer}
+\end{exercise}
+
+We have assumed that selection operates in the gamete stage. As
+explained in lecture, this model implies that the expected gamete
+frequencies in the following generation are
+\begin{eqnarray*}
+x'_1 &=& w_1 (x_1 -cD)/\bar w\\
+x'_2 &=& w_2 (x_2 +cD)/\bar w\\
+x'_3 &=& w_3 (x_3 +cD)/\bar w\\
+x'_4 &=& w_4 (x_4 -cD)/\bar w
+\end{eqnarray*}
+where $\bar w = \sum_i x_i w_i$ is the mean fitness.
+
+\begin{exercise}
+\label{prob.2loc-nextgen}
+Assume that the recombination rate is $c=1/4$, and take the other
+values $(w_i, \bar w, x_i, D)$ from your answers to
+problems~\ref{prob.2loc-xD} and ~\ref{prob.2loc-w}.  What are the
+expected values of the four gamete frequencies in the following
+generation? Your answers will be functions of a single unknown value,
+$s$.
+  \begin{answer}
+\begin{eqnarray*}
+  x'_1 &=& (1+s) (0 +1/16)/(1+s/2)\\
+       &=& \left(\frac{1}{16}\right)
+           \left(\frac{1+s}{1+s/2}\right)\\
+x'_2 &=& (1+s) (1/2 -1/16)/(1+s/2)\\
+     &=& \left(\frac{7}{16}\right)
+         \left(\frac{1+s}{1+s/2}\right)\\
+x'_3 &=& (1/2 -1/16)/(1+s/2)\\
+     &=& \left(\frac{7}{16}\right)
+         \left(\frac{1}{1+s/2}\right)\\
+x'_4 &=& (0 +1/16)/(1+s/2)\\
+     &=& \left(\frac{1}{16}\right)
+         \left(\frac{1}{1+s/2}\right)
+\end{eqnarray*}
+To simplify this a little further, some students might assume that
+$s\ll 1$, so that $(1+s)/(1+s/2) \approx 1+s/2$ and $1/(1+s/2) \approx
+1-s/2$, ignoring terms of order $s^2$. That is OK too. With that
+approximation, the answers would be
+\begin{eqnarray*}
+x'_1 &\approx& (1/16)(1+s/2)\\
+x'_2   &\approx& (7/16)(1+s/2)\\
+x'_3   &\approx& (7/16)(1-s/2)\\
+x'_4   &\approx& (1/16)(1-s/2)
+\end{eqnarray*}
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Soon after a selective sweep has finished, \begin{inparaenum}[\it (a)]
+\item what would you expect of nucleotide diversity at nearby loci?
+  More diversity, less diversity, or about the same amount as before
+  the sweep?
+\item Is this effect larger or smaller in regions of low recombination?
+\end{inparaenum}
+\begin{answer}
+(a)~Diversity should be lower at nearby loci. (b)~This effect is
+larger in regions of low recombination.
+\end{answer}
+\end{exercise}
+
+If two sites are 1~centimorgan (cM) apart on a chromosome, then the
+rate of recombination between them is $c = 1/100$.  (This is the
+definition.)  How does this relate to physical distance along the
+chromosome?  In general, 1~cM is about a million base pairs---a
+``megabase''---for humans.  In the exercise below, you will use this
+generalization to calculate the probability $\lambda$ of recombination
+between two adjacent nucleotides.
+
+As a first approximation, you might suppose that
+\[
+c = \lambda k
+\]
+where $k$ is the physical distance between the two sites---the number of
+nucleotides between them.  Our rule of thumb says that $c=0.01$ when
+$k=10^{6}$.  Thus,
+\[
+\lambda = 0.01 / 10^{6} = 10^{-8}
+\]
+The rate of recombination between adjacent nucleotides is about
+$10^{-8}$. 
+
+But this calculation is only approximate.  To see why, consider sites A
+and B below.
+\begin{verbatim}
+               Before         
+     --A-------------------B
+                              
+     --a-------------------b
+\end{verbatim}
+
+\begin{verbatim}
+                After          
+     --A---\ /-----\ /-----B 
+            X       X         
+     --a---/ \-----/ \-----b
+\end{verbatim}
+In the ``Before'' picture, we see two chromosomes, one with the $AB$
+haplotype, the other with $ab$.  In the ``After'' picture, two
+cross-overs have happened, yet we still have the same two haplotypes.
+There were cross-overs but no recombination.  This happens whenever
+the number of cross-overs between two loci is even.  The probability
+$(c)$ of recombination is the probability that the number of
+cross-overs is odd.
+
+In 1919, JBS Haldane calculated the probability of an odd number of
+crossovers.  His answer, now known as ``Haldane's mapping function,''
+is 
+\[
+c = (1 - e^{-2\lambda k})/2
+\]
+provided that cross-overs occur at a constant rate along the
+chromosome.
+\begin{exercise}
+ Our rule of thumb (a centimorgan is a megabase) says that
+  $c=1/100$ when $k=10^6$.  Substitute these values into Haldane's
+  formula above, and solve for $\lambda$.  How does your result
+  compare to the approximate one $(\lambda=10^{-8})$ that we got
+  above? 
+\begin{answer} 
+$\lambda = 1.0101\times 10^{-8}$, which is within about 1\% of the
+  approximate value. The approximate formula is quite accurate.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Let's try extrapolating in the other direction. Suppose that two sites
+are separated by 50 megabases (\/$5\times 10^7$ bases). 
+Estimate $c$, assuming that $\lambda=10^{-8}$, and using 
+\begin{inparaenum}[(a)]
+\item the approximate formula, and
+\item Haldane's mapping function. Finally,
+\item comment of the accuracy of the approximation in this case.
+\end{inparaenum}
+\begin{answer} 
+\begin{inparaenum}[(a)]
+\item The approximate formula gives $c = 10^{-8} \times 5\times 10^7
+  =0.5$.
+\item Haldane's mapping function gives $c = (1 - \exp(2 \times 10^{-8}
+  \times 5\times 10^7))/2 = 0.316$.
+\item The approximation is poor when the distance between loci is
+  large. 
+\end{inparaenum}
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+ Make a graph.  The horizontal axis represents $\lambda k$ and
+ should run from 0 to 0.5.  On this graph, plot 
+\begin{inparaenum}[(a)]
+\item the approximate formula $c \approx \lambda k$, and 
+\item Haldane's mapping function, as defined above.  The vertical
+  difference between the two lines shows the error involved in the
+  approximate formula.  
+\item Over what range of $\lambda k$ is the approximation
+  satisfactory?  
+\item Translate this range into units of base pairs (i.e.\ $k$),
+  assuming that $\lambda = 10^{-8}$. 
+\end{inparaenum}
+\begin{answer} 
+\begin{center}
+\mbox{\beginpicture
+\setcoordinatesystem units <1.2\columnwidth, 1.2\columnwidth>
+\setplotarea x from 0.0 to 0.5, y from 0.0 to 0.5
+\axis left label {$c$}
+  ticks numbered from 0.0 to 0.5 by  0.1 /
+\axis bottom label {$\lambda k$}
+  ticks numbered from 0.0 to 0.5 by 0.1 /
+\setdashes
+% Approximation: c = l*k
+\plot
+0 0
+0.5 0.5
+/
+\setsolid
+% Haldane's mapping function
+\plot
+0.000 0.000
+0.026 0.026
+0.053 0.050
+0.079 0.073
+0.105 0.095
+0.132 0.116
+0.158 0.135
+0.184 0.154
+0.211 0.172
+0.237 0.189
+0.263 0.205
+0.289 0.220
+0.316 0.234
+0.342 0.248
+0.368 0.261
+0.395 0.273
+0.421 0.285
+0.447 0.296
+0.474 0.306
+0.500 0.316
+/
+\endpicture}\\
+\end{center}
+This figure shows both 
+\begin{inparaenum}[(a)]
+\item the approximation (dashes), and
+\item Haldane's mapping formula (solid line).
+\item The approximation looks good for $\lambda k <
+0.1$.  On a genome-wide average, $\lambda\approx10^{-8}$ for
+humans. Consequently, 
+\item the approximation should work well when $k < 10^7$. In other
+  words, it should work for sites separated by no more than 10
+  megabases.
+\end{inparaenum}
+\end{answer}
+\end{exercise}
+
+On p.~110, Gillespie shows that a selective sweep removes variation
+at all sites such that (roughly) that $c/s < 0.1$, where $c$ is the
+recombination rate with the selected site.  (This applies both
+upstream and downstream from the selected site.)  
+\begin{exercise}
+How large is the affected region of the chromosome if $\lambda =
+10^{-8}$ and $s=0.001$?  
+\begin{answer}
+  We are looking for sites such that $c/s < 0.1$, or $c < 0.1s$, where
+  $c$ is the recombination rate between the site in question and the
+  selected site. For this problem, $s=0.001$, so $c < 10^{-4}$. We
+  established above that when $c$ less than 0.1 or so, it is
+  approximately equal to $\lambda k$, where $\lambda = 10^{-8}$, and
+  $k$ is the distance between the sites in base pairs. Our largest $c$
+  value is much smaller than 0.1, so we can use this approximate
+  formula. Using this formula, $c = 10^{-8} k < 10^{-4}$, so $k <
+  10,000$. Variance is removed from a region twice this size, because
+  the region extends for 10,000 bases each way from the selected
+  site. The size of the affected region is therefore 20,000 bases, or
+  20~kb.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+How large is the affected region of the chromosome if $\lambda =
+10^{-8}$ and $s=0.1$?
+  \begin{answer} 
+The affected region covers 2~Mb
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+ In Europeans, the allele for lactase persistence sits on a
+  region of LD that extends for a megabase.  The persistence allele is
+  still polymorphic, but let us suppose that it sweeps to fixation,
+  removing most of the variation from this entire megabase-sized
+  region.  Based on your answer to the previous question, how strong
+  would this selection need to be?
+\begin{answer}
+ $s=0.05$.
+\end{answer}
+\end{exercise}
+
+\input{tablctseq}
+
+\begin{exercise}
+  Identify and describe one recombination event in
+  table~\ref{tab.lctseq}. (Don't use any of the events described in
+  the answered questions in the back.)
+\begin{answer}
+There are many possible answers. Here are a few examples.
+\begin{inparaenum}[(a)]
+\item Sites 1--12 in sequences 41--42.
+\item Sites 1--15 in sequence 31.
+\item Sites 38-42 in sequences 40--49, excluding sequence 46.
+\end{inparaenum}
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  Identify and describe another recombination event in
+  table~\ref{tab.lctseq}. (Don't use any of the events described in
+  the answered questions in the back.)
+\begin{answer}
+There are many possible answers. Here are a few examples.
+\begin{inparaenum}[(a)]
+\item Sites 1--12 in sequences 41--42.
+\item Sites 1--15 in sequence 31.
+\item Sites 38-42 in sequences 40--49, excluding sequence 46.
+\end{inparaenum}
+\end{answer}
+\end{exercise}
+
+

@@ -1,0 +1,26 @@
+\contentsline {chapter}{\numberline {1}Probability}{3}{}%
+\contentsline {chapter}{\numberline {2}Random mating}{6}{}%
+\contentsline {section}{\numberline {2.1}Frequencies of alleles and genotypes}{6}{}%
+\contentsline {section}{\numberline {2.2}Using $F$-statistics}{6}{}%
+\contentsline {section}{\numberline {2.3}Final words}{7}{}%
+\contentsline {chapter}{\numberline {3}Genetic Drift}{8}{}%
+\contentsline {section}{\numberline {3.1}Drift acting alone}{8}{}%
+\contentsline {section}{\numberline {3.2}Mutation and drift}{9}{}%
+\contentsline {chapter}{\numberline {4}Gene Genealogies}{10}{}%
+\contentsline {section}{\numberline {4.1}Gene genealogies without mutation}{10}{}%
+\contentsline {section}{\numberline {4.2}Gene genealogies with mutation}{10}{}%
+\contentsline {chapter}{\numberline {5}Mismatch Distribution and Spectrum}{14}{}%
+\contentsline {chapter}{\numberline {6}Neutral Theory}{17}{}%
+\contentsline {section}{\numberline {6.1}The Jukes-Cantor model of nucleotide substitution}{17}{}%
+\contentsline {subsection}{\numberline {6.1.1}Deriving the Jukes-Cantor formula}{18}{}%
+\contentsline {section}{\numberline {6.2}Other models of substitution}{18}{}%
+\contentsline {section}{\numberline {6.3}Rodent mitochondrial DNA sequences}{19}{}%
+\contentsline {chapter}{\numberline {7}Selection}{20}{}%
+\contentsline {section}{\numberline {7.1}How selection changes allele frequencies}{20}{}%
+\contentsline {section}{\numberline {7.2}Selection and drift}{21}{}%
+\contentsline {chapter}{\numberline {8}Two Loci}{23}{}%
+\contentsline {chapter}{\numberline {9}Inbreeding}{27}{}%
+\contentsline {chapter}{\numberline {10}Population Structure}{28}{}%
+\contentsline {chapter}{\numberline {11}Admixture}{30}{}%
+\contentsline {chapter}{\numberline {12}Quantitative Characters}{31}{}%
+\contentsline {chapter}{\numberline {A}Answers}{34}{}%

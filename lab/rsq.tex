@@ -1,0 +1,303 @@
+\chapter{Linkage Disequilibrium in the Human Genome}
+\label{ch.rsq}
+\setcounter{cenumEnumi}{0}
+In Project~\ref{ch.twolocsim} we modeled selection and drift at two linked
+loci.  The focus there was on \emph{linkage disequilibrium} (LD),
+which was measured using the statistic $r$, a form of correlation
+coefficient.  It is easy to estimate $r$, provided that we can tell
+which nucleotides occur together on individual chromosomes.
+Unfortunately, we are often ignorant about this.  We are ignorant, in
+other words, about ``gametic phase.''  This makes it hard to measure
+LD with any data set that---like the HapMap---consists of unphased
+genotypes.
+
+There are several solutions.  The simplest is to estimate LD using a
+second correlation coefficient (discussed below), which is easy to
+estimate from diploid genotypes at two loci.  This is useful, because
+it turns out that this second correlation is a good estimate of the
+first\footnote{Rogers, A.R. \& C. Huff. 2009. \emph{Genetics}
+  182(3):839--844.}.  To distinguish between the two correlation
+coefficients, let us refer to the first as $r_H$ (since it correlates
+Haploid gametes), and to the second as $r_D$ (since it correlates
+Diploid genotypes).  In this project, we will estimate $r_D$, and
+interpret its value as an estimate of $r_H$.
+
+In this project we use these estimates to study how LD varies across
+large regions of chromosome.  Each of you will study a different
+chromosome.  You'll compare the pattern of LD in three populations.
+This project will require working with correlations, so that is where
+we begin.
+
+\section{Correlating diploid genotypes} 
+In raw HapMap data, each genotype is a character string.  The
+\texttt{pgen} module, however, recodes these as integers, as explained
+on page~\pageref{pg.recoding}.  For example, genotypes TT, CT, and CC
+might be recoded as 0, 1, and 2.  The table below shows genotypes at
+two neighboring SNP loci on chromosome~22 in the Utah HapMap
+population (CEU). It was made by the program sketched
+below.\label{pg.snptab}
+\begin{leftindent}
+\begin{minipage}{0.5\textwidth}
+\begin{verbatim}
+locus A [rows] (C/T) at 22181701
+locus B [cols] (A/G) + 793
+      0  1 2
+ 0 [ 90 41 2]
+ 1 [  0 21 5]
+ 2 [  0  0 3]
+rAB = 0.612, r^2 = 0.375, n = 162
+\end{verbatim}
+\end{minipage}
+\end{leftindent}
+Locus~A is at position 22181701, and locus~B is 793 base pairs to the
+right of it. Locus~A has two nucleotides, C and T, whereas locus~B has
+two others, A and G. The $3\times 3$ table shows the distribution of
+genotypes at the two loci, with labels 0, 1 and 2 to indicate the
+genotypic values at the two loci.  If you study the table, you'll see
+that the two loci are not independent.  Individuals in row~0 tend to
+fall in column~0; those in row~1 tend to fall in column~1; and all
+those in row~2 fall in column~2.  There is thus a positive
+relationship between the genotypic values of the two loci.  This
+reflects a similar association in the underlying genotypes:
+individuals with genotype TT at locus~A tend to have genotype~GG at
+locus~B, and so on.  The last line of the report above summarizes the
+strength of this association.  The diploid correlation coefficient is
+$r_D = 0.612$, and its square is $r_D^2 = 0.375$.  Now this is
+\emph{not} the same as the statistic $r_H$ that we used in
+Project~\ref{ch.twolocsim} to measure LD.  Yet as discussed above, it
+is a good estimate of $r_H$.  This justifies our use of it in what
+follows as a measure of LD.
+
+The correlation between two variables is based on their covariance,
+and the concept of covariance is related to that of variance.  So let
+us begin there.  As explained in section~\ref{Pr-sec.variance} of
+JEPr, the variance $V_X$ of $X$ is its average squared deviation from
+the mean:
+\[
+V_X = E[(X - \bar X)^2].
+\]
+Similarly, the covariance (JEPr section~\ref{Pr-sec.covariance}) is
+the average product of the deviations of $X$ and $Y$ from their
+respective means:
+\[
+\cov(X,Y) = E[(X - \bar X)(Y - \bar Y)].
+\] 
+$\cov(X,Y)$ is positive when large values of $X$ often pair with large
+$Y$, negative when large $X$ often pairs with small $Y$, and zero when
+neither variable predicts the other.  The maximum possible (absolute)
+value of $\cov(X,Y)$ is $\sqrt{V_X V_Y}$, so the natural way to define
+a dimensionless correlation coefficient is as
+\[
+r_D = \cov(X,Y)/\sqrt{V_XV_Y},
+\]
+which can range from $-1$ to $+1$. 
+
+\section{Calculating variances and covariances}
+\label{sec.varcov}
+The convenient ways to compute variances and covariances are also
+closely related. You may recall from JEPr that $V_X = E(X^2) -
+E(X)^2$ and that $\cov(X,Y) = E(XY) - E(X)E(Y)$. Thus, we can
+calculate the variance from the averages of $X$ and of $X^2$. The
+covariance is only slightly more complicated: we need the averages of
+$X$, of $Y$, and of the ``cross-product'' $XY$.  In JEPr, these
+averages were across probability distributions, because we were
+discussing the variances and covariances of random variables.  We are
+now concerned with data, so we average across the values in our data.
+Apart from that, the procedure is the same.
+
+You will not need to calculate variances in today's main assignment,
+for they are calculated automatically when you create an object of
+type \texttt{hapmap\_dataset}.  You will however need to calculate
+covariances.  The first step in today's assignment is to figure out
+how.  It will help to think first about variances, because that
+calculation is so similar.  Consider the listing below.
+\begin{leftindent}
+\listinginput[5]{1}{var.py}
+\end{leftindent}
+This code is available on the class web site, where it is called
+\texttt{var.py}.  Download it, run it, and see what it does.  You
+should get two lines of output, which report the variances of the two
+data sets.
+
+How would this code need to change if we wanted to calculate a
+covariance rather than a variance?  For one thing, we would want to
+step through the two data lists simultaneously in order to accumulate
+the sums of $X$, $Y$, and $XY$.  There are several ways to do this,
+the simplest of which is involves a facility called \texttt{zip},
+which you have not yet seen.  Let us pause for a moment to discuss
+this new facility.
+
+\paragraph{\texttt{zip(xv, yv)}}\label{pg.zip-intro} is a Python
+facility that steps through the elements of several sequences (lists,
+tuples, strings, or whatever).  For example,
+\begin{leftindent}
+\begin{verbatim}
+>>> xv = ['x1', 'x2']
+>>> yv = ['y1', 'y2']
+>>> for x, y in zip(xv, yv):
+...     print(x, y)
+... 
+x1 y1
+x2 y2
+\end{verbatim}
+\end{leftindent}
+Each time through the loop, \texttt{x} and \texttt{y} are
+automatically set equal to corresponding elements from the lists
+\texttt{xv} and \texttt{yv}.  Here we have ``zipped'' a pair of lists,
+but one can also zip three or more.
+
+To use this facility in calculating a covariance, you would begin with
+a framework like this:
+\begin{leftindent}
+\begin{verbatim}
+def cov(xvec, yvec):
+    mx = my = mxy = 0.0
+    for x, y in zip(xvec, yvec):
+\end{verbatim}
+\end{leftindent}
+
+\subsection*{Exercise}
+\begin{cenum}
+\item Write a new function called \texttt{get\_cov}, which calculates
+  the covariance between two lists, and use it to print the covariance
+  as the last line in the program.
+\end{cenum}
+
+\section{Smoothing data}
+\label{sec.smooth}
+In this project, you will be comparing LD between tens of thousands of
+pairs of loci.  Without some way of simplifying the output, you would
+drown in data.  In the end, you will plot the results rather than just
+staring at numbers.  This will help, but it is not enough---the noise
+in the LD estimates would still obscure the pattern.  We can get rid
+of much of this noise by \emph{smoothing} the data.  This is the
+purpose of the \texttt{scatsmooth}\label{pg.scatsmooth-intro}
+function, which is available within \texttt{pgen.py} and is described
+on page~\pageref{pg.scatsmooth}.
+
+There are many ways to smooth data, and \texttt{scatsmooth} implements
+perhaps the simplest.  It divides the $X$ axis into bins of equal
+width, and calculates the mean of $Y$ within each bin.  For example,
+suppose that we have data in two Python lists called \texttt{x} and
+\texttt{y}.  To smooth them, we could type
+\begin{leftindent}
+\begin{verbatim}
+>>> bin_x, bin_y, bin_n = scatsmooth(x, y, 5, 0, 40)
+\end{verbatim}
+\end{leftindent}
+As you can see, \texttt{scatsmooth} takes five arguments:
+\begin{inparaenum}[(1)]
+\item \texttt{x}, a list of horizontal coordinate values;
+\item \texttt{y}, a list of vertical coordinate values;
+\item the number of bins (5 in this case);
+\item the low end of the first bin; and
+\item the high end of the last bin.
+\end{inparaenum}  
+In this example, we have asked \texttt{scatsmooth} to divide the
+interval from~0 to~40 into~5 bins.  If you leave off the last two
+arguments, \texttt{scatsmooth} will calculate them from the data.
+\texttt{scatsmooth} returns three values, each of which is a list.
+The first (\verb|bin_x| in this example) contains the midpoints of the
+$X$-axis values of the bins.  The second (\verb|bin_y|) contains the
+mean $Y$-axis values.  The third returned list (\verb|bin_n|) contains
+the numbers of observations within the bins.  In your own code, you
+can name the returned values whatever you like; you don't need to call
+them \verb|bin_x|, \verb|bin_y|, and \verb|bin_n|.
+
+We can now manipulate the three returned lists any way we please.  For
+example, here is a listing that prints their values.
+\begin{leftindent}
+\begin{verbatim}
+>>> for xx, yy, nn in zip(bin_x, bin_y, bin_n):
+...     print("%8.3f %8.3f %4d" % (xx, yy, nn))
+... 
+   4.000    4.000    5
+  12.000   19.000   10
+  20.000   39.000   10
+  28.000   59.000   10
+  36.000   74.000    5
+\end{verbatim}
+\end{leftindent}
+Experiment with \texttt{scatsmooth} until you understand how it works.
+
+\section{An incomplete program}
+On the website, you will find a program called \texttt{rscaninc.py},
+which is an incomplete version of the program you will need for this
+project.  Here is the listing:
+\begin{leftindent}
+\listinginput[5]{1}{rscaninc.py}
+\end{leftindent}
+You will need to insert code of your own just after lines~9 and~28.
+You do not need to modify anything else.  Nonetheless, let us step
+through the existing code to see what it does.  
+
+Lines 1--7 import modules and define variables for later use.  The
+main loop (lines~15--23) looks at a large number (\texttt{nreps}) of
+randomly-selected SNPs, which we will call ``focal SNPs.''  The inner
+loop compares this focal SNP with each neighboring SNP within an
+adjoining region whose size (in kb) is given by the variable
+\texttt{window}.  You need not worry about how lines~19--21 work.  All
+you need to know is this: by the time we reach line~22, \texttt{i} is
+the index of a random SNP, and \texttt{j} is the index of a
+neighboring SNP.  The goal is to find out (a)~the distance between
+these two SNP loci in kb, and (b)~their LD value, $r_D^2$.  The first
+of these data values is calculated for you: it is in the variable
+\texttt{kilobases}.  The second is obtained from a call to
+\texttt{get\_rsq}, which you can see on line~23.  At the bottom of the
+loop (lines~22--23), both data values (\texttt{kilobases} and $r_D^2$)
+are appended to their respective lists.  In line~25 we have dropped
+out of the main loop, and both data lists are complete.  The program
+prints a line of output and stops.
+
+\subsection*{Exercise}
+In this exercise, the goal is to examine the relationship between LD
+and the distance that separates loci on a chromosome.  You will study
+the LD-distance relationship in three different human populations.
+\begin{cenum}
+\item We assume that you already know which chromosome you are working
+  with.  If not, refer to section~\ref{sec.randpopchrom} of
+  Project~\ref{ch.hapspec}.
+\item This week you will need HapMap data files for three populations,
+  \texttt{CEU}, \texttt{YRI}, and \texttt{JPT}.  Please download them
+  as explained in appendix~\ref{ch.gettingdata}.  For debugging, you
+  may want to use the dummy data set described on
+  page~\pageref{sec.gettingdummy}.
+\item Download \texttt{rscaninc.py} from the class web site and save
+  it as \texttt{rscan.py}.  Modify it so that it specifies the
+  right chromosome.
+\item Paste your \texttt{get\_cov} function definition into the
+  program just after line~9.  Immediately below, define a function
+  called \verb|get_rsq|, which returns $r_D^2$.
+\item At the end of the program, add code that uses
+  \texttt{scatsmooth} to smooth the data over the interval from 0 to
+  \texttt{window}, using 20 bins.  Treat \texttt{distvec} as your
+  $X$-axis variable and \texttt{rsqvec} as your $Y$-axis variable.
+  Then print the smoothed data in a table.  The table should contain a
+  row for each bin, one column for \texttt{dist}, one for $r_D^2$,
+  and one for $n$ (the numbers of observations within bins).
+\end{cenum}
+Make sure your program runs before proceeding.
+\begin{cenum}
+\item Set \texttt{nreps} to 500 and \texttt{window} to 200.  Run the
+  program once with \texttt{pop} set equal to each of the following
+  values: \texttt{CEU}, \texttt{YRI}, and \texttt{JPT}.  These
+  values refer to the European, African, and Japanese populations.
+  If you have been using the dummy data set, you will also need to
+  reset \texttt{chromosome}.
+\item Use the data to make a graph with \texttt{dist} on the
+  horizontal axis and $r_D^2$ on the vertical.  You should end up
+  with three curves---one for each population---on a single graph.
+  You may do this by hand, with \emph{Excel}, or however you please.
+  Label it so that we can tell which curve refers to which population.
+\item Write a paragraph or two describing the pattern in the data and
+  (if possible) suggesting an explanation.  Pay particular attention
+  to the differences (if any) between populations.
+\end{cenum}
+
+\paragraph*{What to turn in} 
+\begin{inparaenum}[(1)]
+\item your code,
+\item the output from the three runs, 
+\item the graph, and
+\item your prose describing and interpreting the results.
+\end{inparaenum}

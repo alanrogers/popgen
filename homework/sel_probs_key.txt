@@ -1,0 +1,31 @@
+Here's a quick-and-dirty key to homework 5.
+
+1. Plug the values into Gillespie's equation 3.3.
+
+2. Plug into the formulas for w_1 and w_2, which are equal in this case to
+
+  w_1 = 1 - qhs
+  w_2 = 1 - phs - qs
+
+3. Plug into G. 3.2 and 3.3 to get delta p, then calculate p' = p + delta
+p.
+
+4. Graph of delta p equals 0 at p=0, rises rapidly to a maximum value and
+then falls gradually.  The maximum occurs at a value of p that is < 0.5.
+
+5. Goes up, then down, then up again.  Equals zero at p=0, somewhere
+in the middle, and at p=1.
+
+6. Like the one above, but upside down.  Goes down, then up, then down
+again.
+
+7. Let p stand for the frequency of R.  In the first generation, p = 1
+- sqrt(200/1000).  In the next generation, p' = 1 - sqrt(250/1000).
+The problem assumes that w11 = w12 = 1, and w22 = 1-s.  With these
+assumptions, wbar (bottom of p 61) is 1 - q^2 s, and the equation at
+the top of p 62 becomes p' = p/(1-q^2 s).  You can solve this for s,
+since we know p and p'.
+
+8. With h=1/2, G 3.2 becomes delta p = pqs/(2 Wbar).  If pq ~= 1/4 and 
+Wbar ~= 1, this becomes delta p ~= s/8.  In the graph, F goes from 0.4
+to 0.6 in about 10 generations, so delta p ~= 0.06, and s ~= 1/2.

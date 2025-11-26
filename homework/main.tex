@@ -1,0 +1,64 @@
+%\includeonly{neutraltheo}
+\documentclass[twocolumn,letterpaper]{report}
+\usepackage{etex,hwchap}
+\usepackage{graphicx}
+\usepackage{paralist}
+\usepackage{ragged2e}
+\usepackage{pictex}
+\usepackage{alltt}
+\usepackage{url}
+\usepackage{oddanswers}
+\usepackage[letterpaper,margin=1.1in]{geometry}
+\usepackage[sort,numbers]{natbib}
+%\usepackage{verbatim}
+\setcounter{showeven}{1}
+%\setcounter{showodd}{1}  % for key
+\setcounter{showodd}{0}  % for students
+%\usepackage{extsizes}
+%\numberexercises{chapter}
+%\exercisehead{$\star$\,\footnotesize EXERCISE \normalsize\bf}{}
+%\pagestyle{headings}
+\pagestyle{myheadings}
+\markboth{Anth/Biol 5221 Homework}{Anth/Biol 5221 Homework}
+\newcommand{\Chi}{\mathcal{X}}
+\setlength{\parindent}{1.5em}
+\usepackage{xr}
+\externaldocument[G-]{../txt/descrip}
+\externaldocument[G-]{../txt/coalescent}
+\externaldocument[G-]{../txt/theta}
+\externaldocument[G-]{../txt/spectrum}
+\externaldocument[G-]{../txt/mismatch}
+\externaldocument[JEPr-]{../prob/main}
+\begin{document}
+\title{Homework Excercises for Human Evolutionary Genetics}
+%\title{Homework Key for Human Evolutionary Genetics}
+\author{Alan R. Rogers\thanks{Department of Anthropology,
+University of Utah, Salt Lake City, UT 84112} \and Jon
+Seger\thanks{Department of Biology, University of Utah, Salt Lake
+City, UT 84112}}
+\maketitle
+\tableofcontents
+\include{intro}
+\include{prob}
+\include{randommate}
+\include{drift}
+\include{theta}
+\include{mmspec}
+\include{neutraltheo}
+\include{seln}
+\include{twoloc}
+\include{inbreed}
+\include{pstruc}
+\include{admix}
+\include{qchar}
+
+\Closesolutionfile{answers}
+\appendix
+\chapter{Answers}
+\label{ch.answers}
+\mbox{}\\
+\IfFileExists{answers.tex}{\input{answers.tex}}{}
+
+\bibliographystyle{plainnat}
+\bibliography{defs,arr,arrunpub,molrec,tree,math,sexdimorph}
+\end{document}

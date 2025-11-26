@@ -1,0 +1,200 @@
+\chapter{Linkage Disequilibrium between Neighboring HapMap SNPs}
+\label{ch.estld}
+In lab~\ref{ch.twolocsim} we modeled selection and drift at two linked
+loci.  The focus there was on \emph{linkage disequilibrium} (LD),
+which was measured using the statistic $r$, a form of correlation
+coefficient.  It is easy to estimate $r$, provided that we can tell
+which nucleotides occur together on individual chromosomes.
+Unfortunately, we are often ignorant about this.  We are ignorant, in
+other words, about ``gametic phase.''  This makes it hard to measure
+LD with any data set that---like the HapMap---consists of unphased
+genotypes.
+
+There are several solutions to this problem.  The simplest is to
+estimate LD using a second correlation coefficient (discussed below),
+which is easy to estimate from diploid genotypes at two loci.  This is
+useful, because it turns out that this second correlation is a good
+estimate of the first\footnote{Rogers, A.R. \&
+  C. Huff. 2009. \emph{Genetics} 182(3):839--844.}.  To distinguish
+between the two correlation coefficients, let us refer to the first as
+$r_H$ (since it correlates Haploid gametes), and to the second as
+$r_D$ (since it correlates Diploid genotypes).  In this lab, we will
+estimate $r_D$, and interpret its value as an estimate of $r_H$.
+
+This is the first of several labs that use HapMap data to study LD.
+Our ultimate goal is to see how ongoing selection can be detected
+through its effects on large-scale patterns of LD. However, in this
+lab, we will examine these patterns at the smallest scale, by studying
+genotypic associations between neighboring HapMap SNPs which are
+usually just a few hundred to a few thousand base pairs apart. We will
+learn some new tools from Python, and with them you will calculate
+variances, covariances and correlations, which are important in many
+contexts in addition to this one.
+
+\section{Correlating diploid genotypes} 
+In raw HapMap data, each genotype is a character string, such as
+``AT,'' ``GG,'' and so on.  Before calculating the correlation between
+genotypes, we must recode them as numbers.  This is done for you
+automatically when you use the \texttt{pgen} module to store data as
+an object of type \texttt{hapmap\_dataset}.  (See
+page~\pageref{pg.recoding}.)  In this format, each genotype is an
+integer (0, 1, or 2), representing the number of copies of an
+arbitrarily-chosen allele within that genotype.  For example, if we
+were counting allele C, then genotypes TT, CT, and CC would be recoded
+as 0, 1, and 2.  This is exactly the recoding that was used for
+locus~A, in the example we are about to discuss.
+
+The table below shows genotypes at two neighboring SNP loci on
+chromosome~22 in the Utah HapMap population (CEU). It was made by the
+program sketched below, which you will finish.\label{pg.snptab}
+\begin{leftindent}
+\begin{verbatim}
+locus A [rows] (C/T) at 22181701
+locus B [cols] (A/G) + 793
+      0  1 2
+ 0 [ 90 41 2]
+ 1 [  0 21 5]
+ 2 [  0  0 3]
+rAB = 0.612, r^2 = 0.375, n = 162
+\end{verbatim}
+\end{leftindent}
+Locus~A is at position 22181701, and locus~B is 793 base pairs to the
+right of it. Locus~A has two nucleotides, C and T, whereas locus~B has
+two others, A and G. The $3\times 3$ table shows the distribution of
+genotypes at the two loci, with labels ``0,'' ``1'' and ``2'' to
+indicate the genotypic values at the two loci.  If you study the
+table, you'll see that the two loci are not independent.  Individuals
+in row~0 tend to fall in column~0; those in row~1 tend to fall in
+column~1; and all those in row~2 fall in column~2.  There is thus a
+positive relationship between the genotypic values of the two loci.
+This reflects a similar association in the underlying genotypes:
+individuals with genotype TT at locus~A tend to have genotype~GG at
+locus~B, and so on.  The last line of the report above summarizes the
+strength of this association.  The diploid correlation coefficient is
+$r_D = 0.612$, and its square is $r_D^2 = 0.375$.  Now this is
+\emph{not} the same as the statistic $r_H$ that we used in
+lab~\ref{ch.twolocsim} to measure LD.  Yet as discussed above, it is a
+good estimate of $r_H$.  This justifies our use of it in what follows
+as a measure of LD.
+
+The correlation between two paired random variables is their
+standardized covariance. Recall that the variance $V_X$ of a random
+variable $X$ is its average squared deviation from its mean:
+\[
+V_X = E[(X - \bar X)^2].
+\]
+Similarly, the covariance $\cov(X,Y)$ is the average product of the
+deviations of $X$ and $Y$ from their respective means:
+\[
+\cov(X,Y) = E[(X - \bar X)(Y - \bar Y)].
+\] 
+These concepts are discussed in sections~\ref{Pr-sec.variance}
+and~\ref{Pr-sec.covariance} of JEPr.  $\cov(X,Y)$ is positive when
+large values of one variable tend to occur with large values of the
+other; it is negative when large values of one occur with small values
+of the other; it is zero when neither variable predicts the other.
+The maximum possible (absolute) value of $\cov(X,Y)$ is $\sqrt{V_X
+  V_Y}$, so the natural way to define a dimensionless correlation
+coefficient is as
+\[
+r_D = \cov(X,Y)/\sqrt{V_XV_Y},
+\]
+which can range from $-1$ to $+1$. The convenient ways to compute
+variances and covariances are also closely related. You may recall
+that $V_X = E(X^2) - E(X)^2$, and that $\cov(X,Y) = E(XY) -
+E(X)E(Y)$. Thus to calculate the variance we just need to calculate
+the average value of $X^2$ and the average value of $X$. The
+covariance is only slightly more complicated: we need to calculate the
+average value of $XY$ (the ``cross-product'' of the paired values),
+and the average values of $X$ and $Y$.
+
+\section{Calculating variances and covariances}
+
+You will not need to calculate variances in today's main assignment,
+for they are calculated automatically when you create an object of
+type \texttt{hapmap\_dataset}.  You will however need to calculate
+covariances.  The first step in today's assignment is to figure out
+how.  It will help to think first about calculating a variance,
+because that calculation is so similar.  Consider the listing below.
+\begin{leftindent}
+\listinginput[5]{1}{var.py}
+\end{leftindent}
+This code is available on the class web site, where it is called
+\texttt{var.py}.  Download it, run it, and see what it does.  You
+should get two lines of output, which report the variances of the two
+data sets.
+
+\paragraph*{Exercise step 1} Add code to \texttt{var.py} that defines a
+new function called \texttt{cov}, which calculates the covariance
+between two lists.  Use it to print the covariance as the last line in
+the program.
+
+In doing this exercise, you will want to step through the two data
+lists simultaneously.  There are several ways to do this, the simplest
+of which is involves a facility called \texttt{zip}, which you have
+not yet seen.  Let us pause for a moment to discuss this new facility.
+
+\paragraph{\texttt{zip(xv, yv)}}\label{pg.zip-intro} is a Python
+facility that steps through the elements of several sequences (lists,
+tuples, strings, or whatever).  For example,
+\begin{leftindent}
+\begin{verbatim}
+>>> xv = ['x1', 'x2']
+>>> yv = ['y1', 'y2']
+>>> for x, y in zip(xv, yv):
+...     print(x, y)
+... 
+x1 y1
+x2 y2
+\end{verbatim}
+\end{leftindent}
+Each time through the loop, \texttt{x} and \texttt{y} are
+automatically set equal to corresponding elements from the lists
+\texttt{xv} and \texttt{yv}.  This function is often used with a pair
+of lists, but it will also work with three or more.
+
+To use this facility in calculating a covariance, you would begin with
+a framework like this:
+\begin{leftindent}
+\begin{verbatim}
+def cov(xvec, yvec):
+    sx = sy = sxy = c = 0.0
+    for x, y in zip(xvec, yvec):
+#       YOUR CODE HERE, TO CALCULATE THE COVARIANCE c
+    return c
+\end{verbatim}
+\end{leftindent}
+We leave it to you to fill in the missing code.
+
+\section{Examining LD at neighboring SNPs} 
+The incomplete program below is available on the class web site, where
+it is called \texttt{snptabinc.py}.  It creates tables like the one on
+page~\pageref{pg.snptab}.  \listinginput[5]{1}{snptabinc.py} Download it
+from the web site, and (before changing it) make sure it runs.  Make
+sure you understand how it works, and why it does not yet give correct
+values for \texttt{rD} and \verb|rD^2|.  
+
+\paragraph*{Exercise step 2}
+Complete the \texttt{snptabinc} program by inserting your own
+\texttt{cov} function at line~7 and fixing the code defining $r_D$ at
+line~37.  Within the program, set the values of \texttt{pop} and
+\texttt{chromosome} to reflect your own population and chromosome, and
+run the program a few times.
+
+\paragraph*{Exercise step 3} In theory, the level of LD between loci
+should decline with the distance that separates them on the
+chromosome.  To determine whether this is true, make a scatterplot of
+your data (by hand, or however you please), with a point for every
+pair of loci.  The horizontal axis should show the distance (in kb)
+that separates the two loci, and the vertical axis should show the
+value of $r^2$.  Is there a tendency for $r^2$ to decline with
+distance?  If so, how strong is this tendency?  If not, what might
+account for the discrepancy between theory and data?
+
+Your lab report should contain 
+\begin{inparaenum}[(1)]
+\item the programs you wrote in steps~1 and~2,
+\item one sample of output from each, 
+\item the graph from step~3,
+\item a short paragraph describing your conclusions.
+\end{inparaenum}

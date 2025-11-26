@@ -1,0 +1,52 @@
+\chapter*{Introduction}
+\label{ch.intro}
+This document contains homework assignments for \emph{Human
+  Evolutionary Genetics} (Anth/Biol~5221, at the University of
+Utah). The due dates of the assignments are given on the course
+syllabus. In some cases, more than one assignment may be due on the
+same day. 
+
+\ifthenelse{\theshowodd=1}{%
+  \ifthenelse{\theshoweven=1}{%
+This version of the document is the key (provided only to teaching
+assistants) and contains answers to all problems, beginning on
+p.~\pageref{ch.answers}.}{%
+Answers to odd-numbered problems are at the back of this document,
+beginning on p.~\pageref{ch.answers}.}}{%
+  \ifthenelse{\theshoweven=1}{%
+Answers to even-numbered problems are at the back of this document,
+beginning on p.~\pageref{ch.answers}.}{}
+}
+
+\section*{Notation for logarithms}
+Logarithms appear in various places in the following homework
+assignments. Usually, we are interested in the ``natural''
+logarithm---the logarithm to base $e$, where $e \approx 2.72$.  Our
+notation is as follows:
+\begin{center}
+\begin{tabular}{rl}
+Base & Notation\\
+\hline
+$e$  & $\log_e x$ or $\ln x$ or $\log x$\\
+10   &$\log_{10} x$\\
+ 2   &$\log_{2} x$
+\end{tabular}
+\end{center}
+Note that for us, $\log x$ means $\log_{e} x$. Some disciplines and
+some calculators use a different convention, in which $\log x$ means
+$\log_{10} x$, so be sure to understand what your own calculator does.
+
+Our convention is also used within the Python programming
+language. For example,
+\begin{verbatim}
+>>> from math import *
+>>> log(e**3)
+3.0
+>>> log10(10**2)
+2.0
+\end{verbatim}
+In this example, Python's \texttt{log} function inverts (reverses the
+effect of) raising $e$ to a power. This implies that Python's
+\texttt{log(x)} means $\log_e x$.  Similarly, Python's \texttt{log10}
+function inverts the operation of raising 10 to a power, so
+\texttt{log10(x)} means $\log_{10} x$.

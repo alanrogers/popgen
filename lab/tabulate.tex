@@ -1,0 +1,134 @@
+\chapter{Tabulating Frequency Distributions}
+\label{ch.frqdst}
+\section{Introduction}
+To see the pattern in data, we often need to summarize it in a compact
+form. Tabulations are one such summary. They tell us how many
+observations are in each of several categories. This appendix
+describes two methods for tabulating data in Python, one for discrete
+data and one for continuous data.
+
+\section{Tabulating discrete data}
+\label{sec.tabdiscrete}
+Consider the following data set, which represents genotypes at a
+single nucleotide site:
+\begin{verbatim}
+>>> gtype = ['AA', 'AA', 'AT', 'TA', 'TA', 'AA', 'TA']
+\end{verbatim}
+There are 7 observations in this data set, but all of them fall into 3
+categories. We can use Python's \texttt{set} function to extract these
+three categories: 
+\begin{verbatim}
+>>> for i in set(gtype):
+...     print(i)
+... 
+AA
+AT
+TA
+\end{verbatim}
+
+In these data, we have both \texttt{AT} and \texttt{TA}. The
+distinction between these ordinarily doesn't matter in genetics. To
+convert all these into a common format, we can sort the characters
+within each genotype as follows:
+\begin{verbatim}
+>>> gtype = ["".join(sorted(i)) for i in gtype]
+\end{verbatim}
+This uses a list comprehension (indicated by the square brackets) to
+create a new list. Within the list comprehension, the builtin function
+\texttt{sorted} turns each genotype into a sorted list of individual
+characters. Then \verb|"".join| converts each list into a character
+string. In the end, we have a data set with 7 observations but only
+two genotypes, \texttt{AA} and \texttt{AT}:
+\begin{verbatim}
+>>> for i in set(gtype):
+...     print(i)
+... 
+AA
+AT
+\end{verbatim}
+
+To count the occurrences of each genotype in the data, we make use of
+the fact that \texttt{gtype} is defined as a Python list, and lists
+have a builtin method called \texttt{count}, which counts the
+occurrences of its argument in the list. For example,
+\begin{verbatim}
+>>> gtype.count('AA')
+3
+\end{verbatim}
+Here's a snippet of code that counts the occurrences of each genotype
+in the data:
+\begin{verbatim}
+>>> h = {}
+>>> for i in set(gtype):
+...     h[i] = gtype.count(i)
+... 
+>>> print(h)
+{'AA': 3, 'AT': 4}
+\end{verbatim}
+This defines a Python dictionary called \texttt{h}, which is initially
+empty. Then we iterate across the genotypes, using the \texttt{count}
+method to add observations to the dictionary. Finally, we print the
+dictionary. The output says that the data contain 3 copies of
+\texttt{AA}, and 4 of \texttt{AT}.
+
+This is helpful, but the output is hardly pretty. It would be better
+to print the output as a table, with genotypes in one column and
+counts in another. Here's how:
+\begin{verbatim}
+>>> for key in sorted(h.keys()):
+...     print(key, h[key])
+... 
+AA 3
+AT 4
+\end{verbatim}
+Here, I've used the \texttt{keys} method that is built into Python
+dictionaries to get a list of genotypes. I then hand this list to
+\texttt{sorted}, which sorts the list of genotypes. We then iterate
+across these genotypes, printing the genotype and the corresponding
+count in two columns.
+
+Suppose you had a list of genotypes, but you wanted to tabulate
+alleles rather than genotypes. The trick is to begin by concatenating
+all the genotypes into a single character string:
+\begin{verbatim}
+>>> dnaseq = ''.join(gtype)
+>>> for i in set(dnaseq):
+...     print(i, dnaseq.count(i))
+... 
+A 10
+T 4
+\end{verbatim}
+
+\section{Tabulating continuous data}
+\label{sec.tabcontinuous}
+
+When working with continuous data, the number of different values may
+be enormous. There is thus little point in counting the occurrences of
+each value.  We need a different approach.  With continuous variables,
+it makes more sense to group the data into bins.  This is tedious, so
+we have written a Python module that does the heavy lifting.  It is in
+a file called \texttt{pgen.py}, which you can download from the class
+web site.  Put it in the same directory (or folder) as your other
+Python programs.
+
+Here is a program that tabulates continuous data into 5 bins:
+\begin{listing}{1}
+from pgen import Tabulator  # read module Tabulator
+
+data = [0.39760402926232336, 0.38844722349063998, 0.15828823308128848,
+        0.21675307512013373, 0.67759054634129579, 0.63336008432108437,
+        0.7791838758913473, 0.11329205659594056, 0.088616376501101851,
+        0.27797955173023731]
+
+# Construct a Tabulator named tab.  The range [0,1] is divided into 5 
+# bins, and the Tabulator counts the number of values within each
+# bin. It also counts the values that fall above or below the range [0,1].
+
+tab = Tabulator(low=0.0, high=1.0, nBins=5) 
+
+# Each pass through the for loop examines one piece of data
+for x in data:
+    tab += x     # Add 1 to the count in the relevant bin
+
+print(tab)       # print the tabulated data
+\end{listing}

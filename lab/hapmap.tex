@@ -1,0 +1,67 @@
+\chapter{Downloading HapMap data}
+\label{ch.gettingdata}
+\section{Interacting with the HapMap ftp server}
+The HapMap data are available via an ftp site at NCBI. There is a link
+to that site under the ``lab'' page of the course website. Or to go
+directly there, point your web browser at
+\begin{center}
+  \small
+  \url{https://ftp.ncbi.nlm.nih.gov/hapmap/genotypes/2008-10_phaseII/fwd_strand/non-redundant}
+\end{center}  
+This will bring you to a list of files with names like
+\url{genotypes_chr22_JPT_r24_nr.b36_fwd.txt.gz} In these file names,
+the string ``\texttt{chr22\_JPT}'' means ``chromosome~22'' in
+population ``\texttt{JPT}'' (Japan).  Scroll down the list to the file
+you need.  Then right-click and select ``\texttt{Save link as}'' in
+order to download the file onto your own computer.
+
+The file will end with ``\texttt{.gz},'' which indicates that it has
+been compressed using the \texttt{gnuzip} program. You don't need to
+decompress it, because \texttt{pgen.py} can read files that are
+compressed in this way.
+
+\section{The dummy data file}
+\label{sec.gettingdummy}
+
+As you are debugging your programs, you must execute it after each
+edit.  This can be a slow process unless the program executes very
+fast.  Unfortunately, even the smaller HapMap data files are pretty
+large, and parsing them repeatedly can slow down the process of
+programming. 
+
+To solve this problem, we have created a dummy HapMap data file called
+\url{genotypes_chr99_CEU_r23a_nr.b36_fwd.txt}.  It contains only a
+small number of SNPs, and your program can parse it almost instantly.
+We encourage you to use this file rather than any real data until you
+get your code running.  To do so, place the file in the same folder
+with your other programs and specify
+\begin{leftindent}
+\begin{verbatim}
+chromosome = 99
+pop = 'CEU'
+\end{verbatim}
+\end{leftindent}
+The dummy data file is under \texttt{Data} on the lab page of the
+class web site.
+
+\section{Put the data files into the folder where you plan to use them}
+Once the data file is on your machine, you need to figure out where
+(in which folder) to put it.  If you work on your own machine, it's
+probably best to create a separate folder.  On the Marriott Macs, it
+makes more sense just to work on the desktop.  Whatever you decide,
+make sure that the folder exists and that it contains your HapMap data
+file along with a copy of \texttt{pgen.py}.  Then launch Idle, get
+into the interactive window, and try importing \texttt{pgen}.  To do
+so, just type ``\texttt{from pgen import *}''.  If this works, nothing
+will print.  If you get an error message, then Idle was unable to find
+the file \texttt{pgen.py}.  To fix this problem, see
+section~\ref{sec.cwd} on page~\pageref{sec.cwd}.
+
+\section{Downloading all the HapMap files}
+On your home machine, you may want to download \emph{all} of the
+HapMap files, for your own personal use.  You would not want to do
+this by pointing and clicking on each file, one after the other.  It
+is much easier to use the program \texttt{ftp}, and connect to
+\url{ftp.hapmap.org}.  If you want to do this, we'll be happy to
+show you how.
+

@@ -1,0 +1,316 @@
+\chapter{More Python}
+\label{ch.morepython}
+In writing this lab manual, we have introduced various Python
+constructs that were not covered in JEPy.  We collect them here for
+convenient reference.
+
+\section{Basic Python}
+\paragraph{\texttt{zip(xv, yv)}}\label{pg.zip} is a Python facility
+that steps through the elements of several sequences (lists, tuples,
+strings, or whatever).  For example,
+\begin{leftindent}
+\begin{verbatim}
+>>> xv = ['x1', 'x2']
+>>> yv = ['y1', 'y2']
+>>> for x, y in zip(xv, yv):
+...     print(x, y)
+... 
+x1 y1
+x2 y2
+\end{verbatim}
+\end{leftindent}
+Each time through the loop, \texttt{x} and \texttt{y} are
+automatically set equal to corresponding elements from the lists
+\texttt{xv} and \texttt{yv}.  This function is often used with a pair
+of lists, but it will also work with three or more.  (This paragraph
+is a copy of one on page~\pageref{pg.zip-intro}.)
+
+\section{The \texttt{random} module}
+\label{sec.randommodule}
+
+This module is part of Python's standard library and is documented in
+full on the Python website: \url{http://docs.python.org/3.1/library}.
+We have made use of the functions listed below.  Before using them, be
+sure to import the \texttt{random} module with a line of code such as
+\begin{leftindent}
+\begin{verbatim}
+from random import *
+\end{verbatim}
+\end{leftindent}
+After that command executes, you will have access to all the
+facilities of the \texttt{random} module.  We list only a few of these
+here---the ones used in the lab projects but not covered by JEPy.
+
+\paragraph{\texttt{choice(seq)}}\label{pg.choice} returns a random
+element from the sequence \texttt{seq}, which may be a list, a tuple,
+a string, or any Python object with similar properties.  For example,
+\texttt{choice("abc")} returns \texttt{"a"}, \texttt{"b"}, or
+\texttt{"c"} with equal probability.
+
+\paragraph{\texttt{expovariate(h)}}\label{pg.expovariate} returns a
+random value drawn from the exponential distribution with hazard $h$,
+or mean $1/h$.
+
+\paragraph{\texttt{randrange(a, b)}}\label{pg.randrange} returns a
+random integer from $a, a+1, \ldots, b-1$.  The first argument is
+optional and defaults to 0 if omitted.  Thus, \texttt{randrange(3)}
+returns either 0, 1, or 2 with equal probability, but
+\texttt{randrange(1,3)} returns either 1 or 2.
+
+\section{The \texttt{pgen} module}
+\label{sec.pgenmodule}
+
+This module is available on the class website:
+\url{http://www.anthro.utah.edu/~rogers/ant5221/lab} as a file called
+\texttt{pgen.py}.  Download that file, and place it in the same folder
+(or directory) as the Python program you are writing.  At the top of
+your own Python program, import the \texttt{pgen} module as follows:
+\begin{leftindent}
+\begin{verbatim}
+from pgen import *
+\end{verbatim}
+\end{leftindent}
+
+\subsection{Random numbers}
+\label{sec.randnum}
+
+\paragraph{\texttt{bnldev(n,p)}}\label{pg.bnldev} returns a random
+deviate drawn from the binomial distribution.  When the function is
+called, $n$ is a integer, the number of trials, and $p$ is a float,
+the probability of ``success'' on each trial.  Consider for example
+the experiment of tossing an unfair coin for which the probability of
+``heads'' is 0.6 on each toss.  To simulate the experiment of tossing
+this coin 30 times, we could use the command \texttt{x =
+  bnldev(30,0.6)}.  After the command executes, $x$ will hold an
+integer between 0 and 30, which represents the number of ``heads.''
+
+\paragraph{\texttt{mnldev(n, p)}}\label{pg.mnldev} 
+returns a random deviate drawn from the multinomial distribution.
+This distribution generalizes the binomial.  It might be used, for
+example, to describe the process of sampling balls with replacement
+from an urn containing balls of several colors.  The number of balls
+drawn is called the number of \emph{trials}.  The probability that a
+random ball is (say) red is equal to the relative frequency of such
+balls within the urn.  When \texttt{mnldev} is called, $n$ (an
+integer) is the number of trials, and $p$ is a list or tuple whose
+$i$th entry $(p_i)$ is the probability that outcome $i$ is observed on
+any given trial.  The values in $p$ only need to be
+\emph{proportional} to the corresponding probabilities.  They do not
+need to sum to unity; they only need to be positive numbers.  For
+example, suppose that the urn contains 300 red balls, 100 black ones,
+and 50 white ones.  To simulate the experiment of drawing 10
+balls (with replacement), we could use the command \texttt{x =
+  mnldev(10, [300, 100, 50])}.  After the command executes, $x$ will
+point to a list that contains the number of red balls drawn, then the
+number of black ones, and then the number of white.
+
+\paragraph{\texttt{poidev(m)}}\label{pg.poidev} returns a random
+deviate drawn from the Poisson distribution with mean $m$.  For
+example, the command \texttt{x = poidev(10)} sets $x$ to a value drawn
+from the Poisson distribution with mean 10.
+
+\subsection{For HapMap}
+\label{sec.pgenhapmap}
+
+The \texttt{pgen} module contains several facilities for working with
+HapMap genotype data.  For a gentle introduction to these methods, see
+section~\ref{sec.pgenhapmapintro}.
+
+\paragraph{\texttt{hapmap\_fname(chromosome,
+    population)}}\label{pg.hapmapfname} returns the name of the file
+(on your own computer) containing data for a given chromosome and
+population.  It can find this file only if it resides in Python's
+current working directory (see section~\ref{sec.cwd}).
+
+\paragraph{\texttt{hapmap\_dataset(filename)}}\label{pg.hapmapdataset}
+creates an object of type \texttt{hapmap\_dataset}.  Such objects
+include the following data:
+\begin{leftindent}
+\begin{description}
+\item[\texttt{filename}] the name of the original HapMap data file
+\item[\texttt{snps}] a list of objects of type \texttt{hapmap\_snp},
+  each containing data from a single snp.
+\end{description}
+\end{leftindent}
+Objects of type \texttt{hapmap\_dataset} are created as follows:
+\begin{leftindent}
+\begin{verbatim}
+chromosome = 22
+pop = "CEU"
+hds = hapmap_dataset(hapmap_fname(chromosome, pop))
+\end{verbatim}
+\end{leftindent}
+Now \texttt{hds} is an object of type \texttt{hapmap\_dataset}.  
+Its instance variables can be accessed like this:
+\begin{leftindent}
+\begin{verbatim}
+>>> hds.filename
+'/home/rogers/hapmap/hapmap-r23/genotypes_chr22_JPT_r23a_nr.b36_fwd.txt'
+\end{verbatim}
+\end{leftindent}
+The variable \texttt{hds} behaves like a list or tuple of SNPs.
+\texttt{len(hds)} returns the number of SNPs in the data set, and
+\texttt{hds[3]} returns a pointer to the SNP at position~3 within the
+data set.  The first SNP is \texttt{hds[0]}, and the last is
+\texttt{hds[len(hds)-1]}.  Objects of type \texttt{hapmap\_dataset}
+provide the following methods:
+\begin{leftindent}
+\begin{description}
+\item[\texttt{find\_position(pos)}]\label{pg.findposition} returns the
+  index of the SNP whose position on chromosome (measured in base
+  pairs) is \emph{closest to} (but not necessarily identical to)
+  \texttt{pos}. The argument \texttt{pos} should be a positive
+  integer.  If \verb|pos >= len(self)|, the function returns
+  \texttt{len(self)-1}.
+\item[\texttt{find\_id(id)}] returns the index of SNP whose
+  identifying string (``rs number'') equals \texttt{id}.  On entry,
+  \texttt{id} should be a string, formatted as in HapMap data files. 
+  For example: ``rs4284202.''  If \texttt{id} is not present in the
+  data, the function returns \texttt{len(self)}.  
+\end{description}
+\end{leftindent}
+
+\paragraph{\texttt{hapmap\_snp}}\label{pg.hapmapsnp}
+An object of this type represents all the data for a single SNP.  Each
+such object includes the following data values:
+\begin{leftindent}
+\begin{description}
+\item[\texttt{id}] the ``rs number'' (a unique identifier) of this SNP
+\item[\texttt{alleles}]a list of the alleles present at locus
+\item[\texttt{chromosome}] the label of the chromosome on which this
+  SNP resides
+\item[\texttt{position}] an integer; the position of the SNP on the chromosome
+\item[\texttt{gtype}] a list of genotype data.  Each item in the list
+  is an integer, the number of copies of \texttt{alleles[0]} in an individual
+  genotype.
+\item[\texttt{sampleSize}] number of values in \texttt{gtype}.
+\item[\texttt{mean}] the mean of \texttt{gtype}
+\item[\texttt{variance}] the variance of \texttt{gtype}\label{pg.snp.variance}
+\end{description}
+\end{leftindent}
+Suppose that \texttt{snp} is an object of type \texttt{hapmap\_snp}.
+Then its data values can be accessed by syntax such as
+\texttt{snp.mean}, \texttt{snp.variance}, and so on.  In addition,
+\texttt{snp} behaves like a list or tuple of genotypes.  For example,
+\texttt{len(snp)} returns the number of genotypes (as does
+\texttt{snp.sampleSize}), and \texttt{snp[4]} returns the genotype at
+position~4.
+
+\subsection{Plotting}
+\paragraph{\texttt{charplot(x, y, nticks, outputheight,
+    outputwidth)}}\label{pg.charplot}
+prints scatterplots on terminals without graphics capabilities.  On
+entry, $x$ is a list of x-axis values and $y$ a list of y-axis values.
+The other arguments are optional and specify the number of tick marks
+per axis, and the height and width of the output in character units.
+The specified number of tick marks is advisory only.  The program will
+do its best to use tick marks that are as close as possible to the
+number requested without being ugly.
+
+\paragraph{\texttt{scatsmooth(x, y, n, minx, maxx)}}\label{pg.scatsmooth}
+smooths a set of \texttt{(x,y)} data by dividing the range of
+\texttt{x} values into \texttt{n} equally-spaced bins, and calculating
+the average \texttt{y}-value within each bin.  Function returns
+\verb|(bin_x, bin_y, bin_n)|.  For bin \texttt{i}, \verb|bin_x[i]| is
+the midpoint of the \texttt{x} values, \verb|bin_y[i]| is the mean of
+\texttt{y}, and \verb|bin_n[i]| is number of observations.  All
+parameters except \texttt{x} and \texttt{y} are optional.  If
+\texttt{n} is omitted, the default value is 10.  If \texttt{minx} and
+\texttt{maxx} are omitted, they default to \texttt{min(x)} and
+\texttt{max(x)}.  See page~\pageref{pg.scatsmooth-intro}.
+
+\section{Helping Python find input files}
+\label{sec.cwd}
+
+In these projects, Python will need to read several kinds of input
+files: HapMap data files, \texttt{pgen.py}, and the programs that you
+write.  If it fails to find these files, nothing works.  Here is an
+interaction that illustrates the problem:
+\begin{leftindent}
+\begin{verbatim}
+>>> from pgen import *
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ImportError: No module named pgen
+\end{verbatim}
+\end{leftindent}
+Here, I tried to import the \texttt{pgen} module, and Python let me
+know that it could not find it.  To avoid this problem, you must tell
+Python where your data files are.
+
+Python searches for input files in a list of folders called the
+``path.''  To help it find these files, do one of two things: either
+put your own input files into one of the folders in Python's path, or
+else modify that path so that it includes the folder where your files
+reside.  To examine the path, use Idle's ``Path Browser,'' which you
+will find under the ``File'' menu.
+
+\subsection{Putting your own files into Python's path}
+
+On Macs, Python searches the Documents folder by default.  If you put
+all your files there, Python will have no trouble finding them.  This
+is the easiest approach and is the one to use when you are working in
+the lab at Marriott.
+
+\subsection{Putting your files into some other folder}
+
+If you work on your own computer, you may not want to clutter up
+Documents with the files from this class.  On my own machine, I keep
+the material for this class in a separate folder called ``pgen.''  You
+might want to do something similar.
+
+If you launch Idle from an icon, it will not initially know about the
+folder that contains your files.  But if you open a .py file within
+this folder and execute it, Idle automatically adds this folder to
+the path.  After that, you can execute commands like \texttt{import
+  pgen} without difficulty.
+
+Those of us who work with the command line interface have it even
+easier.  If you launch Idle from the command line, it automatically
+adds the current working directory to its search path and thus
+has no difficulty finding files.
+
+\subsection{Manipulating Python's current working directory}
+\label{sec.chdir}
+
+Python looks for input in a folder called the ``current working
+directory,'' or CWD. This works well if you launched Python from the
+command line, for then the CWD is just the directory within which you
+typed the ``python'' command. But if you launched Python by clicking
+on an icon, the CWD is unlikely to be set to a useful value. You can,
+however, manipulate it by typing commands into Python's interpreter.
+
+To do so, you must first import the \texttt{os} module:
+\begin{verbatim}
+>>> import os
+\end{verbatim}
+You can then check the CWD like this:
+\begin{verbatim}
+>>> os.getcwd()
+'/home/rogers'
+\end{verbatim}
+This tells me that the CWD is the directory \verb|/home/rogers|. 
+If my input file is in that directory, Python will find it. 
+
+But suppose it is in a subdirectory of \verb|/home/rogers| called
+\verb|pgen|. I can change the CWD by typing
+\begin{verbatim}
+>>> os.chdir("pgen")
+\end{verbatim}
+This changes the CWD to \verb|/home/rogers/pgen|, provided that this
+directory exists on my computer. To check that this worked, use the
+\texttt{os.getcwd} command once again:
+\begin{verbatim}
+>>> os.getcwd()
+'/home/rogers/pgen'
+\end{verbatim}
+
+In the preceding example, the \texttt{os.chdir} command was very
+simple, because we were moving into a subdirectory of the directory we
+started in. If you need to make a more drastic move, specify the
+entire path name. For example, the command
+\begin{verbatim}
+>>> os.chdir("/home/rogers/pgen")
+\end{verbatim}
+would would move us to \texttt{/home/rogers/pgen} no matter where we
+started from. 

@@ -1,0 +1,323 @@
+\chapter{Neutral Theory}
+\label{hw.neutraltheo}
+
+\noindent
+Each exercise is worth 10 points.
+
+To estimate separation times from genetic data, we rely on the
+``molecular clock.'' If, at some locus, two species differ by 0.01
+(presumably neutral) nucleotide substitutions per site, and if neutral
+substitutions occur at a rate of $\rho$ per generation, then we
+estimate the separation time as $0.01/2\rho$. 
+
+\begin{exercise}
+Why is there a ``2'' in the denominator of this expression?
+\begin{answer}
+Because mutations may occur on either of the two paths separating the
+two species from their common ancestor.
+\end{answer}
+\end{exercise}
+
+To make such estimates, we must first estimate the rate, $\rho$, of
+neutral evolution.  Such rates are estimated from the number of
+nucleotide substitutions that accumulate between DNA sequences
+separated for a known amount of time. Unfortunately, neither the
+number of substitutions nor the separation time is often known
+exactly, and this can add both uncertainty and bias to the molecular
+clock.
+
+In the calculation just described, the number of nucleotide
+substitutions cannot be observed directly. What we do observe is the
+number of nucleotide differences. The problem is that when a
+substitution occurs at a nucleotide site that has previously mutated,
+it does not increase the number of site differences.  The uncorrected
+number of site differences therefore underestimates the number of
+substitutions, a phenomenon known as \emph{saturation}.  This effect
+is insignificant in very recent comparisons but increases with age. It
+is exacerbated when nucleotide sites vary in rate, because rates at
+rapidly-evolving sites may be underestimated.  In modern phylogenetic
+studies, these problems are addressed by fitting models of the
+substitution process \citep[sec.~3.2--3.4]{Nei:MEP-00}. If the model
+is appropriate, saturation adds noise but not bias to the molecular
+clock. Fortunately, estimates of dates are relatively insensitive to
+this component of the model: we get approximately the same answer from
+many different models \citep[p.~143]{Yang:CME-06}.
+
+\section{The Jukes-Cantor model of nucleotide substitution}
+Neutral theory predicts that substitutional changes will accumulate at
+a constant rate. Yet because of saturation, we cannot measure
+substitutional changes directly. What we do measure is the fraction,
+$p$, of sites that differ between each pair of sequences. We need a
+way to convert this into an estimate of the mean number, $K$, of
+substitutional changes per site. This requires some model of the
+substitutional process. A variety of such models have been introduced,
+but we will use only the simplest, which was introduced by 
+\citet{Jukes:MPM-69-21} in 1969.
+
+Their model assumes that when a site mutates, it is equally likely to
+end up in any of the other three states. Under this assumption, 
+\citet{Jukes:MPM-69-21} show that
+\begin{equation}
+K = -\frac{3}{4} \ln \left(1 - \frac{4}{3}\,p\right)
+\label{eq.jukescantor}
+\end{equation}
+This formula allows us to estimate $K$ (the number of subsitutional
+changes per site) from $p$ (the fraction of sites that differ).  If
+the neutral theory is correct, then $E[K]=2ut$, where $u$ is the
+neutral mutation rate, and $t$ is the time since the last common
+ancestor of the two DNA sequences.
+
+For example, consider the difference between humans and chimpanzees.
+We differ at about $35\times 10^6$ of the $3\times 10^9$ nucleotide
+sites in our (haploid) genomes---a fraction $p = 0.01167$. Plugging
+this into Eqn.~\ref{eq.jukescantor} gives $K=0.01177$ substitutions per
+site. There is hardly any difference between our estimates of $K$ and
+$p$, indicating that not much saturation has occurred. In cases such
+as this, there is no compelling reason to correct for saturation at
+all.
+
+When $p$ is small, geneticists often use it as an approximation for
+$K$. This makes sense, provided that the error involved in the
+approximation is small. How small is it in the chimpanzee-human
+comparison? Consider the relative error, which is defined as
+\[
+\hbox{relerr} = \frac{|p-K|}{K}
+\]
+where $||$ indicates the absolute value. For the chimpanzee--human
+data, this gives $\hbox{relerr} = |0.01167 - 0.01177|/0.01177 \approx
+0.008$. This means that when we use $p$ instead of $K$, we make an
+error that is less than 1\% as large as the correct answer, $K$.
+
+\begin{exercise}
+Calculate the relative error for a variety of values of $p$ in order
+to decide when it is and is not necessary to correct for saturation.
+\begin{answer}
+The values below indicate that relative error is small when $p$ is
+less than about 0.1.\\
+{\centering
+\begin{tabular}{cc}
+ $p$ & relerr\\ \hline
+0.30 & 0.22\\
+0.20 & 0.14\\
+0.10 & 0.07\\
+0.08 & 0.05\\
+0.06 & 0.04\\
+0.05 & 0.03\\
+\hline
+\end{tabular}\\}
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Fossils suggest that humans and chimpanzees last shared
+ancestor around $t = 6\times 10^{6}$ years ago. The neutral theory
+implies that $K = 2ut$, where $u$ is the neutral substitution rate. 
+Use the chimpanzee-human data to estimate $u$. How does the estimate
+compare to the typical mammalian rate, approximately $10^{-8}$
+per site per year? What might account for the difference?
+\begin{answer}
+For the chimpanzee-human data,
+\[
+u = K/2t = 0.01177/(12\times 10^{6}) = 0.98\times 10^{-9}
+\]
+That's a bit lower than the rates estimated for typical mammals.  But
+we hominins have had longer generation times. Suppose our ancestors
+had 20-year generations. Then the rate per generation would be
+\[
+u = 20 \times 0.98\times 10^{-9} \approx 2 \times 10^{-8}
+\]
+which is in good aggrement with other mammals.
+\end{answer}
+\end{exercise}
+
+\subsection{Deriving the Jukes-Cantor formula}
+\label{sec.jcderive}
+
+Although we are interested in the process of mutation, we will focus
+here on an imaginary process of ``perturbation.''  In each time unit,
+a site is perturbed with probability $\lambda$. After a perturbation
+the site is equally likely to be in any of the four states (A, T, G,
+and C). If it is perturbed, it ends up in a different state with
+probability 3/4. Consequently, mutations occur with probability $u =
+(3/4)\lambda$.
+
+This formulation of the problem provides an enormous simplification:
+once a site has been perturbed, there is no further change in the
+probabilities of states A, T, G, and C. These probabilities are the
+same, no matter whether the site has been perturbed once, twice, or a
+thousand times. This makes the process far easier to study.  Yet once
+we have derived a result, we can easily re-express it in terms of
+mutations rather than perturbations. All we'll need to do is replace
+$\lambda$ in our formula with the equivalent value $(4/3)u$.
+
+Suppose that we compare homologous sites in two DNA sequences that
+have been separated for $t$ units of time. Because the rate of
+perturbation is constant, the number of perturbations along the the
+two branches that separate our DNA sequences is a Poisson random
+variable with mean $2\lambda t$. The probability that neither sequence
+has been perturbed is given by the zero term of the Poisson
+distribution: $e^{-2\lambda t}$. In this case, they are obviously
+identical. If there has been at least one perturbation, then the
+perturbed sequences are equally likely to be in any of the four
+states, and the two sites are identical with probability 1/4. The
+probability, $q$, of identity is therefore
+\begin{eqnarray*}
+q &=& e^{-2\lambda t} + (1 - e^{-2\lambda t})/4\\
+&=& \frac{1}{4} + \frac{3}{4}\,e^{-2\lambda t}
+\end{eqnarray*}
+
+Let us now re-express this result in terms of things we can
+measure. First substitute $(4/3)u = \lambda$, so that our formula is
+in terms of mutations rather than perturbations:
+\[
+q = \frac{1}{4} + \frac{3}{4}e^{-(8/3)u t}
+\]
+Next, re-express the formula in terms of the probability, $p = 1-q$,
+that two homologous sites will differ:
+\[
+p = \frac{3}{4} - \frac{3}{4}\,e^{-(8/3)u t}
+\]
+Finally, substitute $K = 2ut$, the expected number of nucleotide site changes
+along the path that separates the two sites:
+\[
+p = \frac{3}{4} - \frac{3}{4}\,e^{-(4/3)K}
+\]
+After solving this equation for $K$, we end up with
+Eqn.~\ref{eq.jukescantor}.
+
+\section{Other models of substitution}
+
+Some nucleotide site changes (A$\leftrightarrow$G and
+C$\leftrightarrow$T) are especially common.  These common changes are
+called ``transitions,'' and the others are called ``transversions.''
+In mitochondrial DNA, transitions seem to be at least 30 times as
+common as transvertions. With such data, the Jukes-Cantor model is
+clearly inappropriate, and various alternatives are often used.
+
+One alternative is especially simple. If transitions are sufficiently
+common, relative to transversions, it may be reasonable to assume that
+\emph{all} mutations are transitions. In such a model, some sites
+toggle back and forth between A and T, while others toggle between C
+and G. Either way, we can use a variant of the Jukes-Cantor model in
+which the number of states is two rather than four.
+
+\begin{exercise}
+Derive a formula, analogous to Eqn.~\ref{eq.jukescantor}, in which the
+number of states is two rather than four. (Hint: repeat the steps in
+section~\ref{sec.jcderive}. Your derivation should assume that, after
+a perturbation, the site is equally likely to be in either of the
+\emph{two} states.) 
+\begin{answer}
+As with the Jukes-Cantor model, we begin with
+\begin{eqnarray*}
+q &=& e^{-2\lambda t} + (1 - e^{-2\lambda t})/2\\
+&=& \frac{1}{2} + \frac{1}{2}\,e^{-2\lambda t}
+\end{eqnarray*}
+When at least one perturbation has occurred, the sites are identical
+with probability 1/2. This accounts for the value ``1/2'' that appears
+above. Now substitute $2u=\lambda$ (because only half of perturbations
+are mutations), $p=1-q$, and $K = 2ut$:
+\[
+p = \frac{1}{2} - \frac{1}{2}\,e^{-2K}
+\]
+Solving for $K$ gives
+\[
+K = -\frac{1}{2}\,\log_e(1-2p)
+\]
+which is analogous to Eqn~\ref{eq.jukescantor}. This was introduced in
+1919 and is called ``Haldane's mapping function''
+\cite{Haldane:Distance}. It has often been used to make linkage maps
+of chromosomes.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Use the 2-state model to estimate $K$ from the chimpanzee-human data.
+\begin{answer}
+For the chimpanzee-human comparison, $p = 0.01167$. Plugging this into
+the 2-state formula gives $K=0.01180$.
+\end{answer}
+\end{exercise}
+
+\begin{table}
+\caption{Nucleotide sequence differences between complete
+  mitochondrial genomes. Source: \citep{Gibbs:N-428-493}.}
+\label{tab.mtdiffs}
+
+\begin{tabular}{lrrrrr}
+                 & BN Rat& Mouse&Human\\
+\hline     
+Brown Norway Rat &  ---&4897  & 2897\\
+Mouse            &     & ---  & 5050\\
+Human            &     &      &  ---\\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Rodent mitochondrial DNA sequences}
+
+Table~\ref{tab.mtdiffs} shows the number of nucleotide site
+differences between the complete mitochondrial genomes of mouse, rat,
+and humans. These genomes are of slightly different sizes: about
+16,300~bp for mouse and rat, and 16,569~bp for human. 
+
+\begin{exercise}
+Use the data in table~\ref{tab.mtdiffs} to estimate the fraction $(p)$
+of site differences between each pair of species. To do this you will
+need to know the total number of sites in the mitochondrial genome.
+These numbers are about 16,300~bp for mouse and rat, and 16,569~bp for
+human.  We can take the \emph{smaller} of these two numbers as the
+effective size in our comparisons, because this is the largest number
+of sites we could conceivably align. Then 
+\begin{inparaenum}[(a)]
+\item
+use the Jukes-Cantor formula to estimate $K$ for each pair of
+species. 
+\item Because rats and mice are close relatives, we expect the
+  rat-human number to equal the mouse-human number. How well do your
+  results conform to this expectation?
+\end{inparaenum}
+\begin{answer}
+(a)~For the three species, Jukes-Cantor yields the following estimates
+  of $K$:\\
+\begin{tabular}{lrrrrr}
+                 &\multicolumn{3}{c}{$K$ estimates}\\
+                 & BN Rat& Mouse&Human\\
+\hline     
+Brown Norway Rat &  ---&0.38  & 0.20\\
+Mouse            &     & ---  & 0.40\\
+Human            &     &      &  ---\\
+\hline
+\end{tabular}
+
+(b)~The mouse-human distance is \emph{much} larger than the rat-human
+distance. (We hope students will contemplate the causes of this
+difference, but grades will not be based on this issue.)
+\end{answer}
+\end{exercise}
+
+
+%\begin{table}
+%\caption{Nucleotide sequence differences between complete
+%  mitochondrial genomes. Differences over the whole genome are shown
+%  above the diagonal; those between 16S rRNA sequences are shown in
+%  parentheses below. In mammals, the mitochondrial genome has
+%  15--17 thousand nucleotides. In humans, it has 16,569~bp.
+%rat:16,313~bp 
+%mouse:16,300~bp
+%source: \citep{Gibbs:N-428-493}
+%}
+%\label{tab.mtdiffs}
+%
+%\centering
+%\begin{tabular}{lrrrrr}
+%            &RGSP & Wild&Wistar& Mouse& Human\\
+%            & Rat &  Rat&   Rat&      &      \\
+%\hline     
+%RGSP BN Rat &  ---&   95&   357&4891  &  2890\\
+%Wild BN Rat &  (7)&  ---&   359&4897  &  2897\\
+%Wistar Rat  &(144)&(140)&   ---&4988  &  2990\\
+%Mouse       &(385)&(380)& (455)& ---  &  5050\\
+%Human       &(242)&(240)& (310)&(421) &  ---\\
+%\end{tabular}
+%\end{table}

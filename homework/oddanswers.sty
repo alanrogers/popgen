@@ -1,0 +1,102 @@
+\usepackage{ifthen}           % conditionals
+\usepackage{answers}          % solutions to problems
+\usepackage{xstring}          % used to determine if problems are odd or even
+
+% exercise environment 
+%\newcounter{exercise} 
+\newcounter{exercise}[chapter]  % ARR
+\setcounter{exercise}{0}
+%\renewcommand{\theexercise}{\thesection.\arabic{exercise}}
+\renewcommand{\theexercise}{\arabic{chapter}.\arabic{exercise}} %ARR
+\newenvironment{exercise}{\refstepcounter{exercise}%
+\par\smallskip{\bfseries Exercise~\theexercise.}~\itshape}{\par\smallskip}
+
+% open the solutions file
+\Opensolutionfile{answers}
+\Newassociation{answer}{Answr}{answers}
+
+\setlength{\parindent}{0mm}
+
+% set up switches to show odd or even problems
+%   1: show
+%   0: don't show (actually, anything other than 1 makes it not show)
+\newcounter{showodd}
+\newcounter{showeven}
+\setcounter{showodd}{1}
+\setcounter{showeven}{1}
+
+% solution to problem (show only odd, even, all)
+% Note: this renewenvironment needs to go here
+%       so that the answers package can still
+%       display correctly to the page if needed
+\newcounter{oddproblemnumber}
+\renewenvironment{Answr}[1]{%
+    % before the environment starts
+%    \fullexpandarg % need this line so that '.' are counted
+%        % numbers such as 1.3.1, 1.2.4, 7.5.6
+%        \StrBehind{#1}{.}[\newbit]%
+%        \StrBehind{\newbit}{.}[\problemnumber]%
+%
+    \StrCount{#1}{.}[\ndots]                                % ARR
+    \fullexpandarg % need this line so that '.' are counted % ARR
+        % numbers such as 1.1, 1.2, 7.5                     % ARR
+        \StrBehind[\ndots]{#1}{.}[\problemnumber]%          % ARR
+     % determine if the problem number is odd or even
+     % and depending on our choices above, display or not
+     \ifthenelse{\isodd{\problemnumber}}%
+     {%
+         % set a counter that says the problem number is odd (used later)
+         \setcounter{oddproblemnumber}{1}%
+         % display or not 
+         \ifthenelse{\theshowodd=1}
+         {%
+            % if we want to show the odd problems
+            {\par\bfseries Answer~#1.}%
+         }%
+         {%
+            % otherwise don't show them!
+            \expandafter\comment%          
+         }%
+     }%
+     {%
+         % even numbered problem, set the counter (used later)
+         \setcounter{oddproblemnumber}{0}%
+         \ifthenelse{\theshoweven=1}
+         {%
+            % if we want to show the even problems
+            {\par\bfseries Answer~\itshape #1.}%
+         }%
+         {%
+            % otherwise don't show them!
+            \expandafter\comment%          
+         }%
+     }%
+}%
+{%
+    % after the environment finishes
+    \ifthenelse{\theoddproblemnumber=1}%
+    {%
+        % odd numbered problems 
+         \ifthenelse{\theshowodd=1}
+         {%
+            % if we want to show the odd problems
+            % then the environment is finished
+         }%
+         {%
+            % otherwise we need to finish the comment
+            \expandafter\endcomment%
+         }%
+    }%
+    {%
+        % even numbered problems
+         \ifthenelse{\theshoweven=1}
+         {%
+            % if we want to show the even problems
+            % then the environment is finished
+         }%
+         {%
+            % otherwise we need to finish the comment
+            \expandafter\endcomment%
+         }%
+    }%
+}

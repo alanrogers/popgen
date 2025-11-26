@@ -1,0 +1,167 @@
+\chapter{Population Structure}
+\label{hw.pstruc}
+
+$F_{ST}$ can be expressed in terms of gene diversity:
+\begin{equation}
+F_{ST} = \frac{H_T - H_S}{H_T}
+\label{eq.Fst.H}
+\end{equation}
+in terms of homozygosity (Gillespie's formula 5.3, p.~132):
+\begin{equation}
+F_{ST} = \frac{G_S - G_T}{1 - G_T}
+\label{eq.Fst.G}
+\end{equation}
+or in terms of the variance $V$ between allele frequencies of subdivisions:
+\begin{equation}
+F_{ST} = V/pq
+\label{eq.Fst.V}
+\end{equation}
+
+\begin{exercise}
+Verify algebraically that formulas~\ref{eq.Fst.H} and~\ref{eq.Fst.G}
+are equivalent. (Hint: Use the facts that $G_S = 1 - H_S$ and $G_T = 1
+- H_T$. This just says that every genotype is either a homozygote or a
+heterozygote, so homozygosity and heterozygosity must sum to 1.)
+\begin{answer}
+$G_S = 1-H_S$, and $G_T = 1-H_T$. Substituting these values into
+  equation~\ref{eq.Fst.G} gives
+\[
+F_{ST} = \frac{1-H_S - 1 + H_T}{1 - 1 + H_T} = \frac{H_T - H_S}{H_T},
+\]
+which is the same as equation~\ref{eq.Fst.H}.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Verify that formulas~\ref{eq.Fst.H} and~\ref{eq.Fst.V} are equivalent.
+(Hint: Use Wahlund's formula, which was explained in the lecture on
+population structure. Or consult Gillespie's discussion of $F_{ST}$.)
+\begin{answer}
+We will work with equation~\ref{eq.Fst.H}, which is a function of
+$H_S$ and $H_T$. Let us begin with the formula for $H_S$:
+\begin{eqnarray*}
+H_S &=& \sum c_i 2p_i(1-p_i)\\
+    &=& 2\sum c_i p_i - 2\sum c_i p_i^2\\
+    &=& 2p - 2\sum c_i p_i^2
+\end{eqnarray*}
+The sum here is a weighted average over subpopulations, so think of it
+as an expectation, and use the hint mentioned in the text of this
+question: $\sum c_i p_i^2 = V + p^2$, where $V$ is the variance of the
+$p_i$. This gives
+\begin{equation}
+H_S = 2p - 2p^2 - 2V = 2p(1-p) - 2V
+\label{eq.wahlund}
+\end{equation}
+By definition, $H_T= 2p(1-p)$. Substitute this, along with
+equation~\ref{eq.wahlund}, into equation~\ref{eq.Fst.H}, and you will
+get
+\begin{eqnarray*}
+F_{ST} &=& (H_T - H_S)/H_T\\
+      &=& \frac{2p(1-p) - 2p(1-p) + 2V}{2p(1-p)}\\
+      &=& V/p(1-p)
+\end{eqnarray*}
+\end{answer}
+\end{exercise}
+
+In 1978, Sewall Wright published a chapter on variation among human
+populations.  He included a table of allele frequencies at six loci,
+from which I have extracted data on a two biallelic loci.  (I also
+left out several of his populations and changed his racial labels to
+geographic ones.)  The table below shows the frequencies of the $P^1$
+allele at the $P$ locus and the $Fy$ allele at the Duffy locus:
+\begin{center}
+\begin{tabular}{lcc}
+Population         & $P^1$ & $Fy$ \\
+\hline
+African            & 0.734 & 0.037 \\
+European           & 0.496 & 0.436 \\
+Australian         & 0.330 & 1.000 \\
+Asian              & 0.259 & 0.901 \\
+\hline
+Average            & 0.455 & 0.593 \\
+\end{tabular}
+\end{center}
+\begin{exercise}
+What is $F_{ST}$ at the $P$ locus?
+\begin{answer}
+The question only asks for $F_{ST}$, but I'm providing more detail:
+$H_S = 0.429123$,  $H_T=0.495905$, and $F_{ST}=0.134666$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is $F_{ST}$ at the Duffy locus?
+\begin{answer}
+The question only asks for $F_{ST}$, but I'm providing more detail:
+$H_S = 0.185367$,  $H_T=0.482516$, and $F_{ST}=0.615832$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the average of the two $F_{ST}$ estimates?  How does your estimate
+compare with the value of 0.12, which has been found in many other studies of
+genetic differences between continental human populations?
+\begin{answer}
+The average is 0.375246. For these two loci, $F_{ST}$ is appreciably
+larger than it is for the average locus in Wright's (or anyone else's)
+data.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Suppose that
+\begin{inparaenum}[(1)]
+\item a population is divided into several groups, within which mating
+  is random,
+\item the frequency of allele $A$ is $\bar p = 1/4$ in the population
+  as a whole, and
+\item $F_{ST} = 1/3$.
+\end{inparaenum}
+What is the expected frequency within the population as a whole of
+genotypes $AA$, $Aa$, and $aa$?
+\begin{answer}
+$P_{AA} = 0.125$, $P_{Aa} = 0.25$, and $P_{aa} = 0.625$,
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Suppose that
+\begin{inparaenum}[(1)]
+\item a population is divided into several groups, within which mating
+  is random,
+\item the frequency of allele $A$ is $\bar p = 1/2$ in the population
+  as a whole, and
+\item $F_{ST} = 1/10$.
+\end{inparaenum}
+What is the expected frequency within the population as a whole of
+genotypes $AA$, $Aa$, and $aa$?
+\begin{answer}
+$P_{AA} = 0.275$, $P_{Aa} = 0.45$, and $P_{aa} = 0.275$,
+\end{answer}
+\end{exercise}
+
+Sewall Wright showed that at equilibrium between migration and genetic
+drift,
+\[
+E[F_{ST}] = \frac{1}{4Nm + 1}
+\]
+where $N$ is the diploid effective size of each sub-population. The
+result is based on Wright's ``Island Model'' of population structure,
+which assumes there is an infinite number of sub-populations, and that
+in each generation a fraction $m$ of each subpopulation consists of
+immigrants sampled from the population as a whole. This model is
+unrealistic for several reasons, among them being the infinite number
+of sub-populations and the equal rate of exchange between each pair of
+sub-populations. In the question below, ignore these discrepancies.
+
+\begin{exercise}
+Among continental human populations, estimates of $F_{ST}$ are usually
+close to $1/9$.  Assume that this represents an equilibrium between
+migration and genetic drift under the Island Model of population
+structure.  What does this imply about the number $Nm$ of migrants
+between pairs of populations in each generation?
+\begin{answer}
+It implies that $Nm=2$.
+\end{answer}
+\end{exercise}
+

@@ -1,0 +1,73 @@
+\begin{thebibliography}{11}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{{\tt #1}}\fi
+
+\bibitem[Fisher(1918)]{Fisher:Relatives}
+Ronald~A. Fisher.
+\newblock The correlation between relatives on the supposition of {Mendelian}
+  inheritance.
+\newblock {\em Transactions of the Royal Society of Edinburgh}, 52:\penalty0
+  399--433, 1918.
+
+\bibitem[Gibbs et~al.(2004)Gibbs, Weinstock, Metzker, Muzny, Sodergren,
+  Scherer, Scott, Steffen, Worley, Burch, et~al.]{Gibbs:N-428-493}
+R.~A. Gibbs, G.~M. Weinstock, M.~L. Metzker, D.~M. Muzny, E.~J. Sodergren,
+  S.~Scherer, G.~Scott, D.~Steffen, K.~C. Worley, P.~E. Burch, et~al.
+\newblock Genome sequence of the {Brown} {Norway} rat yields insights into
+  mammalian evolution.
+\newblock {\em Nature}, 428\penalty0 (6982):\penalty0 493--521, 2004.
+
+\bibitem[Haldane(1919)]{Haldane:Distance}
+J.~B.~S. Haldane.
+\newblock The combination of linkage values, and the calculation of distance
+  between loci of linked factors.
+\newblock {\em Journal of Genetics}, 8:\penalty0 299--309, 1919.
+
+\bibitem[Jolly and Plog(1986)]{Jolly:PAA-86}
+Clifford~J Jolly and Fred Plog.
+\newblock {\em Physical Anthropology and Archeology}.
+\newblock Alfred A. Knopf, fourth edition, 1986.
+
+\bibitem[Jukes and Cantor(1969)]{Jukes:MPM-69-21}
+T.~H. Jukes and C.~R. Cantor.
+\newblock Evolution of protein molecules.
+\newblock In H.~N. Munro, editor, {\em Mammalian Protein Metabolism}, pages
+  21--132. Academic Press, New York, 1969.
+
+\bibitem[Morton et~al.(1971)Morton, Yee, Harris, and Lew]{Morton:TPB-2-507}
+Newton~E Morton, Shirley Yee, DE~Harris, and Ruth Lew.
+\newblock Bioassay of kinship.
+\newblock {\em Theoretical Population Biology}, 2\penalty0 (4):\penalty0
+  507--524, 1971.
+
+\bibitem[Nei and Kumar(2000)]{Nei:MEP-00}
+Masatoshi Nei and Sudhir Kumar.
+\newblock {\em Molecular Evolution and Phylogenetics}.
+\newblock Oxford University Press, Oxford, 2000.
+
+\bibitem[Pearson and Lee(1903)]{Pearson:B-2-357}
+Karl Pearson and Alice Lee.
+\newblock On the laws of inheritance in man. {I}. inheritance of physical
+  characters.
+\newblock {\em Biometrika}, 2\penalty0 (4):\penalty0 357--462, November 1903.
+
+\bibitem[Rogers(2013)]{Rogers:LNG-13}
+Alan~R. Rogers.
+\newblock Lecture notes on gene genealogies.
+\newblock URL
+  \url{http://content.csbs.utah.edu/~rogers/tch/ant5221/ggeneal.pdf}.
+\newblock Unpublished manuscript, 2013.
+
+\bibitem[Tukey(1977)]{Tukey:EDA-77}
+John~W. Tukey.
+\newblock {\em Exploratory Data Analysis}.
+\newblock Addison-Wesley, Menlo Park, 1977.
+
+\bibitem[Yang(2006)]{Yang:CME-06}
+Ziheng Yang.
+\newblock {\em Computational Molecular Evolution}.
+\newblock Oxford University Press, Oxford, 2006.
+\newblock ISBN 0198567022.
+
+\end{thebibliography}

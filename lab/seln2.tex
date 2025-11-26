@@ -1,0 +1,112 @@
+\chapter{Speeding things up}
+\label{ch.seldrft2}
+In lab~\ref{ch.seldrft}, you simulated the simulaneous effects of
+selection and drift.  In the current lab you will (1)~make your
+simulation much faster, and (2)~use it to perform a different
+experiment.
+
+The old code is slow largely because of the way we sample from the
+urn.  The portion of your program that does this probably looks
+something like this:
+\begin{verbatim}
+num_A1 = num_A2 = 0
+for trial in range(twoN):
+    if random() < new_p:
+        num_A1 += 1
+    else:
+        num_A2 += 1
+p = float(num_A1)/float(num_A1 + num_A2)
+\end{verbatim}
+Here, \verb|new_p| is the expected frequency of allele $A_1$ after
+selection, and \verb|twoN| is the haploid population size---the number of
+balls in the urn.  We make \verb|twoN| passes through the ``for loop.''
+With each pass, we add 1 either to \verb|num_A1| or to \verb|num_A2|.
+We always end up with \verb|(num_A1 + num_A2)| equaling \verb|twoN|.  So why
+bother counting both alleles?  Here is a rewrite that runs about 20\%
+faster on my machine:
+\begin{verbatim}
+num_A1 = 0
+for trial in range(twoN):
+    if random() < new_p:
+        num_A1 += 1
+p = float(num_A1)/float(twoN)
+\end{verbatim}
+
+The new code is better, but it is still slow.  The main problem is
+that we are drawing balls from the urn one at a time.  If we want to
+simulate a large population, our program takes a lot of time drawing
+balls.  Fortunately, there is a better way.
+
+The urn model generates samples from what is called the \emph{Binomial
+  probability distribution} (see Gillespie, p.~192).  It turns up in
+many contexts and has consequently been studied a lot.  There are
+clever ways to speed up the process of drawing random samples from
+this distribution.  We have coded one of these in a Python function
+called \verb|bnldev| (short for ``binomial deviate''), which is
+available on the class web site.  The first step of this week's lab is
+to rewrite your code using this function.
+
+\subsection*{Step 1}
+
+Download the file \verb|pgen.py| from the class web site.  Put it into
+the same directory with your Python code.  Then put the following line
+at the top of your own program:
+\begin{verbatim}
+from pgen import bnldev
+\end{verbatim}
+Finally, rewrite your own version of the urn-sampling code like this
+\begin{verbatim}
+p = bnldev(twoN, new_p)/float(twoN)
+\end{verbatim}
+This single line of code replaces the entire code fragment shown at
+the beginning of this lab.  The call to \verb|bnldev| returns
+an integer, which corresponds to \verb|num_A1| in the old code.
+Dividing this by \verb|float(twoN)| gives the new value of \verb|p|.
+
+If \verb|twoN| is small, the new version will run at about the same speed
+as the old one.  The advantage appears when \verb|twoN| is large.  For
+example, with $2N=10000$, the new version is 100 times as fast as the
+old one on my machine.  This makes it possible to simulate large
+populations.  Make sure your program still runs correctly before proceeding.
+
+\subsection*{Step 2}
+
+As before, set $p=1/2N$ at the beginning of each replicate within
+your simulation.  This implies that we are studying the fate of new
+mutations.  Modify your program so that it calculates (1)~the fraction
+of new mutations that are fixed, (2)~the mean and variance of the time
+to fixation (for those that are fixed), and (3)~the mean and variance
+of the time to loss (for those that are lost).
+
+Hint: To calculate a variance, you don't need to store all the
+numbers in a list.  To calculate a variance of $x_1, x_2, \ldots ,
+x_N$, you only need to know three quantities: $\sum x$, $\sum x^2$,
+and $N$.  Then you can use Gillespie's equation B.2 (p.~190) to
+calculate the variance.  Just use sample averages in place of
+Gillespie's expected values.
+
+Once you get the program running, run it for the following sets of
+parameter values:
+\begin{center}
+\begin{tabular}{cc}
+$2N$ & $s$\\
+\hline
+\hline
+ 100 & 0.001\\
+1000 & 0.0001\\
+\hline
+ 100 & 0.01\\
+1000 & 0.001\\
+\hline
+ 100 & 0.1\\
+1000 & 0.01\\
+\hline
+\end{tabular}
+\end{center}
+Notice that $Ns=0.1$ for the first two sets of parameter values, 1 for
+the next two, and 10 for the last two.
+
+
+
+
+

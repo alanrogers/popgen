@@ -1,0 +1,111 @@
+\chapter{Selection I: Airplanes in War and Peace}
+
+This homework exercise is about airplanes in war and peace, but it is
+exactly the same as a model about how malaria affects the evolution of
+sickle cell anemia or how typhoid fever affects the evolution of cystic
+fibrosis. 
+
+\section{Your Problem}
+
+You have a fleet of two engine airplanes that just fly around in
+peacetime and that engage the enemy during wartime.  A certain fraction
+of engines that you receive are faulty, but you cannot check them before 
+putting them on your airplanes.
+
+The dynamics of your fleet in peacetime are as follows: all planes with two 
+faulty engines are lost to you, ten percent of planes with one faulty
+engine are lost to you, and five percent of planes with two good engines 
+are lost to you each year.  Thus, if there are no faulty engines, your
+fleet shrinks by five percent per year because of accidental losses.  We 
+say that the \emph{mean fitness} of your airplanes is $0.95$ because you 
+will have 95 planes at the end of each year for every 100 at the start
+of the year.
+
+
+\textbf{Problem 1. }What is the mean fitness of your fleet as a function of the
+    fraction $q$ of engines that are faulty. Sketch a plot of mean
+    fitness $\bar{w}$ versus $q$.
+
+Say, for example, that ten percent of the engines you have are faulty.
+Then, assuming that engines are put on planes at random, you expect that 
+$0.10 \times 0.10 = 0.01$ or one percent of your planes will end up with 
+two faulty engines and be lost, $2 \times 0.10 \times 0.90 = 0.18$ of 
+your planes will have one faulty engine and suffer a ten percent loss
+rate, while $0.9 \times 0.9 = 0.81$ of your planes will have two good
+engines and suffer the five percent loss rate.  The mean fitness is then
+$0 \times 0.01 + 0.90 \times 0.18 + 0.95 \times 0.81$.  You should
+conclude from the exercise that faulty engines are bad for your fleet
+unconditionally and that the more faulty engines the more airplanes you
+will lose per year.  In genetics faulty engines would be called
+``deleterious''. 
+
+\textbf{Problem 2.} In peacetime what is the mean fitness of faulty
+and good engines?  Overall mean fitness tells you how many planes you
+have left at the end of the year.  Do the same thing for each kind of
+engine. If this were genetics these would be called \emph{genic fitnesses.}
+How do the engine fitnesses depend on the frequency of faulty engines?
+
+\section{War}
+
+A war occurs and the planes of your fleet are subject to a new source of 
+loss: heat--seeking missiles.  A peculiar feature of these missiles is
+that then cannot seek a plane with one faulty engine: instead they only
+seek planes with two functioning engines.  The new parameters for your
+airplane fleet in wartime are that all planes with two faulty engines
+are lost, ten percent of planes with one faulty engine are lost (the
+same as the rate during peace), and twenty percent of planes with two
+good engines are lost.  This high rate of loss of planes with two good
+engines is a consequence of enemy missiles.
+
+Repeat all the above with the new wartime parameters.  Show that the
+best fleet is one with ten percent of its engines faulty under this model in 
+which engines are bolted on planes at random.  Sketch mean fitness and
+the fitness of each type of engine as a function of the frequency of
+faulty engines.
+
+\section{Bonus problem: Wright versus Fisher} 
+
+Do this problem if you are familiar with any simple computer
+scripting language: basic, perl, python, awk, etc.
+
+
+There is a new advantageous gene in a population of 5,000 breeding
+organisms.  It is codominant, so that equation 3.2 of Gillespie
+becomes
+
+\begin{equation}
+\delta p = \frac{pqs}{2\bar{w}}
+\end{equation}
+
+where
+
+\begin{equation}
+\bar{w} = 1-qs
+\end{equation}
+
+Assume the selective advantage $s$ is five percent, $s=0.05$.  What
+will the frequency of the gene be in the total population of 10,000
+after 100 generations under the two following scenarios:
+
+\begin{itemize}
+
+\item The population is panmictic so that the initial frequency of
+the new mutant is just $1/10000$
+
+\item The population is divided into ten demes and gene frequency
+change occurs within a deme with negligible gene flow among them.  In
+this case the initial frequency of the mutant is $1/1000$ in the deme
+in which it occurs and zero elsewhere.
+
+\end{itemize}
+Under which scenario are there more copies of the new advantageous
+mutant after 100 generations?
+
+
+
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

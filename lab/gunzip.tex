@@ -1,0 +1,44 @@
+\section{Uncompress the data files}
+At this point, the file will be on the hard disk of your own computer.
+Your next task is to find it.  Check the folders ``Desktop,'' and
+``Documents.''  On Linux, check your home directory.  Once you find
+the file, you will need to uncompress it.  HapMap delivers it in a
+compressed format in order to speed the download process.  (That is
+the significance of the ``.gz'' in the file name.)  If the file shows
+up as an icon on your Desktop or file browser, try clicking on the
+icon.  This will probably bring up a dialog box that will allow you to
+uncompress the file.
+
+On the Mac, be careful \emph{not} to click on this file repeatedly.
+If you do, each click will generate an additional copy of the
+uncompressed file.  These additional files will have names that end in
+``\texttt{-2},'' ``\texttt{-3},'' and so on.  You will need to delete
+these extraneous files before you can proceed.
+
+If you are unable to uncompress the data file by clicking on it, here
+is an alternative method:
+\begin{description}
+\item[Mac] Open a command-line interpreter, which is called a
+  ``terminal'' on the Mac operating system.  Then use the \texttt{ls}
+  and \texttt{cd}   commands to navigate to the directory where the
+  .gz file resides, and type \texttt{gunzip filename.gz} at the prompt.
+
+\item[Linux] The same, except that the command-line interpreter is
+  sometimes called a shell window.
+
+\item[Windows] The \texttt{gunzip} facility does not come with
+  Windows, but you can download it for free from \url{www.gzip.org}.
+  After that, the procedure is the same as for Mac or Linux, except
+  that the command-line interpreter is called a command window, and
+  you use \texttt{dir} instead of \texttt{ls}.  If you prefer a
+  point-and-click interface, look into the commercial program WinZip.
+\end{description}
+If you decide to download \emph{all} the HapMap data files, you can
+uncompress them all with a single command:
+\begin{leftindent}
+\begin{verbatim}
+gunzip *.gz
+\end{verbatim}
+\end{leftindent}
+This is \emph{much} faster than pointing and clicking on the files one
+at a time.

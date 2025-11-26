@@ -1,0 +1,626 @@
+\chapter{Probability}
+\label{hw.prob}
+
+Each exercise is worth 10 points.
+
+\begin{exercise}
+You toss a fair coin twice.  What is the probability of
+  observing two heads?
+\begin{answer}
+$1/4$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+With the same coin experiment, what is the probability of a head
+  and a tail (in that order)?
+\begin{answer}
+$1/4$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the probability of a tail and then a head?
+\begin{answer}
+$1/4$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What about a head and a tail in either order?
+\begin{answer}
+$1/2$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+You toss a coin three times and observe 2 heads and a tail in
+  some order.  In how many ways can this happen?  (In other words, how
+  many sequences like ``HHT'' contains 2 ``H''s and one ``T''?)
+\begin{answer}
+3: THH, HTH, and HHT.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+You toss a coin four times and observe 2 heads and 2 tails in
+  some order.  In how many ways can this happen?  (In other words, how
+  many sequences like ``HHTT'' contains 2 ``H''s and 2 ``T''s?)
+\begin{answer}
+There are 6 ways to choose 2 out of 4: ${4 \choose 2} = \frac{4!}{2!
+  \times 2!} = 24/[2 \times 2] = 6$.  They are: HHTT, HTHT, HTTH,
+THHT, THTH, and TTHH.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the probability of observing 2 heads and a tail (order
+  unspecified) in 3 tosses.
+\begin{answer}
+$3 \times 1/2^3 = 3/8$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the probability of observing 2 heads and 2 tails (order
+  unspecified) in 4 tosses.
+\begin{answer}
+$6 \times 1/2^4 = 6/16 = 3/8$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+You toss two fair dice, one red and one black.  What is the
+probability that you observe either a red 4 or a black 6 (or
+both)?
+\begin{answer}
+$1/6 + 1/6 - 1/36 = 11/36$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+You toss one fair die.  What is the probability that you observe
+either a 4 or a 6? 
+\begin{answer}
+$1/6 + 1/6 = 1/3$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  You toss two fair dice, one red and one black.  What is the
+  probability that you observe both a red 4 and a black 6?
+\begin{answer}
+$1/6 \times 1/6 = 1/36$
+\end{answer}
+\end{exercise}
+
+Imagine a modified version of Kerrich's urn experiment in which each
+trial begins with 3 balls of each color (red and black). 
+\begin{exercise}
+What is the probability that, in a single trial, both of the balls
+drawn are red?
+\begin{answer}
+$1/2 \times 2/5 = 1/5$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the probability that, in a single trial, the first ball is red
+and the second black?
+\begin{answer}
+$1/2 \times 3/5 = 3/10$
+\end{answer}
+\end{exercise}
+
+You toss a fair coin 3 times.  You receive \$1 for each head and
+nothing for tails.  Let $X$ represent the number of dollars you
+receive.  
+\begin{exercise}
+For this random variable, what are the possible values
+and the probability of each value? In other words, what is the
+probability distribution of $X$?
+\begin{answer}
+There are two ways to answer this question. The first is algebraic:
+point out that $X$ is a binomial distribution with parameters $N=3$
+and $p=1/2$. This implies that $X$ can take values 0, 1, 2, and 3; it
+takes value $x$ with probability $P_x = {3 \choose x} /8$. The second
+way to answer the question is to write the answer in tabular form:
+\[
+\begin{array}{cc}
+x & P_x\\ \hline
+0   & 1/8\\
+1   & 3/8\\
+2   & 3/8\\
+3   & 1/8\\
+\end{array}
+\]
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the mean?
+\begin{answer}
+The hard way to answer this question is to evaluate $E[X]$ directly,
+using the numerical values of $\Pr[0]$, $\Pr[1]$, $\Pr[2]$, and
+$\Pr[3]$. The easy way is to point out that, because $X$ is binomial
+with $N=3$ and $p=1/2$, the mean is $E[X]=Np = 3/2$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the variance?
+\begin{answer}
+The hard way to answer this question is to evaluate $V[X] = E[X^2] -
+E[X]^2$, or some similar expression. The easy way is to point out
+that, because $X$ is binomial with $N=3$ and $p=1/2$, the the variance
+is $V[X]=Np(1-p) = 3/4$.
+\end{answer}
+\end{exercise}
+
+In JEPr, you saw several tables of counts.  Here is another:
+\begin{center}
+\begin{tabular}{lccc}
+       & \multicolumn{2}{c}{My mood}\\ \cline{2-3}
+Weather& Happy & Sad& Sum\\ 
+\hline 
+Rain   &   30  & 70 & 100\\
+Sun    &   90  & 10 & 100\\
+\hline
+Sum    &  120  & 80 & 200\\
+\end{tabular}
+\end{center}
+In this table, each cell counts the number of days during which
+\begin{inparaenum}[(a)]
+\item it rained and I was happy,
+\item it rained and I was sad,
+\end{inparaenum}
+and so on.  The table tells us that it rained on 100 days, was sunny
+on another 100, and that I was happy 90\% of the time on the sunny
+days but only 30\% of the time on rainy ones. Use this table in the
+following exercises.
+
+\begin{exercise}
+What is the \emph{unconditional} relative frequency of sad?
+\begin{answer}
+Freq. of sad: $80/200 = 2/5$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the \emph{unconditional} relative frequency of rainy?
+\begin{answer}
+Freq. of rainy: $100/200 = 1/2$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the \emph{conditional} relative frequency of sad given rainy?
+\begin{answer}
+Freq. of sad given rainy: $70/100 = 7/10$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the \emph{conditional} relative frequency of rainy given sad?
+\begin{answer}
+Freq. of rainy given sad: $70/80 = 7/8$
+\end{answer}
+\end{exercise}
+
+It should turn out that $f(\hbox{rain}|\hbox{sad}) \neq
+f(\hbox{rain})$. In a statistical sense, therefore, the weather
+depends on my mood. Yet this does \emph{not} imply that my mood has
+any causal effect. Statistical dependence should not be confused with
+causation. 
+
+\begin{exercise}\label{q.randomgene}
+Consider a locus with two alleles, $A$ and $a$, whose
+frequencies are $p$ and $q=1-p$.  Suppose that you draw one gene
+copy from this population at random.  Let $X=1$ if that gene is a
+copy of $A$ and let $X=0$ otherwise.  What are (a)~the mean and
+(b)~the variance of $X$, as a function of $p$?
+  \begin{answer}
+    The quick way to answer this question is to notice that question
+    implies that $X$ is a Bernoulli random variable with parameter $p$
+    and that therefore $E[X] = p$ and $V[X] = p(1-p)$. It's only
+    slightly harder work from first principles. The probability
+    distribution of $X$, in tabular form, is
+    \[
+    \begin{array}{cc}
+      X & \Pr[X]\\ \hline
+      0 & 1-p\\
+      1 & p
+    \end{array}
+    \]
+    This implies that $E[X] = 0 \times (1-p) + 1 \times p = p$. For a
+    random variable that takes only the values 0 and 1, it is always
+    true that $E[X] = E[X^2]$, because $0^2=0$ and
+    $1^2=1$. Consequently, $E[X^2]$ also equals $p$. Recall that, for
+    any random variable, the variance equals $V = E[X^2] - E[X]^2$. In
+    the current case, this becomes $V = p - p^2 = p(1-p)$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  Suppose we form diploid offspring by sampling with replacement from
+  the parental gene pool.  Then in any random offspring, the number,
+  $Y$, of copies of allele $A$ is the sum of two independent random
+  variables, each of which equals~1 with probability $p$ and 0 with
+  probability $1-p$. What does this imply about the mean and variance
+  of $Y$?
+\begin{answer}
+$E[Y] = 2p$ and $V[Y] = 2p(1-p)$. There are two simple ways to get
+these results:
+\begin{enumerate}
+\item The question implies that $Y$ is binomial with $N=2$ and
+  probability parameter $p$. Consequently, $E[Y]=2p$ and $V[Y] =
+  2p(1-p)$. 
+\item The question says that $Y$ is a sum of two independent values,
+  each of which is a Bernoulli random variable with mean $p$ and
+  variance $p(1-p)$. Therefore, $E[Y] = 2p$ and $V[Y] = 2p(1-p)$.
+\end{enumerate}
+There are also harder ways, which involve deriving the properties of
+the Binomial or Bernoulli distributions.
+\end{answer}
+\end{exercise}
+
+Consider a particular nucleotide site in the DNA of some hypothetical
+population.  In this population, 80\% of chromosomes have the
+nucleotide adenine (A) while 20\% have guanine (G).  In other words,
+the relative frequency of allele A is 0.80.  We take samples from this
+population, each of which consists of two chromosomes drawn
+independently and at random.  In each sample, we observe either AA,
+AG, or GG.  The number of A's in this sample is a random variable,
+which I will call $X$.  This variable can take values 0, 1, or
+2.
+\begin{exercise}
+What is the distribution of $X$?  
+\begin{answer}
+Easy answer:~The distribution is binomial with $N=2$ and probability
+parameter $p=0.8$. 
+Hard answer:~The distribution takes values 0, 1, and 2, with
+probabilities 0.04, 0.32, and 0.64.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the mean?
+\begin{answer}
+Because $X$ is binomial with $N=2$ and probability parameter $p=0.8$,
+its mean is $E[X] = 2p = 1.6$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What are the variance and standard deviation?
+\begin{answer}
+Because $X$ is binomial with $N=2$ and probability parameter $p=0.8$,
+its, variance is $V[X] = 2p(1-p) = 0.32$ and its standard deviation is
+$\sqrt{(V[X])} = 0.566$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Sketch a histogram of the distribution of $X$.
+\begin{answer}
+Answer not provided.
+\end{answer}
+\end{exercise}
+
+JEPr describes Bortkiewicz's data on the frequency of deaths caused by
+mule kicks in the Prussian army.  As you will recall, those data are
+approximately Poisson, and the mean number of deaths per corps-year
+was $\lambda = 0.61$. Use the Poisson distribution formula to answer
+the following questions.
+\begin{exercise}
+What is the probability that there will be zero such deaths during a
+given year for a given corps?
+\begin{answer}
+Pr no deaths: $e^{-0.61} = 0.54$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the probability that there will be one such death during a
+given year for a given corps?
+\begin{answer}
+Pr one death: $0.61 e^{-0.61}$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the probability that there will be \emph{AT LEAST} one such
+death during a given year for a given corps?
+\begin{answer}
+Pr at least one death: $1- e^{-0.61} = 0.46$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the probability that there will be 2 such deaths during a
+given year for a given corps?
+\begin{answer}
+\hbox{Pr 2 deaths}: $0.61^2 e^{-0.61}/2! = 0.101$
+\end{answer}
+\end{exercise}
+
+Suppose that the number of offspring per female is Poisson, and that
+the average female has two offspring. (This keeps the population from
+growing or shrinking.) We are assuming, in other words, that the
+Poisson distribution has mean $\lambda=2$.
+\begin{exercise}
+What is the probability that a random female will have no children
+at all?
+\begin{answer}
+Pr no child: $e^{-2} = 0.135$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the probability that a random female will have one
+child? 
+\begin{answer}
+Pr 1 child: $2 e^{-2} = 0.27$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the probability that a random female will have \emph{AT LEAST} one
+child? 
+\begin{answer}
+Pr at least 1 child: $1-e^{-2} = 0.865$.
+\end{answer}
+\end{exercise}
+
+In Kerrich's urn experiment, suppose you get \$1 for each red ball and
+\$0 for each green one, and let $X$ and $Y$ represent the dollars you
+receive on the two draws within a single trial of the experiment.
+\begin{exercise}
+Write down the probability distribution of $X$ and $Y$ in
+  tabular form. Your table should have columns for $X$, for $Y$, and
+  for the joint probability of $X$ and $Y$, i.e. $\Pr[X,Y]$.
+  \begin{answer} This is exactly like Fig.~\ref{JEPr-fig.tree} of
+    JEPr, which presents the following probability distribution:
+\begin{center}
+\begin{tabular}{cc}
+Event & Prob\\ \hline
+RR & 1/6\\
+RG & 1/3\\
+GR & 1/3\\
+GG & 1/6\\
+\end{tabular}
+\end{center}
+where ``R'' and ``G'' stand for ``red'' and ``green'', ``RG'' means
+``1st ball red and 2nd green,'' and so on. For the current question,
+we translate ``R'' and ``G'' into into ``1'' and ``0,'' and we define
+$X$ and $Y$ to equal the values of ball~1 and ball~2. The probability
+distribution becomes
+\begin{center}
+\begin{tabular}{ccc}
+$X$ & $Y$ & $\Pr(X,Y)$\\ \hline
+1 & 1 & 1/6\\
+1 & 0 & 1/3\\
+0 & 1 & 1/3\\
+0 & 0 & 1/6\\
+\end{tabular}
+\end{center}
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What are the expected values of $X$ and of $Y$?
+\begin{answer}
+$E[X] = 1/6 + 1/3 = 1/2$; $E[Y] = 1/6 + 1/3 = 1/2$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What are the variances of $X$ and of $Y$?
+\begin{answer}
+$E[X^2] = E[Y^2] = 1/2$, so $V[X] = E[X^2]- E[X]^2 = 1/2
+- 1/4 = 1/4$. $V[Y]$ is also =1/4.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the covariance of $X$ and $Y$?
+\begin{answer}
+$E[XY] = 1/6$, so $C(X,Y) = E[XY] - E[X]E[Y] = 1/6 -
+1/2^2 = -1/12 \approx -0.0833$. It makes sense that the covariance
+should be negative, because if the first ball is red, then the second
+ball is less likey to be red.
+\end{answer}
+\end{exercise}
+
+Imagine an urn with $N$ balls, of which 1 is red and the rest are
+green. You draw 2 balls from the urn at random \emph{without}
+replacement.  Let $X=1$ if the first ball is red and $X=0$
+otherwise. Define $Y$ similarly for the second ball.
+
+\begin{exercise}
+Draw a tree to represent the probabilities in this experiment. Use
+Fig.~\ref{JEPr-fig.tree} of JEPr as a model.
+\begin{answer}
+\begin{flushleft}
+\input{figtree1red}
+\end{flushleft}
+\end{answer}
+\label{ex.Ntree}
+\end{exercise}
+
+\begin{exercise}
+What are the mean and variance of $X$?
+\begin{answer}
+  The probability distribution of $X$ and $Y$ is shown on the right
+  side of the figure in the answer to exercise~\ref{ex.Ntree}. For
+  reference, it looks like this:
+    \[
+    \begin{array}{ccc}
+      X & Y & \Pr\\ \hline
+      1 & 1 & 0\\
+      1 & 0 & 1/N\\
+      0 & 1 & 1/N\\
+      0 & 0 & (N-2)/N
+      \end{array}
+    \]
+    Using this distribution,
+    \begin{eqnarray*}
+      E[X] &=& 1\times 0\\
+      && \mbox{} + 1 \times 1/N \\
+      && \mbox{} + 0\times 1/N\\
+      && \mbox{} + 0\times (N-2)/N\\
+      &=& 1/N
+    \end{eqnarray*}
+    This is also $E[X^2]$, because $X$ takes only the values 0 and 1,
+    and $X^2 = X$. Thus, $V[X] = E[X^2] - E[X]^2 = 1/N - 1/N^2 = (1/N)
+    (1-1/N)$. An alternative answer: these results follow because $X$ 
+  is a Bernoulli random variable with parameter $p=1/N$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What are the mean and variance of $Y$?
+\begin{answer}
+  The probability distribution of $X$ and $Y$ is shown on the right
+  side of the figure in the answer to exercise~\ref{ex.Ntree}. For
+  reference, it looks like this:
+    \[
+    \begin{array}{ccc}
+      X & Y & \Pr\\ \hline
+      1 & 1 & 0\\
+      1 & 0 & 1/N\\
+      0 & 1 & 1/N\\
+      0 & 0 & (N-2)/N
+      \end{array}
+    \]
+    Using this distribution,
+    \begin{eqnarray*}
+      E[Y] &=& 1\times 0\\
+      && \mbox{} + 0 \times 1/N \\
+      && \mbox{} + 1\times 1/N\\
+      && \mbox{} + 0\times (N-2)/N\\
+      &=& 1/N
+    \end{eqnarray*}
+    This is also $E[Y^2]$, because $Y$ takes only the values 0 and 1,
+    and $Y^2 = Y$. Thus, $V[Y] = E[Y^2] - E[Y]^2 = 1/N - 1/N^2 = (1/N)
+    (1-1/N)$. An alternative answer: these results follow because $Y$ 
+  is a Bernoulli random variable with parameter $p=1/N$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the covariance of $X$ and $Y$? (Hint: the previous two
+questions used a table to represent the probability distribution of
+$(X, Y)$. Add a column to this table to represent the product, $XY$.)
+\begin{answer}
+After adding a column for the product of $X$ and $Y$, the probability
+distribution becomes
+\[
+\begin{array}{cccc}
+  X & Y & XY & \Pr\\ \hline
+  1 & 1 & 1 & 0\\
+  1 & 0 & 0 & 1/N\\
+  0 & 1 & 0 & 1/N\\
+  0 & 0 & 0 & (N-2)/N
+\end{array}
+\]
+The expected product of $X$ and $Y$ is
+\begin{eqnarray*}
+  E[XY] &=& 1\times 0\\
+  && \mbox{} + 0 \times (\hbox{\small the rest})\\
+  &=& 0
+\end{eqnarray*}
+Thus, $C[X,Y] = E[XY] - E[X] E[Y] = -1/N^2$
+\end{answer}
+\end{exercise}
+
+\bigskip
+
+\noindent
+Suppose that, in a class of 50 students, 20 are women. 
+\begin{exercise}
+If we choose a student at random from the class, what is the
+  probability that this student is a woman?
+\begin{answer}
+$2/5$ or 0.4
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+If we choose 2 students from this class at random \emph{without}
+replacement, what is the probability that both are women?
+\begin{answer}
+$(20/50) \times (19/49)$, or $38/245$, or 0.155.
+\end{answer}
+\end{exercise}
+
+\bigskip\noindent
+JEPr discussed the following probability distributions:
+(1)~binomial, (2)~Bernoulli, (3)~Poisson, (4)~uniform,
+(5)~exponential, and (6)~normal.  Which of these choices would be
+most appropriate in each of the following contexts?  (Just write
+down the name of the appropriate distribution.)
+\begin{exercise}
+The weight of a mouse, selected at random from those that live in this
+building. 
+\begin{answer}
+normal
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+The number of neutral mutations on a gene genealogy of known length.
+\begin{answer}
+Poisson
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+The number of copies of $A_1$ (a neutral allele) on some small island
+in the South Pacific, assuming that we know the size of this
+population and the allele frequency among the parents.
+\begin{answer}
+binomial
+\end{answer}
+\end{exercise}
+
+%\begin{exercise}
+%Consider a variant of Kerrich's experiment in which each trial begins
+%with 6 balls (3 red and 3 green) and you draw 3 balls from the box
+%rather than 2. As in Kerrich's experiment, you shake the box before
+%each draw, and you sample without replacement.
+%\begin{inparaenum}[\it (a)]
+%\item Build a model of this experiment by drawing a tree like the one
+%  in JEPr. Your tree should end with 8 branches, corresponding to the
+%  events RRR, RRG, RGR, RGG, GRR, GRG, GGR, and GGG.
+%\item
+%  Assume that you get \$1 for each red ball and \$0 for each green
+%  one, and let $X$, $Y$, and $Z$ represent the dollars you receive on
+%  the 1st, 2nd, and 3rd draws within a single trial of the
+%  experiment. What are the means (expected values) of $X$, $Y$, and
+%  $Z$?
+%\item
+%  What is the covariance of $X$ and $Y$?
+%\item
+%  What is the covariance of $X$ and $Z$?
+%\item
+%  What is the covariance of $Y$ and $Z$?
+%\end{inparaenum}
+%\end{answer}
+%\end{exercise}
+
+%\begin{exercise}
+%  Congenital adrenal hypoplasia (CAH) is a genetic disease that can
+%  distort the external genetalia of females and can produce adrenal crises in
+%  victims of either sex.  There is a test for the disease, but it is not
+%  perfect.  5\% of affected individuals get negative test results, and 1\% of
+%  unaffected individuals get positive results.  Among the Yupik eskimo, 1
+%  individual in every 400 individuals has the disease.  
+%\begin{enumerate}
+%\item What is the probability that a Yupik eskimo \emph{has} the disease given
+%  that   he got a \emph{positive} test result?
+%\item What is the probability that a Yupik eskimo \emph{doesn't have} the
+%  disease given that he got a \emph{negative} test result?
+%\end{enumerate}
+%\end{answer}
+%\end{exercise}

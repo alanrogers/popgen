@@ -1,0 +1,72 @@
+% -*-latex-*-
+\begin{figure}
+\begin{center}
+\mbox{\beginpicture
+  \headingtoplotskip=0.5\baselineskip
+  \valuestolabelleading=0.4\baselineskip
+%%%%%%%%%%%%%%%%% Left Plot %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcoordinatesystem units <0.3\textwidth,0.3\textwidth> point at 1 0
+  \setplotarea x from 0 to 1, y from 0 to 1
+  \axis bottom label {Quantiles of $X$} 
+   ticks withvalues 0 {2000} {4000} {6000} {8000} {10000} / 
+   at 0 0.2 0.4 0.6 0.8 1.0 / /
+  \axis left label {\stack{Quantiles\cr of\cr $Y$}} 
+   ticks withvalues 0 {2000} {4000} {6000} {8000} {10000} / 
+   at 0 0.2 0.4 0.6 0.8 1.0 / /
+  \plotheading{Distributions differ}
+% Estimates of two different cumulative distributions
+% X is binomial(10,0.45), Y is binomial(10,0.55)
+\multiput {$\bullet$} at
+  0.00   0.00
+  0.02   0.00
+  0.10   0.03
+  0.26   0.10
+  0.50   0.26
+  0.73   0.50
+  0.89   0.74
+  0.97   0.90
+  1.00   0.98
+  1.00   1.00
+  1.00   1.00
+/
+%
+\setdots
+\plot 0 0 1 1 /
+\setsolid
+%%%%%%%%%%%%%%%%% Right Plot %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcoordinatesystem units <0.3\textwidth,0.3\textwidth> point at -0.2 0
+  \setplotarea x from 0 to 1, y from 0 to 1
+  \axis bottom label {Quantiles of $X$} 
+   ticks withvalues 0 {2000} {4000} {6000} {8000} {10000} / 
+   at 0 0.2 0.4 0.6 0.8 1.0 / /
+  \axis right 
+   ticks withvalues 0 {2000} {4000} {6000} {8000} {10000} / 
+   at 0 0.2 0.4 0.6 0.8 1.0 / /
+  \plotheading{Distributions identical}
+% Two estimates of same cumulative distribution, binomial(10,0.4)
+\multiput {$\bullet$} at
+  0.01   0.01
+  0.05   0.05
+  0.17   0.17
+  0.39   0.38
+  0.63   0.63
+  0.83   0.84
+  0.95   0.94
+  0.99   0.99
+  1.00   1.00
+  1.00   1.00
+  1.00   1.00
+/
+\setdots
+\plot 0 0 1 1 /
+\setsolid
+\endpicture}
+\end{center}
+\caption{Using quantile-quantile plots to compare distributions.  The
+  left side compares two slightly different binomial distributions,
+  with $(N,p)=(10,0.45)$ in one case and $(10,0.55)$ in the other.
+  The right side compares two independent binomial samples, both with
+  $(N,p)=(10,0.4)$.  In all cases, 10000 binomial random variates were
+  drawn.}
+\label{fig.qqplot}
+\end{figure}

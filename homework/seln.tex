@@ -1,0 +1,682 @@
+\chapter{Selection}
+\label{hw.seln}
+
+Many of the exercises in this homework have several components, which
+are given letters: \emph{a}, \emph{b}, and so on. Each component of
+each exercise is worth 10 points.  Several of the exercises ask you to
+make graphs. Feel free to use any method you please. There is nothing
+wrong with a pencil and graph paper. And if you don't have graph
+paper, try this:
+\begin{quote}
+For emergency graph paper, take out one sheet of ruled paper, turn it
+on its side, and place it beneath another sheet of ruled paper. If
+these two sheets have a light-colored backing---often provided by the
+rest of the pad or notebook---the vertical lines on the lower sheet
+are almost certain to show through well enough, combining with the
+horizontal lines on the top sheet to form a grid on which plotting is
+reasonably easy.\\
+\mbox{}\hfill \citet[p.~43]{Tukey:EDA-77}:
+\end{quote}
+
+\section{How selection changes allele frequencies}
+\begin{exercise}
+At a biallelic locus, suppose that genotypes $A_1A_1$, $A_1A_2$, and
+$A_2A_2$ have relative fitnesses 1, 1.02, and 1.03 and that the
+frequency of $A_1$ is $p=0.1$.
+\begin{inparaenum}[(a)]
+\item
+What is the population's mean relative fitness?
+\item
+What are the ``marginal'' or allele-specific relative fitnesses of $A_1$ and
+$A_2$?
+\item
+What is the expected frequency of $A_1$ in the following generation?
+\end{inparaenum}
+\begin{answer}
+\begin{inparaenum}[(a)]
+\item
+The mean relative fitness is $\bar w = (p^2\times 1) + (2pq\times 1.02) +
+(q^2\times 1.03) = 1.0279$.
+\item
+The marginal fitness of $A_1$ is $w_1 = p w_{11} + q w_{12} =
+1.018$. That of $A_2$ is $w_2 = p w_{12} + q w_{22} = 1.029$.
+\item
+  In the following generation, the expected frequency of $A_1$ is $p'
+  = (p^{2} w_{11} + pqw_{12})/\bar w$, as shown on Gillespie's
+  p.~62. This gives 0.099.
+\end{inparaenum}
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+\label{it.1gen}
+At a biallelic locus, suppose that $p = 0.2$, $s = 0.05$, and $h=
+0.1$. Here, $p$ is the relative frequency of allele $A_1$, and the
+relative fitnesses of genotypes $A_1A_1$, $A_1A_2$, and $A_2A_2$ are
+1, $1-hs$, and $1-s$. Assume that the population is at Hardy-Weinberg
+equilibrium.
+\begin{inparaenum}[(a)]
+\item
+What is the population's mean relative fitness?
+\item
+What are the ``marginal'' or allele-specific relative fitnesses of $A_1$ and
+$A_2$?
+\item
+What is the expected frequency of $A_1$ in the following generation?
+\end{inparaenum}
+\begin{answer}
+\begin{inparaenum}[(a)]
+\item
+The mean relative fitness is $\bar w = 1 - 2pqhs - q^2 s = 0.966$.
+\item
+The marginal fitness of $A_1$ is $w_1 = p + q(1-hs) = 0.996$. That of
+$A_2$ is $w_2 = p(1-hs) + q(1-s) = 0.959$.
+\item
+In the following generation, the expected frequency $A_1$ is $p' =
+(p^{2} w_{11} + pqw_{12})/\bar w$, as shown on Gillespie's p.~62. This
+gives 0.2061.
+\end{inparaenum}
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  Repeat exercise~\ref{it.1gen}, assuming that $p = 0.5$, $s = 0.01$,
+  and $h = -0.3$.
+\begin{answer}
+\begin{inparaenum}[(a)]
+\item
+The mean relative fitness is $\bar w = 1 - 2pqhs - q^2 s = 0.999$.
+\item
+The marginal fitness of $A_1$ is $w_1 = p + q(1-hs) = 1.0015$. That of
+$A_2$ is $w_2 = p(1-hs) + q(1-s) = 0.9965$.
+\item
+  In the following generation, the expected frequency $A_1$ is $p' =
+  (p^{2} w_{11} + pqw_{12})/\bar w$, as shown on Gillespie's
+  p.~62. This gives 0.501.
+\end{inparaenum}
+\end{answer}
+\end{exercise}
+
+\begin{exercise} 
+\label{it.A}
+Suppose that genotypes $A_1A_1$, $A_1A_2$, and $A_2A_2$ have relative
+fitnesses $1$, $1-hs$, and $1-s$, and that their absolute fitnesses
+are 1.3, 1, and 0.9.
+\begin{inparaenum}[(a)]
+\item What are $s$ and $h$? 
+\item Plot $\Delta_s p$ against $p$.
+\item Where are the equilibria? Which are stable? Which are unstable?
+\end{inparaenum}
+Hints: use Gillespie's Eqns.~3.2 and~3.3. 
+\begin{answer}
+\begin{inparaenum}[(a)]
+\item Gillespie makes his fitnesses relative to that of genotype
+$A_1A_1$. To obtain these relative fitnesses, divide each absolute
+fitness by $W_{11}$. This gives relative fitnesses $w_{11}=1$, $w_{12} =
+0.769$, and $w_{22} = 0.692$. In Gillespie's fitness scheme, $w_{12} =
+1-hs$, and $w_{22} = 1-s$. This implies that $s = 1 - w_{22} = 0.308$,
+and $h = (1-w_{12})/s = 0.75$.
+
+\item Gillespie's Eqns.~3.2--3.3 express $\Delta_s p$ in terms of $p$,
+  $q=1-p$, $s$, $h$, and $\bar w = 1 - pqhs - q^2s$. Note that $q$ and
+  $\bar w$ depend on $p$ and must therefore be recalculated for each
+  value of $p$ that you graph. I did these calculations using a Python
+  script. Here are a few of the results in tabular form:
+
+{\centering\begin{tabular}{rr} $p$ & $\Delta_s p$\\ \hline
+      0.0000 &   0.0000\\
+      0.0417 &   0.0047\\
+      0.0833 &   0.0095\\
+      $\cdots$ & $\cdots$\\
+      0.9167 &   0.0170\\
+      0.9583 &   0.0090\\
+      1.0000 &   0.0000\\
+\end{tabular}\\}
+
+The graph of these results looks like this:
+
+{\centering\mbox{\beginpicture
+\setcoordinatesystem units <4cm, 70cm>
+\setplotarea x from 0 to 1, y from 0.0000 to 0.0455
+\axis left label {$\Delta_s p$} 
+  ticks numbered from 0.00 to 0.04 by 0.01 /
+\axis bottom label {$p$} 
+  ticks numbered from 0.00 to 1.00 by 0.25 /
+%       p       dp
+\plot
+   0.0000   0.0000
+   0.0417   0.0047
+   0.0833   0.0095
+   0.1250   0.0143
+   0.1667   0.0189
+   0.2083   0.0234
+   0.2500   0.0277
+   0.2917   0.0316
+   0.3333   0.0352
+   0.3750   0.0383
+   0.4167   0.0409
+   0.4583   0.0430
+   0.5000   0.0445
+   0.5417   0.0454
+   0.5833   0.0455
+   0.6250   0.0450
+   0.6667   0.0436
+   0.7083   0.0415
+   0.7500   0.0385
+   0.7917   0.0346
+   0.8333   0.0297
+   0.8750   0.0239
+   0.9167   0.0170
+   0.9583   0.0090
+   1.0000   0.0000
+/
+\endpicture}\\}
+
+\item
+Equilibria occur where $\Delta_s p = 0$. As the graph shows, the only
+such points are at $p=0$ and $p=1$. Only the second of these is
+stable. This is because $\Delta_s p>0$ whenever $0<p<1$. Consequently,
+$p$ always moves \emph{toward} the equilibrium at $p=1$ but \emph{away
+  from} the one at $p=0$.
+\end{inparaenum}
+\end{answer}
+\end{exercise}
+
+\begin{exercise} 
+\label{it.B}
+Repeat exercise~\ref{it.A}, assuming that genotypes $A_1A_1$,
+$A_1A_2$, and $A_2A_2$ have absolute fitnesses 1.3, 1, and 1.2.  
+\begin{answer}
+\begin{inparaenum}[(a)]
+\item Gillespie makes his fitnesses relative to that of genotype
+$A_1A_1$. To obtain these relative fitnesses, divide each absolute
+fitness by $W_{11}$. This gives relative fitnesses $w_{11}=1$, $w_{12} =
+0.769$, and $w_{22} = 0.923$. In Gillespie's fitness scheme, $w_{12} =
+1-hs$, and $w_{22} = 1-s$. This implies that $s = 1 - w_{22} = 0.077$,
+and $h = (1-w_{12})/s = 3$.
+
+\item Gillespie's Eqns.~3.2--3.3 express $\Delta_s p$ in terms of $p$,
+  $q=1-p$, $s$, $h$, and $\bar w = 1 - pqhs - q^2s$. Note that $q$ and
+  $\bar w$ depend on $p$ and must therefore be recalculated for each
+  value of $p$ that you graph. I did these calculations using a Python
+  script. Here are a few of the results in tabular form:
+
+{\centering\begin{tabular}{rr} $p$ & $\Delta_s p$\\ \hline
+   0.0000  & --0.0000\\
+   0.0417  & --0.0060\\
+   0.0833  & --0.0101\\
+  $\cdots$ & $\cdots$\\
+   0.9167  & 0.0155\\
+   0.9583  & 0.0087\\
+   1.0000  & 0.0000\\
+\end{tabular}\\}
+
+The graph of these results looks like this:
+
+{\centering\mbox{\beginpicture
+\setcoordinatesystem units <4cm, 79.4cm>
+\setplotarea x from 0 to 1, y from -0.0136 to 0.0265
+\axis left label {$\Delta_s p$} 
+  ticks numbered from -0.01 to 0.02 by 0.01 /
+\axis bottom label {$p$} 
+  ticks numbered from 0.00 to 1.00 by 0.25 /
+\setdots
+\putrule from 0 0 to 1 0
+\setsolid
+%       p       dp
+\plot
+   0.0000  -0.0000
+   0.0417  -0.0060
+   0.0833  -0.0101
+   0.1250  -0.0126
+   0.1667  -0.0136
+   0.2083  -0.0133
+   0.2500  -0.0118
+   0.2917  -0.0094
+   0.3333  -0.0062
+   0.3750  -0.0025
+   0.4167   0.0017
+   0.4583   0.0061
+   0.5000   0.0104
+   0.5417   0.0146
+   0.5833   0.0184
+   0.6250   0.0217
+   0.6667   0.0242
+   0.7083   0.0259
+   0.7500   0.0265
+   0.7917   0.0259
+   0.8333   0.0240
+   0.8750   0.0205
+   0.9167   0.0155
+   0.9583   0.0087
+   1.0000   0.0000
+/
+\endpicture}\\}
+
+\item Equilibria occur where $\Delta_s p = 0$. There are three such
+  points: at $p=0$, at $p=1$, and at $p=0.4$.  $\Delta_s p$ is
+  positive to the right of the intermediate equilibrium but negative
+  to the left. Consequently, the intermediate equilibrium is unstable
+  and the two extreme equilibria are stable.
+\end{inparaenum}
+\end{answer}
+\end{exercise}
+
+\begin{exercise} 
+\label{it.C}
+Repeat exercise~\ref{it.A}, assuming that genotypes $A_1A_1$,
+$A_1A_2$, and $A_2A_2$ have absolute fitnesses 0.9, 1, and 0.8.
+\begin{answer}
+\begin{inparaenum}[(a)]
+\item Gillespie makes his fitnesses relative to that of genotype
+$A_1A_1$. To obtain these relative fitnesses, divide each absolute
+fitness by $W_{11}$. This gives relative fitnesses $w_{11}=1$, $w_{12} =
+1.111$, and $w_{22} = 0.889$. In Gillespie's fitness scheme, $w_{12} =
+1-hs$, and $w_{22} = 1-s$. This implies that $s = 1 - w_{22} = 0.111$,
+and $h = (1-w_{12})/s = -1$.
+
+\item Gillespie's Eqns.~3.2--3.3 express $\Delta_s p$ in terms of $p$,
+  $q=1-p$, $s$, $h$, and $\bar w = 1 - pqhs - q^2s$. Note that $q$ and
+  $\bar w$ depend on $p$ and must therefore be recalculated for each
+  value of $p$ that you graph. I did these calculations using a Python
+  script. Here are a few of the results in tabular form:
+
+{\centering\begin{tabular}{rr} $p$ & $\Delta_s p$\\ \hline
+   0.0000 & 0.0000\\
+   0.0417 & 0.0092\\
+   0.0833 & 0.0162\\
+  $\cdots$ & $\cdots$\\
+   0.9167 &--0.0063\\
+   0.9583 &--0.0039\\
+   1.0000 &--0.0000\\
+\end{tabular}\\}
+
+The graph of these results looks like this:
+
+{\centering\mbox{\beginpicture
+\setcoordinatesystem units <4cm, 85.6cm>
+\setplotarea x from 0 to 1, y from -0.01 to 0.0272
+\axis left label {$\Delta_s p$} 
+  ticks numbered from -0.01 to 0.02 by 0.01 /
+\axis bottom label {$p$} 
+  ticks numbered from 0.00 to 1.00 by 0.25 /
+\setdots
+\putrule from 0 0 to 1 0
+\setsolid
+%       p       dp
+\plot
+   0.0000   0.0000
+   0.0417   0.0092
+   0.0833   0.0162
+   0.1250   0.0213
+   0.1667   0.0247
+   0.2083   0.0266
+   0.2500   0.0272
+   0.2917   0.0267
+   0.3333   0.0253
+   0.3750   0.0232
+   0.4167   0.0205
+   0.4583   0.0173
+   0.5000   0.0139
+   0.5417   0.0103
+   0.5833   0.0067
+   0.6250   0.0032
+   0.6667  -0.0000
+   0.7083  -0.0028
+   0.7500  -0.0051
+   0.7917  -0.0068
+   0.8333  -0.0076
+   0.8750  -0.0075
+   0.9167  -0.0063
+   0.9583  -0.0039
+   1.0000  -0.0000
+/
+\endpicture}\\}
+
+\item
+Equilibria occur where $\Delta_s p = 0$. There are three such points:
+at $p=0$, at $p=1$, and at $p=2/3$.
+$\Delta_s p$ is positive to the left of the intermediate equilibrium
+but negative to the right. Consequently, the intermediate equilibrium
+is stable and the two extreme equilibria are unstable.
+\end{inparaenum}
+\end{answer}
+\end{exercise}
+
+\begin{exercise} 
+  Suppose that genotypes $A_1A_1$, $A_1A_2$, and $A_2A_2$ have
+  fitnesses 1, 1.15, and 1.2.  The population is infinite and mates at
+  random. What is the frequency of allele~$A_1$ at the stable
+  equilibrium? (No calculation is needed.)
+\begin{answer}
+  No calculation is required. Because $A_2A_2$ has higher fitness than
+  $A_1A_1$ and the heterozygote is intermediate, $A_2$ will go to
+  fixation and the stable equilibrium frequency of $A_1$ is 0.
+\end{answer}
+\end{exercise}
+
+\begin{exercise} 
+  Suppose that genotypes $A_1A_1$, $A_1A_2$, and $A_2A_2$ have
+  fitnesses 1, 1.5, and 1.  The population is infinite and mates at
+  random. What is the frequency of allele~$A_1$ at the stable
+  equilibrium?  (No calculation is needed.)
+\begin{answer}
+  No calculation is required. Because the two homozygotes have equal
+  fitness and the heterozygote is superior, the stable equilibrium
+  frequency of $A_1$ is $1/2$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise} 
+  Suppose that genotypes $A_1A_1$, $A_1A_2$, and $A_2A_2$ have
+  fitnesses 1, 0.5, and 1.5.  The population is infinite and mates at
+  random. What is the frequency of allele~$A_1$ at the two stable
+  equilibria?  (No calculation is needed.)
+\begin{answer}
+  No calculation is required. Because the heterozygote has lower
+  fitness than either homozygote, there are two stable
+  equilibria---one at which the frequency of $A_1$ is~0 and another at
+  which it is~1.
+\end{answer}
+\end{exercise}
+
+\begin{exercise} 
+  Use Gillespie's Eqn.~3.4 to graph $\hat p$ as a function of $h$ for
+  $-1 < h < 2$. Your vertical axis should extend only from~0 to~1,
+  because values outside this range are not legitimate allele
+  frequencies. Locate the regions of the graph that correspond to
+  (a)~overdominance, (b)~incomplete dominance, and
+  (c)~underdominance. In making these determinations, assume that
+  $s>0$.  For each of these regions, discuss the outcome of natural
+  selection.
+\begin{answer}
+$\hat p$, the equilibrium value of $p$, is equal to $(h-1)/(2h-1)$
+(see Gillespie's Eqn.~3.4). Here are a few values and then the graph:
+
+{\centering\begin{tabular}{rr} $h$ & $\hat p$\\ \hline
+ --1.0000 &  0.6667\\
+ --0.8421 &  0.6863\\
+ --0.6842 &  0.7111\\
+  $\cdots$ & $\cdots$\\
+  1.6842 &  0.2889\\
+  1.8421 &  0.3137\\
+  2.0000 &  0.3333\\
+\end{tabular}\\}
+
+{\centering\mbox{\beginpicture
+\setcoordinatesystem units <1.33cm, 4cm>
+\setplotarea x from -1 to 2, y from 0 to 1
+\axis left label {$\hat p$} 
+  ticks numbered from 0.00 to 1.00 by 0.25 /
+\axis bottom label {$h$} 
+  ticks numbered from -1.0 to 2.0 by 1 /
+\setdots
+\putrule from 0 0 to 1 0
+\setsolid
+%       h       phat
+\multiput {$\circ$} at
+ -1.0000   0.6667
+ -0.8421   0.6863
+ -0.6842   0.7111
+ -0.5263   0.7436
+ -0.3684   0.7879
+ -0.2105   0.8519
+ -0.0526   0.9524
+%  0.1053   1.1333
+%  0.2632   1.5556
+%  0.4211   3.6667
+%  0.5789  -2.6667
+%  0.7368  -0.5556
+%  0.8947  -0.1333
+  1.0526   0.0476
+  1.2105   0.1481
+  1.3684   0.2121
+  1.5263   0.2564
+  1.6842   0.2889
+  1.8421   0.3137
+  2.0000   0.3333
+/
+\endpicture}\\}
+
+(a)~Overdominance occurs when $h<0$ and generates a stable equilibrium
+within the interval $(0,1)$. (b)~Incomplete dominance occurs when
+$0<h<1$. In this case, selection is directional, and there are no
+internal equilibria. (c)~Underdominance occurs when $h>1$ and
+generates an unstable internal equilibrium. The only stable
+equilibria are at $p=0$ and $p=1$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise} 
+Gillespie's equation~3.9 doesn't work if $h=0$, i.e.\ if allele $A_2$
+is completely recessive. Derive a formula for this case. Hints:
+\begin{inparaenum}[\it (i)]
+\item equation~3.6 still works;
+\item equation~3.8 simplifies to $\Delta_s p = pq^2s/(1 - q^2 s)
+  \approx pq^2s$;
+\item it is still true that $\Delta p = \Delta_s p + \Delta_u p$.
+\end{inparaenum}
+\begin{answer}
+The change per generation is $\Delta p \approx pq^2s - up$. At
+equilibrium between mutation and drift, this quantity equals
+zero. This implies that the equilibrium occurs at $\hat q =
+\sqrt{u/s}$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+\label{it.flowers1}
+White flowers (genotype $rr$) are recessive to red ($RR$ and $Rr$) in
+an outbreeding plant species. In a large random sample, you count 200
+white-flowered plants and 800 red-flowered plants.  One generation
+later, you count 250 white and 750 red plants. To study these data,
+use the following notation for fitnesses and genotypic frequencies:
+\begin{center}
+\begin{tabular}{lccc}
+G'type  & $RR$ & $Rr$ & $rr$\\
+Fitness & $w_{RR} = 1$   & $w_{Rr} = 1$   & $w_{rr} = 1-s$\\
+Freq    & $P_{RR} = p^2$ & $P_{Rr} = 2pq$ & $P_{rr} = q^2$\\
+\end{tabular}
+\end{center}
+This says that $p$ is the frequency of allele $R$, $q=1-p$ is that of
+allele $r$, and the genotype frequencies are at Hardy-Weinberg
+equilibrium. Furthermore, relative fitness is 1 for both of the
+genotypes ($RR$ and $Rr$) that produce red flowers. It equals $1-s$
+for the genotype ($rr$) that produces white flowers. To study the
+change between generations, we'll use the displayed equation at the
+top of Gillespie's p.~62. In the current notation, this equation
+becomes
+\begin{equation}
+p' = \frac{p^2 w_{RR} + pq w_{Rr}}{\bar w}
+\label{eq.pprime}
+\end{equation}
+where $\bar w = p^2 w_{RR} + 2pq w_{Rr} + q^2 w_{rr}$ is the mean
+allele frequency. Answer the following questions:
+\begin{inparaenum}[\it (a)]
+\item What's the frequency, $p$, of allele $R$ in the first
+  generation?  
+\item What's the frequency, $p'$, of allele $R$ in the second
+  generation?  
+\item If this change was caused by selection, then what was the
+  coefficient $(s)$ of selection?
+\end{inparaenum}
+This calculation is sensitive to numerical error: use at least 3
+digits of precision throughout.
+\begin{answer}
+\begin{inparaenum}[\it (a)]
+\item In the first generation, the frequency of white flowers is
+  $P_{rr} = 200/1000 = 0.2$. At Hardy-Weinberg equilibrium, this
+  frequency is $q^2$, where $q$ is the frequency of allele $r$. This
+  implies that $q = \sqrt{0.2} = 0.447$. The frequency of allele $R$
+  is therefore $p = 1-q = 0.553$.
+\item In the 2nd generation, $P_{rr} = 250/1000 = 0.25$, so $q' =
+  \sqrt{0.25} = 0.5$, and $p'=1-q'=0.5$.
+\item Because $w_{RR} = w_{Rr} = 1$, Eqn.~\ref{eq.pprime} simplifies
+  to $p' = p/(1-q^2 s)$, or $s = (1-p/p')/q^2$. With our data, this is 
+  $s = (1-0.553/0.5)/0.2 = -0.53$.
+\end{inparaenum}
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+\label{it.flowers2}
+Repeat exercise~\ref{it.flowers1}, this time assuming that the
+fraction of white flowers was $100/1000$ in the first generation and
+$95/1000$ in the second.
+
+This calculation is sensitive to numerical error: use at least 3
+digits of precision throughout.
+\begin{answer}
+\begin{inparaenum}[\it (a)]
+\item In the first generation, the frequency of white flowers is
+  $P_{rr} = 100/1000 = 0.1$. At Hardy-Weinberg equilibrium, this
+  frequency is $q^2$, where $q$ is the frequency of allele $r$. This
+  implies that $q = \sqrt{0.1} = 0.316$. The frequency of allele $R$
+  is therefore $p = 1-q = 0.684$.
+\item In the 2nd generation, $P_{rr} = 95/1000 = 0.095$, so $q' =
+  \sqrt{0.095} = 0.308$, and $p'=1-q'=0.692$.
+\item Because $w_{RR} = w_{Rr} = 1$, Eqn.~\ref{eq.pprime} simplifies
+  to $p' = p/(1-q^2 s)$, or $s = (1-p/p')/q^2$. With our data, this is 
+  $s = (1-0.684/0.692)/0.1 = 0.116$.
+\end{inparaenum}
+\end{answer}
+\end{exercise}
+
+\section{Selection and drift}
+In these problems, we'll follow the notation in Gillespie's
+section~3.9, which assumes that $A_1$ is the ``wild type'' allele,
+$A_2$ is the mutant allele, and genotypes $A_1A_1$, $A_1A_2$, and
+$A_2A_2$ have relative fitnesses 1, $1+s/2$, and $1+s$. (This notation
+differs from Kimura's, which Jon presented in lecture.)
+\begin{exercise}
+Do we expect more adaptive evolution (fixations of advantageous
+mutations) in large or in small populations?  Why?
+\begin{answer}
+Because the number of new advantageous mutants is proportional to
+population size, but the fixation probability for such mutants is
+essentially independent of population size. The rate of adaptive
+evolution is thus proportional to population size.
+
+Some students may want to answer this question more formally, so here
+is the formal version: let $u$ represent the mutation rate for
+advantageous alleles whose fitness in heterozygotes is $1+s/2$,
+relative to that of the wild-type allele. The number of such mutations
+in the population as a whole is $2Nu$, and each of them has
+probability $s$ of ultimate fixation. For this category of adaptive
+mutations, the expected number fixed per generation is therefore
+$2Nus$, an increasing function of population size.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+\label{ex.fixbad}
+For a deleterious mutation with $s = -0.001$, what is the probability
+of fixation in a population of size
+\begin{inparaenum}[(a)]
+\item $N_e = 10,000$,
+\item $N_e = 1000$, and
+\item $N_e = 100$.
+\end{inparaenum}
+Hint: In Python, Gillespie's equation~3.22 is
+\begin{verbatim}
+# Prob of fixation of a new mutation.
+def pfix(N, s):
+    return (1-exp(-s))/(1-exp(-2*N*s))
+\end{verbatim}
+\begin{answer}
+With $s=-0.001$, the fixation probability is
+\begin{inparaenum}[(a)]
+\item $2.1\times 10^{-12}$ if $N=10000$;  or
+\item $1.57\times 10^{-4}$ if $N=1000$; or
+\item $4.5\times 10^{-3}$ if $N=100$.
+\end{inparaenum}
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+\label{ex.ratebad}
+Suppose that for the deleterious alleles of the preceding problem, the
+mutation rate is $u = 2.2\times 10^{-9}$ per year. What is the rate of
+substitution of such alleles per million years?
+\begin{answer}
+The substitution rate per million years is $10^6 \times 2Nu $ times the
+answers from the preceding question.
+\begin{inparaenum}[(a)]
+\item $9.07\times 10^{-11}$ if $N=10000$;  or
+\item $6.89\times 10^{-4}$ if $N=1000$; or
+\item $1.99\times 10^{-3}$ if $N=100$.
+\end{inparaenum}
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+\label{ex.fixgood}
+Problem~\ref{ex.fixbad} was about deleterious mutations. Repeat it for
+advantageous mutations with $s=0.001$. (Hint: Use the \verb|pfix|
+Python function defined above.)
+\begin{answer}
+With $s=0.001$, the fixation probability is
+\begin{inparaenum}[(a)]
+\item $1\times 10^{-3}$ if $N=10000$;  or
+\item $1.16\times 10^{-3}$ if $N=1000$; or
+\item $5.51\times 10^{-3}$ if $N=100$.
+\end{inparaenum}
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+\label{ex.rategood}
+Repeat problem~\ref{ex.ratebad} for advantageous mutations with
+$s=0.001$, still assuming that $u = 2.2\times 10^{-9}$. 
+\begin{answer}
+  The substitution rate per million years is $10^6 \times 2Nu $ times
+  the results from the \verb|pfix| function (Gillespie's Eqn.~3.22)
+  defined above.
+\begin{inparaenum}[(a)]
+\item 0.044 if $N=10000$;  or
+\item 0.0051 if $N=1000$; or
+\item 0.0024 if $N=100$.
+\end{inparaenum}
+\end{answer}
+\end{exercise}
+
+On p.~93, Gillespie shows that if $s\ll 1 \ll 2N_e s$, and $N_e
+\approx N$, then the probability of fixation of a newly-arisen
+advantageous mutant allele is approximately 
+\begin{equation}
+\pi_1(1/2N) \approx s
+\label{eq.fixmut-approx}
+\end{equation}
+In other words, the probability of fixation for a new adaptive
+mutation is approximately twice the selective advantage of a
+heterozygote. 
+
+\begin{exercise}
+Repeat exercise~\ref{ex.fixgood}, this time using the approximation in
+Eqn.~\ref{eq.fixmut-approx}. For each population size, calculate the
+relative error of the approximation,
+\[
+\hbox{\rm relerr} = \left|\frac{s - \pi_1(1/2N)}{\pi_1(1/2N)}\right|
+\]
+where $\pi_1(1/2N)$ is the value given by Kimura's formula, and the
+vertical bars indicate the absolute value.\footnote{For example, the
+  absolute value of $-3$ is written $|{-}3|$ and equals 3.} Based on
+these relative errors, in which cases does the approximation work
+well, and in which does it work poorly?
+\begin{answer}
+\begin{inparaenum}[(a)]
+\item For $N=10000$: $\pi_1=0.0009995$, $s=0.001$,
+  $\mbox{relerr}=0.000500$;  
+\item for $N= 1000$: $\pi_1=0.0011559$, $s=0.001$,
+  $\mbox{relerr}=0.134903$;  
+\item for $N=  100$: $\pi_1=0.0055139$, $s=0.001$,
+  $\mbox{relerr}=0.818640$.    
+\end{inparaenum}
+The approximation works well for $N=10000$, fairly well for $N=1000$,
+but poorly for $N=100$.
+\end{answer}
+\end{exercise}
+
+
+
+

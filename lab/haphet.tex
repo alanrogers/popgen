@@ -1,0 +1,137 @@
+\chapter{Heterozygosity of HapMap SNPs}
+\label{ch.haphet}
+\setcounter{cenumEnumi}{0}
+Heterozygosity is perhaps the most fundamental measure of genetic
+variation.  In this project, we'll study the heterozygosity of SNPs within
+the HapMap data base.  For each SNP, we'll calculate not only the
+observed heterozygosity, but also the value expected at Hardy-Weinberg
+equilibrium.  We'll be interested to see how well the two numbers
+agree. 
+
+The exercise will involve modifying the incomplete code below.  You
+can download it from the lab website, where it is called
+\texttt{haphetinc.py}.
+\begin{leftindent}
+\listinginput[5]{1}{haphetinc.py}
+\end{leftindent}
+The guts of this little program is the loop in lines~8--14.  Each time
+through the loop, we choose a SNP at random from the data set.  Then
+we set the observed (\texttt{ohet}) and expected (\texttt{ehet})
+heterozygosities, and print these values.  Only, as you can see, the
+present code just sets these values to 0.
+
+\section*{Exercise}
+\begin{cenum}
+\item Change lines~11-12 so that they calculate the observed and
+  expected heterozygosities of each SNP.
+\end{cenum}
+
+So far, your program merely lists the expected and observed
+heterozygosity values.  It is hard to get a good sense of these
+values, just by staring at the numbers.  You'll appreciate the pattern
+better after making a scatter plot.  Before you can do this, you must
+first get the data values into lists.
+
+\section{Storing values in a list} 
+\label{sec.initlist}
+As you calculate values of \texttt{ohet} and \texttt{ehet}, you will
+need to store them in a list. Before you can do so, the list must
+first exist.  Thus, you will need to create an empty list before the
+main loop in your program.  For example, you might use a command like
+\verb|obs_vals = 3*[None]| to create a list with room for three
+observed values.  Here, the keyword ``\texttt{None}'' is Python's way
+of representing an unknown value.  In subsequent commands, you replace
+these with real values.  Here is how it works:
+\begin{leftindent}
+\begin{verbatim}
+>>> obs_val = 2*[None]
+>>> obs_val
+[None, None]
+>>> obs_val[0] = 3.0
+>>> obs_val[1] = 111
+>>> obs_val
+[3.0, 111]
+\end{verbatim}
+\end{leftindent}
+Below, you will create two lists (one for \texttt{ohet} and one for
+\texttt{ehet}) to store the values you calculate within the loop in
+the program above. Your lists should be defined \emph{before} the loop
+and should be long enough to hold all the values you will calculate
+within the loop.
+
+It is also possible to start with an empty list:
+\begin{leftindent}
+\begin{verbatim}
+>>> obs_val = []
+>>> obs_val
+[]
+\end{verbatim}
+\end{leftindent}
+Then you can add values using the \texttt{append} method, which works
+with any list:
+\begin{leftindent}
+\begin{verbatim}
+>>> obs_val.append(3.0)
+>>> obs_val.append(111)
+>>> obs_val
+[3.0, 111]
+\end{verbatim}
+\end{leftindent}
+Either way, you end up with the same answer. The first method is
+faster with large jobs, but the second is easier.  Feel free to use
+either approach.
+
+\section{Making a scatter plot}
+\label{sec.scatplot}
+There are several Python packages for making high-quality graphics.
+If you are working on your own machine at home, you may want to
+download either \texttt{matplotlib} or \texttt{gnuplot.py}.
+Unfortunately, none of these packages is available in the Mac Lab at
+Marriott Library.  As a partial solution to this problem, we have
+implemented a crude graphics function within \texttt{pgen.py}.  It
+constructs a scatter plot out of ordinary text characters---a style of
+graphics that has not been common since the 1970s.
+
+The function \texttt{charplot} is described on
+page~\pageref{pg.charplot}.  Here is a listing that illustrates its
+use:
+\begin{leftindent}
+\begin{verbatim}
+from pgen import charplot
+
+x = [0, 1, 2, 3,  4,  5,  6,  7,  8,  9]
+y = [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+charplot(x, y)
+\end{verbatim}
+\end{leftindent}
+When this program runs, it makes a scatter plot of the $(x_i, y_i)$
+values, with $x$ on the horizontal axis and $y$ on the vertical.  Try
+it yourself.  The function accepts several optional arguments, which
+you can use if you wish to control the number of tick marks or the
+dimensions of the plot.  See page~\pageref{pg.charplot} for details.
+
+\section*{Exercise}
+\begin{cenum}
+\item Instead of printing the heterozygosity values, put them into two
+  lists: one for the expected values and the other for the observed
+  values.  At the end of the loop, make a scatter plot, with expected
+  heterozygosity on the horizontal axis and the observed value on the
+  vertical axis.
+\item Use your program to produce a graph.  Experiment to find the
+  best number of SNPs.  With a ruler and pencil, draw a line on the
+  graph representing the function $y(x) = x$.  (To help you draw this
+  line, you may want to append a dummy pair of data values such as
+  $(0.7, 0.7)$ before calling \texttt{charplot}.)  If observed values
+  always equaled expected ones, all points would fall on this line.
+  Write a short paragraph describing the pattern you see.  Is there
+  good agreement between observed and expected values, or do you see a
+  discrepancy? Does variation about the expected value increase with the
+  expected value, or does it decrease or stay the same? Why might this
+  be? 
+\end{cenum}
+
+\paragraph*{What to hand in} Your answers to step~1, the final version
+of your program, the graph, and a paragraph discussing the results.
+
+

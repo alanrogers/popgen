@@ -1,0 +1,458 @@
+% -*-latex-*-
+\documentclass[11pt,twocolumn]{article}
+\usepackage{etex,pictex,paralist,alltt,float,amsmath}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{ifthen}
+\usepackage{answers}
+\Opensolutionfile{answers}
+\Newassociation{answer}{Answr}{answers}
+\newcounter{iskey}
+\setcounter{iskey}{0}  % 1 for answer key; 0 for exam
+\newtheorem{exercise}{}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\Het}{\mathcal{H}}
+\newcommand{\monthname}[1]{\ifcase#1\or January\or February\or
+  March\or April\or May\or June\or July\or August\or
+  September\or October\or November\or December\fi}
+\renewcommand{\today}{\monthname{\month}\space\number\year}
+\setcounter{secnumdepth}{0}
+\begin{document}
+\begin{center}
+\Large
+\ifthenelse{\theiskey=1}{\textbf{Answer Key}}{%
+Name:\hspace{2.25in}\hfill\mbox{}}\\[1ex]
+\textbf{Final Exam Anth/Biol 5221}\\
+\today
+\end{center}
+
+\paragraph{Instructions}
+Write your name at the top of page~1 and your answers on the attached
+blank sheets. Number your answers.
+
+Before doing any calculations, ask yourself whether calculations are
+really needed. You may be able to answer the question faster without
+any calculation at all.
+
+Each question is worth 5 points.  You have 2~hours.
+
+\subsubsection*{Python, probability, heterozygosity and selection}
+
+\begin{exercise}
+In a toss of two fair dice, one red and one black, what is the
+probability of observing a red~4 \emph{and} a black~5?
+\begin{answer}
+$1/6 \times 1/6 = 1/36 \approx 0.028$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+An urn contains 40 black balls and 60 red balls.  You choose a
+ball at random, put it back, and choose another at random.  What are
+the possible outcomes and their probabilities?
+\begin{answer}
+  There are two right answers. First, the student might choose to
+  think in terms of ordered outcomes:
+  \begin{center}
+    \begin{tabular}{rrr}
+      Ball~1 & Ball~2 & Probability\\ \hline
+      red    & red    & $\frac{6}{10} \times \frac{6}{10} = 0.36$\\
+      red    & black  & $\frac{6}{10} \times \frac{4}{10} = 0.24$\\
+      black  & red    & $\frac{6}{10} \times \frac{4}{10} = 0.24$\\
+      black  & black  & $\frac{4}{10} \times \frac{4}{10} = 0.16$\\
+    \end{tabular}
+  \end{center}
+  Second, in terms of unordered outcomes:
+  \begin{center}
+    \begin{tabular}{rr}
+      Pair  & Probability\\ \hline
+      red/red    & $\frac{6}{10} \times \frac{6}{10} = 0.36$\\
+      red/black  & $2 \times \frac{6}{10} \times \frac{4}{10} = 0.48$\\
+      black/black  & $\frac{4}{10} \times \frac{4}{10} = 0.16$\\
+    \end{tabular}
+  \end{center}
+
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  In the urn model of genetic drift, there are $2N$ balls in the urn
+  of which a fraction $p$ are black.  Suppose we draw $2N$ balls from
+  the urn with replacement.  Of the balls that we draw, a random
+  number $X$ are black.  What are the \emph{mean} and \emph{variance}
+  of $X$?  (Your answers should be in terms of $2N$ and $p$.)
+\begin{answer}
+$m=2Np$, $V=2Np(1-p)$
+\end{answer}
+\end{exercise}
+
+\subsubsection*{Gene genealogies}
+
+\begin{exercise}
+  What is the hazard of a coalescent event within an interval
+  containing 4 lines of descent (i.e. 4 ancestors of sampled gene
+  copies) in a randomly-mating population of $N$ diploid individuals?
+\begin{answer}
+  \[
+  h = \frac{4 \times 3}{4N} = 3/N
+  \]
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  What is the expected depth of a gene genealogy (i.e.\ the expected
+  age of the last common ancestor) for a sample of $K$ gene copies
+  drawn at random from a randomly-mating population of $N$ diploid
+  individuals?
+  \begin{answer}
+The expected depth of the gene genealogy is $4N(1-1/K)$ generations.
+  \end{answer}
+\end{exercise}
+
+\begin{exercise}
+  What is the expected number of segregating sites in a sample of $K$
+  gene copies? (Assume selective neutrality, constant population size,
+  diploidy, and the model of infinite sites. Your answer should be in
+  terms of two parameters, $\theta = 4Nu$ and $K$.)
+\begin{answer}
+\[
+E[S] = \theta \{1 + 1/2 + 1/3 + \cdots + 1/(K-1)\}
+\]
+\end{answer}
+\end{exercise}
+
+\subsubsection*{Molecular evolution}
+
+\begin{exercise}
+Do we expect more adaptive evolution (fixations of advantageous
+mutations) in large or in small populations, other things being equal?
+Why?
+\begin{answer}
+We expect more in large populations, because the number if new
+advantageous mutants is proportional to population size, but the
+fixation probability for such mutants is essentially independent of
+population size. The rate of adaptive evolution is thus proportional
+to population size.
+
+Some students may want to answer this question more formally, so here
+is the formal version: let $u$ represent the mutation rate for
+advantageous alleles whose fitness in heterozygotes is $1+s/2$,
+relative to that of the wild-type allele. The number of such mutations
+in the population as a whole is $2Nu$, and each of them has
+probability $s$ of ultimate fixation. For this category of adaptive
+mutations, the expected number fixed per generation is therefore
+$2Nus$, an increasing function of population size.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  Why do large populations tend to have more genetic variation than
+  small ones?  (Answer in words, not in formulas.)
+\begin{answer}
+There are several ways to answer this question, including
+\begin{inparaenum}[(a)]
+\item drift is weaker in large populations;
+\item in large populations, random pairs of gene copies are distantly
+  related and therefore have deep genealogies, which allow lots of
+  time for mutation;
+\item there is more random inbreeding in small populations.
+\end{inparaenum}
+Accept anything that makes sense.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Suppose a rare mutation increases the fitness of heterozygous
+carriers---their fitness is 1.01 times that of wild-type
+homozygotes. The fitness of homozygous mutants is 1.02 times that of
+the wild type. What is the probability that this mutation will spread
+to fixation? (Feel free to use the approximate formula rather than
+Kimura's detailed version. If you use Kimura's version, then assume
+$N$ is large.)
+\begin{answer}
+The mutation will fix with probability of roughly 0.02.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Consider the model of selection in Fig.~\ref{fig.overdom}. (a)~Which
+values of $p$ are equilibria? (b)~Which of these equilibria are
+stable?
+\begin{answer}
+There are three equilibria, at $p=0$, 0.4, and 1. The intermediate
+equilibrium is stable, and the other two are unstable.
+\end{answer}
+\end{exercise}
+
+\begin{figure}
+{\centering\mbox{\beginpicture
+\setcoordinatesystem units <4cm, 79.4cm>
+\setplotarea x from 0 to 1, y from -0.0265 to 0.0136
+\axis left label {$\Delta_s p$}
+  ticks numbered from -0.02 to 0.01 by 0.01 /
+\axis bottom label {$p$}
+  ticks withvalues 0 {0.4} 1 / at 0 0.4 1 / /
+\setdots
+\putrule from 0 0 to 1 0
+\setsolid
+%       p       dp
+\plot
+   0.0000   0.0000
+   0.0417   0.0060
+   0.0833   0.0101
+   0.1250   0.0126
+   0.1667   0.0136
+   0.2083   0.0133
+   0.2500   0.0118
+   0.2917   0.0094
+   0.3333   0.0062
+   0.3750   0.0025
+   0.4      0
+   0.4167  -0.0017
+   0.4583  -0.0061
+   0.5000  -0.0104
+   0.5417  -0.0146
+   0.5833  -0.0184
+   0.6250  -0.0217
+   0.6667  -0.0242
+   0.7083  -0.0259
+   0.7500  -0.0265
+   0.7917  -0.0259
+   0.8333  -0.0240
+   0.8750  -0.0205
+   0.9167  -0.0155
+   0.9583  -0.0087
+   1.0000  -0.0000
+/
+\endpicture}\\}
+\caption{A model of selection. $\Delta_s p$ is the per-generation
+  change in the frequency, $p$, of allele $A_1$. In other words, $p' =
+p + \Delta_s p$, where $p$ is the allele frequency in one generation,
+and $p'$ is that in the next. The allele is
+increasing in frequency when $\Delta_s p > 0$ and decreasing when
+$\Delta_s p < 0$.}
+\label{fig.overdom}
+\end{figure}
+
+\subsubsection*{Multiple loci}
+
+\begin{exercise}
+\label{prob.2loc-xD}
+In Gillespie's standard setup, there are four gamete types (or
+haplotypes) $A_1B_1$, $A_1B_2$, $A_2B_1$, and $A_2B_2$, with
+frequencies $x_1$, $x_2$, $x_3$, and $x_4$.  Suppose that the gamete
+types have frequencies $(x_1, x_2, x_3, x_4) = (1/8, 3/8, 3/8, 1/8)$.
+What is the value of $D$, the coefficient of linkage disequilibrium?
+\begin{answer}
+  \[
+  D = x_1 x_4 - x_2 x_3 = 1/64 - 9/64 = -8/64 =  -1/8
+  \]
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  In another population, suppose the recombination rate is $c=1/11$
+  and that $D=1/10$ in generation~0.  What would $D$ be after 1
+  generation? (Assume selective neutrality, random mating, and an
+  infinite population.)
+\begin{answer}
+After 1 generation, $D = 1/11$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Soon after a selective sweep has finished, \begin{inparaenum}[\it (a)]
+\item what would you expect of nucleotide diversity at nearby loci?
+  More diversity, less diversity, or about the same amount as before
+  the sweep?
+\item Is this effect larger or smaller in regions of low recombination?
+\end{inparaenum}
+\begin{answer}
+(a)~Diversity should be lower at nearby loci. (b)~This effect is
+larger in regions of low recombination.
+\end{answer}
+\end{exercise}
+
+\subsubsection*{Inbreeding and population structure}
+
+\begin{exercise}
+What is inbreeding depression and why is it thought to
+occur?
+\begin{answer}
+  Inbred offspring are often smaller, less healthy, and lower in
+  Darwinian fitness than their outbred counterparts. This is
+  \emph{inbreeding depression}. It happens either because of fitness
+  overdominance (heterozygote advantage) or because deleterious
+  alleles tend to be recessive. Accept either answer.
+\end{answer}
+\end{exercise}
+
+\begin{figure}
+{\centering\input{figdarwedge}\\}
+\caption{Genealogy of George Darwin}
+\label{fig.darwedge}
+\end{figure}
+
+\begin{exercise}
+Figure~\ref{fig.darwedge} shows the genealogy of George Darwin, one of
+Charles and Emma Darwin's sons. What is his inbreeding coefficient?
+\begin{answer}
+$1/16$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Suppose that a population consists of several subdivisions (or groups)
+of equal size, within each of which mating is at random.  The mean of
+group allele frequencies is 0.25 and their variance is 0.1875.  What is
+the heterozygosity in the population as a whole? (Hint: use Wahlund's
+formula.)
+\begin{answer}
+  The average heterozygosity is zero. The heterozygosity of a
+  random-mating population with the same allele frequency would be
+  $H_0 = 2 \times 0.25 \times (1 - 0.25) = 0.375$. By Wahlund's
+  formula, the heterozygosity of the subdivided population is $H_0 -
+  2V = 0$, where $V = 0.1875$ is the variance of group allele
+  frequencies.
+\end{answer}  
+\end{exercise}  
+
+\subsubsection*{Quantitative traits}
+
+A selection experiment was undertaken using a population of outbred
+plants.  Among unselected parents (i.e.\ the whole population), the
+mean leaf length was 14~cm.  The mean was 18~cm among selected parents
+and 17~cm among offspring.
+\begin{exercise}
+What was the selection differential ($S$)?
+\begin{answer}
+$S = 18 - 14 = 4$~cm.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What was the response ($R$) to selection?
+\begin{answer}
+$R = 17 - 14 = 3$~cm.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What was the narrow-sense heritability ($h^2$)?
+\begin{answer}
+$h^2 = R/S = 3/4$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+The average bill depth of Geospiza fortis (Darwin's medium ground
+finch) increased by 0.5~mm in one generation (1976 to 1978) in the
+population on Isla Daphne Major that has been studied by Peter and
+Rosemary Grant and their students and colleagues since the early
+1970s. The phenotypic standard deviation of this trait is around 1~mm,
+and its heritability has been estimated (from the correlations among
+relatives) to be around $h^2 = 0.8$.
+
+Given these numbers, what was the selection gradient $(\beta)$ during
+the drought of 1977? (The drought was caused by a severe El Ni{\~ n}o
+event that forced the birds to feed on large, hard seeds that they
+otherwise wouldn't eat.)
+\begin{answer}
+The problem says that $h^2 = 0.8$ and that the phenotypic
+standard deviation is $\sqrt{V_P} = 1$. This implies that $V_P=1$. The
+problem also says that $h^2=0.8$. This implies that $V_A = h^2 V_P =
+0.8$. Finally, the response to selection is $R = V_A \beta$, and we
+know that $R=0.5$. Thus, $\beta = 0.5/0.8 = 0.625$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  Suppose that a trait is highly heritable within each of two
+  populations and that the mean of the trait is different in the two
+  populations. Does this imply that genetic factors account for a
+  large fraction of the between-group difference? Why or why not?
+\begin{answer}
+  It does not. The difference between populations could be entirely
+  environmental even if the within-group variance is entirely
+  genetic. Or there could be gene-by-environment interaction.  (Accept
+  either explanation.)
+\end{answer}
+\end{exercise}
+
+\Closesolutionfile{answers}
+\ifthenelse{\theiskey=1}{%
+  \clearpage
+  \section{Answer key}
+  \mbox{}\\
+  \IfFileExists{answers.tex}{\input{answers.tex}}{}
+}{%
+  \newpage\mbox{}
+  \newpage\mbox{}
+  \newpage\mbox{}
+  \newpage\mbox{}
+  \newpage\mbox{}
+  \newpage\mbox{}
+  \newpage\mbox{}
+  \newpage\mbox{}
+  \newpage\mbox{}
+}
+\end{document}
+
+\begin{exercise}
+Use the data in the table below to estimate $F_{ST}$.  (Hint: you only
+need the last line.)
+\begin{center}
+\begin{tabular}{lcc}
+Population & $p$ & $p^2 + q^2$\\
+\hline
+African    & 0.734 & 0.610\\
+European   & 0.496 & 0.500\\
+Australian & 0.330 & 0.558\\
+East Asian & 0.259 & 0.616\\
+\hline
+Average    & 0.455 & 0.571\\
+\end{tabular}
+\end{center}
+\begin{answer}
+\begin{verbatim}
+>>> p = 0.455
+>>> gt = 1 - 2*p*(1-p)
+>>> gs = 0.571
+>>> fst = (gs-gt)/(1-gt)
+0.13499344692005213
+\end{verbatim}
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Archaeologists and geneticists have argued for decades about what
+happened during the Neolithic, as farming moved into Europe. Some
+argued that the Neolithic was an invasion of farmers into regions
+previously occupied by hunter-gatherers. Others argued that the
+idea of farming spread, but not of the people themselves. According to
+this view, the Neolithic spread as hunter-gathers learned from their
+neighbors how to farm. In the past few years, DNA from ancient
+skeletons has settled this debate. Summarize this evidence in a couple
+of sentences.
+\begin{answer}
+Human remains from early Neolithic sites in Europe have DNA unlike
+that of the hunter-gatherers who previously lived in the same
+areas. The early farmers had DNA similar to that found today in
+Sardinia and Corsica. This evidence shows that the Neolithic was an
+invasion of farmers, not merely a movement of the idea of farming.
+\end{answer}
+\end{exercise}
+
+\section{Human evolutionary history}
+
+\begin{exercise}
+  Summarize (in a few sentences) the evidence for gene flow from
+  archaic human populations into the modern populations of Eurasia.
+\begin{answer}
+As modern humans expanded out of Africa and across Eurasia, where was
+some admixture with pre-existing archaic populations. It appears that
+around 2\% of the DNA of modern Europeans derives from
+Neanderthals. Similar levels are found throughout Eurasia. In
+Melanesia, there is also appreciable admixture from a distinct archaic
+population, the Denisovans.
+\end{answer}
+\end{exercise}

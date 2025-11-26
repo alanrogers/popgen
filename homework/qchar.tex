@@ -1,0 +1,339 @@
+\chapter{Quantitative Characters}
+\label{hw.qchar}
+
+You are studying the quantitative genetics of seed weight in quinoa
+(\emph{Chenopodium quinoa}), an extremely nutritious non-cereal grain
+of the Andes. The seeds have very high protein content, with a good
+balance of the essential amino acids. According to Wikipedia, ``quinoa
+is being considered a possible crop in NASA's Controlled Ecological
+Lifesupport System for long-duration manned spaceflights.'' You grow
+four inbred lines under uniform conditions in the same field and weigh
+100 randomly chosen seeds from each line.  The table summarizes your
+data. You want to know how much heritable variation for seed weight
+there is.
+
+\begin{table}
+\caption{Quinoa seed weights. Each column refers to a different seed
+  weight, each row to the sample of seeds from a different inbred line
+  of quinoa. The entries give the number of seeds of each weight
+  observed in each line}
+\label{tab.quinoa}
+{\centering\begin{tabular}{lrrrrr}
+\hline
+weight: &2~mg&3~mg&4~mg&5~mg&6~mg\\
+\hline
+\hline
+line 1 &  3 & 32 & 38 & 22 & 5\\
+line 2 &  1 & 19 & 24 & 43 & 13\\
+line 3 &  6 & 23 & 41 & 26 & 4\\
+line 4 & 12 & 38 & 35 & 13 & 2\\
+\hline
+Sum    & 22 &112 &138 &104 &24
+\end{tabular}\\}
+\end{table}
+
+Several of the exercises below will ask you to estimate the
+mean and variance. These are estimated as
+\begin{eqnarray}
+\bar X &=& S_1/N \label{eq.mean}\\
+V &=& \frac{S_2 - S_1^2/N}{N-1}
+\label{eq.var}
+\end{eqnarray}
+where $N$ is the number of observations, $S_1$ is the sum of the
+observed values, and $S_2$ is the sum of squares of observed
+values. With ordinary (ungrouped) data,
+\begin{eqnarray*}
+S_1 &=& \sum_{i=1}^N x_i, \quad\hbox{and}\\
+S_2 &=& \sum_{i=1}^N x_i^2
+\end{eqnarray*}
+Here, $x_i$ is the value of the $i$th observation, and the sums run
+across all $N$ items in the data set. Our data, however, are grouped,
+so we can take a shortcut. Let $x$ represent one of the values that
+the data may take. In table~\ref{tab.quinoa}, for example, $x$ takes
+the values 2, 3, 4, 5, and 6. The number of observations with value
+$x$ is written as $n_x$. For example, in the data for line~1, $n_2=3$,
+$n_3=32$, and $n_4=38$. With such data,
+\begin{eqnarray*}
+N  &=& \sum_x n_x,\\
+S_1 &=& \sum_x x n_x, \quad\hbox{and}\\
+S_2 &=& \sum_x x^2 n_x
+\end{eqnarray*}
+Now the sums run across the 5 values that data items may take rather
+than the 100 items in each data set. Use whichever method you prefer
+in calculating $N$, $S_1$, and $S_2$. Then use equations~\ref{eq.mean}
+and~\ref{eq.var} to estimate the mean and variance.
+\begin{exercise}
+  Calculate the mean and variance of seed weight for line~1.
+\begin{answer}
+Line~1: $\bar X = 3.94$; $V = 0.865$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  Calculate the mean and variance of seed weight for line~2.
+\begin{answer}
+Line~2: $\bar X = 4.48$; $V = 0.959$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  Calculate the mean and variance of seed weight for line~3.
+\begin{answer}
+Line~3: $\bar X = 3.99$; $V = 0.899$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  Calculate the mean and variance of seed weight for line~4.
+\begin{answer}
+Line~4: $\bar X = 3.55$; $V = 0.876$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+\label{it.pooledvar}
+  Calculate the mean and variance of seed weight for all lines taken
+  together. By the way, this variance estimates $V_P$, the total
+  phenotypic variance. 
+\begin{answer}
+Pooled: $\bar X = 3.99$; $V_P = 1.002$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+\label{it.VG}
+  Calculate the variance of the four line means. 
+  Because the sample from each line is pretty large, this variance is
+  influenced only slightly by environmental effects. It is almost pure
+  genetic variance. We will take it as an estimate of
+  $V_G$.
+\begin{answer}
+Variance between lines: 0.1454.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  \label{it.VE}
+  Calculate the mean of the four within-line variances. This is an
+  estimate of the variance within lines. Because the lines are inbred,
+  there is no genetic variation within them, and the variance you
+  calculate here estimates the environmental component of variance,
+  $V_E$.
+\begin{answer}
+Variance w/i lines: 0.8998.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  In exercises~\ref{it.VG} and~\ref{it.VE}, you estimated the genetic
+  component of variance, $V_G$, and the environmental component,
+  $V_E$. The sum of these should equal the phenotypic variance, $V_P$,
+  which you estimated in question~\ref{it.pooledvar}. Does it?
+\begin{answer}
+  Between plus within: $0.1454 + 0.8998 = 1.04520$. In
+  question~\ref{it.pooledvar}, I got $V_P = 1.002$, which is pretty
+  close.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+\label{ex.H}
+What fraction of the phenotypic variance $(V_P)$ is
+accounted for by $V_G$?  In other words, what is $V_G/V_P$?
+\begin{answer}
+According to exercise~\ref{it.VG}, $V_G = 0.1454$. According to
+exercise~\ref{it.pooledvar}, $V_P = 1.002$. The ratio of these is $H^2
+= V_G/V_P = 0.1451$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  What kind of heritability estimate did you calculate in
+  exercise~\ref{ex.H}? Narrow-sense or broad-sense?
+\begin{answer}
+Broad-sense heritability.
+\end{answer}
+\end{exercise}
+
+Encouraged that you have heritable variation for seed weight, you
+outcross the plants and apply a selection differential $(S)$ of 1~mg to
+the seeds, after harvesting them in bulk from all of the plants in
+your field. After four generations, the mean seed weight has increased
+by 0.2~mg.
+
+\begin{exercise}
+\label{it.h}
+What is the mean seed weight now? What is the realized (narrow-sense)
+heritability? Why does it differ from your previous estimate
+(question~\ref{ex.H})?
+\begin{answer}
+The realized heritability is $h^2 = 0.2/4 = 0.05$, because $0.2/4$ is
+the average response \emph{per generation} to selection. The
+broad-sense heritability estimated in exercise~\ref{ex.H} was much
+larger---0.1451---suggesting that there is a lot of non-additive
+genetic variance.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  Approximately, what is the additive genetic variance $(V_A)$ of seed
+  weight in your study population? What is the dominance 
+  variance, $V_D$? (Assume there is no other form non-additive genetic
+  variance besides the dominance variance). Why are you disappointed?
+\begin{answer}
+$V_A = h^2 V_P = 0.05 \times 1.002 = 0.0501$. The dominance variance
+is $V_D = V_G - V_A = 0.1454 - 0.0501 = 0.0953$. Most of the genetic
+variance seems to be dominance variance. This is disappointing because
+selection responds only to additive variance.
+\end{answer}
+\end{exercise}
+
+You decide to test your new estimate of the narrow-sense heritability
+by estimating the regression of offspring seed weights on parental
+seed weights. This is a lot of work, but you are obsessed. You record
+the weights of seeds chosen randomly from the population, then grow
+them individually in pots and cross-fertilize them. When their seeds
+are fully mature, you weigh samples of seeds from each plant. This
+allows you to plot the weights of offspring seeds against the average
+weights of their parents (when they were seeds).
+
+\begin{exercise}
+If you were to plot offspring values against midparent values and fit
+a linear regression to these data, what numerical value would you
+expect the slope to have?
+\begin{answer}
+  The regression of offspring on mid-parent has slope $h^2$. (See
+  Gillespie's table~6.2, p.~149.) From exercise~\ref{it.h}, we know
+  that $h^2 = 0.05$. The regression line should have approximately
+  this slope.
+\end{answer}
+\end{exercise}
+
+What if you had selected on a whole-plant basis, rather than on an
+individual-seed basis? You worked at the level of individual seeds
+because the seeds are highly variable (differing by more than a factor
+of three, from smallest to largest). But most of that variation is
+environmental, so of course the seed-to-seed heritability is low. If
+you averaged all the seeds on each plant, then the mean seed weights
+of (adult) plants would undoubtedly be more heritable (i.e., show a
+much larger value of $h^2$) than the weights of individual seeds. This
+suggests that you might make more progress (per generation) in your
+quest to increase seed weights, if you selected on the mean seed
+weights of whole plants, rather than on the weights of individual
+seeds. But maybe not!
+
+\begin{exercise}
+  Why might this approach be just as slow as the approach you took?
+  Hint: The rate of evolution depends on the absolute amount of
+  additive genetic variation for the trait, not just on $h^2$!
+\begin{answer}
+  The response to selection is $R = h^2 S$, as shown in Gillespie's
+  Eqn.~6.11. If you made $h^2$ larger while keeping $S$ the same, the
+  response would be larger. But this might be hard to do, because if
+  each plant is represented by its average seed weight, differences
+  among plants will probably be small. For this reason, it might be
+  necessary to reduce $S$ in order to make selection feasible.
+\end{answer}
+\end{exercise}
+
+In 1903, \citet{Pearson:B-2-357} published the results of what was
+then the most extensive study ever of the inheritance of human
+physical characteristics.  These data occupy a distinguished position
+in the history of population genetics, since they were the basis of
+R.A.{} Fisher's \citeyear{Fisher:Relatives} famous demonstration that
+Mendelian inheritance could account for variation in continuous
+characters.  Pearson and Lee collected data on stature, span (distance
+between fingertips of outstretched arms), and cubit (fore-arm length),
+from about 1100 families. Some of these data are shown in
+table~\ref{tab.pearson}.
+
+\begin{table}
+\caption{Data from \citet{Pearson:B-2-357}: the correlation between
+  mothers and daughters and the phenotypic variance.} 
+\label{tab.pearson}
+
+{\centering\fbox{\begin{tabular}{lrrr}
+      &Stature & Span & Cubit\\
+Mother-daughter corr. & 0.507 & 0.452 & 0.421\\
+Phenotypic var.{} (in$^2$)& 6.26  & 8.27  & 0.784
+\end{tabular}}\\}
+\end{table}
+
+\begin{exercise}
+Use the data of Pearson and Lee to estimate the heritability of stature.
+(Hint: use Gillespie's table~6.2.) 
+\begin{answer}
+  The correlation between parent and offspring is $h^2/2$. Thus, we
+  estimate $h^2$ as twice the observed correlation. For stature, this
+  gives $h^2 = 1.014$. This cannot be literally correct, because $h^2$
+  cannot exceed~1. But all estimates contain error, and this error can
+  move the estimate outside the legal range. This estimate implies
+  that stature is highly heritable.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Use the data of Pearson and Lee to estimate the heritability of span.
+(Hint: use Gillespie's table~6.2.) 
+\begin{answer}
+  The correlation between parent and offspring is $h^2/2$. Thus, we
+  estimate $h^2$ as twice the observed correlation. For span, this
+  gives $h^2 = 0.904$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Use the data of Pearson and Lee to estimate the heritability of cubit.
+(Hint: use Gillespie's table~6.2.) 
+\begin{answer}
+  The correlation between parent and offspring is $h^2/2$. Thus, we
+  estimate $h^2$ as twice the observed correlation. For cubit, this
+  gives $h^2 = 0.842$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Over the past 100 years, the stature of young women in most developed
+countries has increased about 0.157 inches per decade. This is called the
+``secular trend'' in stature. This trend probably reflects changes in
+diet and/or public health. But let us consider the possibility that it
+was caused by natural selection.  What selection gradient $(\beta)$
+does this hypothesis imply? You'll need to convert the change per
+decade into change per generation. For this purpose, assume that a
+human generation is 28 years.
+\begin{answer}
+The change per generation is $0.157 \times 28/10 = 0.4396$~in. If this
+represents a response to selection, then it should equal $V_A \beta$. The next
+step is to convert our estimate that $h^2 \approx 1$ into an estimate of $V_A$.
+We know that $h^2 = V_A/V_P$ (Gillespie's Eqn.~6.4), and we know that $V_P =
+6.26$ (table~\ref{tab.pearson} of this homework). This implies that $V_A
+\approx 6.26$ and that the selection gradient is $\beta \approx 0.4396 / 6.26 =
+0.07$. In words, this says that an extra inch of stature implies nearly a 10\%
+increase in fitness---\emph{very} strong selection. It seems implausible that
+small differences in stature could have such large effects on fitness. It is
+more likely that the observed trend reflects changes in the environment.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+The average bill depth of Geospiza fortis (Darwin's medium ground
+finch) increased by 0.5~mm in one generation (1976 to 1978) in the
+population on Isla Daphne Major that has been studied by Peter and
+Rosemary Grant and their students and colleagues since the early
+1970s. The phenotypic standard deviation of this trait is around 1~mm,
+and its heritability has been estimated (from the correlations among
+relatives) to be around $h^2 = 0.8$.
+
+Given these numbers, what was the selection gradient $(\beta)$ during
+the drought of 1977? (The drought was caused by a severe El Ni{\~ n}o
+event that forced the birds to feed on large, hard seeds that they
+otherwise wouldn't eat.) 
+\begin{answer}
+The problem says that $h^2 = 0.8$ and that the phenotypic
+standard deviation is $\sqrt{V_P} = 1$. This implies that $V_P=1$. The
+problem also says that $h^2=0.8$. This implies that $V_A = h^2 V_P =
+0.8$. Finally, the response to selection is $R = V_A \beta$, and we
+know that $R=0.5$. Thus, $\beta = 0.5/0.8 = 0.625$.
+\end{answer}
+\end{exercise}
+

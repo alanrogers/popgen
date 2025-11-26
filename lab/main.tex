@@ -1,0 +1,63 @@
+%\includeonly{morepython}
+\documentclass[11pt,letterpaper]{report}
+\usepackage{chapapp,paralist,cenum}
+\usepackage{url}
+\usepackage[title]{appendix}
+\usepackage[dvips]{graphicx}
+\usepackage{pictex}
+\usepackage{url}
+\usepackage{verbatim,moreverb}
+\usepackage[labelfont={sf,bf},textfont=sf]{caption}
+\usepackage[headings,in]{fullpage}
+\usepackage{xr}
+\externaldocument[L-]{../txt/descrip}
+\externaldocument[L-]{../txt/coalescent}
+\externaldocument[L-]{../txt/theta}
+\externaldocument[L-]{../txt/spectrum}
+\externaldocument[L-]{../txt/mismatch}
+\externaldocument[Pr-]{../prob/main}
+\newtheorem{principle}{Principle}[chapter]
+\newcommand{\cov}{\hbox{Cov}}
+\newcommand{\obs}{_{\mbox{\scriptsize obs}}}
+% Environment for left-indented text
+\newenvironment{leftindent}% 
+{\begin{list}{}%
+         {\setlength{\leftmargin}{2em}}%
+         \item[]%
+}{\end{list}}
+%\pagestyle{headings}
+\setcounter{tocdepth}{1}
+\setlength{\topmargin}{7mm}
+%%%%%%%%% NEXT LINE ONLY IF DRIFTMUT COMMENTED OUT
+%\newlabel{ch.drift}{{5}{0}} % {{chapnum}{pagenum}}
+\frenchspacing
+\begin{document}
+\title{Lab Manual for Biol 5221}
+\author{\copyright Alan Rogers and Jon Seger}
+\maketitle
+%\thispagestyle{empty}
+%\mbox{}
+%\setcounter{page}{0}
+%\newpage
+\tableofcontents
+%\include{wolf}
+\setcounter{chapter}{3}
+\include{driftmut}
+\include{coal1}
+\include{stattest}
+\include{seln1}
+\include{hapintro}
+\include{haphet}
+%\include{hapspec}
+\include{twolocsim}
+\include{rsq}
+\include{lactase}
+
+\appendix
+
+\include{hapmap}
+\include{morepython}
+\include{tabulate}
+
+\end{document}
+

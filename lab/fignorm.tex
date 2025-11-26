@@ -1,0 +1,126 @@
+% -*-latex-*-
+\begin{figure}
+\begin{center}
+\mbox{\beginpicture
+  \headingtoplotskip=0.5\baselineskip
+  \valuestolabelleading=0.4\baselineskip
+%%%%%%%%%%%%%%%%% Left Plot %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcoordinatesystem units <0.05\textwidth,0.5\textwidth> point at 3.5 0
+  \setplotarea x from -3 to 3,
+               y from 0 to 0.4
+  \axis bottom label {$x$} 
+   ticks withvalues {$x_0$} {$x_1$} /  at {-1.28} {1.28} / /
+  \axis left label {$f(x)$} /
+  \plotheading{Probability Density}
+% normal density
+\plot  
+-3.00 0.004
+-2.75 0.009
+-2.50 0.018
+-2.25 0.032
+-1.96 0.05844
+-1.75 0.086
+-1.28 0.176
+-1.50 0.130
+-1.25 0.183
+-1.00 0.242
+-0.75 0.301
+-0.50 0.352
+-0.25 0.387
+ 0.00 0.399
+ 0.25 0.387
+ 0.50 0.352
+ 0.75 0.301
+ 1.00 0.242
+ 1.25 0.183
+ 1.28 0.176
+ 1.50 0.130
+ 1.75 0.086
+ 1.96 0.05844
+ 2.25 0.032
+ 2.50 0.018
+ 2.75 0.009
+/
+% Verticals
+\putrule from -1.28 0 to -1.28 0.176
+\putrule from  1.28 0 to  1.28 0.176
+\setshadesymbol <z,z,z,z> ({\large .})
+\setshadegrid span <2pt>
+% triplets: x ylo yhi
+\vshade
+%x  x-axis f(x)
+-3.00 0 0.004
+-2.75 0 0.009
+-2.50 0 0.018
+-2.25 0 0.032
+-1.96 0 0.05844
+-1.75 0 0.086
+-1.28 0 0.176
+/
+\vshade
+%x  x-axis f(x)
+ 1.28 0 0.176
+ 1.50 0 0.130
+ 1.75 0 0.086
+ 1.96 0 0.05844
+ 2.25 0 0.032
+ 2.50 0 0.018
+ 2.75 0 0.009
+/
+%%%%%%%%%%%%%%%%% Right Plot %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcoordinatesystem units <0.05\columnwidth,0.2\columnwidth> point at -3.5 0
+  \setplotarea x from -3 to 3,
+               y from 0 to 1
+  \axis bottom label {$x$} 
+   ticks withvalues {$x_0$} {$x_1$} /  at {-1.28} {1.28} / /
+  \axis right label {$F(x)$} 
+   ticks withvalues 0.1 0.9 / at 0.1 0.9 / /
+  \plotheading{Cumulative Distribution}
+% normal density
+\plot  
+-3.0000000 0.001349898
+-2.7500000 0.002979763
+-2.5000000 0.006209665
+-2.2500000 0.01222447
+-1.96      0.025
+-1.7500000 0.04005916
+-1.5000000 0.0668072
+-1.2500000 0.1056498
+-1.0000000 0.1586553
+-0.7500000 0.2266274
+-0.5000000 0.3085375
+-0.2500000 0.4012937
+ 0.0000000 0.5
+ 0.2500000 0.5987063
+ 0.5000000 0.6914625
+ 0.7500000 0.7733726
+ 1.0000000 0.8413447
+ 1.2500000 0.8943502
+ 1.5000000 0.9331928
+ 1.7500000 0.9599408
+ 1.96      0.975
+ 2.2500000 0.9877755
+ 2.5000000 0.9937903
+ 2.7500000 0.9970202
+ 3.0000000 0.9986501
+/
+% Straight lines
+\setdashes
+%\putrule from -1.96 0     to -1.96 0.025
+%\putrule from -3    0.025 to -1.96 0.025
+%\putrule from  1.96 0     to  1.96 0.975
+%\putrule from  -3   0.975 to  1.96 0.975
+\putrule from -1.28 0   to -1.28 0.1
+\putrule from  3    0.1 to -1.28 0.1
+\putrule from  1.28 0   to  1.28 0.9
+\putrule from  3    0.9 to  1.28 0.9
+\endpicture}
+\end{center}
+\caption{Two ways to graph a sampling distribution.  Areas under the
+  density function correspond to probabilities.  For example, the left
+  shaded region comprises a fraction 0.1 of the total area, because
+  0.1 is the probability that $X<x_0$.  On the right, the vertical
+  axis shows $F(x)$, the probability that $X<x$.  For example,
+  $F(x_0)=0.1$ and $F(x_1)=0.9$.}
+\label{fig.norm}
+\end{figure}

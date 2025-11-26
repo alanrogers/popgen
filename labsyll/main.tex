@@ -1,0 +1,61 @@
+%-*-latex-*-
+\documentclass[11pt]{article}
+\newcommand{\blank}{\rule{2in}{0.4pt}}
+%\usepackage{jeep}
+%\cfoot{\thepage}
+\usepackage{times,url,fullpage,paralist}
+\usepackage{tabularx}
+\input{daydefs}
+\newcommand{\heading}[1]{\bigskip\noindent\textbf{#1}~}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xr}
+\externaldocument[L-]{../lab/wolf}
+\externaldocument[L-]{../lab/driftmut}
+\externaldocument[L-]{../lab/coal1}
+\externaldocument[L-]{../lab/stattest}
+\externaldocument[L-]{../lab/seln1}
+\externaldocument[L-]{../lab/hapintro}
+\externaldocument[L-]{../lab/haphet}
+\externaldocument[L-]{../lab/twolocsim}
+\externaldocument[L-]{../lab/hapspec}
+\externaldocument[L-]{../lab/rsq}
+\externaldocument[L-]{../lab/lactase}
+\begin{document}
+\begin{center}
+\large\bf Lab Syllabus
+\end{center}
+\begin{flushleft}
+Biol 5221     \hfill  \today\\
+Lab: W 1--3PM                 \hfill Zoom\\
+\end{flushleft}
+You will need to use your own computer for lab assignments. If you
+don't have a computer, contact Professor Seger, who will try to find
+one you can borrow. Please install a recent version of Python.
+
+\paragraph{Due dates} Lab reports are due a week after the date of the
+lab. They should be uploaded through Canvas as pdf documents.
+
+\paragraph{Required readings}
+All required readings are available on the course website.
+\begin{inparaenum}[(1)]
+\item \emph{Just Enough Python} (JEPy);
+\item \emph{Lab Manual for Biol~5221} (LabMan).
+\end{inparaenum}
+
+\paragraph{Recommended readings}
+\emph{Beginning Python: From Novice to Professional}, 3rd Edn, by
+Magnus Lie Hetland, 2017.
+
+\setlength\tabcolsep{0.25em}
+
+\bigskip
+
+\begin{tabularx}{\textwidth}{l@{\,}lp{0.6\textwidth}lX}
+  \multicolumn{4}{c}{\large\bf Schedule}\\
+\multicolumn{2}{l}{\textbf{Date}}&\textbf{Lecture}&\textbf{Reading}\\ \hline
+\input{syllabus}
+\end{tabularx}
+
+\end{document}
+
+

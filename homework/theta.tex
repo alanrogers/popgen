@@ -1,0 +1,637 @@
+\chapter{Gene Genealogies}
+\label{hw.theta}
+
+In the following exercises, assume that the population size is
+constant and that the genetic variation under study is selectively
+neutral. Each exercise is worth 10 points.
+
+The exercises below are all based on material in \emph{Lecture Notes
+  on Gene Genealogies} (LNGG). Those in section~\ref{sec.genealogy} 
+are based on chapter~\ref{G-ch.coalescent} of LNGG, whereas those in 
+section~\ref{sec.theta} are based on chapter~\ref{G-ch.addmut}. There
+is one exception to this: exercise~\ref{it.totalbranch} is based on 
+chapter~\ref{G-ch.addmut}.
+
+\section{Gene genealogies without mutation}
+\label{sec.genealogy}
+
+\begin{exercise}
+  Figure~\ref{fig.segertree} (on page~\pageref{fig.segertree}) shows a
+  made-up gene genealogy of 6 DNA sequences. The branches are labeled
+  with capital letters. (a)~Which sequences would carry the derived
+  allele if a mutation occurred on branch H? (b)~On branch B? (c) On
+  branch G?
+\begin{answer}
+(a)~5, (b)~1 and 2, (c)~4, 5, and 6.
+\end{answer}
+\end{exercise}
+
+\begin{figure*}
+\begin{verbatim}
+          1 --A-
+                |-B--
+          2 --C-     |
+                     |-----D-----
+          3 ---E-----            |
+                                 |-----------
+          4 ----F-----           |
+                      |----G-----
+          5 --H-      |
+                |--I--
+          6 --J-
+\end{verbatim}
+\caption{A genealogy with labeled branches. The samples
+  are numbered (1--6) and the branches are labeled (A--J).}
+\label{fig.segertree}
+\end{figure*}
+
+For the exercises in section~\ref{sec.genealogy}, assume that
+$2N=5000$.  
+
+\begin{exercise}
+What is the expected duration in generations of coalescent intervals with
+\begin{inparaenum}[(a)]
+\item 2 lines of descent,
+\item 10 lines of descent, and
+\item 1000 lines of descent?
+\end{inparaenum}
+\begin{answer}
+For an interval with $i$ lines of descent, the expected duration in
+generations is $4N/[i(i-1)]$. For our problem, $2N=5000$. The expected
+duration is therefore.
+\begin{inparaenum}[(a)]
+\item $5000$ for 2 lines of descent,
+\item $1000/9 \approx 111$ for 10, and
+\item $10000/(1000 \times 999) = 10/999 \approx 0.01$ for 1000.
+\end{inparaenum}
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+In an interval with 2 lines of descent, what are the \emph{mean}, the
+\emph{variance} and the \emph{standard deviation} of the interval's
+duration? Hint: the duration of the interval is an
+exponentially-distributed random variable. This distribution is
+discussed in JEPr. 
+\begin{answer}
+The duration of a coalescent interval is an exponential random
+variable. As there are only 2 lines of descent, the hazard is
+$h=1/2N$. As explained in JEPr, the mean of this random variable is
+$1/h = 2N$, the variance is $1/h^2 = 4N^2$, and the standard
+deviation (the square root of the variance) is $2N$. If $2N=5000$, the
+mean, variance, and standard deviation are 5000, 25,000,000, and 5000.
+\end{answer}
+\end{exercise}
+
+For exercises~\ref{it.treedepth} and~\ref{it.totalbranch}, assume that
+you have a sample consisting of $K=3$ gene copies chosen at random from a
+population of size $2N=5000$.
+
+\begin{exercise}
+\label{it.treedepth}
+What is the expected depth of the gene genealogy? In other words, the
+expected age in generations of the last common ancestor?
+\begin{answer}
+We have 2 coalescent intervals, one with 3 lines of descent and the
+other with 2. The expected duration of the one with 3 lines of descent
+is $5000/3$ and the expected duration of the other is 5000
+generations. The expected depth of the tree is the sum of these, $5000
++ 5000/3 = 20000/3$. The easy way to get this answer is with the
+formula $4N(1-1/K)$, where $K=3$ is the number of gene copies in the
+modern sample. This gives the same answer, $10000 \times 2/3 =
+20000/3$. 
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+\label{it.totalbranch}
+What is the expected total branch length the gene genealogy? In other
+words, the expected sum of the lengths of all branches throughout the
+genealogy? (This problem is based on material in
+section~\ref{G-sec.nMutations} of \emph{Lecture Notes on Gene
+  Genealogies}.)
+\begin{answer}
+In a tree with sample of size 3, the expected total branch length is
+$4N(1 + 1/2) = 6N$. In our problem, $2N=5000$, so the answer is
+15,000.
+\end{answer}
+\end{exercise}
+
+\section{Gene genealogies with mutation}
+\label{sec.theta}
+\begin{exercise}
+Suppose that $\theta=10$, indicating either that the population is
+very large or the mutation rate is high. How many mutations should
+occur on average in coalescent intervals with 
+\begin{inparaenum}[(a)]
+\item 2 lines of descent,
+\item 10 lines of descent, and
+\item 1000 lines of descent?
+\end{inparaenum}
+\begin{answer}
+For an interval with $i$ lines of descent, the expected length in
+generations is $4N/[i(i-1)]$, and the total branch length within the
+interval is $i$ times this value, or $4N/(i-1)$. The expected number
+of mutations is $u$ times the total branch length, or $\theta/(i-1)$,
+where $\theta = 4Nu$. For our problem, $\theta=10$. The expected
+numbers of mutations are therefore
+\begin{inparaenum}[(a)]
+\item $10/1 = 10$ for 2 lines of descent,
+\item $10/9 = 1.11$ for 10, and
+\item $10/999 = 0.01$ for 1000.
+\end{inparaenum}
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+\begin{inparaenum}[(a)]
+\item Draw a gene tree with 4 tips.  What are 
+\item the expected lengths of each interval (assuming the population
+  consists of $N$ diploid individuals),
+\item the expected depth of the tree, and 
+\item the expected total tree length (i.e.\ the sum of all branch lengths)?
+\end{inparaenum}
+(Hint: your answers will be in terms of the unknown quantity $N$.)
+\begin{answer}
+\begin{minipage}{0.8\columnwidth}
+\begin{verbatim}
+----------
+          |----
+----------     |
+               |--
+------         |
+      |--------
+------
+\end{verbatim}
+\end{minipage}
+Lengths are $4N/i(i-1)$, so the lengths are $2N/6$, $2N/3$, and $2N$,
+for intervals 4, 3, and 2.  The expected depth of the tree is
+$4N(1-1/4) = 3N$.  The expected total branch length is $4N(1 + 1/2 +
+1/3) = 22N/3 = 7.33N$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  How many mutations would you expect to see on such a tree,
+  assuming a mutation rate of $u=1/1000$ and a haploid population size
+  of $2N=5000$?
+\begin{answer}
+18.3
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  Now suppose that you doubled the sample size from 4 to 8.
+  Don't draw the tree.  Just calculate the expected number of
+  mutations.  How much did the number of mutations increase?
+\begin{answer}
+25.93
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  What is the ratio between the expected value of $S$ in a sample
+  of 10 DNA sequences and the expected value in a sample of 20?
+\begin{answer}
+0.797
+\end{answer}
+\end{exercise}
+
+\begin{table}
+{\centering
+\begin{minipage}{\columnwidth}
+\footnotesize
+\begin{alltt}
+\begin{tabbing}
+seq01 \=AATATGGCAC CTCCCAACCC TCTAGCATAT ACCACTTACA\kill
+seq01 \>AATATGGCAC CTCCCAACCC TCTAGCATAT ACCACTTACA\\
+seq02 \>.......T.. .C......TG C......C.. ..........\\
+seq03 \>..C....... .......... .......... ..........\\
+seq04 \>.......T.. .C......TG C......... G.........\\
+seq05 \>.......... .......... .......... ..........\\
+seq06 \>.....A.... ........T. C......... G....C....\\
+seq07 \>..C....T.. .C......TG C......... G.........\\
+seq08 \>.....A.T.. TC......TG C......... G.........\\
+seq09 \>.......... .......... C......... ..........\\
+seq10 \>.G...A.... ........T. C......C.. .T....C..G
+\end{tabbing}
+\end{alltt}
+\end{minipage}\\}
+\caption{Data set A. Periods indicate sites that are identical to
+  \texttt{seq01}.} 
+\label{tab.datA}
+\end{table}
+
+\begin{table}
+{\centering
+\begin{minipage}{\columnwidth}
+\footnotesize
+\begin{alltt}
+\begin{tabbing}
+seq01 \=TGCCACTCCA ATCTCTCGCC AGATGGCATG CCTTATCGCG\kill
+seq01 \>TGCCACTCCA ATCTCTCGCC AGATGGCATG CCTTATCGCG\\
+seq02 \>.......... G......... .A.C...GCA T.........\\
+seq03 \>.......... G......A.. .A.C...GC. T....C....\\
+seq04 \>C..TG..T.. .C.....A.. G......C.. TT.C......\\
+seq05 \>CA.TG..T.. .C....TA.. G......CC. TT.C......\\
+seq06 \>C...G..... CC..T..A.A ....AA.C.. TT..G.....\\
+seq07 \>CA.TG..... CC..TC.A.A ...CA..CC. TT...C....\\
+seq08 \>CA.TG...T. GCT....A.. G..C..TC.. T.......T.\\
+seq09 \>CA.TG..... GC.C..T... ...CA..C.A T.........\\
+seq10 \>CA.TG...T. .C.....A.. G..C...C.. T....C....
+\end{tabbing}
+\end{alltt}
+\end{minipage}\\}
+\caption{Data set B}
+\label{tab.datB}
+\end{table}
+
+\begin{exercise}
+  Use data set~A to calculate $\pi$, the mean number of nucleotide
+  site differences per sequence \emph{and} per site between pairs of
+  sequences. 
+\begin{answer}
+Mean pairwise diff: $\pi = 5.51$ per sequence, and $\pi = 0.1378$ per
+site. 
+\end{answer}
+\end{exercise}
+
+In calculating $\pi$ (the number of pairwise differences), data set B
+poses a new problem: two of the sites (11 and 27) have more than two
+nucleotides. This will not cause a problem if you do the calculation
+the laborious way, by counting the differences between each pair of
+sequences. But if you use the easier site-by-site method described in
+the text, you need to know how to deal with such sites.
+
+Consider site 11, which has 4 $A$s, 4 $G$s, and 2 $C$s. We are
+interested only in the pairs that have different nucleotides. In other
+words, we are only interested in pairs of type $AG$, $AC$, or
+$GC$. The number of $AG$ pairs is $4 \times 4=16$. This follows
+because each of the 4 As can combine with each of the 4
+$G$s. Similarly the number of $AC$ pairs is $4 \times 2=8$, and the
+number of $GC$ pairs is $4 \times 2=8$. This site therefore
+contributes $16+8+8=32$ to our count of differences.
+
+At site 27, we have 1 $A$, 2 $G$s, and 7 $C$s. This gives $1 \times
+2=2$ $AG$s, $1 \times 7=7$ $AC$s, and $2 \times 7=14$ $GC$s, so the
+total contribution from site~27 is $2+7+14=23$.
+
+\begin{exercise}
+  Use data set~B to calculate $\pi$, the mean number of nucleotide
+  site differences per sequence \emph{and} per site between pairs of
+  sequences.
+\begin{answer}
+Mean pairwise diff: $\pi=11.69$ per sequence, and $\pi = 0.29 $ per
+site. 
+\end{answer}
+\end{exercise}
+
+\begin{table}
+\caption{Values of $\sum_{k=1}^{K-1} 1/k$ for various values of $K$}
+\label{tab.Ssum}
+
+\medskip
+
+\centering
+\fbox{\begin{tabular}{rr@{\hspace{3em}}rr}
+$K$& $\sum_{k=1}^{K-1} 1/k$ & $K$& $\sum_{k=1}^{K-1} 1/k$\\[2pt] 
+\hline
+ 2 & 1.0000 & 12 & 3.0199\\
+ 3 & 1.5000 & 13 & 3.1032\\
+ 4 & 1.8333 & 14 & 3.1801\\
+ 5 & 2.0833 & 15 & 3.2516\\
+ 6 & 2.2833 & 16 & 3.3182\\
+ 7 & 2.4500 & 17 & 3.3807\\
+ 8 & 2.5929 & 18 & 3.4396\\
+ 9 & 2.7179 & 19 & 3.4951\\
+10 & 2.8290 & 20 & 3.5477\\
+11 & 2.9290 & 21 & 3.5977\\
+\end{tabular}}
+\end{table}
+
+\begin{exercise}
+Calculate the number $S$ of segregating sites from data set~A.
+\begin{answer}
+$S = 15$ per sequence or 0.375 per site
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Calculate the number $S$ of segregating sites from data set~B.
+\begin{answer}
+$S = 30$ per sequence or 0.75 per site
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Estimate $\theta$ (per sequence and per site) from the value of $\pi$
+you got from data set~A. 
+\begin{answer}
+$\hat\theta_{\pi} = 5.51$ per sequence or 0.1378 per site.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Estimate $\theta$ (per sequence and per site) from the value of $\pi$
+you got from data set~B. 
+\begin{answer}
+$\hat\theta_{\pi} = 11.69$ per sequence or 0.29 per site.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Estimate $\theta$ from the value of $S$ you got from data set~A.
+(Hint: Use table~\ref{tab.Ssum}.)
+\begin{answer}
+$\hat\theta_S = 15/2.83 = 5.3$ per sequence or $0.375/2.83 = 0.133$
+  per site.  
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Estimate $\theta$ from the value of $S$ you got from data set~B.
+\begin{answer}
+$\hat\theta_S = 30/2.83 = 10.6$ per sequence or $0.75/2.83 = 0.265$
+  per site. 
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  What can you infer from the similarity (or the dissimilarity) of the
+  two estimates of $\theta$ you got from data set~A.  (Hint: Remember
+  that it is only reasonable to compare values in the same
+  units. Don't compare differences per site with differences per
+  sequence.)
+\begin{answer} In per-site units, we need to compare $\hat\theta_{\pi}
+  = 0.1378$ and $\hat\theta_S = 0.133$.  These numbers don't differ too
+  much, so there is no obvious reason to reject the model
+  of neutral DNA in a randomly mating population of constant size.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  What can you infer from the similarity (or the dissimilarity) of the
+  two estimates of $\theta$ you got from data set~B.
+\begin{answer} In per-site units, we need to compare $\hat\theta_{\pi}
+  = 0.29$ and $\hat\theta_S = 0.265$.  These numbers don't differ too
+  much, so there is no obvious reason to reject the model
+  of neutral DNA in a randomly mating population of constant size.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  Calculate the folded site frequency spectrum for data set~A.
+\begin{answer}
+Table~\ref{tab.Aanswer} presents data set~A again, with an extra row
+at the top showing the minor allele counts:
+\begin{table*}
+\caption{Data set~A with counts of minor allele at top}
+\label{tab.Aanswer}
+\begin{verbatim}
+       12  3 4   14      44 3      2   41   11  1 <-counts
+seq01 AATATGGCAC CTCCCAACCC TCTAGCATAT ACCACTTACA
+seq02 .......T.. .C......TG C......C.. ..........
+seq03 ..C....... .......... .......... ..........
+seq04 .......T.. .C......TG C......... G.........
+seq05 .......... .......... .......... ..........
+seq06 .....A.... ........T. C......... G....C....
+seq07 ..C....T.. .C......TG C......... G.........
+seq08 .....A.T.. TC......TG C......... G.........
+seq09 .......... .......... C......... ..........
+seq10 .G...A.... ........T. C......C.. .T....C..G
+\end{verbatim}
+\end{table*}
+Tabulating the counts gives
+\begin{center}
+\begin{tabular}{cc}
+Minor  & Number\\
+allele & of\\
+count  & sites\\
+\hline
+1 & 6\\
+2 & 2\\
+3 & 2\\
+4 & 5
+\end{tabular}
+\end{center}
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  Calculate the folded site frequency spectrum for data set~B.
+\begin{answer}
+Table~\ref{tab.Banswer} presents data set~B again, with an extra row
+at the top showing the minor allele counts:
+\begin{table*}
+\caption{Data set~B with counts of minor allele at top}
+\label{tab.Banswer}
+\begin{verbatim}
+      35 43  22  23112123 2 42 4311142 14 213  1 <-counts
+seq01 TGCCACTCCA ATCTCTCGCC AGATGGCATG CCTTATCGCG
+seq02 .......... G......... .A.C...GCA T.........
+seq03 .......... G......A.. .A.C...GC. T....C....
+seq04 C..TG..T.. .C.....A.. G......C.. TT.C......
+seq05 CA.TG..T.. .C....TA.. G......CC. TT.C......
+seq06 C...G..... CC..T..A.A ....AA.C.. TT..G.....
+seq07 CA.TG..... CC..TC.A.A ...CA..CC. TT...C....
+seq08 CA.TG...T. GCT....A.. G..C..TC.. T.......T.
+seq09 CA.TG..... GC.C..T... ...CA..C.A T.........
+seq10 CA.TG...T. .C.....A.. G..C...C.. T....C....
+\end{verbatim}
+\end{table*}
+Tabulating the counts gives
+\begin{center}
+\begin{tabular}{cc}
+Minor  & Number\\
+allele & of\\
+count  & sites\\
+\hline
+1 & 9\\
+2 & 9\\
+3 & 6\\
+4 & 5\\
+5 & 1
+\end{tabular}
+\end{center}
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  Use the $\hat\theta_S$ for data set~A to calculate the theoretical
+  folded spectrum for neutral loci in a population of constant
+  size. (You will want the value of $\hat\theta_S$ \emph{per
+    sequence}, not per site.) How well do the observed and theoretical
+  spectra match?
+\begin{answer}
+  The expected numbers are $\hat\theta(1 + 1/9) = 5.89$ for singletons,
+  $\hat\theta(1/2 + 1/8) = 3.31$ for doubletons,
+  $\hat\theta(1/3 + 1/7) = 2.52$ for tripletons, 
+  $\hat\theta(1/4 + 1/6) = 2.21$ for quadrupletons, and
+  $\hat\theta\times 1/5 = 1.1$ for quintupletons.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  Use the $\hat\theta_S$ for data set~B to calculate the theoretical
+  folded spectrum. (You will want the value of $\hat\theta_S$
+  \emph{per sequence}, not per site.) How well do the observed and
+  theoretical spectra match?
+\begin{answer}
+  The expected numbers are $\hat\theta(1 + 1/9) = 11.78$ for singletons,
+  $\hat\theta(1/2 + 1/8) = 6.63$ for doubletons,
+  $\hat\theta(1/3 + 1/7) = 5.05$ for tripletons, 
+  $\hat\theta(1/4 + 1/6) = 4.41$ for quadrupletons, and
+  $\hat\theta\times 1/5 = 2.12$ for quintupletons.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Sketch a gene genealogy for a sample of 10 sequences taken from
+a population that grew suddenly from a small size to a very large
+size 6 units of mutational time ago.
+\begin{answer}
+  The genealogy below has all the lineages coalescing at the same
+  time, 6~units of mutational time ago. That is fine, but it would
+  also be fine to draw a genealogy in which the coalescent events
+  happened more gradually. Many of them should however be
+  clustered in a relatively brief interval ending 6 units of time ago.\\
+\begin{minipage}[t]{0.8\columnwidth}
+\begin{verbatim}
+-----------------------|
+-----------------------|
+-----------------------|
+-----------------------|
+-----------------------|---------
+-----------------------|
+-----------------------|
+-----------------------|
+-----------------------|
+-----------------------|
+
+|-------6 time units---|
+\end{verbatim}
+\end{minipage}
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  Looking back from the present to the time of the population
+  expansion, the number of new mutations on a single line of descent
+  will be 3 on average, but not in every case. What probability
+  distribution would best describe the variation in the number of
+  mutations among independent lines of descent?
+\begin{answer}
+Poisson with mean 3.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  Sketch the distribution of pairwise differences (i.e.\ the mismatch
+  distribution) that you would expect to see in this sample. Assume
+  that the infinite sites model is a good approximation here. In other
+  words, don't worry about multiple hits. Be sure to label the X axis
+  in a way that indicates the mode of the
+  distribution.
+\begin{answer}
+Accept anything vaguely wave-shaped with a peak near 6 differences.\\
+\begin{minipage}[t]{0.8\columnwidth}
+\begin{verbatim}
+                       *
+                  *        *
+                  *            *
+               *
+       *   *                       *
+   *
+*                                      *
+
+0  1   2   3   4   5   6   7   8   9  10
+            Pairwise Differences
+\end{verbatim}
+\end{minipage}\\[0.5\baselineskip]
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  In sequence data from the control region of human mitochondrial
+  DNA, gene diversity $(\pi)$ is often around 0.01 for European and
+  Asian samples and around 0.02 for African ones.  What does this
+  imply about the numerical values of $\theta = 4Nu$ in Europe and
+  Africa? 
+\begin{answer}
+ $\theta = 0.01$ for Europe and Asia; 0.0204 for Africa.
+\end{answer}
+\end{exercise}
+
+The parameter $\theta$ can be estimated either from
+\[
+\hat\theta_{\pi} = \pi\qquad\hbox{or from}\qquad
+\hat\theta_S = S \Big/ \sum_{k=1}^{K-1} 1/k,
+\]
+where $\pi$ is the mean pairwise difference per sequence, $S$ is the
+number of segregating sites and $K$ is the number of gene copies in
+the sample. In a population of constant size, these statistics are
+often similar in size. In a population whose size has changed, they
+can be dramatically different.
+
+The reason involves the effect of population growth on the site
+frequency spectrum. As explained in section~\ref{G-sec.popgrow}
+of \citet{Rogers:LNG-13}, we see an excess of singleton sites in
+populations that have expanded in size at some time since the last
+common ancestor of the gene genealogy. To understand how population
+growth affects $\hat\theta_{\pi}$ and $\hat\theta_S$, we need to think
+about how these statistics are affected by singleton sites.
+
+\begin{exercise}
+  What does a singleton site contribute to the value of
+  $\hat\theta_{\pi}$ in a sample of $K$ gene copies?
+\begin{answer}
+There are $K(K-1)/2$ pairs of gene copies. Of these pairs, the number
+that differ is $1 \times (K-1) = K-1$. The contribution to $\pi$ is
+the fraction of pairs that differ, $2/K$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  What does a singleton site contribute to the value of $\hat\theta_S$
+  in a sample of $K$ gene copies? 
+\begin{answer}
+  Each segregating site (whether a singleton or not) increments the
+  value of $S$ by 1. Consequently, it increments $\hat\theta_S$ by 
+$\left(\sum_{k=1}^{K-1} 1/k\right)^{-1}$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  Make a table with three columns: the first for the number, $K$ of gene
+  copies in the sample, the second for the effect of a singleton site on
+  $\hat\theta_S$ and the third for the effect on
+  $\hat\theta_{\pi}$. Consider $K$ values of 2, 3, 4, 10, and 100.
+  For what values of $K$ does a singleton site have a larger effect on
+  $\hat\theta_S$ than on $\hat\theta_{\pi}$?
+\begin{answer}
+In the table below, $\Delta \hat\theta_S$ represents the contribution
+of a singleton site to $\hat\theta_S$ and $\Delta\hat\theta_{\pi}$ is
+the corresponding contribution to $\hat\theta_{\pi}$.
+\begin{center}
+\begin{tabular}{rcc}
+$K$ & $\Delta \hat\theta_S$ & $\Delta\hat\theta_{\pi}$\\ \hline
+2   & 1.000        & 1.000\\
+3   & 0.667        & 0.667\\
+4   & 0.545        & 0.500\\
+10  & 0.353        & 0.200\\
+100 & 0.193        & 0.020\\
+\end{tabular}
+\end{center}
+When $K>3$, each singleton site has a larger effect on $\Delta
+\hat\theta_S$ than on $\Delta\hat\theta_{\pi}$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  In a population that has expanded dramatically in size,
+  it is usually true that $\hat\theta_S > \hat\theta_{\pi}$. Why?
+\begin{answer}
+  Many segregating sites will be singletons, which add more to
+  $\hat\theta_S$ than to $\hat\theta_{\pi}$.
+\end{answer}
+\end{exercise}

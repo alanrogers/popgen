@@ -1,0 +1,135 @@
+\chapter{Inbreeding}
+\label{hw.inbreed}
+
+Each exercise is worth 10 points.
+
+\begin{exercise}
+Find $p$ and $F$ for a sample with genotype frequencies 100,
+  200, and 200 of genotypes $A_1A_1$, $A_1A_2$, and $A_2A_2$,
+  respectively. 
+\begin{answer}
+The data tell us that
+$P_{11} = 100/500 = 0.2$, and $P_{12} = 200/500 = 0.4$, so the
+frequencies of alleles $A_1$ and $A_2$ are $p = P_{11} + P_{12}/2 =
+0.4$, and $q = 1-p = 0.6$. To calculate $F$, we might work with the
+formula for any of the three genotype frequencies. Let's use $P_{12} =
+2pq(1-F)$. Rearranging this gives $F = 1 - P_{12}/2pq$, which works
+out to equal 0.167.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Find $p$ and $F$ for a sample with genotype frequencies 200,
+  100, and 200 of genotypes $A_1A_1$, $A_1A_2$, and $A_2A_2$,
+  respectively. 
+\begin{answer}
+The data tell us that
+$P_{11} = 200/500 = 0.4$, and $P_{12} = 100/500 = 0.2$, so the
+frequencies of alleles $A_1$ and $A_2$ are $p = P_{11} + P_{12}/2 =
+0.5$, and $q = 1-p = 0.5$. To calculate $F$, we might work with the
+formula for any of the three genotype frequencies. Let's use $P_{12} =
+2pq(1-F)$. Rearranging this gives $F = 1 - P_{12}/2pq$, which works
+out to equal 0.6.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+At a bi-allelic locus, alleles $A_1$ and $A_2$ have frequencies
+$p=1/4$ and and $q=3/4$. Relative to the current generation, $F$ is
+$1/2$. What is the frequency of genotype $A_1A_1$?
+\begin{answer}
+$P_{11} = 0.156$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+At a bi-allelic locus, alleles $A_1$ and $A_2$ have frequencies
+$p=q=1/2$. Relative to the current generation, $F$ is
+$1/4$. What is the frequency of genotype $A_1A_1$?
+\begin{answer}
+$P_{11} = 0.313$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the coefficient of kinship of half-siblings?
+\begin{answer}
+1/8
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the coefficient of kinship of full cousins?
+\begin{answer}
+1/16
+\end{answer}
+\end{exercise}
+
+\begin{figure}
+{\centering
+\input{figdarwedge}\\}
+\caption{Genealogy of George Darwin}
+\label{fig.darwedge}
+\end{figure}
+
+\begin{exercise}
+Figure~\ref{fig.darwedge} shows the genealogy of George
+Darwin, one of Charles Darwin's sons. What is his inbreeding
+  coefficient? 
+\begin{answer}
+$1/16$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  Suppose that (a)~we are studying a locus with two alleles, $A_1$ and
+  $A_2$, (b)~the frequency of allele $A_1$ is $p=0.4$, and (c)~the coefficient
+  of kinship between two individuals is 1/8.  What are the
+  probabilities that their offspring will be
+\begin{inparaenum}[(1)]
+\item an $A_1A_1$ homozygote,
+\item an $A_1A_2$ heterozygote, and
+\item an $A_2A_2$ homozygote?
+\end{inparaenum}
+\begin{answer}
+$P_{11} = 0.19$,
+$P_{12} = 0.42$, and
+$P_{22} = 0.39$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  Suppose that (a)~we are studying a locus with two alleles, $A_1$ and
+  $A_2$, (b)~the frequency of allele $A_1$ is $p=0.1$, and (c)~the coefficient
+  of kinship between two individuals is 1/16.  What are the
+  probabilities that their offspring will be
+\begin{inparaenum}[(1)]
+\item an $A_1A_1$ homozygote,
+\item an $A_1A_2$ heterozygote, and
+\item an $A_2A_2$ homozygote?
+\end{inparaenum}
+\begin{answer}
+$P_{11} = 0.0156$,
+$P_{12} = 0.169$, and
+$P_{22} = 0.816$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  This exercise is the same as the last one, except that this time you are
+  not given numerical values for the various parameters.  This time, you know
+  only that (a)~the frequency of allele $A_1$ is $p$, and (b)~the coefficient
+  of kinship between two individuals is $f$.  What are the
+  probabilities that their offspring will be
+\begin{inparaenum}[(1)]
+\item an $A_1A_1$ homozygote?
+\item an $A_1A_2$ heterozygote?
+\item an $A_2A_2$ homozygote?
+\end{inparaenum}
+Your answers should be formulas, not numbers.
+\begin{answer}
+$P_{11} = p^2 + pqf$,
+$P_{12} = 2pq(1-f)$, and
+$P_{22} = q^2 + pqf$.
+\end{answer}
+\end{exercise}

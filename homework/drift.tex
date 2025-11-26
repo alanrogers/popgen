@@ -1,0 +1,269 @@
+\chapter{Genetic Drift}
+\label{hw.drift}
+
+Each question is worth 10 points.
+
+\section{Drift acting alone}
+\label{sec.driftonly}
+In the first few problems, we assume that the only force at work is
+genetic drift.  There is no selection, no mutation, and no migration.
+The first few problems all involve the equation
+\begin{equation}
+H_t = H_0(1-1/2N)^t
+\label{eq.Ht}
+\end{equation}
+which describes the decay of heterozygosity in a randomly-mating
+population. 
+
+\begin{exercise}
+In the urn model of genetic drift, there are $2N$ balls in the urn of
+which a fraction $p$ are black.  The remaining fraction, $1-p$, are
+white. Suppose we draw $2N$ balls from the urn with replacement.  Of
+the balls that we draw, a random number $X$ are black, and the
+remaining $2N-X$ are white.  What are the \emph{mean} and
+\emph{variance} of $X$?  (Your answers should be in terms of $2N$ and
+$p$.)
+\begin{answer}
+$m=2Np$, $V=2Np(1-p)$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Consider a very small population in which $2N=10$, mating is at
+random, and genetic drift is the only evolutionary force at work. If
+heterozygosity equals $1/2$ in one generation, what is its expected value
+in the following generation?
+\begin{answer}
+\[
+\frac{1}{2} \times \left(1 - \frac{1}{10}\right) = \frac{9}{20} = 0.45
+\]
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Consider a larger population in which $2N=1000$, mating is at
+random, and genetic drift is the only evolutionary force at work. If
+heterozygosity equals $1/2$ in one generation, what is its expected value
+in the following generation?
+\begin{answer}
+\[
+\frac{1}{2} \times \left(1 - \frac{1}{1000}\right) = \frac{999}{2000} = 0.4995
+\]
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+In Series~I of Buri's experiment, the initial heterozygosity was
+$H_0=0.514$ and in the 18th generation it was $H_{18} = 0.183$.
+Take these values as given and solve equation~\ref{eq.Ht} for $2N$.  In
+your answer, include two digits to the right of the decimal point.
+How does your estimate compare to the one $(2N=18)$ that Buri got?
+\begin{answer}
+$2N=17.93$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Suppose that $2N=18$ on average, but that the value was not
+constant.  Specifically, suppose that $2N=26$ for the first 9
+generations and $2N=10$ for the last 9.  (Note that these numbers
+average to 18.)  What value would you predict for $H_{18}$?  Compare
+this to the answer you get when $2N=18$ in every generation.  Which
+answer is higher?  How does variation in population size affect the
+decay of heterozygosity?
+\begin{answer}
+$H_0 (1-1/26)^9 (1-1/10)^9 = 0.14$, smaller than the observed value of
+$H_t$.  Variation in population size accelerates the decay of
+heterozygosity.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Suppose now that the population size alternated between $2N=26$
+and $2N=10$.  It was 26 in the 1st generation, 10 in the 2nd, 26
+again in the 3rd, and so on.  What is the expected heterozygosity in
+generation~18? (Hint: Think carefully about equation~\ref{eq.Ht}.  There
+is a way to answer this without doing any additional calculations.)
+\begin{answer}
+Same as above.  We start with formulas like this:
+\begin{eqnarray*}
+H_9 &=& H_0 (1-1/26)^9\\
+H_{18} &=& H_9 (1-1/10)^9\\
+\end{eqnarray*}
+Substituting $H_9$ into the second equation gives
+\[
+H_{18} =  H_0 (1-1/26)^9(1-1/10)^9
+\]
+You can multiply in any order, so the answer to the second problem is
+the same as that of the first.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+In Buri's experiment, how many generations would it take before
+  $H_t=0.1$?  (Assume $2N=18$.)
+\begin{answer}
+$\log(0.1/H_0)/\log(1-1/18) = 28.64$
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Now rearrange equation~\ref{eq.Ht} so that $t$ is on the left side,
+and everything else is on the right.  (Hint: The right side will be an
+algebraic expression involving the symbols $H_0$, $H_t$, and $2N$.
+There will be logarithms.)  Use your answer to this question to check
+your answer to the preceding one.
+\begin{answer} 
+\[ t = \frac{\ln(H_t/H_0)}{\ln(1 - 1/2N)} \]
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+Suppose that a catastrophe reduces diploid population size from 1024 to 2. 
+Thereafter, the population doubles every generation until it reaches
+its original size. What fraction of the original heterozygosity still
+remains? To do this precisely, you would want to ask whether the
+species had separate sexes. We haven't taught you how to do this, so
+please assume that these organisms have monoecious sexual reproduction
+and mate at random. Then the theory we have taught in class works all
+the way down to $N=2$. Feel free to do this either by hand or in
+Python.
+\begin{answer}
+Here is the solution in Python:
+\begin{verbatim}
+>>> n = 2.0  # current population size
+>>> h = 1.0  # relative heterozygosity
+>>> while n < 1024.0:
+...     h *= 1-1/(2.0*n) # drift
+...     n *= 2.0         # pop growth
+...     print "H/H0 = %f" %h
+... 
+H/H0 = 0.750000
+H/H0 = 0.656250
+H/H0 = 0.615234
+H/H0 = 0.596008
+H/H0 = 0.586696
+H/H0 = 0.582112
+H/H0 = 0.579838
+H/H0 = 0.578706
+H/H0 = 0.578141
+\end{verbatim}
+Note that most of the drift happens in the first few generations.
+Even a very severe bottleneck removes only a fraction of the variance,
+provided that recovery is rapid.
+\end{answer}
+\end{exercise}
+
+\section{Mutation and drift}
+\label{sec.mutdrift}
+Gillespie shows that, under the ``infinite alleles'' model of
+mutation, heterozygosity $(H)$ evolves under the combined effects of
+mutation and genetic drift toward an equilbrium value,
+\begin{equation}
+\hat H = \frac{\theta}{1+\theta}
+\label{eq.eqhet}
+\end{equation}
+where $\theta = 4Nu$.
+\begin{exercise}
+At autosomal loci, the mutation rate per gene is often around
+$u=10^{-6}$ per generation.  Let us suppose this is so for Buri's
+flies.  Assuming once again that the effective population size is
+$2N_e=18$, calculate the equilibrium heterozygosity in Buri's
+experiment. This value represents the expected heterozygosity within
+each bottle in the long run---after many generations of simulaneous
+mutation and drift.  At this equilibrium, how many of the 16 flies in
+each bottle would be likely to be heterozygous? Round your answer to
+the nearest integer.
+\begin{answer}
+  $4Nu = 36 \times 10^{-6}$, and the expected heterozygosity is
+  $4Nu/(1+4Nu)$, or 0.000036.  The expected number of heterozygous
+  flies is 16 times this number, or 0.00058, which rounds to 0. You
+  would probably see no heterozygous flies.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  Solve Eqn.~\ref{eq.eqhet} algebraically for $\theta$ as a function
+  of $\hat H$.
+\begin{answer}
+$\theta = \hat H/(1-\hat H)$
+\end{answer}
+\end{exercise}
+
+The model of infinite alleles, which underlies Eqn.~\ref{eq.eqhet}, is
+plausible model for protein-coding loci, which may contain thousands
+of nucleotide sites. The number of possible alleles is so large that
+we get a good approximation by taking that number to be infinite. This
+approximation works poorly, however, for individual nucleotide
+sites. These have at most 4 alleles---A, T, G, and C. If there are $k$
+possible alleles, and each allele mutates with equal probability to
+each of the other alleles, then Eqn.~\ref{eq.eqhet} becomes
+\begin{equation}
+\hat H = \frac{\theta}{1+\theta k/(k-1)}
+\label{eq.eqhetk}
+\end{equation}
+This model is also unrealistic, however, because it is seldom true
+that each allele mutates with equal probability to each other allele.
+Typically, the most common type of mutation is the ``transition,''
+which toggles the nucleotide back and forth either between A and G or
+between C and T. In human mitochondrial DNA, for example, the vast
+majority of mutations are of this type. When this is so, we get a
+reasonable approximation by assuming that $k=2$ in
+Eqn.~\ref{eq.eqhetk}. Let us call this the ``symmetric biallelic''
+model of mutation, because it implies that each polymorphic site has 2
+alleles, each of which mutates to the other at the same rate. For this
+model, 
+\[
+\hat H = \frac{\theta}{1+2\theta}
+\]
+\begin{exercise}
+What is the largest value that $\hat H$ can take in the model of
+infinite sites?
+\begin{answer}
+Heterozygosity is maximal when $\theta\rightarrow\infty$. For the
+model of infinite sites, this gives $\max\hat H = 1$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+What is the largest value that $\hat H$ can take in the symmetric
+biallelic model? 
+\begin{answer}
+Heterozygosity is maximal when $\theta\rightarrow\infty$. For the
+symmetric biallelic model, $\max\hat H = 1/2$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  Suppose that random pairs of mitochondria differ on average at 0.5\%
+  of nucleotide sites, that the population is at mutation-drift
+  equilibrium, that the mutation rate is $u=2 \times 10^{-7}$ per
+  nucleotide per generation, and that the symmetric biallelic model of
+  mutation applies. What does this imply about the effective number of
+  females? (Hint, we can use Eqn.~\ref{eq.eqhetk}, provided that we
+  interpret the number, $2N$, of gene copies in the population as the
+  effective number of females.)
+\begin{answer}
+  The calculation is based on Eqn.~\ref{eq.eqhetk}, because we are
+  using the symmetric biallelic model of mutation. The question tells
+  us that $k=2$ and $\hat H = 0.005$. Eqn~\ref{eq.eqhetk} becomes
+  $0.005 = \theta/(1 + 2\theta)$, or $\theta=0.00505$. And since
+  $\theta = 4Nu$, where $u = 2\times 10^{-7}$, we have $2N = 12626$.
+\end{answer}
+\end{exercise}
+
+\begin{exercise}
+  Suppose that the average individual is heterozygous at $1/3$ of
+  protein-coding loci, that the population is at mutation-drift
+  equilibrium, that the mutation rate is $u=10^{-6}$ per locus per
+  generation, and that the infinite alleles model of mutation
+  applies. What does this imply about $N$?
+\begin{answer}
+  The calculation is based on Eqn.~\ref{eq.eqhet}, because we are
+  using the model of infinite alleles.  The question tells us that
+  $\hat H = 1/3$, so Eqn~\ref{eq.eqhet} becomes $1/3 = \theta/(1 +
+  \theta)$, or $\theta=1/2$. And since $\theta = 4Nu$, where $u =
+  10^{-6}$, we have $N = 125000$.
+\end{answer}
+\end{exercise}
+

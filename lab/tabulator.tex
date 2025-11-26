@@ -1,0 +1,53 @@
+\chapter{Using Tabulator to Tabulate Data}
+\label{ch.tabulator}
+Tabulator is a python class for tabulating numerical data.  Before
+using it, you must get a copy of the file ``pgen.py,'' which defines
+the Tabulator module.
+
+\begin{verbatim}
+from pgen import Tabulator
+
+# A dummy data set consisting of numbers between 0.0 and 1.0.
+
+data = [0.33236342968786442, 0.73055958580640823, 0.34100448055922677, 
+        0.93062544008569004, 0.57670398113446419, 0.51266858597089471]
+
+tab = Tabulator()     # construct a new tabulator
+for x in data:        # tabulate the data
+    tab += x
+
+print(tab)            # print the tabulation
+\end{verbatim}
+The output looks like this:
+\begin{verbatim}
+Range                     Count     Freq
+[     -inf ...   0.0000]      0   0.0000
+[   0.0000 ...   0.2000]      0   0.0000
+[   0.2000 ...   0.4000]      2   0.3333
+[   0.4000 ...   0.6000]      2   0.3333
+[   0.6000 ...   0.8000]      1   0.1667
+[   0.8000 ...   1.0000]      1   0.1667
+[   1.0000 ...      inf]      0   0.0000
+Total                         6   1.0000
+\end{verbatim}
+
+By default, Tabulator groups observations into five bins, which span
+the range between 0 and 1. There are two additional bins for
+observations less than 0 and greater than 1. You can change these
+defaults in the call to the Tabulator constructor. For example, we
+could define \textt{tab} as follows
+\begin{verbatim}
+tab = Tabulator(low=0.2, high=0.8, nBins=4)
+\end{verbatim}
+to tabulate the range $[0.2, 0.8]$ into 4 bins. Using the data above,
+we would end up with
+\begin{verbatim}
+Range                     Count     Freq
+[     -inf ...   0.2000]      0   0.0000
+[   0.2000 ...   0.3500]      2   0.3333
+[   0.3500 ...   0.5000]      0   0.0000
+[   0.5000 ...   0.6500]      2   0.3333
+[   0.6500 ...   0.8000]      1   0.1667
+[   0.8000 ...      inf]      1   0.1667
+Total                         6   1.0000
+\end{verbatim}
