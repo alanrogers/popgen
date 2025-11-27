@@ -1,5 +1,4 @@
-# popgen
-A course on population genetics
+# Human Evolutionary Genetics
 
 This repository contains materials for a course I taught from 2000 through 2024
 under the title *Human Evolutionary Genetics*. I taught it first
