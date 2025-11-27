@@ -75,7 +75,9 @@ command, which reads the file `Makefile` in the current directory and
 then copies the course `website` tree into the global `website`.
 
 The final step is to push the global `website` onto the remote server.
-I do this using a shell script whose contents are shown below. It uses
+The details of this step will depend on the hosting service you use,
+so all I can do is describe how it works in my own computing
+environment. I use a shell script whose contents are shown below. It uses
 the `rsync` command to copy an entire directory tree from one place to
 another. The `--delete` option deletes remote files that are not in
 the local `website` directory. This means that you can delete files
@@ -86,8 +88,8 @@ then add `-e ssh` to the rsync command below. This compresses and
 encrypts the content and makes things much faster. My university's
 hosting service no longer supports this. One must instead mount the
 remote directory using SMB (Windows) or SAMBA (Linux or Mac). In this
-new setup, `-e ssh` would not save time or improve security, because
-the compression and decompression steps would both happen on the local
+setup, `-e ssh` would not save time or improve security, because the
+compression and decompression steps would both happen on the local
 machine. In this new setup, the process of pushing to the server is
 *much* slower.
 
@@ -111,3 +113,8 @@ hosting service.
 	# server, which is mounted using SMB/SAMBA.
     cd; rsync -rptvz --copy-links --delete website/    \
 	  /Volumes/u0028949/html-docs/public_html/
+
+On my machine, this executable shell script is called
+`installcsbs`. After mounting the remote directory using SAMBA, I type
+`installcsbs` to copy the `website` directory from my local machine
+onto the remote server.
