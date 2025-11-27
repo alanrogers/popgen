@@ -18,6 +18,8 @@ For this public github repository, I've removed all copyrighted
 files. Consequently, the .html and .php files have some dead links to
 these missing files.
 
+The contents of this top-level directory are as follows:
+
 * **homework** contains a 43-page collection of algebraic homework
   exercises, with answers to even-numbered exercises at the back.
 
