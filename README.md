@@ -108,10 +108,6 @@ hosting service.
     find ~/website -type d -exec chmod +x {} \;
 	
     # Copy the directory tree below $HOME/website onto the remote
-	# server, which is mounted using SMB/SAMBA. The --delete
-	# arguments deletes remote files that are not in the local
-	# website. If you can use rsync directly rather than mounting
-	# the remote tree locally, add "-e ssh" to the rsync command.
-	
+	# server, which is mounted using SMB/SAMBA.
     cd; rsync -rptvz --copy-links --delete website/    \
 	  /Volumes/u0028949/html-docs/public_html/
