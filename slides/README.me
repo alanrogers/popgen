@@ -1,0 +1,41 @@
+# Lecture slides
+
+Each subdirectory within this directory contains the source code for the slides
+associated with one lecture topic. Some topics span several class meetings and
+a few take less than a full class meeting. In all cases, the main file is
+called `main.tex`, is in LaTeX, and uses the Beamer package. To create a pdf
+file for display on a projector, type `pdflatex main` within any of the
+subdirectories below.
+
+I also post the lectures on my website as pdf files, but in these files
+there are 6 slides per page. I make these with a shell script in my $HOME/bin
+directory, which is called `nup`. Here are the contents of that file:
+
+    #!/bin/bash
+    pdfjam --nup '2x3' --no-landscape --suffix '2x3' --frame 'true' \
+      --paper letterpaper $1
+
+To use this, first make sure that you have a `bin` directory within your
+HOME directory and that `bin` is in your PATH (the list of directories that
+UNIX, Linux, and Mac search for executables). Create a file named `nup` within
+`bin` that has the lines above. Make it executable by typing
+
+    chmod +x $HOME/bin/nup
+
+Now you're ready to create a pdf of a set of lecture slides 6 per page. As
+an example, let's use the `ld` directore. Use `cd ld` to enter that dir and
+type `pdflates main` to generate `main.pdf`. Then copy this output file into
+one named `ld.pdf`:
+
+    cp main.pdf ld.pdf
+
+Now run `nup` on `ld.pdf`:
+
+    nup ld.pdf
+
+This generates `ld-2x3.pdf`, which you can mv into the `lecture` directory:
+
+    mv ld-2x3.pdf ../../website/lecture
+
+Next time you push the website dir onto the server, it will update that lecture
+in the online version.
