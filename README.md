@@ -12,7 +12,11 @@ under the designations Anth5221 and Biol5221.
 
 The files on the website for this course are of several types: lecture
 slides, tutorials, and so on. Most of these are written in LaTeX or
-Markdown, and the sources are in various subdirectories below:
+Markdown, and the sources are in various subdirectories.
+
+For this public github repository, I've removed all copyrighted
+files. Consequently, the .html and .php files have some dead links to
+these missing files.
 
 * **homework** contains a 43-page collection of algebraic homework
   exercises, with answers to even-numbered exercises at the back.
