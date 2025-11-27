@@ -1,0 +1,22 @@
+I. Probability
+A. Statistical Probability
+B. Experiment, Event and Sample Space
+C. The probability of ``$A$ or $B$''---The law of addition
+  1. Mutually exclusive events
+  2. Events not mutually exclusive
+D. The probability of $A \& B$: The law of multiplication
+E. Statistical independence
+F. Exercises
+
+II. Random variables
+A. Frequency distributions
+B. Probability distributions
+C. Probability distribution functions
+  1. Bernoulli
+  2. Binomial
+  3. Poisson
+D. Probability density functions
+  1. The uniform distribution
+  2. The exponential distribution
+  3. Normal
+E. Exercises

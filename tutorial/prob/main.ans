@@ -1,0 +1,268 @@
+\ansno{1--1}
+There are many correct answers.  Here are two: (1)~Interpret numbers
+as heads if less than 0.3 but as tails if greater.  (2)~Interpret
+numbers as heads if between 0.2 and 0.5 but as tails otherwise.
+\ansno{1--2}
+\begin{verbatim}
+# Python program that simulates 10000
+# spins of a fair coin
+
+from random import random
+
+for i in range(10000):
+    u = random()
+    if u < 0.5:
+        print('heads')
+    else:
+        print('tails')
+\end{verbatim}
+\ansno{1--3}
+%
+The relative frequency of ``$RG \Or GG$'' is $2556/5000$, that of $RG$
+is $1689/5000$, and that of $GG$ is $867/5000$.  The sum of the last
+two is $1689/5000 + 867/5000 = 2556/5000$.
+\ansno{1--4}
+The relative frequency of the event $(A)$ that the first ball is red
+equals $2445/5000$; that of the event $(B)$ that the second is green
+equals $2556/5000$; that of event ``$A\Or B$'' is $(756+1689+867)/5000
+= 3312/5000$.  The sum of the first two relative frequencies is
+$2445/5000 + 2556/5000 = 5001/5000$, which is much larger than the
+relative frequency of ``$A\Or B$.''
+\ansno{1--5}
+The first ball is red with probability $\Pr[A] = 1/2$, and the second
+is green with probability $\Pr[B] = 1/2$.  The probability that both
+events happened is $\Pr[A\And B] = 1/3$.  All this is from
+Fig.~\ref{fig.tree}.  Using these values, the addition law gives
+$\Pr[A\Or B] = 1/2 + 1/2 - 1/3 = 2/3$.
+\ansno{1--6}
+ As shown on p.~\pageref{pg.Pr_green}, the tree diagram implies
+that the unconditional probability of $B$ is $\Pr[B] = 1/2$.  On the
+other hand, the conditional probability is $\Pr[B|A] = 2/3$.  These
+probabilities are not equal, so $A$ and $B$ are not independent.
+\ansno{1--7}
+According to Table~\ref{tab.urn}, $\Pr[B]$ is estimated by $2556/5000
+\approx 0.51$, and $\Pr[B|A]$ by $1689/2445 \approx 0.69$.  The two
+numbers are only estimates, so we cannot conclude that the
+probabilities differ merely because the estimates do.  However, the
+difference between these estimates is large, and so is the sample.
+Even without a careful statistical analysis, these results suggest
+that the two balls were not statistically independent.
+\ansno{1--8}
+  The relative frequency of ``red 2'' is $3631/20,000 \approx 0.18$.
+  This estimates the unconditional probability of rolling ``2'' with the
+  red.  If we restrict attention to those trials on which the white die
+  rolled ``4,'' the relative frequency of ``red 2'' is $535/2841 \approx
+  0.19$.  This estimates the conditional probability of ``red 2'' given
+  ``white 4.''  The numbers are pretty nearly equal, as they should be
+  if the dice are statistically independent.
+\ansno{1--9}
+ Under sampling with replacement, the decision tree is as shown
+below.
+%\begin{figure}[tbhp]
+\begin{center}
+\input{figwithrep}
+\end{center}
+%\caption{Tree diagram for sampling with replacement}
+%\label{fig.withrep}
+%\end{figure}
+Using this decision tree, we can test for statistical independence as
+follows: the second ball is green with unconditional probability
+$\Pr[RG\Or GG] = 1/2$.  If the first ball is red, the second is green
+with conditional probability $1/2$.  These numbers are the same, so
+the two balls are statistically independent.
+\ansno{2--1}
+The sample space consists of all possible $(X,Y)$ pairs, where $X$ is
+the number on the red die and $Y$ the number on the white.  $X$ and
+$Y$ are both integers between 1 and 6, so there are 36 possible
+outcomes.  If the dice are fair, then each outcome has probability
+$1/36$.
+\ansno{2--2}
+The sample space is $\{0, 1, 2\}$.
+\ansno{2--3}
+The mean  is $5/3$, since there are 3 numbers that sum to 5.  Using
+relative frequencies, the problem becomes
+$1 \times  (2/3) + 3\times (1/3) = 2/3 + 3/3 = 5/3$.
+\ansno{2--4}
+\[
+E[X^2] = (0\times 1/4) + (1\times 1/2) + (4\times 1/4) = 1.5
+\]
+\ansno{2--5}
+\begin{eqnarray*}
+E[X + X^2]&=& ((0+0)\times 1/4) + ((1+1)\times 1/2)\\
+ &&\mbox{} + ((2+4)\times 1/4)\\
+& =& 2.5
+\end{eqnarray*}
+Compare this answer to that of the preceding exercise, and you will
+see that $E[X + X^2] = E[X] + E[X^2]$.
+\ansno{2--6}
+$E[3]=3$
+\ansno{2--7}
+$E[2X] = 10$
+\ansno{2--8}
+$E[2X + 3Y] = 10 + 18 = 28$
+\ansno{2--9}
+$E[aX + bY^2] = aE[X] + bE[Y^2]$
+\ansno{2--10}
+First expand the squared term:
+\[
+E[(X + Y)^2] = E[X^2 + 2XY + Y^2]
+\]
+Next, use Eqn.~\ref{eq.E[X+Y]} to turn the expectation of a sum into a
+sum of expectations:
+\[
+E[X^2 + 2XY + Y^2] = E[X^2] + E[2XY] + E[Y^2]
+\]
+Finally, re-express the middle term using
+Eqns.~\ref{eq.E[aX]} and~\ref{eq.E[XY]}:
+\[
+E[X^2] + E[2XY] + E[Y^2] = E[X^2] + 2E[X]E[Y] + E[Y^2]
+\]
+\ansno{2--11}
+%
+The text used Eqn~\ref{eq.variance.a} to calculate that $m=10$ and
+$V=2$.  For the other versions, we need relative frequencies: $f_8=1/4$,
+$f_{10}=1/2$, and $f_{12}=1/4$.  Eqn.~\ref{eq.variance.b} gives
+\begin{eqnarray*}
+V&=&(1/4)(8-10)^2 + (1/2)(10-10)^2 \\
+ && \mbox{} + (1/4)(12-10)^2\\
+ &=& 1 + 0 + 1 = 2
+\end{eqnarray*}
+For the Eqn.~\ref{eq.variance.c}, we need
+\begin{eqnarray*}
+\sum x^2 f_x &=& 8^2/4 +10^2/2 + 12^2/4\\
+ &=& 16 + 50 + 36 = 102
+\end{eqnarray*}
+We also need $m^2 = 10^2 = 100$.  Subtracting gives $V = 102 - 100 =
+2$.
+\ansno{2--12}
+The mean and variance are 8.75 and 18.1875.
+\ansno{2--13}
+The mean is
+\[
+E[X] = 0 \times 1/3 + 1\times 1/2 + 2 \times 1/6 = 0.833.
+\]
+The variance is
+\begin{eqnarray*}
+V[X] &=& (0-0.833)^2 \times 1/3\\
+&&\mbox{} + (1-0.833)^2\times 1/2\\
+&&\mbox{} + (2-0.833)^2 \times 1/6\\
+&=& 0.472.
+\end{eqnarray*}
+\ansno{2--14}
+%
+In the data, the relative frequencies are $f_8=1/4$, $f_{10} = 2/4$,
+and $f_{12} = 1/4$.  The mean is $10$.  According to Eqn.~\ref{eq.V3},
+the variance is
+\begin{eqnarray*}
+V &=& (1/4)\times 8\times(8-10)\\
+ &&\mbox{} + (1/2)\times 10\times (10-10)\\
+ &&\mbox{} + (1/4)\times 12\times (12-10)\\
+ &=& (1/4)\times (-16)\\
+ &&\mbox{} + (1/2)\times 0\\
+ &&\mbox{} + (1/4)\times 24\\
+ &=& -4 + 6 = 2\\
+\end{eqnarray*}
+\ansno{2--15}
+First, $E[aX] = aE[X]$ by equation~\ref{eq.E[aX]}.  Next,
+\begin{eqnarray*}
+V[aX] &=& E[(aX - aE[x])^2]\\
+ &=& E[a^2(X - E[x])^2]\\
+ &=& a^2E[(X - E[x])^2] \qquad \hbox{using (\ref{eq.E[aX]}) again}\\
+ &=& a^2 V[X]
+\end{eqnarray*}
+\ansno{2--16}
+ With the new probabilities, we expect fewer $(0,0)$ and
+  $(1,1)$ pairs but more $(0,1)$ and $(1,0)$.  There is still a
+  tendency for $X$ and $Y$ to vary in the same direction, but that
+  tendency is weaker.  In other words, the relationship is weaker but
+  still positive.  The covariance turns out to be $C[X,Y] = 0.05$.
+\ansno{2--17}
+One way is to replace the $P_{XY}$ values in Table~\ref{tab.bivdist}
+with 0.1, 0.4, 0.4, and 0.1.  This yields $C[X,Y] = -0.15$.
+\ansno{2--18}
+The corresponding formulas are
+\begin{eqnarray}
+C[X,Y] &=& N^{-1} \sum_i (x_i - \bar x)(y_i - \bar y)\label{eq.cov.a}\\
+  &=& \sum_{x,y} (x-\bar x)(y-\bar y) f_{xy}\label{eq.cov.b}\\
+  &=& \sum_{x,y} xy f_{xy} - \bar x\bar y\label{eq.cov.c}
+\end{eqnarray}
+where $f_{xy}$ is the frequency of $(X,Y)$ pairs in the data for
+which $X=x$ and $Y=y$.  Using any of these formulas, the given data
+imply that $C[X,Y] = 0.0833$.
+\ansno{3--1}
+The sample space is $\{0, 1, 2\}$; the corresponding probabilities
+are $1/4$, $1/2$, and $1/4$.
+\ansno{3--2}
+The allele disappears with probability
+\[
+P_0 = \binom{2000}{0} p^0 (1-p)^{2000} \approx 0.135
+\]
+In this calculation, there is no need to calculate $\binom{2000}{0}$;
+it must equal 1 because there is only 1 way to choose 0 of something.
+In addition, $p^0 = 1$ because \emph{anything} raised to the zeroth
+power equals 1.  The only part that needs calculating is
+$(1-p)^{2000}$.
+\ansno{3--3}
+For the Bernoulli distribution, there is only one event.
+Consequently, $N=1$ and Eqn.~\ref{eq.binomial} becomes
+\[
+P_x = \frac{1!}{1! \times 0!} p^x (1-p)^{1-x}
+\]
+Recall that $0! = 1! = 1$.  (See appendix~\ref{sec.factorial} for
+details.)  Consequently, $1!/(1! \times 0!) = 1$ and drops out of the
+equation.  If $x=0$, then $p^x = p^0=1$, and this term drops out.
+Eqn.~\ref{eq.binomial} becomes $P_0 = 1-p$.  On the other hand, if
+$x=1$, then $(1-p)^{1-x} = (1-p)^0 = 1$ and drops out.  We are then
+left with $P_1 = p$.
+\ansno{3--4}
+$E[X] = 1/2$ and $V[X] = 1/4$.
+\ansno{3--5}
+Since $A_1$ has frequency $p$, that is also the probability that we
+have drawn a copy of this allele.  It follows that $E[X] = p$ and
+$V[X] = p(1-p)$.
+\ansno{3--6}
+ For $x=2$ and $\lambda = 0.61$, the Poisson formula gives $P_2
+= 0.101$.  We therefore expect to see about $0.101\times 200 = 20.2$
+corps-years with 2 mule-kick deaths.  This is close to the real number
+of 22.
+\ansno{3--7}
+The probability of no mutation is
+$P_0 = e^{-2} \approx 0.135$.
+Note that this answer is identical to that of the preceding exercise.
+This illustrates the fact that, when $N$ is large and $p$ is small,
+the Poisson is a good approximation to the binomial.
+\ansno{3--8}
+The probability of ``at least one mutation'' is $\Pr[X>0]$.
+There are two ways to think about this problem. The hard way sums
+across all non-zero entries of the Poisson distribution:
+\[
+\Pr[X>0] = \sum_{x=1}^\infty \frac{\lambda^x e^{-\lambda}}{x!}
+\]
+As I said, that is the hard way and is not recommended. The easy
+solution proceeds from the observation that all probability
+distributions sum to~1. For a non-negative random variable such as the
+Poisson, this implies that $\Pr[X=0] + \Pr[X>0] = 1$. Thus,
+\[
+\Pr[X>0] = 1 - \Pr[X=0] = 1 -e^{-\lambda}
+\]
+In the current question, $\lambda=2$, so $\Pr[X>0] \approx 0.865$.
+\ansno{3--9}
+The graph is:
+%
+\input{figuniform2}
+%
+The area of the shaded rectangle is $(0.3-0.2) \times 1 = 0.1$.  This
+is also the probability that $0.2 < X < 0.3$.
+\ansno{3--10}
+For any continuous r.v., the probability that $X$ lies between two
+values $a$ and $b$ is $\int_a^b f(x) dx$.  In this problem, $a=0.2$,
+$b=0.3$, and $f(x)=1$.  The integral is thus equal to 0.1.
+\ansno{3--11}
+%
+An exponential variable is $<1$ with probability
+$\int_0^1 h e^{-hx} dx = 1-e^{-h}$.
+\ansno{3--12}
+ 100~years, because the mean is $1/h$, and the problem says
+  that $h=0.01$.
+\ansno{3--13}
+The mean is $10^9$ years; the variance is $10^{18}$.

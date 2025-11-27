@@ -1,0 +1,188 @@
+% -*-latex-*-
+%\documentclass[handout]{beamer}
+\documentclass[12pt]{beamer}
+\usepackage{pictex}
+\begin{document}
+
+\title{Natural Selection}
+\author{Alan R. Rogers}
+\date{\today}
+
+\frame{\titlepage}
+
+\begin{frame}
+  \frametitle{Selection}
+  Selection is a bias in survival and/or reproduction: when one allele
+  is better than another.
+
+  \bigskip
+
+  Charles Darwin's big idea. (Also Alfred Russell Wallace.)
+
+  \bigskip
+
+  The only evolutionary force capable of producing adaption.
+
+  \bigskip
+
+  Main job: removing harmful mutations.
+
+  \bigskip
+
+  Can produce rapid change in allele frequencies.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Basic model}
+  A locus with two alleles, $A_1$ and $A_2$, with relative
+  frequencies in some generation are $p$ and $q \equiv 1 - p$.
+
+  \bigskip
+
+  Genotype $A_{i}A_{j}$ has ``fitness'' $w_{ij}$. Think of this as a
+  probability of survival. Selection also works through fertility, but
+  the algebra is different.
+
+  \bigskip
+
+  {\centering
+\begin{tabular}{lccc}
+Genotype & $A_1A_1$ & $A_1A_2$ & $A_2A_2$\\ 
+\hline\hline
+Freq.\ before selection  & $p^{2}$ & $2pq$ & $q^{2}$\\
+Fitness  & $w_{11}$ & $w_{12}$ & $w_{22}$ \\
+Freq.\ after selection  & $p^{2}w_{11}/\bar w$
+         & $2pq w_{12}/\bar w$
+         & $q^{2}w_{22}/\bar w$\\ \hline
+\multicolumn{4}{c}{Where $q = 1-p$}\\
+\multicolumn{4}{c}{and $\bar w = p^{2}w_{11}+2pqw_{12}+q^{2}w_{22}$}\\
+\end{tabular}\\}
+\end{frame}
+
+\begin{frame}
+After one generation of selection:
+\[
+p' = \frac{p^{2} w_{11} + pqw_{12}}{\bar w}
+\]
+where $p'$ is the allele frequency among offspring.
+
+\bigskip
+
+Rate of change:
+\begin{eqnarray*}
+  \Delta p &=& p' - p\\
+  &=& \frac{p q}{\bar w} \bigl[p (w_{11}-w_{12}) + q(w_{12} - w_{22})\bigr]
+\end{eqnarray*}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Implications}
+
+  \[
+  \Delta p = \frac{p q}{\bar w} [p (w_{11}-w_{12}) + q(w_{12} -
+    w_{22})]
+  \]
+
+\begin{enumerate}
+\item Response to selection is slow when either allele is rare,
+  because then $pq$ is small.
+\item Response is slow when a recessive allele is rare. In this case,
+  $w_{12} = w_{22}$, and $\Delta p \propto p^2$.
+\item Response is slow when a dominant allele is common.
+\item A rare allele spreads if its heterozygote is fitter than the common
+homozygote, because if $p$ is small, $\Delta p \propto w_{12} - w_{22}$.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Implications}
+
+  \[
+  \Delta p = \frac{p q}{\bar w} [p (w_{11}-w_{12}) + q(w_{12} -
+    w_{22})]
+  \]
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item If the heterozygote has intermediate fitness, then one allele will
+  increase to fixation.
+\item If the heterozygote has the highest fitness, then $A_1$ evolves toward
+an intermediate equilibrium.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Wright's equation}
+  Sewall Wright noticed that the formula for $\Delta p$, the quantity
+  in square brackets is half $d\bar w/dp$:
+  \[
+  \Delta p = \frac{pq}{2\bar w}\cdot\frac{d \bar w}{d p}
+  \]
+  This implies that selection pushes a population ``uphill'': in a
+  direction that increases mean fitness.
+
+  \bigskip
+
+  This is why selection explains adaptation.
+\end{frame}  
+
+
+\title{Selection plus Mutation}
+\author{Alan R. Rogers}
+\date{\today}
+
+\frame{\titlepage}
+
+
+\begin{frame}
+  \frametitle{All that matters is \emph{relative} fitness}
+The frequency, $p'$, of $A_1$ among offspring is
+\[
+p' = \frac{p^{2} w_{11} + pqw_{12}}{\bar w}, \quad\hbox{where}
+\]
+\[
+\bar w = p^{2}w_{11}+2pqw_{12}+q^{2}w_{22} \quad\hbox{is mean fitness.}
+\]
+
+\bigskip
+
+If we multiply all fitnesses by some constant, $K$, nothing changes,
+\[
+p' = \frac{p^{2} Kw_{11} + pqKw_{12}}{K\bar w}
+\]
+because the constant cancels.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Reformulating fitness}
+\[
+    \begin{array}{lccc}
+      \hbox{Old notation} & w_{11} & w_{12} & w_{22}\\
+      \hbox{New notation} & 1 & 1-hs & 1-s
+    \end{array}
+\]    
+  Here, $s$ is the selective disadvantage of $A_2A_2$, and $h$
+  measures dominance. $h=1/2$ if effects are additive, $h=1$ if $A_2$
+  is recessive, and $h=0$ if $A_2$ is dominant.
+
+\begin{eqnarray*}
+  \Delta p &=& \frac{p q}{\bar w}
+  \bigl[p (w_{11}-w_{12}) + q(w_{12} - w_{22})\bigr]\\
+  &=& \frac{pqs[ph + q(1-h)]}{\bar w}
+\end{eqnarray*}
+where
+\[
+\bar w = 1 - 2pqhs - q^2 s
+\]
+\end{frame}
+
+\begin{frame}
+  \frametitle{Mutation and selection}
+\[
+  \Delta p = \frac{pqs[ph + q(1-h)]}{\bar w} \approx qhs
+\]
+if $q\approx 0$, $p \approx 1$, and $\bar w \approx 1$.
+
+\end{frame}
+
+\end{document}
+

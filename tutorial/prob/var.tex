@@ -1,0 +1,55 @@
+\section{Variance}
+
+There are many ways to measure variation, of which the \emph{variance}
+is the most common.  The variance is the average squared difference
+from the mean.  For example, suppose we are dealing with data
+consisting of the numbers 10, 12, 10, and 8.  The mean is 10, so the
+variance is
+\begin{displaymath}
+V = ((10 - 10)^2 + (12-10)^2 + (10-10)^2 + (8-10)^2)/4 = 2
+\end{displaymath}
+There is a variety of ways to represent the variance, including
+\begin{eqnarray}
+V &=& N^{-1} \sum_i (x_i - \bar x)^2\nonumber\\
+  &=& \sum_x (x-\bar x)^2 p_x\nonumber\\
+  &=& \sum_x x^2 p_x - \bar x^2
+\label{eq.variance.def}
+\end{eqnarray}
+
+\begin{exercise}
+Verify that the formulas Equation~\ref{eq.variance.def} are
+equivalent.
+\end{exercise}
+
+\begin{exercise}
+What are the mean and variance of the numbers 3, 9, 15, and 8?
+\answer
+The mean and variance are 8.75 and 18.1875.
+\end{exercise}
+
+If $X$ is a random variable (rather than data), its variance is
+\begin{equation}
+V[X] = E\left[ (X - E[X])^2 \right]\label{eq.V1}
+\end{equation}
+Note the similarity between this expression and
+Equation~\ref{eq.variance.def}.  The variance can also be written in
+either of the following ways:
+\begin{eqnarray}
+V[X] &=& E\bigl[ X^2 \bigr] - E[X]^2\label{eq.V2}\\
+     &=& E\bigl[ X(X - E[X]) \bigr]\label{eq.V3}
+\end{eqnarray}
+These expressions hold irrespective of whether the random variable is
+continuous or discrete.
+
+\begin{exercise}
+Prove that if $a$ is a constant and $X$ a random variable, then $V[aX]
+= a^2 V[X]$.
+\answer
+First, $E[aX] = aE[X]$ by equation~\ref{eq.E[aX]}.  Next,
+\begin{eqnarray*}
+V[aX] &=& E[(aX)^2] - E[aX]^2\\
+ &=& E[a^2 X^2] - a^2 E[X]^2\\
+ &=& a^2\left( E[X^2] - E[X]^2\right)\\
+ &=& a^2 V[X]
+\end{eqnarray*}
+\end{exercise}

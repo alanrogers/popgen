@@ -1,0 +1,76 @@
+%\includeonly{prob2}
+\documentclass[pdftex,10pt,twocolumn,letterpaper]{article}
+\usepackage{pictex,exercise,verbatim}
+\usepackage{jeep}
+\usepackage[dvips]{graphicx}
+\usepackage{times}
+\usepackage{fullpage}
+\usepackage{float,boxedminipage}
+\usepackage{subfig}
+\cfoot{\thepage}
+\mysection{section}{\centering\large\bf Chapter~}{\thesection.~}
+\numberexercises{section}
+\exercisehead{$\star$\,\footnotesize EXERCISE \normalsize\bf}{}
+\floatstyle{boxed}
+\newfloat{Box}{tbhp}{lob}
+% Compressed enumerate environment
+\newcommand{\Or}{\;\hbox{or}\;}
+\newcommand{\And}{\;\&\;}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newenvironment{outline}{
+%\begin{enumerate}
+%  \setlength{\itemsep}{1pt}
+%  \setlength{\parskip}{0pt}
+%  \setlength{\parsep}{0pt}
+%}{\end{enumerate}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% As of Aug 2008, some versions of dvipdf get the top margin wrong.
+% Alter this until it looks right.
+%\setlength{\topmargin}{10mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Alter some LaTeX defaults for better treatment of figures:
+% See p.105 of "TeX Unbound" for suggested values.
+% See pp. 199-200 of Lamport's "LaTeX" book for details.
+%   General parameters, for ALL pages:
+\renewcommand{\topfraction}{0.9}	% max fraction of floats at top
+\renewcommand{\bottomfraction}{0.8}	% max fraction of floats at bottom
+%   Parameters for TEXT pages (not float pages):
+\setcounter{topnumber}{2}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{4}     % 2 may work better
+\setcounter{dbltopnumber}{2}    % for 2-column pages
+\renewcommand{\dbltopfraction}{0.9}	% fit big float above 2-col. text
+\renewcommand{\textfraction}{0.07}	% allow minimal text w. figs
+%   Parameters for FLOAT pages (not text pages):
+\renewcommand{\floatpagefraction}{0.7}	% require fuller float pages
+% N.B.: floatpagefraction MUST be less than topfraction !!
+\renewcommand{\dblfloatpagefraction}{0.7}	% require fuller float pages
+% remember to use [htp] or [htpb] for placement
+\newcommand{\binom}[2]{{#1\choose #2}}
+\begin{document}
+\title{Just Enough Probability\thanks{\copyright 2022 Alan R. Rogers.
+    Anyone is allowed to make verbatim copies of this document and
+    also to distribute copies to other people, provided that this
+    copyright notice is included without modification.}}
+%
+\author{Alan R.  Rogers\thanks{Dept.\ of Anthropology, 260 Central
+    Campus Dr, University of Utah, Salt Lake City, UT 84112, USA. I
+    thank Elizabeth Cashdan and Jon Seger for advice.}}
+\maketitle
+\tableofcontents
+\mysection{section}{\centering\large\bf~}{}
+\input{preface}
+\mysection{section}{\centering\large\bf Chapter~}{\thesection.~}
+\input{prob1}
+\input{prob2}
+
+\appendix
+\mysection{section}{\centering\large\bf Appendix~}{\thesection.~}
+\input{sums}
+\input{factorial}
+\section{Answers to Exercises}
+\listanswers
+\mysection{section}{\centering\large\bf}{\thesection.~}
+\bibliographystyle{plainnat}
+\bibliography{defs,arr,math}
+\end{document}

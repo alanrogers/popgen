@@ -1,0 +1,12 @@
+#!/usr/bin/gri
+set x name "Jittered Expected Heterozygosity"
+set y name "Jittered Observed Heterozygosity"
+set x axis 0 0.8 0.2
+set y axis 0 0.8 0.2
+open "cat hweq.out |"
+read columns x y
+set symbol size 0.02
+draw symbol bullet
+draw line from 0 0 to 0.8 0.8
+close
+quit 

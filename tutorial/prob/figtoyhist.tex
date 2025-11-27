@@ -1,0 +1,15 @@
+\mbox{\beginpicture
+\setcoordinatesystem units <0.4in, 0.2in> 
+\setplotarea x from 0 to 3, y from 0 to 5
+\axis left shiftedto x=-0.1 label {\lines{Count}} 
+  ticks numbered from 0 to 4 by 2 /
+\axis right shiftedto x=3.1 label {\lines{Relative\cr frequency}} 
+  ticks withvalues 0.0 0.2 0.4 / at 0 2  4 / /
+\axis bottom
+   label {Value}
+%   ticks numbered from 0 to 2 by 1 /
+   ticks length <0pt> withvalues {$GG$} {$CG$} {$CC$} / at 0.5 1.5 2.5 / /
+\sethistograms
+\plot 0 0 1 5 2 4  3 1 
+/
+\endpicture}

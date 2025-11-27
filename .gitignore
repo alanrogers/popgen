@@ -1,0 +1,7 @@
+*.ans
+*.aux
+*.bcf
+*.blg
+main.log
+main.out
+main.toc

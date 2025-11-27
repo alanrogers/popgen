@@ -1,0 +1,390 @@
+%-*-latex-*-
+\chapter{\emph{Alu} Insertions\label{ch.alu}}
+
+\section{What is an \emph{Alu} insertion?}
+
+\begin{description}
+\item[Transposable elements] are DNA sequences that can copy
+themselves and insert the copies into different parts of the genome.
+\begin{itemize}
+\item constitute large fractions of eukaryotic genomes
+\item ``selfish DNA'': they don't have any function that we know of 
+\end{itemize}
+\item[Short Interspersed Elements (SINEs)] are short retroposons
+(typically 75--500bp) that lack the machinery needed to transpose
+themselves.  They must be produced by active sites somewhere in the
+genome, but the details of this process are mysterious.  They are
+present in huge numbers in eukaryotic genomes.
+\item[\emph{Alu} insertions] are SINEs that contain roughly 300bp and are
+present in huge numbers within the human genome.
+\item[How many?] \emph{Alu}s constitute 10.6\% of the genome, or just
+over 290~Mb \citep{Lander:N-409-860}.
+\item[Probably neutral]
+(Substitution rate is comparable to that of other non-coding
+genomic regions.)
+\end{description}
+
+\section{The ``master gene'' model}
+
+It is thought that only a few \emph{Alu}s are capable of transposing.
+These give rise to all the others.  Most of the \emph{Alu} elements in
+our genomes are inert.
+
+\paragraph{Families of \emph{Alu}s} are defined on the basis of mutations that
+(presumably) accumulated in the master copies.  Many members of
+younger families are polymorphic in the human gene pool.  This makes
+them especially interesting in intra-specific population genetics.
+
+\section{Properties that make \emph{Alu}s interesting}
+\begin{enumerate}
+\item
+Insertions are seldom if ever lost cleanly
+\begin{itemize}
+\item They could be deleted, but this would ordinarily remove not only
+the \emph{Alu} but also some largish region around it.  Such a loss would not
+go undetected.
+\item They are degraded by point mutations, but this process is very
+slow.  If the mutation rate is $10^{-9}$ per nucleotide per year, then half
+the the sites should still be unmutated after 700 million years.
+\end{itemize}
+\item
+We know the ancestral state: \emph{Alu}-absent
+\item
+At any given site in the genome, the probability per generation that
+an insertion will occur is very low.
+\item
+We don't have to worry about insertion occurring twice at the same
+place in the genome.
+\item
+There are many \emph{Alu}s, and we don't have to estimate a mutation rate
+separately for each locus.
+
+(Maybe we should: \emph{Alu}s seem slightly more likely to insert in AT-rich
+regions.) 
+\item
+Since there are so many of them, we can ignore the ones that are
+closely linked.  Unlinked loci have nearly independent gene
+genealogies. 
+\item
+Consequences:  Theory is simple, and it is easy to aggregate over
+loci.  Genealogical trees are never plagued by shared-derived
+characters. 
+\end{enumerate}
+
+\section{Average \emph{Alu} frequencies}
+
+Table \ref{tab.alumeans} shows the mean frequency of \emph{Alu} insertions in
+several populations.  These data raise two questions:
+\begin{itemize}
+\item
+Why is the mean \emph{Alu} frequency roughly 0.5?
+\item
+Why is it lower in Africa than elsewhere?
+\end{itemize}
+\citet{Bulayeva:HB-75-837} attempt to answer these questions.
+Their analysis is summarized in the remainder of this section.
+
+
+\begin{table}
+\caption{Sample sizes and allele frequencies}
+\label{tab.alumeans}
+\centering
+\begin{tabular}{lrr}
+\hline
+           & Haploid & Mean freq.\\\
+           & sample  & of ``+''\\ 
+Population & size    & allele \\
+\hline
+\hline
+Africa    & 302 & 0.46251\\
+Asia      & 154 & 0.55671\\
+Europe    & 236 & 0.55919\\
+India     & 728 & 0.54373\\
+\hline
+\multicolumn{3}{l}{Data from Watkins et al.{} \cite{Watkins:GR-13-1607}}
+\end{tabular}
+\end{table}
+
+The first of these questions has a simple answer.  Recall from the
+discussion of the site frequency spectrum that, at mutation-drift
+equilibrium, the frequency of sites that divide a sample into $i$
+mutants and $K-i$ non-mutants is proportional to $1/i$.  But we
+ascertain \emph{Alu} loci by looking at a single haploid genome.  This
+is equivalent to saying that alleles with frequency $p$ should occur
+with probability proportional to $1/p$.  Meanwhile, we ascertain
+\emph{Alu} loci by looking at a single haploid genome.  If a locus has
+allele frequency $p$, we ascertain it with probability $p$.  Thus, the
+probability that a locus in our sample will have allele frequency $p$
+is proportional to $1/p \times p = 1$.  In other words, our sample
+should contain equal numbers of loci in every frequency category.  The
+average of this uniform distribution is 1/2, in good agreement with
+the data.
+
+\subsection{Tests of two hypotheses}
+
+We are already in a position to test two hypotheses from the literature.
+
+\paragraph{Homo erectus diaspora (HED) hypothesis} is an otherwise-plausible
+hypothesis \cite{Hawks:MBE-17-2} that is falsified by these data:
+\begin{itemize}
+\item
+\emph{Homo erectus} dispersed out of Africa 1.8 mya, or 72,000 generations
+ago. 
+\item
+Consequently, many nuclear gene trees are roughly this deep.
+\item
+Neutral theory says that expected time to LCA is $4N_e$ generations.
+\item
+Setting $4N_e = 72,000$ gives $N_e = 18,000$.
+\item
+This is in fair agreement with $N_e$ as estimated from a variety of nuclear
+loci. 
+\item
+Simulations show that, under this hypothesis, the world mean \emph{Alu} frequency
+would be smaller than 0.19.  This did not happen.
+\end{itemize}
+
+\paragraph{Pleistocene population explosion} 
+\begin{itemize}
+\item Human mitochondrial mismatch distributions suggest that population
+  expanded by several-hundred-fold between 30~kya and 130~kya.
+\item This would lead to an excess of low-frequency \emph{Alu}s.
+\item Simulation shows that a history in which
+human numbers expanded from 3,000 to 300,000 at 5,000 generations ago would
+lead to a world mean \emph{Alu} frequency between 0.30 and 0.40 in samples of 100
+\emph{Alu}s.  
+\item This is also excluded by the data.
+\end{itemize}
+
+\subsection{Why are \emph{Alu} frequencies higher outside Africa?}
+
+To answer this question, we need a model.
+
+\paragraph{Model}
+\begin{itemize}
+\item 
+An ancestral pop, in which \emph{Alu} has frequency $\pi'$.
+\item
+Daughter pops $A$ and $B$, in which \emph{Alu} frequencies are $x'_A$ and $x'_B$. 
+\item
+Since diaspora, $A$ and $B$ have regularly exchanged migrants.
+\item
+Time is short: no \emph{Alu}s have inserted since diaspora.
+\item 
+$x'_A$ and $x'_B$ differ from $\pi'$ because of genetic drift.
+\item
+We can only estimate $\pi'$, $x'_A$, and $x'_B$, we can't observe them
+directly. 
+\item
+Our estimates are biased upward.
+\item Why? Because we discover \emph{Alu} loci by observing a single haploid
+  genome drawn from population $A$.  We are more likely to discover loci whose
+  ``+'' allele is common in $A$.
+\item
+The biased versions of the allele frequencies are $\pi$, $x_A$, and $x_B$.
+\end{itemize}
+
+\begin{figure}
+\setlength{\unitlength}{1.3mm}
+\centering
+\begin{picture}(100,68)
+\thicklines
+\put(27.5,50){\framebox(48,18){\shortstack{\normalsize Ancestral Population\\
+\small Unascertained \emph{Alu} frequencies $\pi '$\\
+\small Ascertained \emph{Alu} frequencies $\pi$}}}
+
+\put(0,0){\framebox(48,18){\shortstack{\normalsize Daughter Population A\\
+\small Unascertained \emph{Alu} frequencies $x_A'$\\
+\small Ascertained \emph{Alu} frequencies $x_A$}}}
+
+\put(55,0){\framebox(48,18){\shortstack{\normalsize Daughter Population B\\
+\small Unascertained \emph{Alu} frequencies $x_B'$\\
+\small Ascertained \emph{Alu} frequencies $x_B$}}}
+
+\put(50,49.75){\line(-1,-1){31.5}}
+\put(50,49.75){\line(1,-1){31.5}}
+
+\put(50,29){\makebox(0,0)[b]{Gene flow}}
+\put(50,28){\vector(-1,0){21}}
+\put(50,28){\vector(1,0){21}}
+\end{picture}
+\caption{Model of diaspora of contemporary populations from ancient source}
+\label{fig:model}
+\end{figure}
+
+\paragraph{$R$-statistics}  Define
+\begin{eqnarray*}
+  R_{AA} &=& \frac{E[(x'_A - \pi')^2]}{\pi'(1 - \pi')}\\
+  R_{AB} &=& \frac{E[(x'_A - \pi')(x'_B - \pi')]}{\pi'(1 - \pi')}
+\end{eqnarray*}
+$R_{AA}$ is analogous to Wright's $F_{ST}$ and measures the amount of drift
+that $A$ has experienced since the diaspora.  $R_{AB}$ is a normalized
+covariance.  It is positive if $A$ and $B$ exchange migrants and zero
+otherwise. 
+
+\paragraph{Results}
+Harpending (unpublished) shows that
+\begin{eqnarray}
+E[x_A] &=& E[\pi] + R_{AA}E[1 - \pi]\label{eq.xA}\\
+E[x_B] &=& E[\pi] + R_{AB}E[1 - \pi]\label{eq.xB}
+\end{eqnarray}
+These results are interesting because they express $R$-statistics in terms of
+means.  Ordinarily, one needs variances, which are harder to estimate than
+means.  We could estimate the expectations by averaging over loci.
+
+To use these formulas with data, Bulayeva et al.{} assume
+\begin{itemize}
+\item The ancestral population was African.
+\item The African population has remained large, so Africa has experienced
+  little genetic drift, and $\pi$ is approximately equal to the African allele
+  frequency in the data.
+\item The \emph{Alu} polymorphisms were ascertained in a European, so that $x_{A}$
+  equals the European allele frequency in the data.
+\end{itemize}
+The last assumption is needed because \emph{Alu} loci were discovered in the
+published sequence of the Human Genome Project, and the source of this
+sequence is not publically known.
+
+Now, equations~\ref{eq.xA} and~\ref{eq.xB} indicate that \emph{Alu} allele
+frequencies should be higher in non-African populations than in Africa.
+This is just what the data show.  Furthermore, the difference provides an
+estimate of $R_{AA}$:
+\begin{eqnarray*}
+\hat{R}_{AA} &=& \frac{E[x_A - \pi]}{E[1 - \pi]}\\
+   &=&  \frac {0.56 - 0.46} {0.55} = 0.18
+\end{eqnarray*}
+where the expectations have been approximated by averages over loci.
+
+For an isolated population, $R_{AA}$ follows
+\[
+R_{AA}(t) = 1-e^{-t/2N_e}
+\] 
+where $t$ is time in generations and $N_e$ is the effective size of the
+population \cite{Crow:IPG-70}.  If $R=0.18$, then $t/2N$ = .22.  If the
+diaspora occurred 40,000 years (or 1600 generations) ago, the European
+effective size would be $N_e = 4000$, and the census size perhaps 10,000.
+
+\paragraph{Comments}
+\begin{itemize}
+\item The estimate of $N_e$ is in fair agreement with others, even though the
+  method of analysis is very different.
+\item The method requires knowledge of ancestral state.
+\item Bias is ordinarily bad, but here it is crucial to the analysis.
+\item Thus, this analysis makes use of the unusual features of \emph{Alu}
+  elements. 
+\end{itemize}
+
+\section{The study of Sherry et al}
+
+This section will not be used in the 2004 version of the course.
+
+Sherry et al.{} \cite{Sherry:G-147-1977} report a series of \emph{Alu}
+polymorphisms that were ascertained in HeLa cells.  (This means that an
+element did not appear in the study unless it was present in HeLa.)  They also
+ignored all elements that were present in chimpanzees.  (I don't know how many
+chimpanzees they looked at.)  They then screened a panel of 122 humans for
+each of the 57 elements that they had identified.  Of the 57 elements
+identified, 13 turned out to be polymorphic in humans.  The remaining 44 were
+fixed in humans and absent in chimps.
+
+\begin{figure}
+\rule{0pt}{5in}
+\caption{Figure 1 from Sherry et al\label{fig.sherry}}
+\end{figure}
+
+\subsection{Consequences of insertions in different parts of the gene
+tree} 
+\begin{enumerate}
+\item
+A locus that is polymorphic in humans inserted inside the human gene
+tree.  This is the portion labeled ``a'' in figure~\ref{fig.sherry}.
+\item
+A locus that is fixed in humans and absent in chimps inserted along
+the branch leading from the chimp/human MRCA to the human MRCA.  In
+the figure, this is the sum of parts~b and~c.
+\end{enumerate}
+
+\subsubsection{Part~a of the tree}
+
+The expected length of part~a of the tree (including all branches) is
+\[
+L_a = 4N \sum_{i=1}^{K-1} \frac{1}{i}
+\]
+as shown in section~\ref{sec.nMutations} and it's depth is
+\[
+T_a = 4N (1 - 1/K)
+\]
+as shown in section~\ref{sec.treedepth}.  Here, $K$ is the number of
+haploid genomes in the sample and equals 246.  Furthermore, these DNA
+polymorphisms are diploid, so $N$ can be interpreted as the population
+size.  Thus,
+\begin{eqnarray*}
+L_a &=& 4N \times 6.08 \approx 24 N \quad \hbox{generations}\\
+T_a &=& 4N (1 - 1/246) \approx 4 N \quad \hbox{generations}
+\end{eqnarray*}
+
+\subsubsection{Part~b of the tree}
+
+If the human/chimp speciation event occurred 4.5 myr (perhaps 225,000
+generations) ago, then the length of part~b is
+\[
+T_b = 225,000 - 4N \quad \hbox{generations}
+\]
+
+\subsubsection{Part~c of the tree}
+
+This part of the tree represents the coalescence time of a pair of
+genes within the species ancestral to humans and chimps.  On average,
+it should equal
+\[
+T_c = 2N_c \quad \hbox{generations}
+\]
+where $N_c$ is the size of the ancestral species.  Takahata et al.{}
+\cite{Takahata:TPB-48-198} estimate that $N_c \approx 100,000$.  If
+this is right, then
+\[
+T_c = 200,000 \quad \hbox{generations}
+\]
+
+\subsection{Data analysis}
+
+The total branch length is
+\[
+L_a + T_b + T_c = 20 N + 425000
+\]
+The sample includes insertions that occur anywhere within these
+branches.  Only a fraction of these mutations are polymorphic,
+however: those occuring in region~a, which has length $24 N$.  The
+fraction of polymorphic insertions ought to equal (on average) the
+fraction of the total branch length that holds polymorphic
+insertions.  In other words,
+\[
+\frac{13}{57} = \frac{L_a}{L_a + T_b + T_c}
+= \frac{24 N}{20 N + 425000}
+\]
+This gives
+\[
+N = 4986
+\]
+as an estimate of the effective human population size.  This is very
+close to the estimate obtained from mtDNA.
+
+\section{Ascertainment bias}
+
+Unfortunately, the estimate just obtained is biased.  The problem is
+that we only included \emph{Alu}s that were present in HeLa cells.
+
+\input{fighapdip}
+
+\section{Exercises}
+
+\begin{exercise}
+How would the estimate of $N$ have changed if 26 of the 57 \emph{Alu}s has
+been polymorphic?
+\end{exercise}
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End: 

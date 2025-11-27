@@ -1,0 +1,79 @@
+\begin{center}
+\mbox{%
+\sf
+\beginpicture
+\setcoordinatesystem units <0.0014\textwidth, 0.3\textheight> point at 0 0
+\setplotarea x from 0 to 500, y from 0 to 1
+%\plotheading{Population Size}
+\axis left label {$2N$}
+  ticks withvalues 100 5000 / at 0.02 1 / /
+\axis bottom /
+\plot 0 1 
+      100 1
+      100 0.02
+      200 0.02
+      200 1
+      500 1 /
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcoordinatesystem units <0.0014\textwidth, 0.3\textheight> point at 0 1.2
+\setplotarea x from 0 to 500, y from 0 to 1
+%\plotheading{Gene Diversity}
+\axis left label {$\mathcal{H}$}
+  ticks withvalues 0.167 0.909 / at 0.167 0.909 / /
+\axis bottom   label {Time in generations} 
+  ticks numbered from 0 to 500 by 100 /
+\setdots
+\putrule from 0 0.167 to 500 0.167
+\putrule from 0 0.909 to 500 0.909
+\setsolid
+\plot
+0   0.9090909
+100 0.9090909
+110 0.8251379
+120 0.7506783
+130 0.6846385
+140 0.6260665
+150 0.5741177
+160 0.5280433
+170 0.4871790
+180 0.4509356
+190 0.4187906
+200 0.3902806
+210 0.4015697
+220 0.4126133
+230 0.4234165
+240 0.4339847
+250 0.4443229
+260 0.4544361
+270 0.4643293
+280 0.4740072
+290 0.4834745
+300 0.4927358
+310 0.5017956
+320 0.5106583
+330 0.5193281
+340 0.5278092
+350 0.5361058
+360 0.5442219
+370 0.5521614
+380 0.5599281
+390 0.5675258
+400 0.5749581
+410 0.5822288
+420 0.5893412
+430 0.5962989
+440 0.6031052
+450 0.6097634
+460 0.6162767
+470 0.6226482
+480 0.6288812
+490 0.6349785
+500 0.6409431
+/
+\endpicture}
+\end{center}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

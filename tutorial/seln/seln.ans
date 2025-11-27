@@ -1,0 +1,47 @@
+\ansno{1}
+The population contains $NP_{11}$ individuals of genotype $A_1A_1$ and
+$NP_{12}$ of genotype $A_1A_2$.  Each of the former carries two copies
+of $A_1$ and each of the latter carries one copy.  The total number of
+copies of $A_1$ is thus $2NP_{11} + NP_{12}$.  Dividing by $2N$ (the total
+number of genes) gives the relative frequency of $A_1$ within the
+population: $p = P_{11} + \frac{1}{2}P_{12}$.
+\ansno{2}
+  \begin{eqnarray*}
+\Delta p &=& \frac{p^{2} w_{11} + pqw_{12}}{\bar w} - p\\
+   &=& \frac{p^{2} w_{11} + pqw_{12} - p^3 w_{11} - 2p^2q w_{12} -
+  pq^2 w_{22}}{\bar w}\\
+   &=& \frac{p^{2}q w_{11} + pq(q-p)w_{12} - pq^2 w_{22}}{\bar w}\\
+   &=& \frac{pq}{\bar w}[pw_{11} + (q-p)w_{12} - q w_{22}]\\
+   &=& \frac{pq}{\bar w}[p(w_{11}-w_{12}) + q(w_{12} - w_{22})]\\
+  \end{eqnarray*}
+\ansno{3}
+The calculation is very simple:
+\begin{eqnarray*}
+w_1 - w_2 &=& p w_{11} + q w_{12} - q w_{22} - p w_{12}\\
+ &=& p(w_{11} - w_{12}) + q(w_{12} - w_{22})
+\end{eqnarray*}
+\ansno{4}
+Mean fitness is
+\begin{eqnarray*}
+\bar w &=& p^2w_{11}+2pqw_{12}+q^2w_{22}\\
+   &=& p^2w_{11}+2(p - p^2)w_{12}+(1 - 2p + p^2)w_{22}
+\end{eqnarray*}
+Taking the derivative,
+\begin{eqnarray*}
+  \frac{d\bar w}{dp} &=& 2pw_{11}
+  + (2 - 4p)w_{12}
+  + (- 2 + 2p)w_{22}\\[0.5\baselineskip]
+\frac{1}{2}\frac{d\bar w}{dp} &=& pw_{11}
+  + (1 - 2p)w_{12}
+  - (1 - p)w_{22}\\
+  &=& pw_{11}  + (q - p)w_{12} - qw_{22}\\
+  &=& p(w_{11} - w_{12})  + q(w_{12} - w_{22})
+\end{eqnarray*}
+which equals the quantity in square brackets in Eqn.~\ref{eq.dpseln}.
+\ansno{5}
+There are unstable equilibria at 0 and 1, and a stable equilibrium at
+3/4.
+\ansno{6}
+  18,380 generations
+\ansno{7}
+  4394 generations

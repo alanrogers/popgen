@@ -1,0 +1,515 @@
+% -*-latex-*-
+%\documentclass[pdftex,handout]{beamer}
+\documentclass[pdftex,12pt]{beamer}
+\usepackage{etex}
+
+\let\latexput\put
+\usepackage{pictex}
+\let\pictexput\put
+\let\put\latexput
+
+\usepackage{color}
+%\usepackage{pst-plot,color,pstricks}
+%\setlength{\topmargin}{-1.7in}
+\setbeamertemplate{footline}[frame number]
+\begin{document}
+
+\title{Neutral Evolution at Two Loci}
+\author{Alan R. Rogers}
+\date{\today}
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Linkage disquilibrium (LD)}
+\begin{columns}
+\column{0.35\textwidth}
+\centering
+\begin{tabular}{ccc}
+       & \multicolumn{2}{c}{Locus}\\
+Gamete &  1 & 2\\ \hline
+ 1&A&B\\
+ 2&A&B\\
+ 3&A&B\\
+ 4&A&B\\
+ 5&A&B\\
+ 6&A&b\\
+ 7&a&B\\
+ 8&a&B\\
+ 9&a&b\\
+10&a&b\\
+\end{tabular}
+\column{0.65\textwidth}
+\pause
+{\centering
+\begin{tabular}{c|cc|c}
+ \multicolumn{1}{c}{} & A & \multicolumn{1}{c}{a}\\
+\cline{2-3}
+B & 5 & 2 & 7\\
+b & 1 & 2 & 3\\
+\cline{2-3}
+\multicolumn{1}{c}{}
+  & 6 & \multicolumn{1}{c}{4} & 10
+\end{tabular}\\}
+\pause
+\begin{itemize}
+\item $B$ is more common among $A$-gametes than $a$-gametes.
+\pause
+\item $A$ is more common among $B$-gametes than $b$-gametes.
+\pause
+\item This is LD.
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+Linkage disequilibrium (LD) is one of those unfortunate terms that
+does not reveal its meaning. As every instructor of population
+genetics knows, the term is a barrier not an aid to
+understanding\ldots Detecting LD does not ensure either linkage or a
+lack of equilibrium.\\ \mbox{}\hfill\small(Montgomery Slatkin, 2008)
+\end{frame}
+
+\begin{frame}
+\frametitle{Linkage equilibrium (LE)}
+\begin{columns}
+\column{0.35\textwidth}
+\centering
+\begin{tabular}{ccc}
+       & \multicolumn{2}{c}{Locus}\\
+Gamete &  1 & 2\\ \hline
+ 1&A&B\\
+ 2&A&B\\
+ 3&A&B\\
+ 4&A&B\\
+ 5&A&b\\
+ 6&A&b\\
+ 7&a&B\\
+ 8&a&B\\
+ 9&a&b\\
+\end{tabular}
+\column{0.65\textwidth}
+{\centering
+\begin{tabular}{c|cc|c}
+ \multicolumn{1}{c}{} & A & \multicolumn{1}{c}{a}\\
+\cline{2-3}
+B & 4 & 2 & 6\\
+b & 2 & 1 & 3\\
+\cline{2-3}
+\multicolumn{1}{c}{}
+  & 6 & \multicolumn{1}{c}{3} & 9
+\end{tabular}\\}
+\pause
+\begin{itemize}
+\item $B$ is equally common among $A$-gametes and $a$-gametes.
+\pause
+\item $A$ is equally common among $B$-gametes and $b$-gametes.
+\pause
+\item This is LE.
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Linkage Equilibrium $\Longleftrightarrow$ shaded fractions equal}
+\centering
+\begin{columns}
+\column{0.7\textwidth}
+\input{figlecirc}
+\column{0.35\textwidth}\raggedright
+LE: Knowledge about one locus tells nothing about other.
+
+\bigskip
+
+Here, $b$ is equally common among $a$-gametes and $A$-gametes.
+
+\bigskip
+
+(Also, $a$ is equally common among $b$-gametes and $B$-gametes.)
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{LD $\Longleftrightarrow$ shaded fractions unequal}
+\centering
+\begin{columns}
+\column{0.7\textwidth}
+\input{figldcirc}
+\column{0.35\textwidth}\raggedright
+LD: Knowledge about one locus helps predict the other.
+
+\bigskip
+
+Here, $b$ is more common among $A$-gametes than among $a$-gametes.
+
+\bigskip
+
+(Also, $a$ is more common among $B$-gametes than among $b$-gametes.)
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{People sometimes confuse LD with epistasis}
+\centering
+\begin{tabular}{lp{0.6\textwidth}}
+Epistasis & In a comparison of diploid genotypes, the \emph{phenotypic
+  effect} of one locus depends on another locus.\\
+Linkage disequilibrium & In a comparison of haploid chromosomes, the
+\emph{allele frequency} at one locus depends on another locus.\\
+\end{tabular}\\
+\end{frame}
+
+\begin{frame}
+\frametitle{You can see LD in sequence data}
+\begin{columns}
+\column{0.6\textwidth}
+ \includegraphics[width=\textwidth]{rrm2p4seq.png}\\
+\textsc{\footnotesize (Garrigan et al 2004)}
+\column{0.4\textwidth}\raggedright
+\begin{itemize}
+\item Dots: identical to chimp sequence.
+\item Sites not independent.
+\item A at site 1343 predicts G at 1951
+\item This is linkage disequilibrium (LD).
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\begin{columns}
+\column{0.6\textwidth}
+ \includegraphics[height=0.9\textheight]{drd4-polymorph.pdf}
+\column{0.4\textwidth}\raggedright
+\begin{itemize}
+\item Columns are SNPs
+\item Rows are diploid genotypes
+\item Blue: common homozygote
+\item Yellow: rare homozygote
+\item Red: heterozygote
+\item Note LD w/i 7R genotypes
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{LD at the NF1 locus (Schmegner et al 2005)}
+\includegraphics[width=\textwidth]{NF1.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{DNA sequences from region of human lactase gene}
+\input{tablctseq}
+\end{frame}
+
+\begin{frame}
+\frametitle{More LD in Europe than Africa}
+\begin{columns}
+\column{0.6\textwidth}
+ \includegraphics[height=0.85\textheight]{ldcurve.jpg}
+\column{0.4\textwidth}
+\raggedright
+\begin{itemize}
+\item LD declines with distance along chromosome
+\item More LD in Europe than Africa
+\item Why?
+\end{itemize}
+\textsc{\footnotesize (Reich et al 2001)}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{LD unevenly distributed within genome}
+\centering
+ \includegraphics[height=0.85\textheight]{voight-loci.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{Facts we need to understand}
+\begin{itemize}
+\item LD decays w/ distance along chromosome.
+\item Populations differ.
+\item Unevenly distributed w/i genome
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Cross-overs shuffle DNA}
+\begin{columns}
+\column{0.6\textwidth}
+\includegraphics[width=\textwidth]{crossover.pdf}
+\column{0.4\textwidth}
+\raggedright
+\begin{itemize}
+\item occur during reproduction.
+\item shuffle parental chromosomes.
+\item sites far apart more likely to recombine
+\item result: ``recombinant'' chromosomes
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{Why loci are independent on recombinants}
+\begin{verbatim}
+ __________________________________________________
+|                                                  |
+|.....A........b.....   A recombinant chromosome.  |
+|\________/\________/                              |
+| from dad  from mom                               |
+|                                                  |
+|                       Gamete from Dad carried A. |
+|                       Gamete from Mom carried b. |
+|                                                  |
+|Probability of this?   p_A p_b under random mating|
+|__________________________________________________|
+\end{verbatim}
+\end{frame}
+
+\begin{frame}
+\frametitle{Ingredients of a model}
+
+{\centering\fbox{\begin{minipage}{0.9\textwidth}
+\begin{eqnarray*}
+x_1 &=& \hbox{frequency of $AB$-gametes among parents}\\
+p_A &=& \hbox{frequency of $A$-gametes among parents}\\
+p_B &=& \hbox{frequency of $B$-gametes among parents}\\
+c   &=& \hbox{prob of recombination between the two loci}
+\end{eqnarray*}
+\end{minipage}}\\}
+
+\bigskip\pause
+
+In any generation, there are two kinds of $AB$ gamete:
+\begin{enumerate}
+\item non-recombinants: these were $AB$s in the last generation
+  \pause    Frequency: $(1-c)x_1$
+\pause
+\item recombinants: formed from an $A$ gamete and a $B$ gamete, drawn
+  at random.  \pause Frequency: $cp_A p_B$
+\end{enumerate}
+\pause
+Next step: sum these contributions.
+\end{frame}
+
+\frame{\frametitle{Model with random mating, no selection}
+
+{\centering\fbox{\begin{minipage}{0.9\textwidth}
+\begin{eqnarray*}
+x_1 &=& \hbox{frequency of $AB$-gametes among parents}\\
+p_A &=& \hbox{frequency of $A$-gametes among parents}\\
+p_B &=& \hbox{frequency of $B$-gametes among parents}\\
+c   &=& \hbox{prob of recombination between the two loci}
+\end{eqnarray*}
+\end{minipage}}\\}
+
+\bigskip
+
+Change in frequency of $AB$-gametes during one generation:
+\begin{eqnarray*}
+x'_1 &=& \overbrace{(1-c)x_1}^{\hbox{\small nonrecombinants}}
++ \overbrace{\mathstrut c p_A p_B}^{\hbox{\small recombinants}}\\
+\pause
+  &=& x_1 - c(x_1 - p_A p_B)\\
+\pause
+  &=& x_1 -cD
+\end{eqnarray*}
+}
+
+\begin{frame}
+\frametitle{Several equivalent definitions of $D$}
+The previous slide defined $D$, a measure of LD:
+\[
+\begin{array}{crcl}
+\hbox{Gamete}     & \multicolumn{3}{c}{\hbox{Definition}}\\
+AB & D &=& x_1 - p_A p_B\\
+\pause
+Ab & -D &=& x_2 - p_A p_b\\
+\pause
+aB & -D &=& x_3 - p_a p_B\\
+ab & D &=& x_4 - p_a p_b\\
+\end{array}
+\]
+\pause
+If the association between $A$ and $B$ is positive, then that between
+$A$ and $b$ must be negative.
+\pause
+A more convenient formula:
+\[
+D = x_1x_4 - x_2x_3
+\]
+They all give the same answer.
+\end{frame}
+
+\begin{frame}
+\frametitle{Calculating $D$}
+\begin{columns}
+\column{0.35\textwidth}
+\centering
+\begin{tabular}{ccc}
+       & \multicolumn{2}{c}{Locus}\\
+Gamete &  1 & 2\\ \hline
+ 1&A&B\\
+ 2&A&B\\
+ 3&A&B\\
+ 4&A&B\\
+ 5&A&B\\
+ 6&A&b\\
+ 7&a&B\\
+ 8&a&B\\
+ 9&a&b\\
+10&a&b\\
+\end{tabular}
+\column{0.65\textwidth}
+\centering
+\begin{tabular}{cccc}
+AB & Ab & aB & ab\\
+$x_1$ & $x_2$ & $x_3$ & $x_4$
+\end{tabular}\\
+
+\pause
+\bigskip
+
+\begin{tabular}{c|cc|c}
+ \multicolumn{1}{c}{} & A & \multicolumn{1}{c}{a}\\
+\cline{2-3}
+B & 5 & 2 & 7\\
+b & 1 & 2 & 3\\
+\cline{2-3}
+\multicolumn{1}{c}{}
+  & 6 & \multicolumn{1}{c}{4} & 10
+\end{tabular}\\
+\pause
+\begin{eqnarray*}
+D &=& x_1x_4 - x_2x_3\\ \pause
+  &=& \frac{5}{10} \cdot \frac{2}{10} - \frac{1}{10}\cdot\frac{2}{10}\\
+\pause
+  &=& \frac{2}{25}
+\end{eqnarray*}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{All four gametes, still no selection}
+\[
+\begin{array}{crcl}
+\hbox{Gamete}     & \multicolumn{3}{c}{Recurrence}\\
+AB & x'_1 &=& x_1 -cD\\
+Ab & x'_2 &=& x_2 +cD\\
+aB & x'_3 &=& x_3 +cD\\
+ab & x'_4 &=& x_4 -cD\\
+\end{array}
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{How recombination affects $D$}
+After one generation,
+\begin{eqnarray*}
+D' &=& x'_1 x'_4 - x'_2 x'_3\\
+   &=& (x_1 -cD)(x_4-cD) - (x_2+cD)(x_3+cD)\\
+   &=& (1-c)D
+\end{eqnarray*}
+$D$ declines each generation by a factor of $1-c$.
+
+\pause
+After $t$ generations,
+\[
+D_t = D_0 (1-c)^t
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{$D$ declines gradually toward zero}
+\begin{columns}
+\column{0.6\textwidth}
+%\includegraphics[width=\textwidth]{lddecay.pdf}
+\input{lddecay.tex}
+\column{0.4\textwidth}
+\begin{block}{$c=0.2$}
+\begin{itemize}
+\item Loci far apart
+\item Loose linkage
+\item LD declines rapidly
+\end{itemize}
+\end{block}
+\begin{block}{$c=0.02$}<2->
+\begin{itemize}
+\item Loci closer
+\item slower decline
+\end{itemize}
+\end{block}
+\begin{block}{$c=0.002$}<3->
+\begin{itemize}
+\item Loci closer still
+\item even slower decline
+\end{itemize}
+\end{block}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+Is this theory enough to explain the data?
+\end{frame}
+
+\begin{frame}
+\frametitle{More LD in Europe than Africa}
+\begin{columns}
+\column{0.6\textwidth}
+ \includegraphics[height=0.85\textheight]{ldcurve.jpg}
+\column{0.4\textwidth}
+\raggedright
+\begin{itemize}
+\item $c$ increases w/ distance along chromosome.
+\item Therefore LD should decline.
+\item But why more LD in Europe?
+\end{itemize}
+\textsc{\footnotesize (Reich et al 2001)}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\begin{columns}
+\column{0.6\textwidth}
+ \includegraphics[width=\textwidth]{rrm2p4seq.png}\\
+\textsc{\footnotesize (Garrigan et al 2004)}
+\column{0.4\textwidth}\raggedright
+\begin{itemize}
+\item Short DNA sequence.
+\item tight linkage: $c$ is small
+\item LD decays very slowly
+\item But why is it not zero?
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\begin{columns}
+\column{0.6\textwidth}
+ \includegraphics[height=0.9\textheight]{drd4-polymorph.pdf}
+\column{0.4\textwidth}\raggedright
+\begin{itemize}
+\item Also a short sequence
+\item But why is there any LD?
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Why is LD unevenly distributed?}
+\centering
+ \includegraphics[height=0.85\textheight]{voight-loci.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{Summary}
+\begin{itemize}
+\item Our theory explains why $D$ declines w/ distance along
+  chromosome.
+\item If loci are far apart on chromosome, $c$ is high and $D$
+  declines rapidly.
+\item It tells us nothing about the forces that generate LD.
+\item Nothing about population differences.
+\item Nothing about variation across the genome.
+\end{itemize}
+\end{frame}
+\end{document}
+

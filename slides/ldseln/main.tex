@@ -1,0 +1,268 @@
+% -*-latex-*-
+%\documentclass[handout]{beamer}
+\documentclass[12pt]{beamer}
+\usepackage{etex}
+
+\let\latexput\put
+\usepackage{pictex}
+\let\pictexput\put
+\let\put\latexput
+
+\usepackage{color}
+\setbeamercovered{transparent}
+%\usepackage{pst-plot,color,pstricks}
+%\setlength{\topmargin}{-1.7in}
+\begin{document}
+
+\title{Why LD Helps Us Find Selective Sweeps}
+\author{Alan R. Rogers}
+\date{\today}
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{LD helps us detect ongoing selective sweeps}
+
+This is curious, because we have known for over 50 years that
+selection at a single locus does not cause LD (Felsenstein 1965).
+
+\bigskip
+\pause
+
+This lecture will explain why selective sweeps are \emph{associated}
+with LD even though they don't cause it.
+
+\bigskip
+
+We begin with a graphical argument that shows why selection at a
+single locus doesn't cause LD.
+\end{frame}
+
+\begin{frame} 
+\frametitle{Linkage equilibrium $\Longleftrightarrow$ shaded
+  fractions equal} 
+\centering
+\begin{columns}
+\column{0.7\textwidth}
+\input{figlecirc}
+\column{0.35\textwidth}
+\raggedright
+LE: Neither locus predicts other
+
+\bigskip
+
+Here, $B$ is equally common among $a$-gametes and $A$-gametes.
+\end{columns}
+\end{frame}
+
+\begin{frame} 
+\frametitle{Suppose allele $A$ is favored; $B/b$ are neutral}
+\begin{columns}
+\column{0.7\textwidth}
+\input{figlecirc}
+\column{0.35\textwidth}
+\raggedright
+Selection inflates left circle.
+
+\medskip
+
+Shrinks right one.
+
+\medskip
+
+Shaded wedges unchanged.
+
+\medskip
+
+System remains in LE.
+\end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{If selection doesn't \emph{cause} LD, why does LD help
+    us detect selection?}
+
+$D$, the conventional measure of LD, doesn't help us here, because it
+  \emph{is} affected by selection---but not in a way that is helpful.
+
+  \bigskip
+
+To explain this puzzle, I introduce another measure, which does not
+change in response to selection at a single locus.  
+\end{frame}
+
+\begin{frame}
+\frametitle{Conditional allele frequencies}
+{\centering
+\begin{tabular}{lcccc}
+Gamete type & $AB$ & $Ab$ & $aB$ & $ab$\\
+Frequency   & $x_1$& $x_2$& $x_3$& $x_4$
+\end{tabular}\\}
+
+\vskip 1cm
+
+\begin{columns}
+\column{0.5\textwidth}
+\fbox{\begin{minipage}{\linewidth}
+Freq of $B$ among $A$-gametes
+\[
+p_{B|A} = \frac{x_1}{x_1+x_2}
+\]
+The size of one pie slice.
+\end{minipage}}
+\column{0.5\textwidth}
+\fbox{\begin{minipage}{\linewidth}
+Freq of $B$ among $a$-gametes
+\[
+p_{B|a} = \frac{x_3}{x_3+x_4}
+\]
+The size of the other slice.
+\end{minipage}}
+\end{columns}
+
+\vskip 1cm
+
+\centering
+Neither is affected by selection on $A$/$a$.\\
+\end{frame}
+
+\begin{frame}
+\frametitle{The Nei-Li measure of linkage disequilibrium}
+\[
+d = p_{B|A} - p_{B|a}
+\]
+\mbox{} \hfill\footnotesize (Nei \& Li, 1980)
+
+\bigskip
+Difference in frequency of $B$ between $A$- and $a$-gametes.
+
+\bigskip\pause
+
+Selection on $A/a$ affects neither $p_{B|A}$, $p_{B|a}$, nor $d$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Calculating $D$ and $d$}
+\begin{columns}
+\column{0.3\textwidth}
+\centering
+\begin{tabular}{ccc}
+       & \multicolumn{2}{c}{Locus}\\
+Gamete &  1 & 2\\ \hline
+ 1&A&B\\
+ 2&A&B\\
+ 3&A&B\\
+ 4&A&B\\
+ 5&A&B\\
+ 6&A&b\\
+ 7&a&B\\
+ 8&a&B\\
+ 9&a&b\\
+10&a&b\\
+\end{tabular}
+\column{0.7\textwidth}
+\centering
+\begin{tabular}{c|cc|c}
+ \multicolumn{1}{c}{} & A & \multicolumn{1}{c}{a}\\
+\cline{2-3}
+B & 5 & 2 & 7\\
+b & 1 & 2 & 3\\
+\cline{2-3}
+\multicolumn{1}{c}{} 
+  & 6 & \multicolumn{1}{c}{4} & 10
+\end{tabular}\\
+\[
+D = \frac{5}{10} \cdot \frac{2}{10} - \frac{1}{10}\cdot\frac{2}{10}
+= \frac{2}{25}
+\]
+\[
+d = p_{B|A} - p_{B|a} = \frac{5}{6} - \frac{1}{2} = \frac{1}{3}
+\]
+%\pause
+%\begin{eqnarray*}
+%d &=& D\big/\bigl(p_A(1-p_A)\bigr)
+% = 
+%\frac{2}{25} \bigg / \left(\frac{6}{10}\cdot \frac{4}{10}\right)\\
+% &=& 1/3
+%\end{eqnarray*}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{$D$ depends on heterozygosity at locus~$A$.}
+\begin{eqnarray*}
+d &=& \frac{x_1}{x_1+x_2} - \frac{x_3}{x_3+x_4}\\
+ &=& \frac{D}{p_A (1-p_A)}\\[2ex]
+\pause 
+D &=& d p_A (1-p_A)
+\end{eqnarray*}
+Selection at locus $A$ affects $p_A(1-p_A)$ and therefore $D$.
+\end{frame}
+
+\begin{frame}[containsverbatim]
+  \frametitle{Mutation generated LD}
+A tiny population before and after mutation:  
+\begin{verbatim}
+__a_____B__                 __a_____B__
+
+__a_____B__  --Mutation-->  __A_____B__
+
+__a_____b__                 __a_____b__
+
+__a_____b__                 __a_____b__  
+\end{verbatim}
+Mutation occurs on a $B$ gamete. After mutation, $\Pr[B|A] = 1$ but
+$\Pr[B|a] = 1/3$, so mutation has created LD.
+\end{frame}  
+
+\begin{frame}
+\frametitle{LD of a new mutant}
+When allele $A$ first arises by mutation, it will be rare, so
+$p_A(1-p_A) \approx 0$ and $D \approx 0$.
+
+\bigskip
+
+But $d$ may be large: it is either $1-p_B$ or $-p_B$, depending on
+whether the mutant gamete is $AB$ or $Ab$.
+
+\bigskip
+
+The value of $d$ stays large if selection outruns recombination and
+drift.
+
+\bigskip
+
+\emph{This is why LD helps us detect selection.}
+\end{frame}
+
+\begin{frame}
+\frametitle{Selective sweep of $A$, with $s=0.02$, $c=0.001$, and
+  $2N=50,000$} 
+\includegraphics[width=0.9\textwidth]{bigsweep.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{Neutral drift to fixation, $c=0.001$, and
+  $2N=50,000$} 
+\includegraphics[width=0.9\textwidth]{bigs0.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{Selective sweep in small population ($s=0.02$, $c=0.001$, 
+  $2N=5000$)} 
+\includegraphics[width=0.8\textwidth]{smallsweep.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{Summary}
+\begin{itemize}
+\item LD decays gradually in response to recombination.
+\item This is more obvious for $d$ than for $D$, because $d$ is
+  insensitive to $p_A$.
+\item Advantageous alleles increase rapidly: there is little time for
+  LD to decay.
+\item Neutral alleles increase slowly; plenty of time for LD to decay.
+\end{itemize}
+\end{frame}
+
+\end{document}
+

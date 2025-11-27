@@ -1,0 +1,193 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage[backend=biber,
+  natbib=true,
+  style=ext-numeric-comp,
+  sorting=nyt]{biblatex}
+\DeclareFieldFormat % Titles in sentence case
+  [article,inbook,incollection,inproceedings,patent,thesis,unpublished]
+  {titlecase:title}{\MakeSentenceCase*{#1}}
+\renewbibmacro{in:}{ % Don't use "In:" before journal names.  
+  \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}  
+\addbibresource{defs.bib}
+\addbibresource{arr.bib}
+\addbibresource{popecol.bib}
+\addbibresource{gs.bib}
+\addbibresource{arrpubs.bib}
+\addbibresource{sexdimorph.bib}
+\begin{document}
+\title{Response to Natural Selection on a Quantitative Character}
+\author{Alan R. Rogers}
+\maketitle
+
+\section{Introduction}
+\label{sec.intro}
+
+\citet{Lande:E-37-1210} rewrote the classical ``breeder's equation''
+\citep[Eqn.~11.2]{Falconer:IQG-81} of quantitative genetics in a form
+that is more useful within evolutionary biology. Rather than assuming
+that selection acts by truncation, as the classical theory did, they
+allow for a continuum of fitness values. Their treatment was
+multivariate; this note provides a univariate summary.
+
+\section{Truncation selection}
+\label{sec.truncation}
+
+The classical theory deals with the case in which a breeder wishes to
+increase the value of some character, $z$. Individuals are selected
+for breeding only if their character value exceeds some
+threshold. Thus, the mean character value of parents exceeds that of
+the general population, and the difference, $S$, is called the
+\emph{selection differential}.
+
+If the character is heritable, then its mean value among offspring
+will also exceed that of the parental generation before
+selection. This excess, written either as $R$ or as $\Delta z$, is
+called the \emph{response to selection} and obeys what is called the
+``breeder's equation'' \citep[Eqn.~11.2]{Falconer:IQG-81}:
+\begin{equation}
+  \Delta z = h^2 S
+\label{eq.breeder}  
+\end{equation}
+where $h^2$ is called the heritability and equals the ratio,
+$V_A/V_P$, of additive genetic variance to phenotypic variance.
+The response tends to be smaller than the selection differential,
+because characters are seldom perfectly heritable.
+
+This equation is useful not only to breeders of livestock, but also to
+ecologists. The two groups, however, use it in different ways.  The
+breeder asks such questions as ``how large is $S$ likely to be if I
+select the upper 20\% of my population for breeding?'' This question
+would be of little interest to an ecologist, because natural selection
+does not work by truncation---fitness is more likely to vary
+continuously as a function of character value. To deal with natural
+selection, we need a different way to calculate the selection
+differential.
+
+\section{Response to univariate selection}
+\label{sec.gradient}
+Let $f(z)$ represent the probability density function of a
+quantitative character. In other words, $f(z) dz$ is approximately
+the probability that a random individual has a value in the interval
+between $z$ and $z+dz$, where $dz$ is some small number. The
+population mean is
+\[
+\bar z = \int z f(z) dz
+\]
+where the integral runs over all possible character values, and I am
+using an overbar to represent the expected value.
+
+An individual with character value $z$ survives to reproduce with
+probability $W(z)$, which is called the \emph{absolute fitness} of
+that individual. Under truncation selection, $W(z) = 1$ for the
+individuals who are selected and equals 0 for the others. In a natural
+population, however, $W$ may take a wide range of values. The mean
+fitness in the population is
+\begin{equation}
+  \bar W = \int W(z) f(z) dz
+  \label{eq.barW}
+\end{equation}
+The density of $z$ among selected parents must be proportional to
+$W(z) f(z)$, because $f(z)$ is the density of individuals with
+character value $z$, and $W(z)$ is the fraction of those that survive
+to become parents. However, $W(z)f(z)$ is not a proper density,
+because its integral isn't 1; it's $\bar W$ (Eqn.~\ref{eq.barW}).  The
+density among selected parents is $w(z) f(z)$, where $w(z) = W(z)/\bar
+W$ is the \emph{relative fitness} of individuals with character value
+$z$. Note that mean relative fitness equals unity:
+\begin{equation}
+  \bar w =   \int w(z) f(z) dz = \frac{\int W(z) f(z) dz}{\bar W} = 1
+\label{eq.barw}  
+\end{equation}  
+
+The mean character value, $\bar z^*$, of selected parents is 
+\[
+\bar z^* = \int z w(z) f(z) dz
+\]
+which equals $E[zw]$, the expected product of $z$ and
+$w(z)$. The selection differential is
+\begin{eqnarray}
+  S &=& \bar z^* - \bar z\nonumber\\
+   &=& E[z w] - \bar z\nonumber\\
+  &=& E[z w] - \bar z \bar w\nonumber\\
+  &=& C_{wz}
+\label{eq.price}  
+\end{eqnarray}
+where the third line uses the fact that $\bar w = 1$
+(Eqn.~\ref{eq.barw}). Here, $C_{wz}$ is the covariance between
+character value and relative fitness. This relationship between
+selection and covariance was described by \citet{Price:N-227-520}.
+
+Equation~\ref{eq.price} expresses the selection differential in
+general terms. It is consistent with but is not limited to trucation
+selection. We can use this formulation no matter how fitness varies
+among individuals. Let us now plug it into the breeder's
+equation. Eqn.~\ref{eq.breeder} becomes
+\begin{eqnarray}
+  \Delta z &=& h^2 C_{wz}\nonumber\\
+  &=&  V_A C_{wz}/V_P\nonumber\\
+  &=& V_A \beta_{wz}
+  \label{eq.landearnold}
+\end{eqnarray}
+where $\beta_{wz} = C_{wz}/V_P$ is the regression of relative fitness
+on character value. (To convince yourself of this, look up the formula
+for linear regression, and remember that $V_P$ is the variance of
+$z$.)  Equation~\ref{eq.landearnold} implies that we can study
+selection in nature by doing a linear regression of fitness (perhaps
+measured as the number of surviving offspring) against character
+value.
+
+If the relative fitness function, $w(z)$, is a straight line,
+$\beta_{wz}$ should approximate the slope of that line. It is more
+likely however that $w(z)$ has curvature, perhaps rising to a peak and
+then declining. In such circumstances, \citet{Lande:E-37-1210} show
+that $\beta_{wz}$ measures the average derivative of $w(z)$:
+\[
+\beta_{wz} = \int w'(z) f(z) dz
+\]
+where $w'$ is the derivative of $w$.
+
+\section{Response to multivariate selection}
+
+When there are $K$ quantitative characters, $z$ becomes a vector,
+\[
+z = \begin{pmatrix}
+  z_1\\
+  z_2\\
+  \vdots\\
+  z_K
+  \end{pmatrix}
+\]
+and Eqn.~\ref{eq.landearnold} becomes
+\begin{equation}
+  \Delta z = G P^{-1} s = G \beta
+  \label{eq.multivar}
+\end{equation}
+where $G$ is the additive genetic covariance matrix, $P$ is the
+phenotypic covariance matrix, $s$ is a vector of selection
+differentials, and $\beta = P^{-1} s$ is a vector of partial
+regression coefficients of relative fitness on each of the $K$
+characters \citep[p.~1212]{Lande:E-37-1210}. This vector is called the
+\emph{selection gradient} and describes the direction in which
+selection is pushing. The response to selection may however go in a
+somewhat different direction, if that other direction has more
+additive variance.
+
+Lande used this framework to explore a variety of issues within
+evolutionary ecology. One study dealt with allometry between brain
+size and body size \citep{Lande:E-33-402}. Another considered male and
+female versions of the same character as separate characters in order
+to build an evolutionary theory of sexual dimorphism
+\citep{Lande:E-34-292, Rogers:E-46-226}. In another, he
+treated as separate characters the same character in different
+environments. This yielded an evolutionary theory of phenotypic
+plasticity \citep{Via:E-39-505}. In another, he treated as separate
+characters the same character at different ages. This yielded an
+evolutionary theory of life histories \citep{Lande:E-63-607}.  All in
+all, Eqn.~\ref{eq.multivar} has been remarkably productive within
+evolutionary ecology.
+
+\printbibliography
+\end{document}

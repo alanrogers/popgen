@@ -1,0 +1,28 @@
+%-*-latex-*-
+\framebox{\let\put\pictexput
+\beginpicture
+\setcoordinatesystem units <0.94cm, 0.6cm>
+\setplotarea x from 0 to 6, y from -3 to 3
+\put {100,000} [r] <-1pt,1pt> at 0 0
+\plot 0 0 1.9 1.7 /
+\plot 0 0 1.9 -1.7 /
+\put {99,900} [br] <-1pt,1pt> at 1.425 1.25
+\put {100} [tr] <-1pt,-1pt> at 1.425 -1.25
+\put {healthy}   [c] at 2.5 2
+\put {sick} [c] at 2.5 -2
+%
+\plot 3.1 2 5 3 /
+\plot 3.1 2 5 1 /
+\put {999} [br] <-1pt,1pt> at 4.525 2.75
+\put {98,901} [tr] <-1pt,-1pt> at 4.525 1.25
+\put {positive}   [l] <3pt,0pt> at 5 3
+\put {negative} [l] <3pt,0pt> at 5 1
+%
+\plot 3.1 -2  5 -1 /
+\plot 3.1 -2  5 -3 /
+\put {99} [br] <-1pt,1pt> at 4.525 -1.25
+\put {1} [tr] <-1pt,-1pt> at 4.525 -2.75
+\put {positive}   [l] <3pt,0pt> at 5 -1
+\put {negative} [l] <3pt,0pt> at 5 -3
+\endpicture
+\let\put\latexput}

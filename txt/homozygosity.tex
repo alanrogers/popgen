@@ -1,0 +1,287 @@
+% -*-latex-*-
+\reversemarginpar
+\chapter{Homozygosity\label{ch.homozygosity}} 
+
+This chapter needs to be merged with chapter~\ref{ch.drift}.
+
+\section{Probability primer}
+
+\subsection{What is probability?}
+
+Probability is a common-sense notion.  If you get a pair of aces once
+in every 300 poker hands, then we say that a pair of aces occurs with
+probability 1/300.  If, on average, twin births occur once in every
+1000 pregnancies, then the probability that a pregnancy will produce
+twins is 1/1000.
+
+\subsection{The probability of $A$ and $B$}
+
+What is the probability that it will rain both today and tomorrow?  If
+these events were independent,\footnote{These two events are unlikely
+to be independent.  But bear with me---this is only an example.} then
+\begin{displaymath}
+\Pr[\hbox{rain today and rain tomorrow}] = 
+\Pr[\hbox{rain today}] \times \Pr[\hbox{rain tomorrow}]
+\end{displaymath}
+This is an example of the ``multiplication rule'' of probabilities:
+The probabilities of independent events multiply.  In general,
+In general,
+\begin{displaymath}
+\Pr[\hbox{Event $A$ and event $B$}]
+ = \Pr[\hbox{Event $A$}] \times \Pr[\hbox{Event $B$}]
+\end{displaymath}
+if events $A$ and $B$ are independent.
+
+\subsection{The probability of $A$ or $B$}
+
+What is the probability that it will either rain or snow?  If we
+assume that it can't do both, then
+\begin{displaymath}
+\Pr[\hbox{rain or snow}] = \Pr[\hbox{rain}] + \Pr[\hbox{snow}]
+\end{displaymath}
+This is an example of the ``addition law'' of probabilities: The
+probabilities of mutually exclusive events add.  In general,
+\begin{displaymath}
+\Pr[\hbox{$A$ or $B$}] = \Pr[A] + \Pr[B]
+\end{displaymath}
+if $A$ and $B$ are mutually exclusive.
+
+\subsection{Example}
+
+In 1850, the Swiss astronomer Wolf recorded the results of 20,000
+tosses of a pair of dice.  The results are shown in
+table~\ref{tab.dice}.
+
+\begin{table}
+\caption{Results of 20,000 tosses of two dice\label{tab.dice}}
+\centering
+\begin{tabular}{ccccccccc}
+Red/White & 1 & 2 & 3 & 4 & 5 & 6 & Total & Proportion\\
+\hline
+  1 & 547 & 587 & 500 & 462 & 621 & 690 & 3407 & 0.170\\
+  2 & 609 & 655 & 497 & 535 & 651 & 684 & 3631 & 0.182\\
+  3 & 514 & 540 & 468 & 438 & 587 & 629 & 3176 & 0.159\\    
+\hline
+\end{tabular}
+\end{table}
+
+\section{What is homozygosity?}
+
+Homozygosity is the probability that a random pair of genes will
+be identical.  For example, suppose that a population consisted of
+just the three genes whose DNA sequences are shown below:
+\begin{center}
+\begin{minipage}{16em}
+\begin{verbatim}
+Gene 1: AATAGGACCC
+Gene 2: AACAAGACCC
+Gene 3: AACAAGACCC
+\end{verbatim}
+\end{minipage}
+\end{center}
+Genes 2 and 3 are identical, but they differ from gene~1 at sites~3
+and~5.  What is the probability that a random pair of genes drawn from
+this population would be identical?  To find out, we count the pairs
+that are identical:
+\begin{center}
+\begin{tabular}{cc}
+Pair & Comparison\\
+\hline
+1 versus 2 & differ\\
+1 versus 3 & differ\\
+2 versus 3 & identical\\
+\hline
+\end{tabular}
+\end{center}
+One third of the pairs are identical, so if we drew pairs at random we
+would get an identical pair 1/3 of the time.  The heterozygosity is
+0.333.
+
+\section{Real data}
+
+We collected DNA from a sample of 77 Asian humans, and sequenced 630
+sites from the mitochondrial genome of each subject.  Since our sample
+had 77 subjects, we had 2926 pairs to consider. Of these, 5 were
+identical, so our homozygosity is
+\begin{displaymath}
+H = 5/2926 = 0.0017
+\end{displaymath}
+But so what?  This number is of no interest whatever unless we have
+some way of relating it to things that \emph{are} interesting.  What
+we need is a theory, so let us build one.
+
+\section{Theory}
+
+\subsection{How heterozygosity changes with time}
+
+I will write $G(t)$ for the homozygosity during generation $t$.  In
+other words, if we draw a pair of genes from the population at random
+during generation $t$, $G(t)$ is the probability that they are
+identical.  The probability that two random genes are identical can be
+decomposed into two independent events:
+\begin{enumerate}
+\item neither of the two genes has mutated in the past generation, and
+\label{event.nomutation}
+\item the ancestors of the two two genes were identical in generation
+$t-1$. 
+\label{event.id}
+\end{enumerate}
+We want to know the probability of event~1 \emph{and} event~2, and
+these events are (presumably) independent.  Thus, the product rule
+applies.  We could calculate $G(t)$ if only we knew the probabilities
+of events~1 and~2.  We have the first of these probabilities already.
+(It is $1-2u$.)  Event~2, is more complicated, but we can decompose it
+into two simpler events.  The two ancestral genes may have been
+identical in either of two ways:
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item They could have been genes that were separate but identical in
+generation $t-1$.
+\label{event.iis}
+\item They could have been the same gene (if our original two genes
+are copies of the same parental gene in generation $t-1$).
+\label{event.ibd}
+\end{enumerate}
+Events \ref{event.ibd} and \ref{event.iis} are mutually exclusive, and
+we want to know the probability of either event~\ref{event.ibd}
+\emph{or} event~\ref{event.iis}.  Thus, the addition rule applies.
+We need to calculate the probabilities of three simple
+events, which we will then combine using the addition and
+multiplication rules.
+
+\subsection{The probability of event~\ref{event.ibd}}
+
+Let $N$ represent the number of genes in the population from
+which our random pair of genes was drawn.  The two genes are copies of
+the same parental gene with probability $1/N$.  Why?  Consider the
+following diagram:
+\begin{verbatim}
+             N parental genes
+            _________^_______
+Generation /                 \
+   t-1     O  O  O  O ... O  O
+           |
+    t      A  B
+\end{verbatim}
+A and B represent the two genes that we drew at random from
+generation $t$, and the $N$ O's represent the genes of the parental
+generation (generation $t-1$).  The vertical bar shows you that the
+first gene of generation $t-1$ was parental to A.  Which gene was
+parental to B?  We don't know.  Any of the $N$ parental genes is
+equally likely.  Of these, only the 1st was also parental to A.  Thus,
+the probability that the gene parental to B was also parental to A
+equals $1/N$.
+
+\subsection{The probability of event~\ref{event.iis}}
+
+The two genes are copies of distinct parental genes with probability
+$1-1/N$.  These distinct genes are identical with probability
+$G(t-1)$, for this is how we have defined $G$.  These two events are
+independent, so we use the product rule to combine them.  The two
+genes that we drew are copies of parental genes that are distinct and
+identical with probability
+\begin{displaymath}
+(1 - 1/N)G(t-1)
+\end{displaymath}
+
+\subsection{The probability of event~\ref{event.id}}
+
+Event~\ref{event.id} says that the ancestors of our two chosen genes
+were identical in generation~\ref{event.id}.  By the addition rule,
+the probability of event~\ref{event.id} is the sum of the
+probabilities of events~\ref{event.ibd} and~\ref{event.iis}:
+\begin{displaymath}
+\Pr[\hbox{parental genes identical}] = 1/N + (1 - 1/N)G(t-1)
+\end{displaymath}
+
+\subsection{The probability of event~\ref{event.nomutation}} 
+
+Write $u$ for the probability that one gene mutation mutates during a
+single generation.  It is called the \emph{mutation rate}.  If $u$ is
+the probability that a gene mutates, then $1-u$ must be the
+probability that it does not mutate.  The probability that neither
+gene mutates is (using the multiplication rule)
+\begin{eqnarray*}
+\lefteqn{\Pr[\hbox{1st doesn't mutate}] 
+  \times \Pr[\hbox{2nd doesn't mutate}]}\hspace{2in}\\
+ &=&(1-u)^2 \\
+ &=& 1 - 2u + u^2
+\end{eqnarray*}
+This formula is exact, but we are often more interested in
+approximations than in exact answers.  In this case, $u$ is
+approximately equal to 0.005, so the equation above can be written as
+\begin{displaymath}
+(1-u)^2 = 1 - \overbrace{0.01}^{2u} + \overbrace{0.000025}^{u^2}
+\end{displaymath}
+The $u^2$ term is so much smaller than the others that we will not
+lose much by ignoring it.  Thus, the probability that neither gene
+mutates is approximately $1-2u$.  
+
+\subsection{Homozygosity}
+Putting this all together,
+\begin{eqnarray*}
+G(t) &=& (1-2u)(1/N + (1 - 1/N)G(t-1))\nonumber\\
+  &=& \frac{1}{N} - \frac{2u}{N}
+ + \left(1 - 2u - \frac{1}{N} + \frac{2u}{N} \right) G(t-1)\nonumber\\
+ &\approx& \frac{1}{N} 
+ + \left(1 - 2u - \frac{1}{N} \right) G(t-1)\label{eq.G(t)}
+\end{eqnarray*}
+In the last line here I have dropped the term $2u/N$ since it is
+extremely small compared with $1/N$.  We won't lose much accuracy by
+ignoring it.
+
+\input{fighomoz1} 
+%
+Just to see what this formula looks like, I put in some numeric
+values.  I set $u=0.005$, $N=5000$, and $H(0) = 0$.  The formula above
+was then used to calculate $H(1)$, then used again to calculate
+$H(2)$, and so on.  (The computer made this process a lot less
+laborious than it sounds.)  The result is shown in
+figure~\ref{fig.homoz1}.  There, you can see that homozygosity
+increases gradually and then levels out at a value near 0.02.
+
+\subsection{Heterozygosity}
+We are often interested in the probability that two genes differ. This
+is called the \emph{heterozygosity}. Eqn.~\ref{eq.G(t)} shows that
+\begin{eqnarray*}
+H(t) &=& 1 - G(t)\\
+    &\approx& 1 - \frac{1}{N} 
+ - \left(1 - 2u - \frac{1}{N} \right) (1-H(t-1))\\
+&=&  2u + \left(1 - 2u - \frac{1}{N} \right) H(t-1)
+\label{eq.H(t)}
+\end{eqnarray*}
+
+\subsection{Equilibria}
+
+The value at which a system stops changing is called its
+\emph{equilibrium}.  Equilibria are particularly interesting, because
+they are what we tend to see in the world around us.  At equilibrium
+$G(t-1) = G(t)$.  We can find the equilibrium value by fixing the
+value of $G$ in equation~\ref{eq.G(t)}.  The resulting equation is
+\begin{displaymath}
+G = \frac{1}{N}  + \left(1 - 2u - \frac{1}{N} \right) H
+\end{displaymath}
+
+\begin{exercise}
+What is the value of $G$ that satisfies this equation?
+\end{exercise}
+\begin{exercise}
+What is the corresponding formula for $H$?
+\end{exercise}
+\begin{exercise}
+Figure~\ref{fig.homoz1} assumed that $u=0.005$ and $N=5000$.  Under
+these assumptions, what is the equilibrium value of $G$?  Is it
+consistent with the figure?
+\end{exercise}
+\begin{exercise}
+With our data, $H=0.0017$.  What does this imply about the values of
+$u$ and $N$?
+\end{exercise}
+\begin{exercise}
+If (as we think) $u = 0.005$, what is implied about the value of $N$?
+\end{exercise}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

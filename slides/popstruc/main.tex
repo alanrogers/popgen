@@ -1,0 +1,217 @@
+% -*-latex-*-
+%\documentclass[pdftex,handout]{beamer}
+\documentclass[pdftex,12pt]{beamer}
+\usepackage{etex}
+
+\let\latexput\put
+\usepackage{pictex}
+\let\pictexput\put
+\let\put\latexput
+
+\setbeamertemplate{footline}[frame number]
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\Het}{\mathcal{H}}
+\title{Geographic Population Structure}
+\author{Alan R. Rogers}
+\date{\today}
+\setbeamercovered{transparent}
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Buri's (1956) data}
+\includegraphics[height=0.8\textheight]{buridist1.pdf}
+\includegraphics[height=0.8\textheight]{buridist2.pdf}
+\end{frame}
+
+\begin{frame}
+\frametitle{Drift reduces heterozygosity w/i groups while increasing
+  variance among groups}
+{\centering\input{figburihvI}\\[2ex]}
+\mbox{}\hfill{}Data: Buri (1956)\\           
+\end{frame}
+
+\begin{frame}
+\frametitle{Gene flow (migration) reduces population differences}
+\centering\input{figmigdrift}\\
+\end{frame}
+
+\begin{frame}
+\frametitle{PC map of European genetic distances}
+\begin{columns}
+\column{0.75\linewidth}
+\input{figmclellan}
+\column{0.25\linewidth}
+\small(McLellan et al 1984)
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Genetic and geographic distance}
+\centering\input{figdistc}\\
+\small $\times$ Australia and Pacific; $\circ$, Americas.\\
+\end{frame}
+
+\begin{frame}
+\frametitle{Wahlund principle: subdivision reduces heterozygosity}
+\begin{centering}
+\begin{tabular}{lc|ccc}
+  & $A_1$ & $A_1A_1$ & $A_1A_2$ & $A_2A_2$\\
+\hline
+Pop 1          &  4/16& 1/16 & 6/16 & 9/16\\
+Pop 2          & 12/16& 9/16 & 6/16 & 1/16\\
+Species        &  8/16& 5/16 & \textbf{6/16} & 5/16\\
+Hardy-Weinberg &  8/16& 4/16 & \textbf{8/16} & 4/16\\
+\hline
+\multicolumn{5}{c}{\only<2->{Amount of reduction: 2/16}}
+\end{tabular}
+\end{centering}
+
+\bigskip
+
+\onslide<3->
+\begin{centering}
+\begin{tabular}{lcc}
+      & $p_i - \bar p$ & $(p_i - \bar p)^2$\\
+\hline
+Pop 1 &      --4/16   &  1/16 \\
+Pop 2 &      4/16     &  1/16 \\
+\hline
+\multicolumn{2}{l}{Variance:}&1/16\\
+\end{tabular}\\
+
+\onslide<4->
+\bigskip
+\[
+\Het_S = \Het_T - 2V \qquad (\hbox{Wahlund 1928})
+\]
+\end{centering}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item Wahlund showed that heterozygosity is reduced by group
+  differences in allele frequencies.
+\item Buri's experiment illustrates that
+\begin{itemize}
+\item Drift reduces heterozygosity
+\item Drift increases group differences
+\end{itemize}
+\item We need a theory to connect these facts.
+\item Let us build one on top of what we have already.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{What we already know about heterozygosity}
+\[
+\begin{array}{rcll}
+E[\Het_t | p_t] &=& 2 p_t q_t & \hbox{(Hardy-Weinberg)}\\
+E[\Het_t | p_0] &=& 2p_0q_0 \left(1 -\frac{1}{2N}\right)^t & \hbox{(Ch.~2)}\\
+\end{array}
+\]
+How can these both be true?
+
+\pause
+It must be true that
+\[
+E[p_t q_t | p_0] = p_0q_0 \left(1 -\frac{1}{2N}\right)^t
+\]
+
+\pause
+On the other hand, it is also true that
+\[
+\begin{array}{rcll}
+E[p_t q_t | p_0] &=& p_0 q_0 -V_t & \hbox{(Wahlund)}
+\end{array}
+\]
+where $V_t$ is the variance of $p_t$ about $p_0$.
+\end{frame}
+
+\begin{frame}
+Rearranging gives the variance among groups
+\[
+V = p_0q_0\left[ 1 - \left(1 - \frac{1}{2N}\right)^t\right]
+\]
+
+\pause
+We usually normalize this expression by dividing both sides by $p_0q_0$.  The
+result is called $F_{ST}$:
+\[
+F_{ST} = \frac{V}{p_0 q_0} = 1 - \left(1 - \frac{1}{2N}\right)^t
+\]
+
+In data analysis, we take $p_0 \approx \bar p$, the current population mean.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Observed $F_{ST}$ in Buri's experiments}
+  \begin{center}
+    \input{figburivar1}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Observed and expected $F_{ST}$ in Buri's experiments}
+\begin{center}
+  \input{figburivar}
+\end{center}  
+\end{frame}
+
+\begin{frame}
+\frametitle{Application to differences among human races}
+
+Theory assumes \emph{no} migration.  Seems unlikely, but let's see
+where it leads.
+
+\bigskip
+
+For major human populations, $F_{ST} \approx 0.1$. Modern humans have
+been in Europe and E Asia for 50,000 years (2000 generations).  Plug
+this into
+\[
+F_{ST} = 1 - \left(1 - \frac{1}{2N_e}\right)^t
+\]
+and solve for $N_e$.
+
+\bigskip
+
+Answer: $N_e \approx 10,000$: agrees with genetic diversity
+within populations.
+\end{frame}
+
+\begin{frame}
+\frametitle{The role of migration}
+\begin{itemize}
+\item Drift increases group differences.
+\item Migration $(m)$ reduces them
+\item Eventually, an equilibrium is reached.
+\end{itemize}
+\[
+F_{ST} = \frac{1}{4N_e m + 1}
+\]
+Depends only on $N_e m$.
+Small if $N_e m > 1$.
+
+\bigskip
+\pause
+Human value ($\approx 1/9$) implies $N_e m \approx 2$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Summary}
+\begin{itemize}
+\item Drift increases variance among groups and reduces that within them.
+\item Wahlund's principle: $\Het_S = \Het_T - 2V$
+\item $F_{ST}$ measures between-group variance relative to total
+  variance.
+\item If major human populations have been isolated for 50,000~y, then
+  $N_e \approx 10,000$.
+\item If they are at migration-drift equilibrium, then pairs of
+  populations exchange $\sim$2 migrants per generation.
+\end{itemize}
+\end{frame}
+
+\end{document}
+

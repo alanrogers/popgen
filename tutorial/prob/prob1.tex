@@ -1,0 +1,527 @@
+\section{Probability}
+\label{ch.prob}
+
+Probability theory is about things that cannot be predicted with
+certainty.  It contributes to science in two ways.  First, there is
+uncertainty in the phenomena we study.  Even when we know the genes of
+the parents, we cannot predict with certainty those of their
+offspring.  Neither can we predict with certainty the path of a
+molecule through a gas, or how long anyone will live.  All such
+phenomena need theories with probabilistic components.  Probability
+also contributes to science in a second way.  We often study
+populations of things that are too large to examine in their entirety.
+Instead we study incomplete samples, which reflect only imperfectly
+the properties of the larger whole.  Thus, probability theory also
+underlies statistics, the science of sampling.
+
+There are two versions of probability theory.  The first studies
+\emph{statistical probability}, the relative frequency with which an
+event occurs in the long run.  The second studies \emph{subjective (or
+  Bayesian) probability}, which measures one's degree of belief.
+Bayesian probability has recently become important in statistics.  The
+focus here is on statistical probability, which has long played a
+central role in many disciplines.
+
+This primer is short, but you should not expect to read it quickly.
+Quantitative material takes time to digest.  Read it with pencil in
+hand and do the exercises as you go.  But do not spend too much time
+on any one exercise.  If you get stuck, consult the answers in the
+back.  Read these answers in any case, because they contain some of
+the material I am trying to teach.
+
+\subsection{Probability}
+
+All of us have an intuitive understanding of statements such as ``the
+chances are three in five.''  This is exactly what is meant by the
+statement ``the (statistical) probability is $3/5$.''  In a large
+number of repeated trials we would expect the event in question to
+occur about $3/5$ of the time.  In other words, its \emph{relative
+  frequency} should be about $3/5$.  The relative frequency of an
+event is simply the number of trials on which it occurs expressed as a
+fraction of the total.  It is a cumbersome term for a simple idea, and
+people often shorten it to ``frequency.''  Unfortunately, \emph{that}
+word is also used for the raw count of events.  For example, if we
+spin a coin 100 times and observe 30 heads, then the relative
+frequency of heads is 0.3.  This is also referred to simply as the
+frequency of heads.  In other contexts, however, the ``frequency of
+heads'' might refer to 30, the number of heads.  You have to catch
+meaning from context.
+
+The larger the number of trials, the smaller will be the difference
+between the relative frequency and the probability.  My favorite
+illustration of this idea comes from World War II.  Just before the
+war, the mathematician John Kerrich \cite{Kerrich:EIT-46} was visiting
+Denmark.  Two days before his scheduled departure, the German army
+overran Denmark, and Kerrich was interned for the duration of the war.
+He must have had a lot of spare time, for he undertook several lengthy
+experiments on probability.  In one of them, he spun a coin 10,000
+times and kept a record of the outcomes.
+
+\input{figcoin}
+
+The resulting data are shown in Figure~\ref{fig.coin}.  There, the
+vertical axis shows the relative frequency of heads.  Its value
+bounced around at first but got closer and closer to $1/2$ as the
+number of spins increased.  When we say that the probability of heads
+on a single spin is $1/2$, this is what we have in mind.  There is
+nothing special about the number $1/2$.  Had Kerrich's coin been bent,
+it might have tended to favor one side.  Even so, in 10,000 tosses it
+would have converged toward some particular value.  This value is
+called the \emph{probability} of ``heads.''
+
+A coin that is equally likely to fall on either side is said to be
+``fair,'' but nothing guarantees that coins must be fair.  When we say
+that one is fair, we are stating a hypothesis, not a fact.  One can
+estimate a probability, as Kerrich did by spinning his coin.  But
+estimates always have error, and the exact probability is never known.
+We often make judgments about probabilities even without this sort of
+evidence.  I have never spun any of the coins in my pocket, yet I am
+confident that all of them are very nearly fair.  Why?  I'm not sure.
+Perhaps because people have told me so, and perhaps because coins are
+nearly (although not quite) symmetrical.  Neither of these prove that
+my coins are exactly fair.  When we assume that probabilities have
+particular values, we are building a model.  The fit of that model to
+the real world is always a matter to be tested against data.
+
+If Kerrich were doing his experiment today, he might have automated
+the process.  Most computer languages provide a way to generate
+``uniform\label{pg.simuni} random numbers,'' which we'll discuss more
+fully on p.~\pageref{sec.uniform}.  The gist is that these generators
+deliver numbers that are (in theory) equally likely to fall anywhere
+in the interval from 0 to 1.  Hence, the value falls between 0 and
+$1/2$ with probability $1/2$.  This makes it easy to simulate the spin
+of a fair coin.  Simply get one number from the random number
+generator.  Interpret it as heads if less than $1/2$ and as tails if
+greater.
+
+\begin{exercise}
+Describe a method for simulating the spin of an unfair coin, for which
+heads has probability 0.3.
+\answer
+There are many correct answers.  Here are two: (1)~Interpret numbers
+as heads if less than 0.3 but as tails if greater.  (2)~Interpret
+numbers as heads if between 0.2 and 0.5 but as tails otherwise.
+\end{exercise}
+
+\begin{exercise}
+If you know how to write computer programs, write one that replicates
+Kerrich's experiment.
+\answer
+\begin{verbatim}
+# Python program that simulates 10000
+# spins of a fair coin
+
+from random import random
+
+for i in range(10000):
+    u = random()
+    if u < 0.5:
+        print('heads')
+    else:
+        print('tails')
+\end{verbatim}
+\end{exercise}
+
+
+\subsection{An urn experiment}
+
+Texts on probability theory frequently discuss experiments that
+involve drawing balls out of urns.  During his captivity, Kerrich did
+his own version of an urn experiment.  Instead of an urn, he used a
+box and four ping-pong balls---two red and two green.  The experiment
+consisted of 5000 identical trials, each of which began with all four
+balls in the box.  Kerrich's assistant then shook the box, looked
+away, and drew out first one ball and then (without replacing the
+first) another.  They wrote down the colors of the two balls.  On each
+trial, there were four possible outcomes.  Kerrich counted the trials
+in which each occurred, with results as shown in Table~\ref{tab.urn}.
+
+\begin{table}
+\caption{The results of 5000 repetitions of Kerrich's
+  \cite{Kerrich:EIT-46} urn experiment}
+\label{tab.urn}
+\centering
+\begin{tabular}{lrrr}
+First  & \multicolumn{2}{c}{Second ball}\\ \cline{2-3}
+ball & Red & Green & sum\\ \hline
+Red  & 756 &  1689 & 2445 \\
+Green&1688 &   867 & 2555 \\ \hline
+sum  &2444 &  2556 & 5000
+\end{tabular}
+\end{table}
+
+\subsection{A model}
+\label{sec.urnmodel}
+
+There is a clear pattern in these data: the second ball was usually
+red if the first was green and usually green if the first was red.
+What features of the experiment might account for this pattern?
+
+To answer such a question, we need to build a model.  This involves
+making assumptions that seem plausible and then using these to
+calculate the probabilities of the various events in the data.
+Finally, we compare the predicted values to those in the data.
+
+I built my own model using the tree diagram in Fig.~\ref{fig.tree}.
+Each trial begins at the root and progresses through the tree to one
+of the tips.  For example, if two red balls are drawn, we take the
+upper path at each node.  There are labels at the tips of the
+branches, which correspond to events: $RR$ for red--red, $RG$ for
+red--green, and so forth.
+
+\begin{figure}[b]
+{\centering\input{figtree}\\}
+\caption{Tree showing the calculation of probabilities in urn model.}
+\label{fig.tree}
+\end{figure}
+
+The numbers in the figure are all probabilities.  To explain them, I
+begin at the root of the tree, which corresponds to the beginning of a
+trial.  At that point, the box contains two red balls and two green
+ones.  If each ball is equally likely to be chosen, then the first
+ball is equally likely to be red or green.  Thus, the two paths from
+the root each have probability $1/2$.  So far, the model is consistent
+with the data, since the first ball was red on $2445/5000$---very nearly
+$1/2$---of the trials.
+
+Suppose now that the first ball was red and you are about to draw a
+second ball.  Three balls are left: two green and one red.  If these
+are still equally likely to be chosen, then the probability of drawing
+a second red ball is $1/3$ and that of drawing a green ball is $2/3$.
+If the first ball was green then the same argument applies, except
+that now the red ball has probability $2/3$ and the green ball $1/3$.
+This accounts for the probabilities of the remaining branches.
+
+We can now use the tree to calculate the probabilities of the events
+($RR$, $RG$, $GR$, and $GG$) associated with the branch tips.  The
+trick is to start at the root and trace a path through the tree,
+multiplying together the probabilities of the branches in the path.
+Take for example event $RR$.  Its probability is $1/2$ (the
+probability that the first ball is red) times $1/3$ (probability that
+the second is red given that the first one was).  The result, $1/6$,
+is shown in the right column of Fig.~\ref{fig.tree} along with the
+probabilities of the other three events.
+
+\begin{table}
+\caption{Theoretical probabilities and observed relative frequencies
+  of events in Kerrich's urn experiment.}
+\label{tab.urn.obsexp}
+\centering
+\begin{tabular}{ccc}
+        &      & Rel.  \\
+  Event & Prob.& freq. \\
+\hline
+\hline
+$RR$    & 0.167& 0.151 \\
+$RG$    & 0.333& 0.338 \\
+$GR$    & 0.333& 0.338 \\
+$GG$    & 0.167& 0.173 \\
+\hline
+\end{tabular}
+\end{table}
+
+These probabilities also appear in Table~\ref{tab.urn.obsexp}, where
+they are compared with the relative frequencies in Kerrich's data.  I
+have re-expressed everything as a decimal fraction.  For example, the
+theoretical probability of $RR$ is $1/6\approx 0.167$ and its observed
+relative frequency is $756/5000 \approx 0.151$.  The relative
+frequencies do not quite equal the probabilities, but the differences
+are small.  A careful statistical analysis would probably conclude
+that this model is consistent with the data.  (We can't know without
+doing such an analysis, and that is beyond my scope here.)
+
+\subsection{Conditional and joint probability: the multiplication law}
+\label{sec.condjoint}
+
+In the tree diagram, the probabilities involving the second ball
+deserve comment.  They are called \emph{conditional probabilities}
+because their values depend on (i.e.\ are conditioned by) the color of
+the first ball.  The conditional probability of $B$ given $A$ is
+written $\Pr[B|A]$.  In multiplying along paths within the tree, we
+were using something called the \emph{law of multiplication of
+  probabilities}:
+\begin{equation}
+\Pr[A \And B] = \Pr[A] \Pr[B|A]
+\label{eq.mlaw}
+\end{equation}
+Here, ``$\Pr[A\And B]$'' is called the \emph{joint probability} of
+events $A$ and $B$; it is the probability that $A$ and $B$ both
+happened on the same trial.  For example, suppose $A$ is the event
+that the first ball is red and $B$ the event that the second is green.
+Using the tree diagram, we calculated $\Pr[A\And B]$ by multiplying
+along the relevant path.  In terms of the multiplication law, $\Pr[A]
+= 1/2$, $\Pr[B|A] = 2/3$, and $\Pr[A\And B] = 1/2 \times 2/3 = 1/3$.
+
+The multiplication law is important because it explains \emph{why} we
+multiply along paths within the tree.  To me, this seems intuitive and
+obvious.  But some things that are obvious are also wrong, so
+Box~\ref{box.mlaw} explains why it works.
+
+\begin{Box}[tbp]
+  We are interested in the probability of event ``$A\And B$.'' The
+  relative frequency of this event is
+  $n(A \And  B)/N$, where $n(A \And  B)$ is the number of trials on
+  which this event occurred and $N$ is the total number of trials.
+  Multiply by $n(A)/n(A)=1$ (which changes nothing) to obtain
+\[
+\frac{n(A \And  B)}{N} = \frac{n(A)}{N} \cdot \frac{n(A\And B)}{n(A)}
+\]
+As the number of trials grows large, relative frequencies become
+closer and closer to the corresponding probabilities.  Thus, the left
+side approaches $\Pr[A \And B]$, the ``joint probability'' of ``$A
+\And B$.''  Meanwhile, on the right $n(A)/N$ approaches $\Pr[A]$.  But
+what are we to make of the remaining fraction, $n(A\And B)/n(A)$?  It
+is the relative frequency of $B$ among trials in which $A$ occurred.
+As $N$ grows large, this ratio converges to the \emph{conditional
+  probability of $B$ given $A$}, or $\Pr(B|A)$.  Thus, in the equation
+above all three ratios converge to probabilities as $N$ grows large,
+and the equation itself converges to the multiplication law
+(Eqn.~\ref{eq.mlaw}).
+\caption{Deriving the multiplication law}
+\label{box.mlaw}
+\end{Box}
+
+\subsection{The addition law}
+
+We turn now to events of form ``$A \Or B$'' (or both).  The
+probabilities of such events are especially easy when the two events
+are \emph{mutually exclusive}, i.e.\ when they could not have happened
+on a single trial.  Take for example the event that the second ball is
+green.  This happens in either of two cases: $RG$ and $GG$.  The
+probability of this event is the probability of ``$RG \Or GG$,'' which
+(according to the tree diagram) equals $1/3 + 1/6 =
+1/2$.\label{pg.Pr_green} To get this answer, we simply summed the
+probabilities of $RG$ and $GG$.
+
+\begin{exercise}
+  In Kerrich's urn data, show that the relative frequency of ``$RG \Or
+  GG$'' equals the sum of the frequencies of $RG$ and $GG$.
+%
+\answer
+%
+The relative frequency of ``$RG \Or GG$'' is $2556/5000$, that of $RG$
+is $1689/5000$, and that of $GG$ is $867/5000$.  The sum of the last
+two is $1689/5000 + 867/5000 = 2556/5000$.
+\end{exercise}
+
+The calculation is a little harder when the two events are \emph{not}
+mutually exclusive.  To see why, consider the event that either the
+first ball is red or the second is green (or both).  This is also of
+form ``$A \Or B$,'' but if we try summing $\Pr[\hbox{1st ball red}]$
+and $\Pr[\hbox{2nd ball green}]$ we get $1/2 + 1/2 = 1$.  This
+\emph{can't} be right.
+
+\begin{exercise}
+  In Kerrich's urn data, calculate the relative frequencies of events
+  $A$, $B$, and ``$A\Or B$.''  Show that the sum of the first two does
+  not equal the third.
+%
+\answer
+The relative frequency of the event $(A)$ that the first ball is red
+equals $2445/5000$; that of the event $(B)$ that the second is green
+equals $2556/5000$; that of event ``$A\Or B$'' is $(756+1689+867)/5000
+= 3312/5000$.  The sum of the first two relative frequencies is
+$2445/5000 + 2556/5000 = 5001/5000$, which is much larger than the
+relative frequency of ``$A\Or B$.''
+\end{exercise}
+
+To see what went wrong, let us look under the hood.  The first ball is
+red in either of two cases: $RR$ and $RG$.  Similarly, the second is
+green in cases $RG$ and $GG$.  Thus, our incorrect calculation can be
+expanded as:
+\[
+\overbrace{\Pr[RR] + \Pr[RG]}^{\hbox{$\Pr[A]$}}
++ \overbrace{\Pr[RG] + \Pr[GG]}^{\hbox{$\Pr[B]$}}
+\]
+We have (incorrectly) summed $\Pr[RG]$ twice.  To fix this, we must
+subtract $\Pr[RG]$.  This illustrates the \emph{law of addition of
+probabilities}:
+\begin{equation}
+\Pr[A \Or B] = \Pr[A] + \Pr[B] - \Pr[A \And B]
+\label{eq.alaw}
+\end{equation}
+When the two events are mutually exclusive (as in the preceding
+example), the probability of ``$A \And B$'' is zero, and there is no
+need to subtract it off.
+
+\begin{exercise}
+Use the addition law to calculate the probability that the first ball
+is red or the second green.
+\answer
+The first ball is red with probability $\Pr[A] = 1/2$, and the second
+is green with probability $\Pr[B] = 1/2$.  The probability that both
+events happened is $\Pr[A\And B] = 1/3$.  All this is from
+Fig.~\ref{fig.tree}.  Using these values, the addition law gives
+$\Pr[A\Or B] = 1/2 + 1/2 - 1/3 = 2/3$.
+\end{exercise}
+
+\subsection{Statistical independence}
+
+If one event does not influence another, this fact should be reflected
+in their probabilities.  Two events $A$ and $B$ are said to be
+\emph{statistically independent} if $\Pr[B | A] = \Pr[B]$.
+
+For an example in which this condition is not met, we return to
+Kerrich's urn experiment.  The probabilities of red and green in the
+second ball depend on the color of the first ball.  Thus, intuition
+suggests that the balls are not independent.
+
+\begin{exercise}
+Define $A$ as the event that the first ball is is red and $B$ as the
+event that the second is green.  Use the tree diagram in
+Fig.~\ref{fig.tree} to calculate $\Pr[B]$ and $\Pr[B|A]$ and thus to
+decide whether the balls in the model are statistically independent.
+\answer As shown on p.~\pageref{pg.Pr_green}, the tree diagram implies
+that the unconditional probability of $B$ is $\Pr[B] = 1/2$.  On the
+other hand, the conditional probability is $\Pr[B|A] = 2/3$.  These
+probabilities are not equal, so $A$ and $B$ are not independent.
+\end{exercise}
+
+\begin{exercise}
+Use Kerrich's data to estimate the same probabilities.
+\answer
+According to Table~\ref{tab.urn}, $\Pr[B]$ is estimated by $2556/5000
+\approx 0.51$, and $\Pr[B|A]$ by $1689/2445 \approx 0.69$.  The two
+numbers are only estimates, so we cannot conclude that the
+probabilities differ merely because the estimates do.  However, the
+difference between these estimates is large, and so is the sample.
+Even without a careful statistical analysis, these results suggest
+that the two balls were not statistically independent.
+\end{exercise}
+
+\begin{table}
+\renewcommand{\tabcolsep}{3pt}
+\begin{center}
+\renewcommand{\arraystretch}{0.95}
+\begin{tabular}{rrrrrrrr}
+    & \multicolumn{6}{c}{White}&\\ \cline{2-7}
+ Red & 1 & 2 & 3 & 4 & 5 & 6 & sum\\
+\hline
+\hline
+    1     & 547 & 587 & 500 & 462 & 621 & 690 & 3407\\
+    2     & 609 & 655 & 497 & 535 & 651 & 684 & 3631\\
+    3     & 514 & 540 & 468 & 438 & 587 & 629 & 3176\\
+    4     & 462 & 507 & 414 & 413 & 509 & 611 & 2916\\
+    5     & 551 & 562 & 499 & 506 & 658 & 672 & 3448\\
+    6     & 563 & 598 & 519 & 487 & 609 & 646 & 3422\\ \hline
+sum:     & 3246 & 3449 & 2897 & 2841 & 3635 & 3932 & 20000
+\end{tabular}
+\end{center}
+\caption{The results of 20,000 throws with two dice (Wolf 1850, cited
+  in \cite{Bulmer:67})}
+\label{tab.dice}
+\end{table}
+
+Dice give us the other sort of example.  In 1850, the astronomer
+Rudolf Wolf described the results of 20,000 throws of two dice, one
+red and one white.  The results are shown in Table~\ref{tab.dice}.  We
+can use these data to ask whether the two dice were independent.
+Consider the event ``red 4'' of a 4 on the red die.  The unconditional
+frequency of this event was $2916/20000 \approx 0.15$.  Conditional on
+a 5 on the white die, the frequency of ``red 4'' was $509/3635 \approx
+0.14$.  These two numbers are nearly the same, as they ought to be if
+the red and white dice are independent.
+
+\begin{exercise}
+  Use Wolf's data to estimate (a)~the
+  unconditional probability of ``red 2,'' and (b)~the conditional
+  probability of ``red 2'' given ``white 4.''  Use the results to
+  comment on whether Wolf's dice were statistically independent.
+\answer
+  The relative frequency of ``red 2'' is $3631/20,000 \approx 0.18$.
+  This estimates the unconditional probability of rolling ``2'' with the
+  red.  If we restrict attention to those trials on which the white die
+  rolled ``4,'' the relative frequency of ``red 2'' is $535/2841 \approx
+  0.19$.  This estimates the conditional probability of ``red 2'' given
+  ``white 4.''  The numbers are pretty nearly equal, as they should be
+  if the dice are statistically independent.
+\end{exercise}
+
+If these dice were fair, each of the row and column sums in
+Table~\ref{tab.dice} should be close to $20000/6$, or 3333.  Instead,
+both dice show an excess of 2s and 5s and a deficit of 3s and 4s.  In
+addition, the white die shows an excess of 6s.  Michael Bulmer
+\cite{Bulmer:67} discusses several plausible causes: the dice may not
+be cubes, their corners may be rounded unevenly, or the process of
+cutting pips (dots) into their faces may have altered their centers of
+gravity.  Whatever the explanation, these data show that the model of
+a ``fair die'' is only an approximation.
+
+\begin{exercise}
+Suppose that Kerrich had placed the first ball back into the box and
+then shaken it again before drawing the second.  Draw a decision tree
+to represent this experiment and use it to calculate the probabilities
+of $RR$, $RG$, $GR$, and $GG$.  Use the tree to show that the two
+balls are independent.  (By the way, this new version of the
+experiment involves what is called \emph{sampling with replacement}.)
+\answer Under sampling with replacement, the decision tree is as shown
+below.
+%\begin{figure}[tbhp]
+\begin{center}
+\input{figwithrep}
+\end{center}
+%\caption{Tree diagram for sampling with replacement}
+%\label{fig.withrep}
+%\end{figure}
+Using this decision tree, we can test for statistical independence as
+follows: the second ball is green with unconditional probability
+$\Pr[RG\Or GG] = 1/2$.  If the first ball is red, the second is green
+with conditional probability $1/2$.  These numbers are the same, so
+the two balls are statistically independent.
+\end{exercise}
+
+\subsection{Bayes's rule}
+\label{sec.bayes}
+
+Suppose your doctor orders a test to see whether you have some
+hypothetical disease. Experiments have shown that the test was
+positive in 99\% of patients who have the disease.  But it was also
+positive in 1\% of patients who \emph{didn't}.  These, of course, are
+the wrong numbers. You want the probability that \emph{you have the
+  disease} given that your test was positive. To figure this out, you
+or your doctor will need to use what is called Bayes's rule.
+
+\begin{figure}
+{\centering\input{figbayes}\\}
+\caption{Bayes's rule example.}
+\label{fig.bayes}
+\end{figure}
+
+It is easier to understand the principles involved if we think in
+terms of counts rather than probabilities.  Consider the data in
+Fig.~\ref{fig.bayes}. This tells us that in 100,000 people of your sex
+and age, 99,900 will be healthy and 100 will be sick, with some
+hypothetical disease. We get positive test results from nearly all
+(99/100, or 99\%) of the sick individuals, but also from a small
+fraction (999/99,900 or 1\%) of the healthy ones. Of those who test
+positive, the sick fraction is
+\[
+\frac{99}{99 + 999} \approx 0.09
+\]
+Fewer than 1/10 of those who test positive are really sick!
+
+Let us now rephrase this result in terms of probabilities.  According
+to the multiplication law (Eqn.~\ref{eq.mlaw})
+\[
+\Pr[A\& B] = \Pr[B] \Pr[A|B] = \Pr[A] \Pr[B|A]
+\]
+Divide through by $\Pr[B]$ to get
+\begin{equation}
+\Pr[A|B] = \frac{\Pr[A] \Pr[B|A]}{\Pr[B]}
+\label{eq.bayes}
+\end{equation}
+This is called \emph{Bayes's Rule}.  In the context of our example,
+$B$ is the event that an individual got positive test, and $A$ is the
+event that the individual is really sick.
+
+To illustrate Bayes's Rule in action, let us revisit
+Fig.~\ref{fig.bayes}. We use the figure to calculate relative
+frequencies and then interpret these as probabilities. If $A$ is the
+event that you are sick and $B$ the event that your test was positive,
+then $\Pr[A] = 100/100,000 = 1/1000$, $\Pr[B] = (999+99)/100,000 =
+1098/100,000$, and $\Pr[B|A] = 99/100$. Eqn.~\ref{eq.bayes} gives
+\begin{eqnarray*}
+\Pr[A|B] &=& \frac{1/1000 \times 99/100}{1098/100,000}\\
+ &=& \frac{99}{1098} \approx 0.09
+\end{eqnarray*}
+This is the same answer we got above using counts.

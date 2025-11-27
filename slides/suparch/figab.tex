@@ -1,0 +1,33 @@
+%-*-latex-*-
+\let\put\pictexput
+\mbox{\beginpicture
+\headingtoplotskip=\baselineskip
+\setcoordinatesystem units <2.6mm, 1.8mm>
+\setplotarea x from -2 to 17.5, y from 0 to 20
+\axis bottom invisible ticks length <0pt>
+  withvalues {$X$} {$Y$} {$N$} {$D$} {$S$} /  at 1 6 9 13 17 / /
+\put {Model~$\alpha\beta$} [tr] at 5.5 20
+%\axis left ticks andacross numbered from 0 to 20 by 2 /
+%\axis top ticks andacross numbered from 0 to 20 by 2 /
+\setplotsymbol ({\normalsize .})
+\plot 0 0 6 12 6 20 /   %X
+\plot 2 0 3.5 3 5 0 /   %XY
+\plot 7 0 4.5 5 7.12486206354179 10.249724127083585 /    %Y
+%\put {\small $\gamma$} [b]  <0pt,5pt> at 7.3 6
+%\arrow <10pt> [.2,.67] from 5 6 to 9.6 6
+\plot 8.17572 0 9.1757 5 10.036 6.7206 / %N
+\plot 10 0 11 5 /       %N
+\plot 12 0 11 5 /            %D
+\plot 8 16 14.21226360816738 8.468963009740001 15.684 0 / %Sl
+\plot 8 20 8 18.8112 15.8936 9.24189 17.4997 0 / %Sr
+\plot 13.684 0 12.8151 5 11.3389 7.9523 8 12 8 16 / %Dr
+\plot 7.12486206354179 10.249724127083585 10.036 6.7206 / % ND l
+\arrow <10pt> [.2,.67] from 8.57571931984138 2 to 6 2
+%\arrow <0pt> [.2,.67] from 11.75 1 to 10.25 1
+%\arrow <10pt> [.2,.67] from 8.32572 1 to 6.5 1
+\put {\small $\alpha$} [b]  <0pt,5pt> at 7.5 2
+%\put {\small $\epsilon$} [t]  <0pt,-5pt> at 11 1
+\put {\small $\beta$} [t]  <2pt,-5pt> at 13.9889 4
+\arrow <10pt> [.2,.67] from 14.9889 4 to 12.9889 4
+\endpicture}
+\let\put\latexput

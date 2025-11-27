@@ -1,0 +1,38 @@
+% -*-latex-*-
+\begin{figure}
+\begin{center}
+\mbox{%
+\beginpicture
+\headingtoplotskip=0.25\baselineskip
+\setcoordinatesystem units <1in, .83in> point at 0 0
+\setplotarea x from -1 to 1, y from -1 to 1.4
+\axis left label {\lines{Quantiles\cr of $\log_{10} \hat\theta_0$}}
+   shiftedto x=-1.1
+   ticks numbered from -1 to 1 by 1 /
+\axis bottom shiftedto y=-1.1 label {$\log_{10} \theta_0$}
+   ticks numbered from -1 to 1 by 1 /
+\multiput {$\bullet$} at -1 -1  0 0 1 1  /
+\setdots
+% x=log10 theta0 y= quantile 0.025 of log10 hat theta0_2
+\setdashes
+% x=log10 theta0 y= quantile 0.25 of log10 hat theta0_2
+\setsolid
+% x=log10 theta0 y= quantile 0.5 of log10 hat theta0_2
+\setdashes
+% x=log10 theta0 y= quantile 0.75 of log10 hat theta0_2
+\plot -1 .9680945717 0 .9863793488 1 1.052880968 /
+\setdots
+% x=log10 theta0 y= quantile 0.975 of log10 hat theta0_2
+\plot -1 1.241082055 0 1.261082903 1 1.405890194 /
+\endpicture%
+}
+\end{center}
+\caption{Quantiles of $\log_{10}\hat\theta_0$.  1,000 data sets were
+  simulated at each of several values of $\theta_0$, and each was used
+  to estimate the model's three parameters.  In each run,
+  $\theta_1=10000$, $\tau=70$, and $N=100$.  97.5\% of the simulated
+  estimates fell below the dotted line; 75\% fell below the dashed
+  line.  The median of $\hat\theta_0$ was 0 for all three values of
+  $\theta_0$.}
+\label{fig.th0str}
+\end{figure}

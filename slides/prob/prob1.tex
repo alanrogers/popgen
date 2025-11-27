@@ -1,0 +1,484 @@
+\title{Probability}
+\author{Alan R. Rogers}
+\date{\today}
+
+%\begin{frame}
+%\frametitle{Three systems of vocabulary}
+%\begin{tabular}{p{2.2in}ccc}
+%                        &   1   & 2 & 3\\
+%Position on chromosome  & locus & locus & locus\\
+%Protein-coding locus    & gene  & gene & gene\\
+%Physical copy of DNA at locus  & gene  & allele &gene copy\\
+%One of several variants at a locus& allele & allele & allele\\
+%\end{tabular}
+%
+%\bigskip
+%
+%1 is classical usage, 2 is Gillespie's, and we prefer 3.
+%
+%\bigskip
+%
+%\pause
+%\begin{quote}
+%\emph{Consistency is the hobgoblin of little minds\\}
+%\mbox{}\hfill---Ralph Waldo Emerson
+%\end{quote}
+%\end{frame}
+%
+%\begin{frame}
+%\frametitle{Illustration of classical usage}
+%Those organisms (homozygotes) which received like genes, in any pair
+%of corresponding loci, from their two parents, would necessarily hand
+%on genes of this kind to all of their offspring alike; whereas those
+%(heterozygotes) which received from their two parents genes of
+%different kinds\ldots (Fisher, 1930, p.~8)
+%\end{frame}
+%
+%\begin{frame}
+%\frametitle{Gene genealogy within a population tree}
+%\begin{columns}
+%\column{0.6\textwidth}
+%\centering\input{figgptree}\\[1ex]
+%\column{0.4\textwidth}
+%Many gene genealogies are possible.
+%
+%\bigskip
+%
+%Probabilities depend on population sizes and separation times.
+%
+%\bigskip
+%
+%0, ancestral; 1, derived.
+%\end{columns}
+%\end{frame}
+
+\frame{\titlepage}
+
+\begin{frame}
+\centering\input{figcoin}\\
+\end{frame}
+
+\begin{frame}
+\frametitle{Probability and relative frequency in repeated trials}
+\begin{columns}
+\column{0.6\textwidth}
+{\centering\input{figcoin}\\}
+\column{0.45\textwidth}
+\raggedright
+\begin{itemize}
+\item rel.\ freq.\ of heads gradually approaches limiting value.
+\item Limiting value is the \emph{probability} of heads
+\item Need not equal $1/2$.
+\item We estimate probabilities from relative frequencies.
+\item We never know them exactly.
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Kerrich's ``urn'' experiment}
+
+\begin{center}
+\huge $(\underline{\circ\;\circ\;\bullet\;\bullet})$
+\end{center}
+
+\begin{itemize}
+\item Urn contains 4 balls: 2 black and 2 white
+\item Mix them up.
+\item Draw one at random
+\item Draw a second \emph{without} replacing first.
+\item Repeat 5000 times.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Results from Kerrich's urn experiment}
+\begin{center}
+\begin{tabular}{lrrr}
+First  & \multicolumn{2}{c}{Second ball}\\ \cline{2-3}
+ball & Black & White & sum\\ \hline
+Black  & 756 &  1689 & 2445 \\
+White&1688 &   867 & 2555 \\ \hline
+sum  &2444 &  2556 & 5000
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item If 1st ball is $B$, 2nd is likely to be $W$
+\item And vice versa
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Model of Kerrich's urn experiment}
+Assumption: we are equally likely to draw any ball in urn.
+\begin{columns}[t]
+\column{0.5\textwidth}
+\begin{block}{1st Ball}
+\begin{center}
+$(\circ\;\circ\;\bullet\;\bullet)$
+\end{center}
+We are equally likely to draw black or white
+\end{block}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\column{0.5\textwidth}
+\begin{block}{2nd Ball}
+\begin{center}
+\begin{tabular}{ccc}
+First & Remaining & Prob.\\
+ball  & balls     & of black\\
+\hline
+$\bullet$ & $(\circ\; \circ\; \bullet)$ & $1/3$\\
+\onslide+<4->{$\circ$} &
+ \onslide+<4->{$(\circ\; \bullet\; \bullet)$} &
+ \onslide+<4->{$2/3$}\\
+\end{tabular}
+\end{center}
+\onslide+<5->
+2nd ball usually black if 1st was white,
+and vice versa.
+\end{block}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\begin{center}
+\input{figtree}\\
+\bigskip
+Tree diagram for urn model
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Kerrich's urn experiment: model versus data}
+\begin{center}
+\begin{tabular}{ccc}
+        &            & Observed\\
+        & Theoretical& relative  \\
+  Event & probability& frequency \\
+\hline
+\hline
+$BB$    & 0.167& 0.151 \\
+$BW$    & 0.333& 0.338 \\
+$WB$    & 0.333& 0.338 \\
+$WW$    & 0.167& 0.173 \\
+\hline
+\end{tabular}
+\end{center}
+Theory and observation are not identical,
+but they are close.
+\end{frame}
+
+\begin{frame}
+\begin{center}
+Why do we multiply along branches?
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Conditional probability}
+\begin{itemize}
+\item What is the conditional probability that the 2nd ball is white
+  given that the first was black?
+\pause
+\item $2/3$.
+
+\bigskip
+
+\pause
+\item
+Called a \emph{conditional probability}
+and written
+\[
+\Pr[\hbox{2nd ball white} | \hbox{1st one black}].
+\]
+\item  ``$|$'' is  pronounced ``given.''
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Conditional relative frequencies}
+{\centering
+\begin{tabular}{lrrr}
+First  & \multicolumn{2}{c}{Second ball}\\ \cline{2-3}
+ball & Black & White & sum\\ \hline
+Black  & \bf 756 &\bf \fbox{1689} & \bf 2445 \\
+White&1688 &   867 & 2555 \\ \hline
+sum  &2444 &  2556 & 5000
+\end{tabular}\\}
+\begin{itemize}
+\item
+On trials where the 1st ball was black, how often was the 2nd white?\\
+\pause
+\item
+A fraction $1689/2445$ of the time, or $\approx 0.69$.\\
+\end{itemize}
+\pause This is a conditional relative frequency.  If the number of
+trials is large, this approximates a conditional probability.
+\end{frame}
+
+\begin{frame}
+\renewcommand{\tabcolsep}{4pt}
+The results of 20,000 throws with two dice (Wolf 1850, cited in Bulmer
+1967)
+\begin{center}
+\small
+\renewcommand{\arraystretch}{0.85}
+\begin{tabular}{rrrrrrrrr}
+    & \multicolumn{6}{c}{White}&  &\\ \cline{2-7}
+ Black & 1 & 2 & 3 & 4 & 5 & 6 & $\sum$ &$f$\\ \hline
+    1     & 547 & 587 & 500 & 462 & 621 & 690 & 3407 & .170\\
+    2     & 609 & 655 & 497 & 535 & 651 & \textbf{684}
+                                        & \textbf{3631} & .182\\
+    3     & 514 & 540 & 468 & 438 & 587 & 629 & 3176 & .159\\
+    4     & 462 & 507 & 414 & 413 & 509 & 611 & 2916 & .146\\
+    5     & 551 & 562 & 499 & 506 & 658 & 672 & 3448 & .172\\
+    6     & 563 & 598 & 519 & 487 & 609 & 646 & 3422 & .171\\ \hline
+$\sum$:     & 3246 & 3449 & 2897 & 2841 & 3635 & 3932 & 20000 & 1.000\\
+$f$: & .162 & .172 & .145 & .142 & .182 & .197 & 1.000\\
+\end{tabular}
+\end{center}
+\begin{itemize}
+\item<1->What is the conditional frequency of $W6$ given $B2$?
+\item<2->$684/3631 \approx 0.188$
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Product rule for relative frequencies}
+How often did Kerrich get $B1$ and $W2$?
+\begin{center}
+\begin{tabular}{lrrr}
+First  & \multicolumn{2}{c}{Second ball}\\ \cline{2-3}
+ball & Black & White & sum\\ \hline
+Black  & 756 &\bf \fbox{1689} & 2445 \\
+White&1688 &   867 & 2555 \\ \hline
+sum  &2444 &  2556 & \bf 5000
+\end{tabular}
+\end{center}
+\pause
+A fraction $1689/5000$ of the time.
+\only<3>{%
+\[
+\frac{1689}{5000} = \frac{1689}{2445} \times \frac{2445}{5000}
+\]
+}
+\only<4->{%
+\[
+\overbrace{\frac{1689}{5000}}^{f(B1 \AND W2)}
+=
+\overbrace{\frac{1689}{2545}}^{f(W2|B1)}
+\times
+\overbrace{\frac{2445}{5000}}^{f(B1)}
+\]
+\onslide+<5->{As $N$ increases, relative frequencies $(f)$ become
+probabilities.}
+}
+\end{frame}
+
+\begin{frame}
+\frametitle{Product rule}
+The probability of $A$ and $B$ is
+\[
+\Pr[A \AND B] = \Pr[B|A] \Pr[A]
+\]
+\pause
+This is why we multiply along the branches of a tree diagram.
+\end{frame}
+
+\begin{frame}
+\frametitle{Statistical independence: sampling w/ replacement}
+\begin{center}
+\input{figtreeind}\\
+\bigskip
+$\Pr[W_2 | B_1] = \Pr[W_2 | W_1] = \Pr[W_2] = 1/2$
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Sampling with replacement: model versus data}
+\begin{center}
+\begin{tabular}{ccc}
+        &            & Observed\\
+        & Theoretical& relative  \\
+  Event & probability& frequency \\
+\hline
+\hline
+$BB$    & 0.25& 0.254 \\
+$BW$    & 0.25& 0.255 \\
+$WB$    & 0.25& 0.252 \\
+$WW$    & 0.25& 0.239 \\
+\hline
+\end{tabular}\\
+Data from computer simulation
+\end{center}
+Theory and observation are not identical,
+but they are very close.
+\end{frame}
+
+\begin{frame}
+\renewcommand{\tabcolsep}{4pt}
+\frametitle{Sum rule: $\Pr[\hbox{black 4 or white 5 (or both)}]$}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{0.85}
+\begin{tabular}{rrrrrrrr}
+    & \multicolumn{6}{c}{White}&\\ \cline{2-7}
+ Black & 1 & 2 & 3 & 4 & 5 & 6 & $\sum$\\ \hline
+    1     & 547 & 587 & 500 & 462 & \bf 621 & 690 & 3407\\
+    2     & 609 & 655 & 497 & 535 & \bf 651 & 684 & 3631\\
+    3     & 514 & 540 & 468 & 438 & \bf 587 & 629 & 3176\\
+    4     & \bf 462 & \bf 507 & \bf 414 & \bf 413 & \fbox{\bf 509}
+                                              & \bf 611 & 2916\\
+    5     & 551 & 562 & 499 & 506 & \bf 658 & 672 & 3448\\
+    6     & 563 & 598 & 519 & 487 & \bf 609 & 646 & 3422\\ \hline
+$\sum$:     & 3246 & 3449 & 2897 & 2841 & 3635 & 3932 & \it 20000\\
+\end{tabular}
+\end{center}
+Relative frequency is the sum of the bold-face values
+divided by 20,000.
+\pause
+\[
+f[b4 \OR w5] =
+\overbrace{\frac{2916}{20000}}^{f[b4]}
++ \overbrace{\frac{3635}{20000}}^{f[w5]}
+- \overbrace{\frac{509}{20000}}^{f[b4 \AND w5]}
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Sum rule for probabilities}
+\[
+\Pr[A \OR B] = \Pr[A] + \Pr[B] - \Pr[A \AND B]
+\]
+\end{frame}
+
+\begin{frame}
+\renewcommand{\tabcolsep}{4pt}
+\frametitle{Sum rule again: $\Pr[\hbox{white 3 or white 5}]$}
+For mutually exclusive events, there is nothing to subtract.
+\begin{center}
+\small
+\renewcommand{\arraystretch}{0.85}
+\begin{tabular}{rrrrrrrr}
+    & \multicolumn{6}{c}{White}&\\ \cline{2-7}
+ Black & 1 & 2 & 3 & 4 & 5 & 6 & $\sum$\\ \hline
+  1  & 547 & 587 & \bf 500 & 462 & \bf 621 & 690 & 3407\\
+  2  & 609 & 655 & \bf 497 & 535 & \bf 651 & 684 & 3631\\
+  3  & 514 & 540 & \bf 468 & 438 & \bf 587 & 629 & 3176\\
+  4  & 462 & 507 & \bf 414 & 413 & \bf 509 & 611 & 2916\\
+  5  & 551 & 562 & \bf 499 & 506 & \bf 658 & 672 & 3448\\
+  6  & 563 & 598 & \bf 519 & 487 & \bf 609 & 646 & 3422\\ \hline
+$\sum$:& 3246 & 3449 & 2897 & 2841 & 3635 & 3932 & \it 20000\\
+\end{tabular}\\
+\end{center}
+What is rel.\ frq.\ of white 3 or white 5?%: 2897/20000 + 3635/20000
+\pause
+\[
+f[w4 \OR w5] =
+\overbrace{\frac{2897}{20000}}^{f[w4]}
++ \overbrace{\frac{3635}{20000}}^{f[w5]}
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Bayes's rule}
+\textbf{Problem:} Our emphasis has been on the probability of an
+outcome given a hypothesis. But we often want to know the probability
+of the hypothesis, given the outcome.
+
+\bigskip
+
+\textbf{Example:} The probability the patient is sick given a positive
+result on some test.
+
+\bigskip
+
+Suppose that 0.1\% of people have some disease. When tested for the
+disease 99\% of sick people test positive, but so do 1\% of well
+people. What fraction of those with positive results are really sick?
+\end{frame}
+
+\begin{frame}
+\frametitle{Bayes's rule in terms of counts}
+{\centering\input{figbayes}\\}
+
+\bigskip
+What fraction of those who test positive are really sick?
+\pause
+\[
+\frac{99}{99 + 999} \approx 0.09 \qquad \hbox{Fewer than 1 in 10!}
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Bayes's rule in terms of probabilities}
+Recall the multiplication law:
+\[
+\Pr[A\& B] = \Pr[B] \Pr[A|B] = \Pr[A] \Pr[B|A]
+\]
+Divide through by $\Pr[B]$:
+\[
+\Pr[A|B] = \frac{\Pr[A] \Pr[B|A]}{\Pr[B]} \quad\hbox{(Bayes's rule)}
+\]
+Allows us to calculate $\Pr[A|B]$ from $\Pr[B|A]$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Back to example}
+\[
+\Pr[A|B] = \frac{\Pr[A] \Pr[B|A]}{\Pr[B]} \quad\hbox{(Bayes's rule)}
+\]
+$A$: patient is sick. $\Pr[A] = 1/1000$.
+
+\bigskip
+
+$B$: patient tested positive. $\Pr[B] = (999+99)/100000 = 1098/100000$.
+
+\bigskip
+
+Pr[testing positive if sick] is $\Pr[B|A] = 99/100$.
+
+\bigskip
+
+Using Bayes's rule,
+\[
+\Pr[A|B] = \frac{1/1000 \times 99/100}{1098/100000}
+ = \frac{99}{1098} \approx 0.09
+\]
+This is the same answer we got using counts.
+\end{frame}
+
+\begin{frame}
+\frametitle{Summary}
+
+Sum rule
+\[
+\Pr[A \OR B] = \Pr[A] + \Pr[B] - \Pr[A \AND B]\\
+\]
+
+\bigskip
+Product rule
+\[
+\Pr[A \AND B] = \Pr[A] \Pr[B|A]
+\]
+
+\bigskip
+Bayes's rule
+\[
+\Pr[A|B] = \frac{\Pr[A] \Pr[B|A]}{\Pr[B]}
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Problems}
+\begin{enumerate}
+\item You toss a fair coin twice. What is the probability that the
+number of heads is one? 
+\item You toss two fair dice, one red and one black.  What is the
+probability that you observe either a red 4 or a black 6 (or
+both)?
+\item Imagine a modified version of Kerrich's urn experiment in which each
+trial begins with 3 balls of each color (red and black).  What is the
+probability that, in a single trial, both of the balls drawn are red?
+\end{enumerate}
+\end{frame}

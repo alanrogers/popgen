@@ -1,0 +1,330 @@
+% -*-latex-*-
+\chapter{Genetic Drift\label{ch.drift}}
+
+%This chapter needs to be merged with chapter~\ref{ch.homozygosity}.
+
+\section{The four causes of evolutionary change}
+
+\begin{enumerate}
+\item mutation
+\item selection
+\item migration (a.k.a.\ gene flow)
+\item genetic drift
+\end{enumerate}
+
+\section{What is genetic drift?}
+
+\begin{itemize}
+\item
+It is everything that is left over after you account for the effects
+of mutation, selection, and migration.
+\item
+It consists of all the stochastic (random) effects on allele
+frequencies.  These include everything from Mendelian segregation to
+the risk of accidentally walking in front of a bus.
+\end{itemize}
+How can one possibly model such an ill-defined hodgepodge?
+
+\section{The Wright-Fisher model}
+
+The population does not vary in size.  In each generation, it consists
+of $N$ individuals, each produced by the union of two randomly chosen
+gametes.   
+
+\paragraph{Generating gametes} Each gamete is constructed by the
+following algorithm: (1)~choose a parent at random from among the $N$
+individuals of the previous generation.  (2)~Choose a random half of
+that parent's DNA.  (Don't worry about genetic linkage; we will be
+dealing here with one locus at a time.)  If there are two alleles
+$A_1$ and $A_1$, segregating at some locus, what is the probability
+that the gamete that we construct carries a copy of $A_1$?  If the
+parent was an $A_1A_1$ homozygote, then we are bound to get $A_1$ in
+the gamete.  If the parent was an $A_1A_2$ heterozygote, then the
+gamete has a 50\% chance of carrying $A_1$.  Thus, the algorithm
+generates an $A_1$-bearing gamete with probability $p_1 = P_{11} +
+P_{12}/2$, where $P_{11}$ and $P_{12}$ are the frequencies of
+genotypes $A_1A_1$ and $A_1A_2$ within the parental generation.  Note
+that the formula for $p_1$ is exactly the same as the formula for the
+frequency of $A_1$ among the parents.  Conclusion: The Wright-Fisher
+algorithm for generating gametes is equivalent to drawing genes at
+random with replacement from the parental population.  To clarify this
+idea, many authors have made use of the urn metaphor.
+
+\paragraph{The urn metaphor} In an urn full of balls, a fraction $p$
+of the balls are red and a fraction $1-p$ are black.  Each ball
+represents a gene.  The red balls represent copies of one allele; the
+black ones copies of another.  The fraction $p$ represents the
+frequency of the red allele in the population.  The urn will be used
+to produce a new generation in which there are $N$ diploid
+individuals, or $2N$ genes.  To produce the new generation, we perform
+the following operation $2N$ times: draw a random ball from the urn,
+write down its color, and then return the ball to the urn.  The number
+of red balls drawn represents the number of copies of the red allele
+in the new generation, and similarly for the black balls.  Both
+numbers are random variables.  Their probability distribution was
+taken by Wright and Fisher as a model of the process of genetic drift.
+
+The Wright-Fisher model is undoubtedly simpler than reality, but it
+has been remarkably successful at dealing with the stochastic
+variation in real populations.  Let us be content with it, at least
+for the moment, and ask about its properties.  In the urn, the
+frequency of red balls is $p$.  Let $p'$ denote the frequency of red
+balls among those drawn.  The difference between $p'$ and $p$
+represents the effect of genetic drift.  How large is this difference
+likely to be?
+
+If we repeated the urn experiment over and over, the average value of
+$p'$ would get closer and closer to $p$.  Another way to say this is
+to say that \emph{the expected value of $p'$ equals $p$}.  In
+notation,
+\[
+E[p'] = p
+\]
+where the symbol $E$ represents the ``expectation,'' or average.
+
+But unless $N$ is extremely large, there will be some difference
+between $p'$ and $p$, so we can write
+\[
+p' = p + \epsilon
+\]
+Here, $\epsilon$ (the greek letter ``epsilon'') represents the effect
+of genetic drift.  Its expected value is 0, but its variance is%
+\footnote{To see where this formula comes from, look up the binomial
+  distribution in any text on probability and statistics.}
+\[
+V[\epsilon] = E[\epsilon^2] = \frac{p(1-p)}{2N}
+\]
+Genetic drift is important when this variance is large; unimportant
+when it is small.  The formula captures two influences:
+\begin{enumerate}
+\item Drift is unimportant when $p(1-p)$ is near 0.  This happens when 
+  $p\approx 0$ and also when $p \approx 1$.
+\item Drift is unimportant when $N$ is very large.
+\item Drift is most important when $p \approx 1/2$ and $N$ is small.
+\end{enumerate}
+
+Show a plot of $p$ against $t$.
+
+\input{tabrace}
+
+\section{Classical theory of homozygosity and heterozygosity}
+
+Let $J_t$ represent the probability that two genes chosen at random
+from some population are copies of the same allele.  If the population 
+mates at random, then $J$ will also be the homozygosity.  The gene
+diversity (or heterozygosity) is $H = 1-J$.  Several gene diversity
+estimates are shown in table~\ref{tab.race}.  These statistics
+are affected by several evolutionary forces:
+\begin{enumerate}
+\item Mutations reduce $J$ because they are more likely to make
+  identical genes less similar than to make different genes identical.
+\item Genetic drift tends to move allele frequencies toward 0 and 1.
+  Consequently $2pq$ gets smaller, heterozygosity declines, and
+  homozygosity increases.
+\end{enumerate}
+To measure the effects of these forces, we need a model.  Let us begin 
+with a model dealing only with the first force.
+
+\subsection{Drift only}
+
+Let $J_t$ denote the probability that two genes drawn at random from
+the population of generation $t$ are copies of the same allele.  There 
+is a simple model that relates $J$ in one generation to its value in
+the generation before:
+\[
+J_{t+1} = \frac{1}{2N} + \left(1 - \frac{1}{2N}\right) J_t
+\]
+The first term on the right accounts for the possibility that the two
+genes in generation $t+1$ may be copies of the same gene in generation 
+$t$.  Since there are $2N$ genes in the population, the two genes are
+copies of the same gene with probability $1/(2N)$ and are copies of
+distinct genes with probability $1 - 1/(2N)$.  In the latter case,
+they are by definition copies of the same allele with probability
+$J_t$. 
+
+This model says that each generation's value of $J$ is a weighted
+average of 1 and the previous value of $J$.  Consequently, $J$
+converges toward 1.  We are eventually left with no heterozygotes at
+all.
+
+\subsection{Drift plus mutation}
+
+To make the model interesting, we need to add in some other
+evolutionary force.  Let us add in mutation.  The easiest way to do
+this employs the model of ``infinite alleles,'' which assumes that
+every mutation produces an allele that has never existed before.
+Thus, two genes can be identical only if there has been no mutation
+along the evolutionary path that connects them.  In particular, there
+can have been no mutation during the past generation in the path
+leading to either of our two genes.  If $u$ is the mutation rate per
+generation, then $1-u$ is the probability that no mutation occurs
+along a single evolutionary path during a generation, and $(1-u)^2$ is 
+the probability that neither of our two genes has mutated in the past
+generation.  Thus,
+\[
+J_{t+1} = (1-u)^2 \left(
+\frac{1}{2N} + \left(1 - \frac{1}{2N}\right) J_t
+\right)
+\]
+Population geneticists are not very accurate people and tend to ignore
+whatever they can.  Consider the following:
+\begin{center}
+\begin{tabular}{ccc}
+$u$ & $(1-u)^2$ & $1 - 2u$ \\ \hline
+0.00100 & 0.9980010000 & 0.99800\\ 
+0.00010 & 0.9998000100 & 0.99980\\
+0.00001 & 0.9999800001 & 0.99998\\ \hline
+\end{tabular}
+\end{center}
+The smaller the value of $u$, the less the difference between
+$(1-u)^2$ and $1-2u$.  Since mutation rates are very small numbers,
+population geneticists never trouble themselves about the difference
+between $(1-u)^2$ and $1-2u$.  In the present case, $1-2u$ makes the
+algebra simpler.  Similarly, if $u$ is small and $N$ is large,
+$(1-2u)/(2N)$ is hardly different from $1/(2N)$.  
+Applying both simplifications gives
+\[
+J_{t+1} \approx \frac{1}{2N} + \left(1-2u - \frac{1}{2N}\right) J_t
+\]
+This equation doesn't look very different from the one with drift
+only, but it leads to a very different conclusion.  Rather than
+converging toward unity, this one levels out at a different
+equilibrium value, as shown in figure~\ref{fig.homoz}.
+
+\input{fighomoz}
+
+To find the equilibrium algebraically, set $J_{t+1} = J_t$ and solve
+the resulting equation.  The result is
+\begin{equation}
+J = \frac{1}{4Nu + 1}
+\label{eq.homozygosity}
+\end{equation}
+
+The gene diversity (or heterozygosity) is
+\begin{equation}
+H = 1-J = \frac{4Nu}{4Nu + 1}
+\label{eq.H}
+\end{equation}
+
+\subsection{A simpler way: coalescent theory}
+
+Take a random pair of genes and peer backwards down their ancestries.
+So long as the two evolutionary paths remain distinct, two types of
+event may happen in any given generation:
+\begin{description}
+\item[A mutation] A mutation may occur in either path with probability
+  $u$.  The combined probability in both paths is $2u$.%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\footnote{This is only an approximation.  If I really wanted to be
+  accurate, I would say that $(1-u)^2$ was the probability of no
+  mutation along either of the two paths and $1 - (1-u)^2$ the
+  probability of at least one mutation.  But when $u$ is small this
+  latter probability is indistinguishable from $2u$.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item[A coalescent event] The two paths will coalesce when we reach
+  the most recent generation in which they share a common ancestor.
+  This is an event with probability $1/(2N)$.
+\end{description}
+The hazard of an event of either type is
+\[
+2u + 1/(2N)
+\]
+When an event does occur, it is a mutation with probability
+\[
+\frac{2u}{2u + 1/(2N)} = \frac{4Nu}{4Nu + 1}
+\]
+In this case, the two genes are copies of different alleles.  The
+formula gives the probability that two random genes will be copies of
+different alleles---the gene diversity.  Notice that it is identical
+to equation~\ref{eq.H}.
+
+The simplicity of this approach is remarkable.  It has led to profound
+changes in population genetics during the past decade or two.  We will
+return to it in the section on gene genealogies.
+
+\begin{exercise}
+For classical polymorphisms, human gene diversity is roughly
+0.16.  What does this imply about the quantity $4Nu$?  (In the
+literature, $4Nu$ is often denoted by $\theta$, the greek letter
+``theta'').
+\answer
+Expected heterozygosity equals 0.16 when $\theta \approx 0.19$.
+\end{exercise}
+
+\begin{exercise}
+If the mutation rate were $10^{-6}$, what value of $N$ would be
+needed to account for this level of heterozygosity?
+\answer
+If $\theta = 0.19$ then $N = 47,500$.
+\end{exercise}
+
+\begin{exercise}
+Using these same values for $N$ and $u$, suppose that $H$ were equal
+to 0.01 in generation 0.  What would its value be in generation 20?
+\answer
+In generations 0 through 20 the heterozygosity is:\\
+\begin{tabular}{rl}
+Generation & Heterozygosity \\ \hline
+0 & 0\\
+1 & .00001052631579\\
+2 & .00002105249972\\
+3 & .00003157855180\\
+4 & .00004210447203\\
+5 & .00005263026041\\
+6 & .00006315591694\\
+7 & .00006315591694\\
+7 & .00007368144162\\
+8 & .00008420683445\\
+9 & .00009473209544\\
+10 & .0001052572246\\
+11 & .0001157822219\\
+12 & .0001263070874\\
+13 & .0001368318210\\
+14 & .0001473564228\\
+15 & .0001578808928\\
+16 & .0001684052309\\
+17 & .0001789294372\\
+18 & .0001894535117\\
+19 & .0001999774543\\
+20 & .0002105012651\\ \hline
+\end{tabular}
+\end{exercise}
+
+\begin{exercise}
+Using the same value for $N$, plot the variance of $\epsilon$ for
+values of $p$ ranging from 0 through 1.
+\answer
+A few representative values are:\\
+\begin{tabular}{cc}
+$p$ & $p(1-p)/(2N)$\\ \hline
+0 & 0\\
+.25 & $0.1973684211 \times 10^{-5}$\\
+.50 & $0.2631578948 \times 10^{-5}$\\
+.75 & $0.1973684211 \times 10^{-5}$\\
+1.00 & 0\\                               
+\end{tabular}
+\end{exercise}
+
+\begin{exercise}
+The square root of the variance is called the standard deviation and
+(in this case) provides an estimate of the magnitude of a typical
+value of $\epsilon$.  For what value of $p$ is this standard deviation 
+largest?  How large is it at this value of $p$?
+\answer
+At $p=1/2$, $\sqrt(p(1-p)/(2N)) \approx 0.0016$ 
+\end{exercise}
+
+\begin{exercise}
+Figure~\ref{fig.homoz} assumed that $u=0.005$ and $N=2,500$.  Under
+these assumptions, what is the equilibrium value of $H$?  Is it
+consistent with the figure?
+\answer
+In the figure, $u=0.005$ and $N=2500$, so $\theta = 50$, the
+equilibrium value of heterozygosity is 0.98, and the equilibrium value 
+of homozygosity is 0.02.  This is just what the figure shows.
+\end{exercise}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

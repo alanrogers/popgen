@@ -1,0 +1,489 @@
+\title{Random Variables, Expectations, Variance, and Covariance}
+\author{Alan R. Rogers}
+\date{\today}
+\frame[label=tpage2]{\titlepage}
+
+%\begin{frame}
+%\frametitle{Less and more abstract ways to describe the mean.}
+%\begin{eqnarray*}
+%\hbox{data} &=& 0, 1, 0, 0, 1, 1, 1, 0, 0, 2\\
+%\hbox{mean} &=& \frac{0+1+0+0+1+1+1+0+0+2}{10} = \frac{6}{10}\\[1ex]
+%\pause
+%\hbox{data} &=& x_1, x_2, x_3, x_4, x_5, x_6, x_7, x_8, x_9,x_{10}\\
+%\bar X &=& \frac{x_1+x_2+x_3+x_4+x_5+x_6+x_7+x_8+x_9+x_{10}}{10}\\[1ex]
+%\pause
+%\hbox{data} &=& x_1, x_2, \ldots, x_N\\
+%\bar X &=& \frac{1}{N}\sum_{i=1}^N x_i
+%\end{eqnarray*}
+%\end{frame}
+
+\begin{frame}
+\frametitle{Distributions of counts and of relative frequencies}
+\[
+\hbox{data} = [0, 1, 0, 0, 1, 1, 1, 0, 0, 2]
+\]
+\begin{columns}
+\column<2->{0.5\textwidth}
+\centering
+\begin{tabular}{ccc}
+       &      & Relative\\
+Value  & Count&frequency\\
+\hline
+    0  &   5  & 0.5\\
+    1  &   4  & 0.4\\
+    2  &   1  & 0.1\\
+\cline{2-3}
+       &  10  & 1.0
+\end{tabular}
+\column{0.5\textwidth}
+\onslide+<3->{%
+\begin{block}{Histogram}
+\mbox{\beginpicture
+\setcoordinatesystem units <1cm,0.5cm>
+\setplotarea x from 0 to 3, y from 0 to 5
+\axis bottom invisible ticks withvalues 0 1 2 / at 0.5 1.5 2.5 / /
+\axis right ticks withvalues 0 {0.1} {0.4} {0.5} / at 0 1 4 5 / /
+\axis left ticks withvalues 0 {1} {4} {5} / at 0 1 4 5 / /
+\sethistograms
+\plot
+0 0
+1 5
+2 4
+3 1
+/
+\endpicture}
+\end{block}}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{The mean $(m)$}
+\[
+m = \frac{1}{N}\sum_{i=1}^N x_i
+\]
+where $N$ is sample size and $x_i$ is $i$th data value.
+
+\textbf{Example:} If $x = [3, 2, 2]$, then
+\[
+m = \frac{1}{3}\times (3 + 2 + 2) = 7/3
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Using relative frequencies to calculate the mean}
+\[
+m = \sum_{x} x f_x
+\]
+where $x$ is a sample value and $f_x$ is the relative frequency of
+that value.
+
+\textbf{Example:} If $x = [3, 2, 2]$, then
+\begin{eqnarray*}
+f_2&=&2/3\\
+f_3&=&1/3\\
+m &=& (2 \times 2/3) + (3 \times 1/3) = 7/3
+\end{eqnarray*}
+\end{frame}
+
+\begin{frame}
+\frametitle{Larger example}
+\[
+\hbox{data} = [0, 1, 0, 0, 1, 1, 1, 0, 0, 2]
+\]
+\begin{columns}
+\column{0.4\textwidth}
+\centering
+\begin{tabular}{cc}
+       &  Relative\\
+Value  & frequency\\
+\hline
+    0  &  0.5\\
+    1  &  0.4\\
+    2  &  0.1\\
+\end{tabular}
+\column{0.6\textwidth}
+What is the mean?
+
+\pause
+\bigskip
+
+\begin{eqnarray*}
+m &=& 0\times 0.5 + 1 \times 0.4 + 2 \times 0.1\\
+  &=& 0.4 + 0.2 = 0.6
+\end{eqnarray*}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Measures of variation}
+\begin{itemize}
+\item range of data
+\item interquartile range: range of middle half of data
+\item variance: average of $(x-m)^2$, where $m$ is the mean
+\item square root of variance: the standard deviation
+\end{itemize}
+In population genetics, the variance is most useful.
+\end{frame}
+
+\begin{frame}
+\frametitle{Calculating the variance ($v$)}
+\[
+v = \sum_{x} (x-m)^2 f_x
+\]
+where $m$ is the mean, $x$ is a sample value, and $f_x$ is the
+relative frequency of that value.
+
+\bigskip
+What are the mean and variance of this data set: $[3, 2, 2]$?
+\end{frame}
+
+\begin{frame}
+\frametitle{Calculations}
+\begin{columns}
+\column{0.5\textwidth}
+Frequency distribution:
+{\centering\begin{tabular}{cc}
+       &  Relative\\
+Value  & frequency\\
+\hline
+    2  &  2/3\\
+    3  &  1/3\\
+\end{tabular}\\}
+\pause
+Mean:
+\begin{eqnarray*}
+m &=& 2 \times \frac{2}{3} + 3\times \frac{1}{3}\\
+  &=& 7/3 \approx 2.33
+\end{eqnarray*}
+\column{0.5\textwidth}
+\pause
+Variance:
+\begin{eqnarray*}
+V &=& (2-2.33)^2 \times \frac{2}{3}\\
+  && \mbox{} + (3 - 2.33)^2 \times \frac{1}{3}\\
+  &=& 0.22
+\end{eqnarray*}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+These ideas work not only for relative frequencies but also for
+probabilities.
+\begin{itemize}
+\item<2->
+Frequency distributions become probability distributions.
+\item<3->
+Means become expected values.
+\item<4->
+Nothing else changes.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label=probdist]
+\frametitle{Probability distribution}
+\begin{itemize}
+\item Assigns a probability to every event.
+\item When events have numeric values, the probability distribution
+  translates one number (the event) into another (the probability).
+\item A set of events with associated probabilities is a \emph{random
+variable} (r.v.). 
+\item Distributions of numerical r.v.s are often described using
+mathematical functions.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+  A \textbf{random variable} is a variable whose values occur with
+  particular probabilities.
+
+\small
+  (We would need to modify this slightly for variables that vary along a
+  continuum, such as height or weight.  But I'm going to ignore that
+  distinction here.)
+\end{frame}
+
+\begin{frame}
+\frametitle{Example 1: a fair coin}
+Suppose that $X$ (a random variable) is the number of heads in one toss of
+a fair coin.  The \emph{probability distribution} of $X$ is
+\begin{center}
+\begin{tabular}{cc}
+    & Probability\\
+$X$ & $(p_X)$\\ \hline
+0   & 1/2\\
+1   & 1/2\\
+\hline
+\end{tabular}
+\end{center}
+Probabilities
+\begin{itemize}
+\item lie between 0 and 1,
+\item sum to 1.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problem}
+
+In the previous slide, $X$ was the number (either 0 or 1) of heads in
+one toss of a fair coin. What is the probability distribution of $Y =
+X^2$? 
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Example 2: a loaded die}
+Let $X$ be the number obtained on a roll of the die.  This die is
+``loaded,'' so that 1s and 2s are twice as probable as other
+values.
+
+\centering
+\begin{tabular}{cc}
+$X$ & $(p_X)$\\ \hline
+1   & 0.250\\
+2   & 0.250\\
+3   & 0.125\\
+4   & 0.125\\
+5   & 0.125\\
+6   & 0.125\\
+\hline
+ & 1.0000
+\end{tabular}\\
+\end{frame}
+
+\begin{frame}
+\frametitle{The mean (or expectation) of a random variable}
+
+The mean of $X$ is written $E(X)$ and equals
+\[
+E(X) = \sum_i p_i x_i
+\]
+where $x_i$ is the $i$th value that $X$ can take, and $p_i$ is its
+probability.   
+
+If $X$ is the number obtained on a roll of our loaded die, then
+\begin{eqnarray*}
+E[X] &=& 1 \times 0.25 + 2 \times 0.25 + 3 \times 0.125 \\
+&&\mbox{}
++ 4 \times 0.125 + 5 \times 0.125 + 6\times 0.125\\
+&=& 3
+\end{eqnarray*}
+
+\bigskip
+The same as an average, except that $p_i$ is a probability rather than
+a relative frequency.
+\end{frame}
+
+\begin{frame}{Allele frequency as expectation}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{tabular}{ccc} 
+       &      & Cond.\\
+       & G'type&allele\\
+G'type & freq  & freq\\
+\hline
+$A_1A_1$ & $P_{11}$ & 1\\
+$A_1A_2$ & $P_{12}$ & 0.5\\
+$A_2A_2$ & $P_{22}$ & 0\\
+\end{tabular}
+\column{0.5\textwidth}
+\textcolor{blue}{Allele frequency}
+\begin{eqnarray*}
+p_1 &=& 1 \times P_{11}\\
+    && \mbox{} + 0.5 \times P_{12}\\
+    && \mbox{} + 0 \times P_{22}
+\end{eqnarray*}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{The variance}
+If $\mu$ is the mean of $X$, then its variance is
+\begin{equation}
+V[X] = E[(X - \mu)^2]
+\label{eq.Vdef}
+\end{equation}
+For our loaded die, the mean was $\mu = 3$.  The variance is
+
+\begin{eqnarray*}
+V[X] &=& (1-3)^2 \times 0.25 \\
+&& \mbox{}
++ (2-3)^2 \times 0.25\\
+&& \mbox{}
+ + (3-3)^2 \times 0.125\\
+&& \mbox{}
+ + (4-3)^2 \times 0.125\\
+&&\mbox{}
+ + (5-3)^2 \times 0.125\\
+&& \mbox{}
+ + (6-3)^2\times 0.125\\
+&=& 3
+\end{eqnarray*}
+\end{frame}
+
+\begin{frame}
+\frametitle{A single toss of an unfair coin}
+The probability of ``heads'' is an unknown value $p$.
+
+Your winnings: $X=1$ for heads and $X=0$ for tails. What's the
+probability distribution of $X$? The mean? The variance?
+\end{frame}
+
+\begin{frame}
+\frametitle{Properties of expectations}
+If $X$ and $Y$ are random variables and $a$ is a constant,
+\begin{eqnarray}
+E[a] &=& a\label{eq.E[a]}\\
+E[aX] &=& aE[X]\label{eq.E[aX]}\\
+E[X+Y] &=& E[X] + E[Y]\label{eq.E[X+Y]}
+\end{eqnarray}
+See JEPr for details.
+\end{frame}
+
+\begin{frame}
+\frametitle{Using rules of expectations to re-express the variance}
+Let $\mu = E[X]$. The variance of $X$ is
+\begin{align}
+\onslide<1->{%
+V &= E[(X-\mu)^2] & \hbox{(by Eqn.~\ref{eq.Vdef})}\notag\\
+  &= E[ X^2 - 2\mu X + \mu^2]\notag\\}
+\onslide<2->{%
+ &= E[X^2] - E[2\mu X] + E[\mu^2] & \hbox{(by Eqn.~\ref{eq.E[X+Y]})}\notag\\
+  &= E[X^2] - E[2\mu X] + \mu^2 & \hbox{(by Eqn.~\ref{eq.E[a]})}\notag\\}
+\onslide<3->{%
+  &= E[X^2] - 2\mu E[X] + \mu^2 & \hbox{(by
+    Eqn.~\ref{eq.E[aX]})}\notag\\}
+\onslide<4->{%
+  &= E[X^2] - 2\mu^2 + \mu^2 & \hbox{(by definition of $\mu$)}\notag\\
+  &= E[X^2] - \mu^2\label{eq.V2}}
+\end{align}
+\end{frame}
+
+\begin{frame}
+\frametitle{Variance of our loaded die}
+A moment ago, we found for our loaded die that $E[X] = V[X] = 3$. Let
+us recalculate this using Eqn.~\ref{eq.V2}. We need
+
+\begin{align*}
+E[X^2] &= 1^2 \times 0.25 + 2^2 \times 0.25\\
+& \quad + 3^2 \times 0.125 + 4^2 \times 0.125\\
+& \quad + 5^2 \times 0.125 + 6^2\times 0.125\\
+&= 12
+\end{align*}
+\[
+V = E[X^2] - \mu^2 = 12 - 3^2 = 3
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Association between variables}
+
+{\centering\input{figscatplot}\\[1ex] 
+Positive and negative relationships between
+variables.\\}
+\label{fig.scatplot}
+\end{frame}
+
+\begin{frame}
+\frametitle{Covariance: a measure of association}
+
+\begin{align*}
+C(X,Y) &= \sum_{x,y} (x - E[X])(y-E[Y]) P_{x,y}\\
+       &= E\Bigl[(X - E[X])(Y-E[Y])\Bigr]\\
+       &= E[XY] - E[X] E[Y]
+\end{align*}
+When $X$ and $Y$ are independent, $C(X,Y)=0$.
+\end{frame}
+
+\begin{frame}
+\frametitle{A bivariate probability distribution}
+\begin{columns}
+\column{0.7\textwidth}
+\fbox{\begin{tabular}{cccc}
+$X$ & $Y$ & $P_{X,Y}$ & $(X-E[X])(Y-E[Y])$\\
+\hline
+0 & 0 & 0.4 & +0.25\\
+0 & 1 & 0.1 & --0.25\\
+1 & 0 & 0.1 & --0.25\\
+1 & 1 & 0.4 & +0.25\\
+\end{tabular}}\\[1ex]
+Note: the $P_{X,Y}$ column lists the probabilities of the $(X,Y)$
+pairs. In column~4, $E[X] = E[Y] = 0.5$.\\[0.3\textheight]
+
+\mbox{}
+\column{0.3\textwidth}
+\mbox{}\\[0.5\textheight]
+\mbox{\beginpicture
+  \setcoordinatesystem units <0.7\textwidth,0.7\textwidth> 
+  \setplotarea x from 0 to 1, y from 0 to 1
+  \axis bottom label {$X$} /
+  \axis left label {$Y$} /
+  \axis right /
+  \axis top /
+\setdashes
+\putrule from 0 0.5 to 1 0.5
+\putrule from 0.5 0 to 0.5 1
+\setsolid
+\multiput {$\bullet$} at 
+0 0
+0.07 0
+0 0.07
+0.07 0.07
+1 1
+0.93 1
+1 0.93
+0.93 0.93
+0 1
+1 0
+/
+\endpicture}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Numerical value of covariance in previous slide}
+\begin{align*}
+C(X,Y) &= 0.4 \times 0.25\\
+ & \quad - 0.1 \times 0.25\\
+ & \quad - 0.1 \times 0.25\\
+ & \quad + 0.4 \times 0.25\\
+ & = 0.15
+\end{align*}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problem}
+In Kerrich's urn experiment, suppose you get \$1 for each red ball and
+\$0 for each green one, and let $X$ and $Y$ represent the dollars you
+receive on the two draws within a single trial of the experiment.
+
+Write down the probability distribution of $X$ and $Y$ in tabular
+form. Your table should have columns for $X$, for $Y$, and for the
+joint probability of $X$ and $Y$, i.e. $\Pr[X,Y]$.
+\end{frame}
+
+\begin{frame}
+This is exactly like Fig.~2 of JEPr, which presents the following
+    probability distribution:
+\begin{center}
+\begin{tabular}{cc}
+Event & Prob\\ \hline
+RR & 1/6\\
+RG & 1/3\\
+GR & 1/3\\
+GG & 1/6\\
+\end{tabular}
+\end{center}
+where ``R'' and ``G'' stand for ``red'' and ``green''. Now, ``R''
+becomes ``1,'' ``G'' becomes``0,'' and the probability distribution
+becomes
+\begin{center}
+\begin{tabular}{ccc}
+$X$ & $Y$ & $\Pr(X,Y)$\\ \hline
+1 & 1 & 1/6\\
+1 & 0 & 1/3\\
+0 & 1 & 1/3\\
+0 & 0 & 1/6\\
+\end{tabular}
+\end{center}
+\end{frame}

@@ -1,0 +1,28 @@
+from math import sqrt
+
+def dochisq(e, s, x):
+    chisq = 0.0
+    print "%3s %4s %9s %8s %8s" % ("die", "obs", "deviation", "Z", "chisq")
+    for i in range(len(x)):
+        y = x[i]
+        dev = y-e
+        z = dev/s
+        x2 = dev*dev/e
+        print "%3d %4d %9.2f %8.2f %8.2f" % (i+1, y, dev, z, x2)
+        chisq += x2
+    return chisq
+
+
+r = [3407,3631,3176,2916,3448,3422]
+w = [3246,3449,2897,2841,3635,3932]
+e = 20000.0/6.0
+s = sqrt(20000 * (1.0/6) * (5.0/6))
+
+print "red:"
+chisq_r = dochisq(e, s, r)
+print "ChiSq:", chisq_r
+
+print "white:"
+chisq_w = dochisq(e, s, w)
+print "ChiSq:", chisq_w
+

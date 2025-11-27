@@ -1,0 +1,335 @@
+% -*-latex-*-
+%\documentclass[handout]{beamer}
+\documentclass[]{beamer}
+\usepackage{etex}
+
+\let\latexput\put
+\usepackage{pictex}
+\let\pictexput\put
+\let\put\latexput
+
+\setbeamercovered{transparent}
+\setbeamertemplate{footline}[frame number]
+\author{Alan R. Rogers}
+\date{\today}
+\title{Superarchaic Admixture}
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Early to middle Pleistocene of Eurasia}
+
+\begin{columns}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{atapuerca5.png}
+\column{0.5\textwidth}
+\raggedleft
+
+$\sim$1.8~mya: \emph{Homo erectus} evolves in Africa, spreads into Eurasia
+
+\bigskip
+
+$\sim$550 kya: Late Acheulean appears in Europe.
+
+\bigskip
+
+$\sim$430 kya: large-brained hominins at Sima de los Huesos
+
+\bigskip
+
+Similar fossils and tools occur earlier in Africa.
+
+\bigskip
+
+$\Rightarrow$ African invasion of Europe early in Middle Pleistocene.
+\end{columns}
+
+\bigskip
+
+\pause
+\raggedleft
+What can genetics tell us about this period?
+\end{frame}
+
+\begin{frame}
+\frametitle{\emph{Legofit}: estimates deep population history in
+  subdivided populations}
+\begin{itemize}
+\item Unaffected by recent inbreeding or changes in population size.
+\item Sensitive only to the distant past.
+\item Estimates gene flow and the sizes and separation times of
+  ancestral populations.
+\item New version is orders of magnitude faster.  
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Population network (now outdated)}
+\centering\input{figxynd}\\[1ex]
+$X$, Africa; $Y$, Europe; $N$, Neanderthal; $D$, Denisovan\\
+\end{frame}
+
+\begin{frame}
+\frametitle{Gene genealogies and nucleotide site patterns}
+\begin{columns}
+\column{0.6\textwidth}
+\centering\input{fighyparch}\\[1ex]
+\column{0.4\textwidth}
+\raggedleft
+Gene genealogy within population network.
+
+\bigskip
+
+Mutation on red branch $\rightarrow$ \emph{site pattern} \textcolor{red}{$d$}.
+
+\bigskip
+
+Blue branch $\rightarrow$ \textcolor{blue}{$xyn$}.
+
+\bigskip
+
+0, ancestral allele; 1, derived (mutant) allele.
+
+\bigskip
+
+Data: frequencies of site patterns across autosomes
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Observed Site Pattern Frequencies (excl. Vindija)}
+\begin{columns}
+\column{0.6\textwidth}
+\includegraphics[width=\linewidth]{xyad-frq.pdf}\\
+
+\medskip
+
+\centering
+(fraction of nucleotide sites exhibiting each pattern)\\
+\column{0.4\textwidth}
+\raggedleft
+$x$, Africa; $y$, Europe; $a$, Altai Neanderthal; $d$, Denisovan.
+
+\bigskip
+
+Pattern $xy$ is common because populations $X$ and $Y$ share ancestry.
+
+\bigskip
+
+Ditto $ad$.
+
+\bigskip
+
+Confidence intervals are so small they look like dots.
+
+\bigskip
+
+Goal: infer history from similar data, but including Vindija.
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Estimation}
+\begin{enumerate}
+\item Maximize composite likelihood, a function of sizes and
+  separation times of populations, and rates of gene flow.
+\item Old Legofit used simulations to estimate likelihood. New
+  algorithm is deterministic.  
+\item Uncertainties by moving-blocks bootstrap.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{In 2017, we fit model $\alpha$ to the data}
+\centering\input{figxynd}\\[1ex]
+$X$, Africa; $Y$, Europe; $N$, Neanderthal; $D$, Denisovan\\
+\end{frame}
+
+\begin{frame}
+\frametitle{Residual error from model $\alpha$}
+\begin{columns}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{xyvad-a-b2-resid.pdf}
+\column{0.5\textwidth}
+\raggedleft
+Red asterisks: fitted model. Blue circles: bootstrap replicates.
+
+\bigskip
+
+If model fit well, all points would be near 0.
+
+\bigskip
+
+Discrepancies show that something is missing from the model. What?
+\end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ideas from the literature}
+  \begin{itemize}
+    \item[$\beta$] Gene flow from a ``superarchaic'' population into Denisovans
+      (Pr{\"u}fer et al 2014)
+    \item[$\gamma$] Gene flow from early modern humans into Neanderthals
+      (Kuhlwilm et al 2016)
+  \end{itemize}
+
+  \bigskip
+  
+  These improved the fit but were still unsatisfactory.
+
+  \bigskip
+
+  What else is missing?
+\end{frame}
+
+\begin{frame}
+\frametitle{Think back to what I said about the Middle Pleistocene}
+
+\begin{columns}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{atapuerca5.png}
+\column{0.5\textwidth}
+\raggedleft
+
+$\sim$600 kya Eurasia invaded by large-brained hominins, who probably
+came from Africa.
+
+\bigskip
+
+Ancestors of Neanderthals and Denisovans: let's call them
+``neandersovans.''
+
+\bigskip
+
+But Eurasia had been inhabited since $\sim$2~my ago by ``superarchaics.''
+
+\bigskip
+
+Neandersovans would have met, and maybe interbred with,
+superarchaics. Suggests a fourth episode of admixture.
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\centering
+\input{figa}~\input{figab}\\[2ex]
+\input{figabc}~\input{figabcd}\\
+\end{frame}
+
+\begin{frame}
+\begin{columns}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{xyvad-a-b2-resid.pdf}
+\column{0.5\textwidth}
+\includegraphics[width=\linewidth]{xyvad-abcd-b2-resid.pdf}
+\end{columns}
+
+\bigskip
+
+\centering
+\small Key: \textcolor{red}{*}, real data; \textcolor{blue}{$\circ$},
+bootstrap replicates.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Model selection and model averaging}
+
+  Model selection by \textbf{bepe}, the bootstrap estimate of
+  predictive error (Efron \& Tibshirani 1993).  Prefer model with
+  smallest bepe value. Avoids overfitting. 
+
+\bigskip  
+
+Model averaging by \textbf{booma}, bootstrap model averaging
+(Buckland, Burnham, and Augustin, 1997). Weight of $i$th model is
+fraction of bootstrap replicates in which that model is
+best. Parameter estimates are weighted averages of per-model
+estimates. Addresses identifiability problems.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Evaluating the models}
+{\centering
+\begin{tabular}{lcc}
+Model & bepe & weight\\
+\hline
+$\alpha$ &$1.16 \times 10^{-6}$ & 0\\
+$\alpha\delta$ & $0.87 \times 10^{-6}$ & 0\\
+$\alpha\gamma$ & $0.62 \times 10^{-6}$ &  0\\
+$\alpha\gamma\delta$ & $0.44 \times 10^{-6}$ & 0\\
+$\alpha\beta$ & $0.18 \times 10^{-6}$ &  0\\
+$\alpha\beta\gamma$ & $0.17 \times 10^{-6}$ & 0\\
+$\alpha\beta\delta$ & $0.15 \times 10^{-6}$ & 0.16\\
+$\alpha\beta\gamma\delta$ & $0.13 \times 10^{-6}$ & 0.84\\
+\end{tabular}\\}
+
+\bigskip
+
+Reject models with weight zero: their disadvantage is large compared
+with variation in repeated sampling.
+
+\bigskip
+
+Strong support for two episodes of superarchaic admixture ($\beta$ and
+$\delta$); qualified support for admixture ($\gamma$) from early
+moderns into Neanderthals.
+\end{frame}
+
+\begin{frame}
+\begin{columns}
+  \column{0.6\textwidth}
+  \textcolor{blue}{\Large Parameter estimates}\\[1ex]
+\includegraphics[width=\linewidth]{bmadot.pdf}\\
+\column{0.4\textwidth}
+\flushright
+
+Superarchaic population separated $\sim$2~mya. It was large---between
+20,000 and 50,000---or deeply subdivided.
+
+\bigskip
+
+neandersovan population ($N_{ND}$) was tiny, and split early ($T_{ND} >
+700$~kya) to form Neanderthals and Denisovans.
+
+\bigskip
+
+$\sim$3\% admixture into neandersovans from superarchaics.
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Summary}
+
+Superarchaics separated from other hominins $\sim$2~mya. They may
+represent the earliest Eurasians. Their population was either large or
+deeply subdivided.
+
+\bigskip
+
+$\sim$750~kya, neandersovans separated from an African population,
+expanded into Eurasia, endured a bottleneck, interbred with
+superarchaics, and then ($\sim$730~kya) split into eastern and western
+subpopulations (Denisovans \& Neanderthals).
+\end{frame}
+
+\begin{frame}
+\frametitle{Acknowledgements}
+
+\textbf{Collaborators:}
+Nathan Harris, Alan Achenbach, Kiela Gwin, Mitchell Lokey, Daniel Tabin.
+
+\bigskip
+
+\textbf{Support:}
+NSF BCS~1638840; NSF BCS~1945782;
+Center for High Performance Computing,  U.\ of Utah.
+\end{frame}
+
+\end{document}
+
+\begin{frame}
+\frametitle{}
+
+\end{frame}
+

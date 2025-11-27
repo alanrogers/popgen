@@ -1,0 +1,210 @@
+%-*-latex-*-
+\chapter{Study Guide for Quiz 1}
+\section{Polymorphisms}
+A \emph{polymorphism} is a genetic system in which there is variation
+among individuals.  \emph{Classical polymorphisms} are those we knew
+about before roughly 1980.  \emph{Molecular polymorphisms} are those
+we've found out about since then.  Classical polymorphisms include
+blood groups and enzyme polymorphisms.  Molecular polymorphisms
+include 
+\begin{description}
+\item[restriction fragment length polymorphisms (RFLPs)]  These are
+obtained using an enzyme that cuts the DNA wherever it finds a
+particular pattern, such as ATAGGC.  If two chromosomes have this
+pattern in exactly the same places, then the enzyme will cut the
+two chromosomes into pieces of the same size.  Otherwise, the pieces
+obtained from one chromosome will differ from the pieces obtained from
+the other.  This generates data that are fairly hard to analyze, and
+the method is now obsolete.
+\item[DNA sequences] This kind of data is like examining the DNA
+directly.  You have the complete sequence of nucleotides for some
+specific segment of each chromosome that you study.
+\item[tandem repeat polymorphisms] A particular sequence is repeated
+again and again.  For example, if the repeated sequence is AT, then
+one chromosome might have a sting of three repeats (ATATAT) and
+another might have a string of five (ATATATATAT).  They are called
+``tandem'' repeats because the repeated units are stuck together
+end-to-end.  There are several categories of repeat polymorphism:
+\begin{description}
+\item[Minisatellite] the repeated unit is fairly large
+\item[Microsatellite] the repeated unit is small, commonly 2, 3, or 4
+nucleotides.  Microsatellites are also called \emph{Short Tandem
+Repeats} (STRs).
+\end{description}
+\item[dispersed repeat polymorphisms] These also consist of a sequence
+that is repeated again and again, but in these polymorphisms the
+repeated units are adjacent to one another.   They are not even close
+together.  They are widely dispersed within the genome.  The \emph{Alu
+polymorphisms} are an example of this class of polymorphism.
+\end{description}
+
+Know the characteristics of 
+\begin{enumerate}
+\item Classical polymorphisms, which include blood groups, enz
+\end{enumerate}
+
+\section{Random Mating}
+
+A population evolves as its allele frequencies change.  To understand
+evolution, then, we must understand the forces that cause allele
+frequencies to change.  As a baseline, however, it is useful first to
+consider a population that is not changing.
+
+There are two principles to understand here: (1)~the Hardy-Weinberg
+principle, and (2)~the Wahlund principle.  
+
+\subsection{The Hardy-Weinberg Principle}
+
+The question addressed here is, How do the frequencies of the
+genotypes at some locus relate to the frequencies of the alleles?
+When the population is large, mating at random, and unaffected by
+selection or migration from the outside, the answer is very simple.
+(See Hartl's p.~25).
+
+When a population's genotype frequencies are consistent with the
+predictions of the Hardy-Weinberg formula, the population is said to
+be at \emph{Hardy-Weinberg equilibrium}.
+
+You need to understand (1)~the HW formula, and (2)~the distinction
+between the observed genotype frequencies and the genotype frequency
+predicted at HW equilibrium.
+
+\subsection{The Wahlund Principle}
+
+The question addressed here is, How do the genotype frequencies within
+each group of a subdivided population relate to the genotype
+frequencies within the population as a whole.  Hartl discusses this on
+pages 106--107.  To focus on the effect of subdivision per se, it is
+useful to deal with a hypothetical population in which each
+subdivision mates at random.  It turns out that the more the groups
+differ in their gene frequencies, the fewer heterozygotes there will
+be in the group as a whole.  If groups all have the same allele
+frequencies, then the heterozygosity is unaffected.  But if the groups
+differ at all, the heterozygosity of will be diminished.  The
+heterozygosity in the population as a whole is
+\[
+H = 2 \bar p (1- \bar p) - 2 V(p)
+\]
+where $\bar p$ is the allele frequency within the population as a
+whole, and $V(p)$ is the variance among subpopulations in allele
+frequencies. 
+
+Your first lab assignment provided an illustration of this principle,
+although I didn't give you this formula then.  You found that that the
+expected (i.e. Hardy-Weinberg) heterozygosity within the group as a
+whole was less than the average expected heterozygosity with the
+subpopulations. 
+
+\begin{example}
+If there are two groups of equal size with allele frequencies 0.2 and
+0.3, then what (a)~heterozygosity would be expected in the group as a
+whole.  (b)~If the groups were mixed together and allowed to mate at
+random for one generation, what would happen to the heterozygosity?
+(For part b, assume that the population is so large that genetic drift
+does not change $\bar p$.
+\end{example}
+\begin{showanswer}
+The the allele frequency within the population as whole is
+\[
+\bar p = (0.2 + 0.3)/2 = 0.25
+\]
+The variance in allele frequency is
+\begin{eqnarray*}
+V(p) &=& 1/2 \times (0.2 - 0.25)^2 + 1/2 (0.3 - 0.25)^2\\
+     &=& 0.0025
+\end{eqnarray*}
+(a)~The Wahlund formula gives the heterozygosity as
+\[
+H = 2 \times 0.25 \times 0.75 - 2 \times 0.0025 = 0.370
+\]
+(b)~If the population were mixed together and allowed to mate at
+random, the overall allele frequency would not change, and the
+heterozygosity would become
+\[
+H = 2 \times 0.25 \times 0.75  = 0.375
+\]
+\end{showanswer}
+
+\section{Inbreeding}
+
+Inbreeding occurs whenever relatives mate, and it changes genotype
+frequencies.  Instead of the Hardy-Weinberg formula, the genotype
+frequencies at a locus with two alleles become
+\begin{center}\begin{tabular}{crcl}
+Unordered\\
+Genotype & \multicolumn{3}{c}{Frequency}\\ 
+\hline\hline
+$AA$     & $p^2$     &$+$& $p(1-p)F$\\
+$Aa$     & $2p(1-p)$ &$-$& $2p(1-p)F$\\
+$aa$     & $(1-p)^2$ &$+$& $p(1-p)F$\\
+\hline
+\end{tabular}\end{center}
+Can you see that this is equivalent to the formula that Hartl gives on
+p.~55? 
+
+Here, $F$ is called the \emph{inbreeding coefficient} or the
+\emph{fixation index}.  
+
+An inbreeding coefficient is a probability---the probability that two
+random genes, each drawn from a different individual, are copies of
+the same gene in some ancestor.  To calculate $F$, we must first
+specify which generation the ancestor lived in.  Then the $p$ in the
+formula is the allele frequency in that generation.  In other words,
+$p$ is the allele frequency in the \emph{reference population}.
+
+
+\subsection{Pedigree inbreeding} 
+
+Pedigree inbreeding is calculated as Hartl describes on p.~61.  The
+base population is the generation at the top of the pedigree.  Suppose
+we have genealogical data that goes back 4 generations in one
+population and 12 generations in another.  Then the reference
+population comprises the ancestors who lived 4 generations back in the
+first population, and comprises those 12 generations back in the
+other.  Other things being equal, the $F$s of the first population
+will on average be smaller than those in the second.
+
+\subsection{Random inbreeding} 
+
+You had two parents, each of them had two parents, and so on back into
+the past.  Ten generations back, you had $2^{10}$ (about a thousand)
+ancestors.  Twenty generations back, you had about a million.  Thirty
+generations back, about a billion.  But thirty generations ago was
+about the time of the Norman conquest of England, and there were
+surely fewer than a billion people on the planet at that time.  The
+conclusion is inevitable: some of those ancestors must have been the
+same people, and you are inbred.  All of us are.  This inbreeding
+occurs even in a population that mates at random.  The larger the
+population, the more slowly inbreeding accumulates.
+
+There is a simple formula for calculating random inbreeding, which
+Hartl gives on p.~83.  In a population of size 1 million, the
+inbreeding coefficient after 30 generations is
+\[
+F_{30} = 1 - (1 - 1/(2\times 1,000,000))^30 = 0.000015
+\]
+The expected heterozygosity after this much time is
+\[
+H_{30} = 2p(1-p) (1- 0.000015)
+\]
+even if the population is mating at random.  But wait a minute---if
+the population is mating at random, then the Hardy-Weinberg principle
+says that the expected heterozygosity is
+\[
+H_{0} = 2p(1-p)
+\]
+How can these formulas both be right?  The trick is that the $p$s in
+the two formulas are different.  The $p$ in $H_{30}$ is the allele
+frequency at the time of William the Conqueror, 30 generations ago.
+The $p$ in $H_0$ is the current allele frequency.
+
+Other topics:
+
+\begin{enumerate}
+\item drift
+\item mutation
+\item mutation in microsatellites
+\item migration
+\item selection
+\item probability
+\end{enumerate}

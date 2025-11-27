@@ -1,0 +1,1 @@
+path c:\python24;%PATH%

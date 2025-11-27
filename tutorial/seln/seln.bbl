@@ -1,0 +1,27 @@
+\begin{thebibliography}{4}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{{\tt #1}}\fi
+
+\bibitem[Charlesworth and Charlesworth(2010)]{Charlesworth:EEG-10}
+Brian Charlesworth and Deborah Charlesworth.
+\newblock {\em Elements of Evolutionary Genetics}.
+\newblock Roberts, 2010.
+
+\bibitem[Crow and Kimura(1970)]{Crow:IPG-70}
+James~F. Crow and Motoo Kimura.
+\newblock {\em An Introduction to Population Genetics Theory}.
+\newblock Harper and Row, New York, 1970.
+
+\bibitem[Haldane(1932)]{Haldane:CE-32}
+J.~B.~S. Haldane.
+\newblock {\em The Causes of Evolution}.
+\newblock Cornell University Press, Ithaca, 1932.
+
+\bibitem[Wright(1969)]{Wright:TGF-69-II}
+Sewall Wright.
+\newblock {\em The Theory of Gene Frequencies}, volume~2 of {\em Evolution and
+  the Genetics of Populations}.
+\newblock University of Chicago Press, Chicago, 1969.
+
+\end{thebibliography}

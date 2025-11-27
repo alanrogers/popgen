@@ -1,0 +1,48 @@
+% -*-latex-*-
+\def\hunit{0.042\textwidth}
+\let\put\pictexput
+\beginpicture
+\small
+\renewcommand{\baselinestretch}{1}  
+\setcoordinatesystem units <\hunit, 3.5\textheight>
+\setplotarea x from 0 to 20, y from 0 to 0.16
+\axis left
+  ticks numbered from 0.00 to 0.15 by  0.05 /
+\axis bottom 
+  label {$i$} ticks
+  numbered from 0 to 20 by  5 /
+%\put {$\begin{array}{rcl}
+%                 \hbox{Mean} &=& 8.44\\
+%	         \hat\theta_0 &=& 0\\
+%                 \hat\theta_1 &=& 584.2\\
+%	         \hat\tau &=& 8.438\\
+%                 MAE &=& 0.0082\\
+%                 \hbox{Roughness} &=& 0.0096\\
+%                 $S$ &=& 103/630
+%                 \end{array}$} [rt] at 24 0.16
+%Asian Data
+\multiput {$\circ$} at
+   0 0.001709 1 0.001709 2 0.003759 3 0.010253
+   4 0.044771 5 0.068353 6 0.096719 7 0.133288 8 0.139781
+   9 0.160971 10 0.129528 11 0.091593 12 0.063568 13 0.032468
+   14 0.014696 15 0.005810 16 0.000684 17 0.000342
+/
+%%%Theoretical dist: full history
+%\plot  0 0.001922  1 0.003504  2 0.009283  3 0.023013  4 0.046639
+%       5 0.077497  6 0.108218  7 0.129969  8 0.136795  9 0.128083
+%      10 0.107981 11 0.082780 12 0.058182 13 0.037752 14 0.022747
+%      15 0.012793 16 0.006746 17 0.003348 18 0.001569 19 0.000697
+%      20 0.000294
+%/
+%theoretical: equilibrium w/ theta=8.438483
+\plot  0 0.105949  1 0.094724  2 0.084688  3 0.075715  4 0.067693
+       5 0.060521  6 0.054109  7 0.048376  8 0.043251  9 0.038669
+      10 0.034572 11 0.030909 12 0.027634 13 0.024706 14 0.022089
+      15 0.019748 16 0.017656 17 0.015785 18 0.014113 19 0.012618
+      20 0.011281
+/
+\setbox0=\hbox{$\nearrow$}
+\put {\lower\ht0\hbox{Mut-Drift equil.}$\nearrow$} [tr] at 8 0.043251
+%\setsolid
+\endpicture
+\let\put\latexput

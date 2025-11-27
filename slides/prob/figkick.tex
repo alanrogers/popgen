@@ -1,0 +1,29 @@
+% Data from von Bortkiewicz's (1898) 
+\mbox{\beginpicture
+\setcoordinatesystem units <0.2in, 0.028cm>
+\setplotarea x from 0 to 6, y from 0 to 109
+\axis left shiftedto x=-0.25 
+  ticks withvalues 0.00 0.25 0.50 / at 0 50 100 / /
+\axis bottom label {Deaths per corps per year}
+  ticks withvalues 0 2 4 / at 0.5 2.5 4.5 / /
+% Observed
+\multiput {$\bullet$} at
+0.5  109
+1.5  65
+2.5  22
+3.5   3
+4.5   1
+5.5   0
+/
+\sethistograms
+% Poisson
+\plot
+   0  0
+   1  108.7 
+   2  66.3 
+   3  20.2
+   4  4.1
+   5  0.6
+   6  0.1
+/
+\endpicture}

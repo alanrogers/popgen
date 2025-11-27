@@ -1,0 +1,272 @@
+%-*-latex-*-
+\pagenumbering{arabic}
+\chapter{Allele Frequencies in Subdivided Populations}
+\label{ch.genefrq}
+
+This project will give you a little hands on experience in dealing
+with genetic data.  You will get practice in (1)~computing gene
+frequencies from genotype frequencies, (2)~using the Hardy-Weinberg
+principle to predict what genotype frequencies would be under random
+mating, (3)~comparing observed with predicted genotype frequencies,
+and (4)~figuring out what such comparisons tell us about the
+populations involved.  Before starting, you should read Hartl's
+chapter~1.  Before explaining the assignment, I will go over some
+things that you will have to understand in order to do it.
+
+\begin{table}
+\centering
+\caption{Transferrin Data from 100 Baboons \citep[p.~56]{Jolly:PAA-??}}
+\label{tab.PollyJog}
+\begin{tabular}{|rrrr|}
+\multicolumn{4}{c}{Genotype counts}\\
+\hline
+        &\multicolumn{3}{c|}{Number of}\\ \cline{2-4}
+Genotype& individuals &$C$ genes&$D$ genes\\ \hline\hline
+$CC$    &          80 &      160&       0\\
+$CD$    &          15 &       15&      15\\
+$DD$    &           5 &        0&      10\\ \hline
+Total   &         100 &      175&      25\\ \hline
+\end{tabular}\\[12pt]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{tabular}{|rr@{$\;=\;$}c@{$\;=\;$}l|}
+\multicolumn{4}{c}{Genotype Frequencies}\\
+\hline
+Genotype & \multicolumn{3}{c|}{Frequency}\\ 
+\hline\hline 
+$CC$ &$P$&80/100&0.80\\
+$CD$ &$H$&15/100&0.15\\ 
+$DD$ &$Q$& 5/100&0.05\\ 
+\hline
+\hline
+\multicolumn{4}{|c|}{\small Note: $P+H+Q=1$}\\
+\hline
+\end{tabular}\\[12pt]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{tabular}{|rr@{$\;=\;$}c@{$\;=\;$}l|}
+\multicolumn{4}{c}{Allele Frequencies}\\
+\hline
+Allele & \multicolumn{3}{c|}{Frequency}\\ 
+\hline\hline 
+$C$ &$p$&175/200&0.875\\
+$D$ &$q$&25/200&0.125\\
+\hline
+\hline
+\multicolumn{4}{|c|}{\small Notes}\\
+\multicolumn{4}{|c|}{\small $p+q=1$}\\
+\multicolumn{4}{|c|}{\small $p=P+H/2$}\\
+\multicolumn{4}{|c|}{\small $q=Q+H/2$}\\
+\hline
+\end{tabular}\\[12pt]
+\end{table}
+
+\section{Genotype frequencies}
+
+The table~\ref{tab.PollyJog} shows the number of individuals in a
+baboon troop, broken down by genotype at the transferrin locus.
+This table indicates that 15 of the baboons are heterozygotes: they have
+the CD genotype.  It also shows that the troop contains 100 individuals in
+all.  The frequency of the genotype CD is 15/100 -- simply the fraction of
+the troop composed of CD heterozygotes.  Similarly, the frequencies of the
+other genotypes are 80/100 and 5/100.  This is what I mean by the term
+\emph{genotype frequency}.
+
+\section{Heterozygosity}
+
+The frequency of heterozygotes in a population is called its
+\emph{heterozygosity}.   The heterozygosity of the baboon troop is 
+15/100 (or 0.15) at the transferrin locus.  We could also compute
+heterozygosity using other loci, if we had the data.  Geneticists
+often do this and average the results to obtain an overall measure of
+heterozygosity.
+
+\section{Allele frequencies}
+
+From the table above it is clear that there are 175 (=160+15) copies
+of the C allele in this baboon troop, and that there are 200 genes in
+all.  Thus, the frequency of C is 175/200 = 0.875.  This is an
+\emph{gene frequency}. It would be better to call it an \emph{allele
+frequency,} but the other term is firmly entrenched in the literature.
+If you want, you can always construct a table like the one above when
+you want to calculate a gene frequency, but there is an easier way.
+Here is a formula that you may find helpful:
+\[
+p = N_{AA}/N + N_{Aa}/2N = P + H/2
+\]
+Here $p$ stands for the frequency of the A allele, $N_{AA}$ is the number of 
+AA individuals, $N_{Aa}$ is the number of Aa individuals, and $N$ is the 
+population size.   If you plug in the values for the baboon troop, this is
+\begin{eqnarray*}
+p &=& \frac{2\times 80+15}{2\times 100}\\
+  &=& 175/200
+\end{eqnarray*}
+This is the same calculation we did before, and I find this method easier than
+always making tables.  If you don't, don't feel obliged to use it.  You can
+always make tables.
+
+\section{The Hardy-Weinberg principle}
+
+When the individuals in a population mate at random, the genotype
+frequencies among zygotes can be predicted from gene frequencies alone.
+If, at some locus, there are two alleles (A \& a) with frequencies $p$ and
+$q=1-p$, then the Hardy-Weinberg principle predicts that the genotype
+frequencies will be
+\begin{center}
+\begin{tabular}{ccc}
+AA   &      Aa   &         aa\\
+
+$p^2$  &  $2pq$   &        $q^2$\\
+\end{tabular}
+\end{center}
+
+\section{The data}
+
+You will be analyzing genetic data for the MN locus in the human population
+of Dehi, India. They were taken from a paper by Das et.\ al.\ in the
+\emph{Annals of Human Genetics} (Vol. 5, pp. 25-31). As many of you
+probably know, Indian society is highly stratified.  It is divided
+into numerous groups, called castes, between which there is little
+intermarriage.  Das et. al. sampled about 100 individuals in each of
+five castes.  Their sample is broken down by caste and genotype in the
+table below.  As we shall see, these data have a story to tell about
+the population of Delhi.
+\begin{center}
+\begin{tabular}{lrrrr}
+\hline
+Caste       &    MM  &    MN  &    NN &     Total\\
+\hline\hline
+Rajput      &    29  &    16  &    55 &     100\\
+Chamar      &    32  &    13  &    56 &     101\\
+Guijjar     &    40  &    13  &    49 &     102\\
+Ahir        &    45  &     4  &    52 &     101\\
+Jat         &    40  &    13  &    52 &     105\\
+\hline
+Total Pop   &   186  &   59   &  264  &    509\\
+\hline
+\end{tabular}
+\end{center}
+
+\section{The exercise}
+
+\subsection{Step 1}
+
+Convert these counts into genotype frequencies and gene frequencies. You
+should do this separately for each caste.  Then use the last row to 
+compute gene and genotype frequencies for the population as a
+whole.  Make a table like the one above with 
+three columns for genotype frequencies and one for the frequency
+of the M allele. Leave plenty of room for additional columns.
+
+\subsection{Step 2}
+
+What would the genotype frequencies be at Hardy-Weinberg equilibrium?
+Calculate expected frequencies for each genotype and caste, and also
+for the total population.  Add this information to your table.
+
+Recall that the word ``heterozygosity'' refers to the frequency of
+heterozygotes.  You have now computed both the observed heterozygosity in
+each group and that expected at Hardy-Weinberg equilibrium.
+
+\section{Step 3}
+
+In this step we will see how heterozygosity is affected by subdividing
+the population into castes.  In your table you should now have a
+column of Hardy-Weinberg predictions of heterozygosity.  The
+prediction for the whole population is the heterozygosity we would
+expect if the entire population were mating at random.  Let us call
+this number $H_t$ (the $t$ stands for "total").  The actual
+heterozygosity of the population will differ from $H_t$ for two
+reasons: (1)~the population is subdivided into castes, and (2)~the
+castes themselves may not be at HW equilibrium.  To investigate the
+first of these factors, find the average of the predicted
+heterozygosities of the five castes.  This is the heterozygosity we
+would expect if each caste were an independent, random-mating
+population, and I will call it $H_s$ (the $s$ stands for
+"subdivision").  You will find that $H_s$ is smaller than $H_t$,
+unless there is a mistake in your arithmetic.  This is \emph{always}
+true in subdivided populations, and is an example of what is called
+the Wahlund principle: subdivision always reduces heterozygosity.
+When the gene frequencies in the various groups differ a lot,
+subdivision causes a large reduction in heterozygosity.  In this
+example the reduction is small because the castes have similar gene
+frequencies.
+
+The observed heterozygosity of the population is called $H_o$, and you
+have already computed it: it should be the last item in the second column
+of your table.  It is reasonable to expect that, since heterozygosity has
+been reduced by subdivision, $H_o$ will be smaller than $H_t$.  Is 
+this so with the data used here?
+
+Inbreeding produces an excess of homozygotes and a deficit of
+heterozygotes.  What factors could produce an excess of heterozygotes?
+Here are a few possibilities.
+\begin{description}
+\item[Negative assortative mating]
+If MM genotypes prefer to mate with NN genotypes, an excess of
+heterozygotes would result.  But few people even know their spouses
+genotype at the MN locus, so this explanation seems farfetched.
+
+\item[Selective mortality]
+If MM and NN genotypes tend to die early, we would find an excess of MN's.
+But this pattern has not shown up in other studies, so this is unlikely to
+be important with the data studied here.
+
+\item[Outbreeding]
+In most societies, people avoid marrying close kin, which tends to inflate
+heterozygosity.  On the other hand, they also tend to marry neighbors, which
+has the opposite effect.
+
+\item[Migration]
+When people marry immigrants from populations with different gene
+frequencies, their children are likely to be heterozygotes.   We are told,
+however, that there is almost no intermarriage between castes.
+
+\item[Sampling error]
+It is quite likely that the excess of heterozygotes is an artifact of
+sampling error.  It is difficult to say much on the basis of
+information from one locus.  If we got the same results with a sample
+of 20 loci, I would be pretty curious about the marriage patterns in
+these castes---perhaps they aren't as endogamous as everyone
+thinks---and this might point the way to further research.
+\end{description}
+
+\section{Awk Tips}
+
+We turned the data above into a file called das.dat that looks like
+this:
+\begin{verbatim}
+#Caste          MM      MN      NN      Total
+Rajput          29      16      55      100
+Chamar          32      13      56      101
+Guijjar         40      13      49      102
+Ahir            45       4      52      101
+Jat             40      13      52      105
+\end{verbatim}
+Then we created another file called play.awk that looks likt this:
+\begin{verbatim}
+# Omit comments
+$1 ~ "#" {next};
+# record names and accumulate sums of cols 2-4
+{
+  name[i++]=$1;
+  h1  += $2; 
+  h2 += $3;
+  h3 += $4;
+}
+# executed at end of input
+END{
+# print names  
+  for (i in name ) print i " " name[i];
+# print sums
+  print "Sums: "h1 " " h2 " " h3;
+  
+}
+\end{verbatim}
+Now typing ``awk -f play.awk das.dat'' produces
+\begin{verbatim}
+4 Jat
+0 Rajput
+1 Chamar
+2 Guijjar
+3 Ahir
+Sums: 186 59 264
+\end{verbatim}

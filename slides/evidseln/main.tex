@@ -1,0 +1,492 @@
+%\documentclass[handout]{beamer}
+\documentclass{beamer}
+\usepackage{etex}
+
+\let\latexput\put
+\usepackage{pictex}
+\let\pictexput\put
+\let\put\latexput
+
+\begin{document}
+\title{Detecting Adaptive Evolution}
+\author{Alan R. Rogers}
+\date{\today}
+
+\frame{\titlepage}
+
+\begin{frame}
+  \frametitle{Conventional wisdom}
+
+  Something must have happened to weaken the selective pressure
+  drastically.  We cannot escape the conclusion that man's evolution
+  towards manness suddenly came to a halt.\newline\mbox{}\hfill
+  ---Ernst Mayr 1963
+
+\medskip
+
+  Natural selection has almost become
+  irrelevant in human evolution.  There's been no biological change in
+  humans in 40,000 or 50,000 years.  Everything we call culture and
+  civilization we've built with the same body and brain.\newline
+\mbox{}\hfill  ---Stephen Jay Gould 2000
+
+\medskip
+
+Certainly, human nature is fixed. It's universal and
+unchanging\linebreak---common to every baby that's born, down through
+the history of our species.\newline\mbox{}\hfill ---Helena Cronin
+2000 %\emph{Getting Human Nature Right}.
+
+\medskip
+\pause
+
+\textbf{Is this really true? How could we know?}
+\end{frame}
+
+\begin{frame}
+\frametitle{Signatures of selection}
+\begin{itemize}
+\item High proportion of functional changes
+\item Reduction of gene diversity
+\item Population differences
+\item Excess of singletons
+\item Common allele on long LD block
+\item Singleton density
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Time scale for signatures of selection}
+\includegraphics[width=\textwidth]{scaletree.jpg}
+\end{frame}
+
+\begin{frame}
+\frametitle{PRM1 gene}
+\includegraphics[width=\textwidth]{prm1.jpg}\\
+\begin{itemize}
+\item compacts sperm DNA
+\item 13/14 human-chimp diffs are non-synonymous (6 shown here)
+\end{itemize}
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Proportion of functional changes at FOXP2 locus}
+%\begin{itemize}
+%\item Mutations at FOXP2 cause problems with language.
+%\item Few amino acid changes within mammals $\Rightarrow$ strong
+%  selective constraint. 
+%\item Two mutations on human lineage, neither synonymous
+%$\Rightarrow$ selection 
+%\end{itemize}
+%\mbox{} \hfill (Enard et al 2002)
+%\end{frame}
+%
+%\begin{frame}
+%\frametitle{Evolution of FOXP2}
+%\includegraphics[width=\textwidth]{foxp2tree.jpg}\\
+%\small Vertical bars separate nucleotide substitutions; gray
+%indicates amino-acid changes. \hfill (Enard et al 2002)
+%\end{frame}
+
+\begin{frame}
+\frametitle{Melanocortin 1 receptor (MC1R) locus}
+\begin{itemize}
+\item Affects color of skin and hair.
+\item human-chimp $K_a/K_s = 0.63$: large for a functional protein
+  $\Rightarrow$ weak selective constraint
+\item Yet $K_a/K_s = 0$ among Africans.
+\item On the other hand, $K_a/K_s \gg 0$ among Europeans
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Hypothesis}
+\begin{itemize}
+\item Before loss of body hair: weak selective constraint on MC1R
+\item After loss: constraint strong w/i Africa; weak w/i Europe
+\item Selective sweep at loss of body hair
+\item Neutral diversity within Africa accumulated since the sweep.  
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Time required to generate African neutral $\hat\pi$}
+{\centering\input{figmpd}\\[1ex]}
+\small Trajectories of $\pi$ following a selective
+sweep.  Dotted lines show the half-lives 
+when $N=14,000$; the dashed line shows $\hat\pi$, the
+observed value of $\pi$ in Africa.
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Kell}
+%\includegraphics[width=\textwidth]{kell.jpg}
+%\end{frame}
+
+%\begin{frame}
+%\frametitle{Duffy}
+%\includegraphics[width=\textwidth]{duffy.jpg}
+%\end{frame}
+
+\begin{frame}
+\frametitle{Duffy map}
+\includegraphics[width=\textwidth]{duffymap.jpg}
+\end{frame}
+
+\begin{frame}
+\frametitle{How a ``hard'' selective sweep generates LD}
+\centering\includegraphics[height=0.8\textheight]{sweep-lzw.pdf}\\
+\end{frame}
+
+\begin{frame}
+\frametitle{DNA sequences from region of human lactase gene}
+\input{tablctseq}
+\end{frame}
+
+\begin{frame}
+\frametitle{Huge block of LD around lactase allele in Europe}
+\centering\includegraphics[height=0.8\textheight]{lactaseldblock.jpg}\\
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Idea behind Extended Haplotype Homozygosity (EHH)}
+\begin{columns}
+\column{0.5\textwidth}
+\input{tablctseq2}
+\column{0.55\textwidth}
+\textcolor{blue}{Upper half:} pairs of chromosomes are identical
+at most sites
+
+\bigskip\pause
+
+\textcolor{blue}{Lower half:} pairs identical at fewer sites
+
+\bigskip\pause
+
+This idea underlies EHH.
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Extended haplotype homozygosity (EHH)}
+
+\begin{itemize}
+\item Select chromosomes that carry allele $A$ at focal site.
+\item Within this set, calculate the fraction of pairs that are
+  identical at another site, $x$ base-pairs away.  This is
+  $\hbox{EHH}(x)$.
+\item Do the same for chromosomes that \emph{don't} carry $A$.
+\item \textcolor{blue}{relative EHH} is the ratio of the two.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Decay of EHH with distance along chromosome}
+\includegraphics[width=\textwidth]{voight-ehhdecay.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{EHH at candidate locus: SPAG4}
+ \includegraphics[width=\textwidth]{voight-spag4.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{iHS, the integrated haplotype score}
+\begin{columns}
+\column{0.5\textwidth}
+ \includegraphics[width=\linewidth]{voight-spag4.png}
+\column{0.5\textwidth}
+iHS is a normalized measure of the area between the two curves.
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{EHH at candidate locus: SNTG1}
+ \includegraphics[width=\textwidth]{voight-sntg1.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{EHH at candidate locus: NCOA1}
+ \includegraphics[width=\textwidth]{voight-ncoa1.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{Huge block of LD around lactase allele in Europe}
+{\centering\includegraphics[width=\textwidth]{lac.png}\\}
+\mbox{}\hfill\small (Nathan Harris)\\
+\end{frame}
+
+\begin{frame}
+\begin{columns}
+\column{0.6\textwidth}
+ \includegraphics[width=\textwidth]{drd4-polymorph.pdf}
+\column{0.4\textwidth}
+\raggedright
+Signature of an ongoing selective sweep at DRD4
+\begin{itemize}
+\item Sweeping allele is
+\begin{itemize}
+\item common
+\pause
+\item has low diversity over large region
+\end{itemize}
+\pause
+\item High LD over large region
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Linkage disequilibrium at G6PD}
+\framesubtitle{Left: LD plot; right: haplotype plot}
+ \includegraphics[width=\textwidth]{g6pd-ld.pdf}
+\end{frame}
+
+\begin{frame}
+\frametitle{Study of Voight et al (2006)}
+\begin{itemize}
+\item 800,000 SNPs in 309 people
+\item 431 sweeping loci
+\item Most sweeps started w/i past 10,000 years
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{LD on human chromosome 2 (Voight et al 2006)}
+\includegraphics[width=\textwidth]{voight-loci.pdf}
+\end{frame}
+
+\begin{frame}
+\begin{columns}
+\column{0.65\textwidth}
+ \includegraphics[height=0.9\textheight]{voight-venn.pdf}
+\column{0.35\textwidth}
+Voight et al (2006): 431 sweeping loci.
+
+\medskip
+
+{\color{red} ASN: Asia\\
+\color{green} YRI: Africa\\
+\color{blue} CEU: Europe.}
+
+\medskip
+
+\pause
+Most are sweeping w/i only one continent.
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{IBD5}
+{\centering\includegraphics[height=0.8\textheight]{Huff-IBD5-hitch.png}\\}
+\mbox{}\hfill\footnotesize(Huff et al. 2012)
+\end{frame}
+
+\begin{frame}
+\frametitle{IBD5 and inflammatory bowel disease}
+\begin{itemize}
+\item IBD5 is a 250~kb haplotype associated with Crohn's disease.
+\item Within this region, variant 503F of the OCTN1 gene covaries with Crohn's.
+\item OCTN1 transports the antioxidant ergothioneine.
+\item Why should such a gene cause Crohn's disease?
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Ergothioneine (ET)}
+\begin{itemize}
+\item An antioxidant, synthesized by fungi, and present in most plants
+and animals.
+\item Low in wheat, barley, lentils, and peas---foods domesticated
+early in Middle East.
+\item Early farmers would have lacked ET.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{The OCTN1 protein}
+\begin{itemize}
+\item Transports ergothioneine (ET).
+\item The 503F mutation increases rate of ET transport by 50\%.
+\item Highly conserved in evolution, suggesting strong selection.
+\item Highly specific to ET.
+\item Common in Middle East and Europe; rare elsewhere.
+\item LD extent suggests that 503F mutated 7,750--19,025~y ago.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Distribution of early farming (A) and 503F (B)}
+{\centering\includegraphics[width=\textwidth]{Huff-IBD5-map.png}\\}
+\end{frame}
+
+\begin{frame}
+\frametitle{503F sits on a long LD block}
+{\centering\includegraphics[width=\textwidth]{Huff-IBD5-bifur-503F.png}\\}
+\end{frame}
+
+\begin{frame}
+\frametitle{503L sits on a short LD block}
+{\centering\includegraphics[width=\textwidth]{Huff-IBD5-bifur-503L.png}\\}
+\end{frame}
+
+%\begin{frame}
+%\frametitle{IBD5}
+%{\centering\includegraphics[width=\textwidth]{Huff-IBD5-expression.png}\\}
+%\end{frame}
+
+\begin{frame}
+  \frametitle{Selective sweep reduces diversity at linked loci}
+\begin{columns}
+  \column{0.5\textwidth}
+  \includegraphics[width=\linewidth]{hetztrough}
+
+  \bigskip
+
+  \raggedright
+  Horizontal axis: distance from selected locus in units of $c/s$,
+  where $c$ is recombination rate and $s$ is selection coefficient.
+
+  \column{0.5\textwidth}
+  \raggedright
+
+  Vertical: surviving fraction of neutral heterozygosity at linked
+  loci.
+
+  \bigskip
+
+  Reduction is appreciable at loci for which $c < s/10$. (Gillespie,
+  2004, Fig.~4.4)
+
+  \bigskip
+
+  Purifying selection (against deleterious mutations) also reduces
+  linked variation.
+\end{columns}  
+\end{frame}  
+
+\begin{frame}
+\frametitle{Gene diversity vs.\ distance from exons, scaled by
+  human-rhesus divergence}
+{\centering\includegraphics[width=\linewidth]{Hernandez-loDiversity.png}\\}
+\mbox{}\hfill\small Hernandez et al (2011)\\
+\end{frame}
+
+\begin{frame}
+\frametitle{Gene diversity vs.\ distance from exons, scaled by
+  human-rhesus divergence}
+\begin{columns}
+\column{0.5\textwidth}
+{\centering\includegraphics[width=\linewidth]{Hernandez-loDiversity.png}\\}
+\mbox{}\hfill\small Hernandez et al (2011)\\
+\column{0.5\textwidth}
+Diversity is low near exons. Why?
+
+\bigskip
+
+Old selective sweeps?
+
+\bigskip
+
+Background selection (against deleterious mutations)?
+\end{columns}
+
+\bigskip
+\pause
+
+If it was sweeps, effect should be largest near exons with
+human-specific amino-acid substitutions.
+\end{frame}
+
+\begin{frame}
+\frametitle{But the patterns around synonymous and non-synonymous
+  substitutions are the same.}
+{\centering\includegraphics[width=\textwidth]{Hernandez-synNonSyn.png}\\}
+\mbox{}\hfill\small Hernandez et al (2011)\\
+\end{frame}
+
+\begin{frame}
+\frametitle{But the patterns around synonymous and non-synonymous
+  substitutions are the same.}
+\begin{columns}
+\column{0.5\textwidth}
+{\centering\includegraphics[width=\textwidth]{Hernandez-synNonSyn.png}\\}
+\mbox{}\hfill\small Hernandez et al (2011)\\
+\column{0.5\textwidth}
+If selective sweeps caused the dip in diversity, we would expect the
+dip surrounding non-synonymous substitutions to be wider.
+
+\bigskip
+
+This pattern is seen in \emph{Drosophila simulans}, but not in humans.
+
+\bigskip
+Suggests that classical selective sweeps play only a minor role in
+adaptive evolution among humans.
+\end{columns}
+
+\bigskip
+
+Alternatives: selection from standing variation, and selection on
+quantitative variation. We need tools to study these effects.
+\end{frame}
+
+\begin{frame}
+  \frametitle{The Singleton Density Score (SDS, Field et al 2016)}
+  \begin{enumerate}
+    \item The environment changes, some class of haplotypes
+      becomes advantageous, and begins to grow.
+    \item Growth within this class $\Rightarrow$ recent coalescent
+      events $\Rightarrow$ short terminal branches $\Rightarrow$ few
+      singleton mutations.
+    \item Class of disfavored haplotypes: long
+      terminal branches $\Rightarrow$ more singleton mutations.
+  \end{enumerate}
+  SDS is a normalized estimate of the difference in tip length between
+  the haplotypes linked to two alleles at a nucleotide site.
+
+  \bigskip
+
+  Large samples provide sensitivity to recent selection. A sample of
+  3000 provides sensitivity to selection during $\sim$75~generations,
+  $\sim$2000~y.
+\end{frame}
+
+\begin{frame}
+\frametitle{Selection on height alleles in UK}
+\begin{columns}
+  \column{0.65\textwidth}
+  \includegraphics[width=\linewidth]{Field-height.png}
+  \column{0.35\textwidth}
+  \flushright
+  X axis: strength of GWAS evidence that locus affects stature
+
+  \bigskip
+
+  Y axis: strength of selection for ``tall'' allele.
+
+  \bigskip
+
+  Many of these GWAS associations are not statistically
+  significant. Yet in aggregate, they demonstrate genome-wide
+  selection increasing stature.
+\end{columns}  
+\end{frame}
+
+\begin{frame}
+\frametitle{Summary}
+\begin{itemize}
+\item Signature of a recent classic selective sweep: common derived
+  allele surrounded by extensive LD.
+\item Many such sweeps have been discovered.
+\item Tend to be population-specific.
+\item In humans, classic sweeps account only for a minority of
+  adaptive evolution.
+\item A new method (SDS) makes it possible to study recent selection
+  on standing variation and on polygenic characters.
+\end{itemize}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,21 @@
+README  this file
+
+1ST 2 LABS
+heterozygosity.py    Calculate heterozygosity from list of genotypes
+gfreq.py             Calculate genotype and allele frequencies
+bins.py              Group continuous data into bins
+hapmap.py            Read HapMap data
+
+tabulator.py         module for grouping data into bins
+encode-chr7-1kbp.dat small HapMap data
+encode-chr7-1Mbp.dat big HapMap data
+
+
+LATER
+
+coal.py              Coalescent algorithm
+twoloc.py            Two-locus dynamics: drift and recombination
+
+list_to_phylip.py    convert tree from recursive list to newick format
+
+Makefile             "make clean" deletes crud safely

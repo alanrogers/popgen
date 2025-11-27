@@ -1,0 +1,91 @@
+\mbox{%
+\sf
+\setbox0=\hbox{$\hat H$}
+\beginpicture
+%\valuestolabelleading=0.4\baselineskip
+%\setcoordinatesystem units <0.017in, 2.5in>
+\setcoordinatesystem units <0.003\textwidth, 0.5\textheight>
+\setplotarea x from 0 to 231, y from 0 to 1
+\axis left label {$H$}
+  ticks numbered from 0 to 1 by 1 
+        unlabeled at 0 0.1667 0.2708333 0.375 0.583333 1 /
+        withvalues \box0 / at 0.1667 / /
+\axis top label {Time in generations} 
+  ticks withvalues 0 58 116 173 231 / at 0 58 116 173 231 / /
+\axis bottom label {Half-lives} 
+  ticks withvalues 0 1 2 3 4 / at 0 58 116 173 231 / /
+\axis right /
+\put {\small\begin{tabular}{r@{$\;=\;$}l}
+  $u$ & 0.001\\
+ $2N$ & 100
+\end{tabular}} [rt] at 231 1
+
+%Equilibrium heterozygosity
+\setdashes
+\plot 0 0.1667 231 0.1667 /
+\setsolid
+% hlife 1
+\putrule from 0 0.5833333 to 58 0.5833333 
+\putrule from 58 0.1667 to 58 0.5833333
+% hlife 2
+\putrule from 0 0.375 to 116 0.375 
+\putrule from 116 0.375 to 116 0.1667
+% hlife 3
+\putrule from 0 0.2708333 to 173 0.2708333 
+\putrule from 173 0.2708333 to 173 0.1667
+% Heterozygosity
+% 2N = 100.000000 u = 0.001000 theta = 0.200000 Heq = 0.166667 
+% halfLife = 57.762265
+%   t            H
+\plot
+    0    1.0000000
+    6    0.9441942
+   12    0.8921255
+   17    0.8435437
+   23    0.7982152
+   29    0.7559223
+   35    0.7164616
+   40    0.6796435
+   46    0.6452910
+   52    0.6132389
+%hlife 1 
+%   t            H
+   58    0.5833333
+   64    0.5554304
+   69    0.5293961
+   75    0.5051052
+   81    0.4824410
+   87    0.4612945
+   92    0.4415641
+   98    0.4231551
+  104    0.4059788
+  110    0.3899528
+%hlife 2 
+%   t            H
+  116    0.3750000
+  121    0.3610485
+  127    0.3480314
+  133    0.3358859
+  139    0.3245538
+  144    0.3139806
+  150    0.3041154
+  156    0.2949109
+  162    0.2863227
+  168    0.2783097
+%hlife 3 
+%   t            H
+  173    0.2708333
+  179    0.2638576
+  185    0.2573490
+  191    0.2512763
+  196    0.2456102
+  202    0.2403236
+  208    0.2353910
+  214    0.2307888
+  219    0.2264947
+  225    0.2224882
+%hlife 4 
+%   t            H
+  231    0.2187500
+/
+\endpicture}

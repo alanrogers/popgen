@@ -1,0 +1,10 @@
+u := 'u';
+N := 'N';
+t := 't';
+h := proc(t) 
+  option remember; 
+  if t<=0 then RETURN(0) fi;
+  RETURN(1/N + (1 - 2*u - 1/N)* h(t-1));
+  end;
+u := 0.005;
+N := 5000;

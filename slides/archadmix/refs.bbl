@@ -1,0 +1,190 @@
+\begin{thebibliography}{24}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{{\tt #1}}\fi
+
+\bibitem[Abi-Rached et~al.(2011)Abi-Rached, Jobin, Kulkarni, McWhinnie, Dalva,
+  Gragert, Babrzadeh, Gharizadeh, Luo, Plummer, et~al.]{Abi-Rached:S-334-89}
+L.~Abi-Rached, M.J. Jobin, S.~Kulkarni, A.~McWhinnie, K.~Dalva, L.~Gragert,
+  F.~Babrzadeh, B.~Gharizadeh, M.~Luo, F.A. Plummer, et~al.
+\newblock The shaping of modern human immune systems by multiregional admixture
+  with archaic humans.
+\newblock {\em Science}, 334\penalty0 (6052):\penalty0 89--94, 2011.
+
+\bibitem[Cox et~al.(2008)Cox, Mendez, Karafet, Pilkington, Kingan,
+  Destro-Bisol, Strassmann, and Hammer]{Cox:G-178-427}
+M.P. Cox, F.L. Mendez, T.M. Karafet, M.M. Pilkington, S.B. Kingan,
+  G.~Destro-Bisol, B.I. Strassmann, and M.F. Hammer.
+\newblock Testing for archaic hominin admixture on the {X} chromosome: Model
+  likelihoods for the modern human {RRM2P4} region from summaries of
+  genealogical topology under the structured coalescent.
+\newblock {\em Genetics}, 178\penalty0 (1):\penalty0 427--437, 2008.
+
+\bibitem[Culotta(2005)]{Culotta:S-308-490}
+Elizabeth Culotta.
+\newblock Archaic genes in modern people?
+\newblock {\em Science}, 308:\penalty0 490--491, 2005.
+
+\bibitem[Evans et~al.(2005)Evans, Gilbert, Mekel-Bobrov, Vallender, Anderson,
+  Vaez-Azizi, Tishkoff, Hudson, and Lahn]{Evans:MGR-05}
+Patrick~D. Evans, Sandra~L. Gilbert, Nitzan Mekel-Bobrov, Eric~J. Vallender,
+  Jeffrey~R. Anderson, Leila~M. Vaez-Azizi, Sarah~A. Tishkoff, Richard~R.
+  Hudson, and Bruce~T. Lahn.
+\newblock \emph{Microcephalin}, a gene regulating brain size, continues to
+  evolve under positive selection in anatomically modern humans.
+\newblock submitted, 2005.
+
+\bibitem[Garrigan et~al.(2005{\natexlab{a}})Garrigan, Mobasher, Kingan, Wilder,
+  and Hammer]{Garrigan:G-170-1849}
+D.~Garrigan, Z.~Mobasher, S.~B. Kingan, J.~A. Wilder, and M.~F. Hammer.
+\newblock Deep haplotype divergence and long-range linkage disequilibrium at
+  {X}p21.1 provide evidence that humans descend from a structured ancestral
+  population.
+\newblock {\em Genetics}, 170\penalty0 (4):\penalty0 1849--1856,
+  2005{\natexlab{a}}.
+
+\bibitem[Garrigan et~al.(2005{\natexlab{b}})Garrigan, Mobasher, Severson,
+  Wilder, and Hammer]{Garrigan:MBE-22-189}
+Daniel Garrigan, Zahra Mobasher, Tesa Severson, Jason~A. Wilder, and Michael~F.
+  Hammer.
+\newblock Evidence for archaic {A}sian ancestry on the human {X} chromosome.
+\newblock {\em Molecular Biology and Evolution}, 22:\penalty0 189--192,
+  2005{\natexlab{b}}.
+
+\bibitem[Ghirotto et~al.(2011)Ghirotto, Penso-Dolfin, and
+  Barbujani]{Ghirotto:HB-83-477}
+S.~Ghirotto, L.~Penso-Dolfin, and G.~Barbujani.
+\newblock Genomic evidence for an african expansion of anatomically modern
+  humans by a southern route.
+\newblock {\em Human Biology}, 83\penalty0 (4):\penalty0 477--489, 2011.
+
+\bibitem[Green et~al.(2010)Green, Krause, Briggs, Maricic, Stenzel, Kircher,
+  Patterson, Li, Zhai, Fritz, Hansen, Durand, Malaspinas, Jensen,
+  Marques-Bonet, Alkan, Pr\"{u}fer, Meyer, Burbano, Good, Schultz, Aximu-Petri,
+  Butthof, H\"{o}ber, H\"{o}ffner, Siegemund, Weihmann, Nusbaum, Lander, Russ,
+  Novod, Affourtit, Egholm, Verna, Rudan, Brajkovic, Kucan, Gu\v{s}ic,
+  Doronichev, Golovanova, Lalueza-Fox, de~la Rasilla, Fortea, Rosas, Schmitz,
+  Johnson, Eichler, Falush, Birney, Mullikin, Slatkin, Nielsen, Kelso,
+  Lachmann, Reich, and P\"{a}\"{a}bo]{Green:S-328-710}
+Richard~E. Green, Johannes Krause, Adrian~W. Briggs, Tomislav Maricic, Udo
+  Stenzel, Martin Kircher, Nick Patterson, Heng Li, Weiwei Zhai, Markus
+  Hsi-Yang Fritz, Nancy~F. Hansen, Eric~Y. Durand, Anna-Sapfo Malaspinas,
+  Jeffrey~D. Jensen, Tomas Marques-Bonet, Can Alkan, Kay Pr\"{u}fer, Matthias
+  Meyer, Hern\'{a}n~A. Burbano, Jeffrey~M. Good, Rigo Schultz, Ayinuer
+  Aximu-Petri, Anne Butthof, Barbara H\"{o}ber, Barbara H\"{o}ffner, Madlen
+  Siegemund, Antje Weihmann, Chad Nusbaum, Eric~S. Lander, Carsten Russ,
+  Nathaniel Novod, Jason Affourtit, Michael Egholm, Christine Verna, Pavao
+  Rudan, Dejana Brajkovic, \v{Z}eljko Kucan, Ivan Gu\v{s}ic, Vladimir~B.
+  Doronichev, Liubov~V. Golovanova, Carles Lalueza-Fox, Marco de~la Rasilla,
+  Javier Fortea, Antonio Rosas, Ralf~W. Schmitz, Philip L.~F. Johnson, Evan~E.
+  Eichler, Daniel Falush, Ewan Birney, James~C. Mullikin, Montgomery Slatkin,
+  Rasmus Nielsen, Janet Kelso, Michael Lachmann, David Reich, and Svante
+  P\"{a}\"{a}bo.
+\newblock A draft sequence of the neandertal genome.
+\newblock {\em Science}, 328\penalty0 (5979):\penalty0 710--722, 2010.
+
+\bibitem[Hammer et~al.(2011)Hammer, Woerner, Mendez, Watkins, and
+  Wall]{Hammer:PNA-2011}
+Michael~F. Hammer, August~E. Woerner, Fernando~L. Mendez, Joseph~C. Watkins,
+  and Jeffrey~D. Wall.
+\newblock Genetic evidence for archaic admixture in {Africa}.
+\newblock {\em Proceedings of the National Academy of Sciences, USA}, 2011.
+
+\bibitem[Hardy et~al.(2005)Hardy, Pittman, Myers, Gwinn-Hardy, Fung, de~Silva,
+  Hutton, and Duckworth]{Hardy:BST-33-582}
+J.~Hardy, A.~Pittman, A.~Myers, K.~Gwinn-Hardy, H.~C. Fung, R.~de~Silva,
+  M.~Hutton, and J.~Duckworth.
+\newblock Evidence suggesting that \emph{Homo neanderthalensis} contributed the
+  {H2} {MAPT} haplotype to \emph{Homo sapiens}.
+\newblock {\em Biochemical Society Transactions}, 33:\penalty0 582--585, 2005.
+
+\bibitem[Hawks et~al.(2006)Hawks, Cochran, Harpending, and
+  Lahn]{Hawks:TG-24-19}
+John Hawks, Gregory Cochran, Henry~C. Harpending, and Bruce~T. Lahn.
+\newblock A genetic legacy from archaic {H}omo.
+\newblock {\em Trends in Genetics}, 24\penalty0 (1):\penalty0 19--23, 2006.
+
+\bibitem[Hodgson and Disotell(2008)]{Hodgson:GB-9-206}
+J.A. Hodgson and T.R. Disotell.
+\newblock No evidence of a {N}eanderthal contribution to modern human
+  diversity.
+\newblock {\em Genome Biology}, 9\penalty0 (2):\penalty0 206, 2008.
+
+\bibitem[Kramer et~al.(2001)Kramer, Crummett, and Wolpoff]{Kramer:QI-75-51}
+Andrew Kramer, Tracey~L. Crummett, and Milford~H. Wolpoff.
+\newblock Out of {A}frica and into the {L}evant: Replacement or admixture in
+  {W}estern {A}sia?
+\newblock {\em Quarternary International}, 75:\penalty0 51--63, 2001.
+
+\bibitem[Labuda et~al.(2000)Labuda, Zietkiewicz, and Yotova]{Labuda:G-156-799}
+Damian Labuda, Ewa Zietkiewicz, and Vania Yotova.
+\newblock Archaic lineages in the history of modern humans.
+\newblock {\em Genetics}, 156:\penalty0 799--808, 2000.
+
+\bibitem[Manderscheid and Rogers(1996)]{Manderscheid:AJP-100-1}
+Elisabeth~J. Manderscheid and Alan~R. Rogers.
+\newblock Genetic admixture in the late {P}leistocene.
+\newblock {\em American Journal of Physical Anthropology}, 100:\penalty0 1--5,
+  1996.
+
+\bibitem[Nordborg(1998)]{Nordborg:AJH-63-1237}
+Magnus Nordborg.
+\newblock On the probability of {N}eanderthal ancestry.
+\newblock {\em American Journal of Human Genetics}, 63\penalty0 (4):\penalty0
+  1237--1240, 1998.
+
+\bibitem[Pearson(2004)]{Pearson:EA-13-145}
+Osbjorn Pearson.
+\newblock Has the combination of genetic and fossil evidence solved the riddle
+  of modern human origins?
+\newblock {\em Evolutionary Anthropology}, 13\penalty0 (4):\penalty0 145--159,
+  2004.
+
+\bibitem[Reich et~al.(2010)Reich, Green, Kircher, Krause, Patterson, Durand,
+  Viola, Briggs, Stenzel, Johnson, et~al.]{Reich:N-468-1053}
+D.~Reich, R.E. Green, M.~Kircher, J.~Krause, N.~Patterson, E.Y. Durand,
+  B.~Viola, A.W. Briggs, U.~Stenzel, P.L.F. Johnson, et~al.
+\newblock Genetic history of an archaic hominin group from {Denisova Cave in
+  Siberia}.
+\newblock {\em Nature}, 468\penalty0 (7327):\penalty0 1053--1060, 2010.
+
+\bibitem[Schmegner et~al.(2005)Schmegner, Hoegel, Vogel, and
+  Assum]{Schmegner:HG-118-276}
+Claudia Schmegner, Josef Hoegel, Walther Vogel, and G{\"u}nter Assum.
+\newblock Genetic variability in a genomic region with long-range linkage
+  disequilibrium reveals traces of a bottleneck in the history of the
+  {E}uropean population.
+\newblock {\em Human Genetics}, 188:\penalty0 276--286, 2005.
+
+\bibitem[Serre et~al.(2004)Serre, Langaney, Chech, Teschler-Nicola, Paunovic,
+  Mennecier, Possnert, and P{\" a\" a}bo]{Serre:PLO-2-0313}
+David Serre, Andr{\' e} Langaney, Mario Chech, Maria Teschler-Nicola, Maja
+  Paunovic, Philippe Mennecier, G{\" o}ran Possnert, and Svante P{\" a\" a}bo.
+\newblock No evidence of {N}eandertal mt{DNA} contribution to early modern
+  humans.
+\newblock {\em PLOS Biology}, 2:\penalty0 0313--0317, 2004.
+
+\bibitem[Smith et~al.(1989)Smith, Falsetti, and Donnelly]{Smith:YPA-32-35}
+F.~H. Smith, A.~B. Falsetti, and S.~M. Donnelly.
+\newblock Modern human origins.
+\newblock {\em Yearbook of Physical Anthropology}, 32:\penalty0 35--68, 1989.
+
+\bibitem[Wall and Hammer(2006)]{Wall:COG-16-606}
+J.D. Wall and M.F. Hammer.
+\newblock Archaic admixture in the human genome.
+\newblock {\em Current opinion in genetics \& development}, 16\penalty0
+  (6):\penalty0 606--610, 2006.
+
+\bibitem[Wall(2000)]{Wall:G-154-1271}
+Jeffrey~D. Wall.
+\newblock Detecting ancient admixture in humans using sequence polymorphism
+  data.
+\newblock {\em Genetics}, 154:\penalty0 1271--1279, 2000.
+
+\bibitem[Weaver and Roseman(2008)]{Weaver:EA-17}
+T.D. Weaver and C.C. Roseman.
+\newblock New developments in the genetic evidence for modern human origins.
+\newblock {\em Evolutionary Anthropology: Issues, News, and Reviews},
+  17\penalty0 (1):\penalty0 69--80, 2008.
+
+\end{thebibliography}

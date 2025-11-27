@@ -1,0 +1,334 @@
+\title{Probability Distributions}
+\author{Alan R. Rogers}
+\date{\today}
+
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Probability distributions}
+A probability distribution is a function.
+\begin{description}
+\item[Input] event
+\item[Output] probability of event
+\end{description}
+\begin{itemize}
+\item So far we have described probability distributions using
+tables.
+\item When events are numbers, distributions can be expressed as
+mathematical functions.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{The Urn Metaphor}
+
+Imagine two urns: metaphors for a population in two successive
+generations.  Urn~1 has 50 balls, some red, some white, representing
+parental gene copies.  Urn~2 is empty until urn~1 has ``reproduced''
+as follows:
+
+\begin{enumerate}
+\item Examine a random ball from urn~1.
+\item Put a ball of the same color into urn~2.
+\item Replace the ball from urn~1.
+\item Repeat until there are 50 balls in urn~2.
+\end{enumerate}
+The number of red balls in urn~2 is likely to differ from that in urn~1,
+because of random sampling.  This metaphor is used as a model of genetic
+drift.
+\end{frame}
+
+\begin{frame}
+\frametitle{Binomial random variable}
+In probability theory, the number of red balls in urn~2 is
+a \emph{binomial random variable}.
+\begin{enumerate}
+\item Balls drawn from the urn are statistically independent.
+\item Each ball is red with probability $p$, the fraction of red balls
+in urn~1.
+\end{enumerate}
+This distribution has two parameters: $N$, the number of balls put
+into urn~2, and $p$, the probability of ``red'' each time a ball is
+drawn. 
+\end{frame}
+
+\begin{frame}
+\frametitle{Probability of HT}
+Consider tosses of an unfair coin, for which the probability of
+``heads'' is $p$ and that of ``tails'' is $q = 1-p$. Assume that the
+tosses are statistically independent.
+\begin{tabbing}
+ProbabilityXX\=\kill
+Experiment \> Toss a coin 2 times.\\
+Result     \> HT\\
+Probability\> $pq$\\
+\end{tabbing}
+
+\bigskip
+This is an event of form $\Pr[A \& B]$, where $A$ is the event that
+the first toss is H and $B$ is the event that the 2nd is T. By
+assumption, $\Pr[A] = p$ and $\Pr[B] = q$. The tosses are
+statistically independent, so
+\[
+\Pr[A \& B] = pq
+\]
+by the multiplication law of probability.
+\end{frame}
+
+\begin{frame}
+\frametitle{Probability of HHT}
+\begin{tabbing}
+ProbabilityXX\=\kill
+Experiment \> Toss a coin 3 times.\\
+Result     \> HHT\\
+Probability\> $p^2q$\\
+\end{tabbing}
+\end{frame}
+
+\begin{frame}
+\frametitle{Probability of 2 heads in 3 tosses}
+There are 3 ways to get 2 heads in 3 tosses:\\
+{\centering\begin{tabular}{cc}
+Event & Probability\\
+\hline
+THH & $p^2q$\\
+HTH & $p^2q$\\
+HHT & $p^2q$
+\end{tabular}\\}
+
+\bigskip
+The probability of 2 heads in 3 tosses is
+\begin{align*}
+P_2 &= 3 p^2q\\
+    &= \binom{3}{2} p^2q
+\end{align*}
+where $\binom{3}{2}$ is pronounced ``3 choose 2'' and means the number
+of ways to choose 2 items out of a collection of 3.
+\end{frame}
+
+\begin{frame}
+\frametitle{Binomial distribution}
+The probability of $x$ heads in $K$ tosses is
+\[
+P_X = \binom{K}{x} p^x q^{K-x}
+\]
+\begin{align*}
+E[X] &= pK &\hbox{mean}\\
+V[X] &= Kpq &\hbox{variance}
+\end{align*} 
+\end{frame}
+
+\begin{frame}
+\frametitle{Poisson distribution}
+
+Consider the lineage that connects me to an ancestor who lived $t$
+generations ago.  The expected number of mutations along that lineage
+is $\lambda = ut$, where $u$ is the mutation rate per generation. 
+The number of mutations is a random variable (r.v.). If the mutation rate is
+constant, then the distribution of this r.v.\ is \emph{Poisson}.
+\end{frame}
+
+\begin{frame}
+\frametitle{Poisson distribution function}
+If $X$ is a Poisson-distributed r.v.\ with mean $\lambda$, then $X$
+takes value $x$ with probability
+\[
+P_x = \frac{\lambda^x e^{-\lambda}}{x!}
+\]
+where $e$ is the base of natural logarithms and $x!$ is ``$x$
+factorial,'' or $x \cdot (x-1) \cdot (x-2) \cdots 1$.
+
+\bigskip
+Mean equals variance.
+\[
+E[X] = V[X] = \lambda 
+\]
+
+\bigskip
+What is $P_0$? (Hint: $0!=1$ and $\lambda^0 = 1$.)
+
+\bigskip
+\pause
+\[P_0 = e^{-\lambda}\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Poisson distribution}
+{\centering
+\input{figpoisson_a}~~\input{figpoisson_b}\\[1ex]
+Poisson distribution functions\\}
+\end{frame}
+
+\begin{frame}
+Mutation rates at autosomal nucleotide sites are roughly $10^{-9}$ per
+year. Consider a nucleotide in you. If you could trace its ancestry
+back across the last $10^9$ years, what is the probability that you
+would find no mutations?
+
+\bigskip
+\pause
+The expected number of mutations is $\lambda = ut$, where $u=10^{-9}$
+and $t = 10^9$. Thus, $\lambda=1$. The probability of no mutations is
+\[
+e^{-1} \approx 0.37
+\]
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{Raisin data}
+\begin{verbatim}
+Date: Aug 28, 2009
+N=41, Mean=21.756098, Var=26.239024, Max=33
+ 1- 3: *
+ 4- 6: *
+ 7- 9:  *
+10-12: -*
+13-15: --*
+16-18: -----*-
+19-21: ----------  *
+22-24: -------*--
+25-27: ------- *
+28-30: --- *
+31-33: *
+
+Key: ---- Poisson distribution w/ mean 21.756098
+        * Data
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{Raisin data}
+\begin{verbatim}
+Date: Sept 6, 2013
+N=32, Mean=20.375000, Var=15.080645, Max=34
+ 1- 3: *
+ 4- 6: *
+ 7- 9: *
+10-12: *
+13-15: --*
+16-18: -------  *
+19-21: --------*
+22-24: -------   *
+25-27: --*-
+28-30: *
+31-33: *
+
+Key: ---- Poisson distribution w/ mean 20.375000
+        * Data
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{Raisin data}
+\begin{verbatim}
+Date: Sept 6, 2017
+N=36, Mean=14.111111, Var=13.473016, Max=21
+ 1- 3: *
+ 4- 6: *
+ 7- 9: ---  *
+10-12: --------*
+13-15: --------*--
+16-18: --------  *
+19-21: --- *
+
+Key: ---- Poisson distribution w/ mean 14.111111
+        * Data
+\end{verbatim}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Homework problem 1.41}
+Imagine an urn with $N$ balls, of which 1 is red and the rest are
+black. You draw 2 balls from the urn at random \emph{without}
+replacement.  Let $X=1$ if the first ball is red and $X=0$
+otherwise. Define $Y$ similarly for the second ball.
+
+\bigskip
+
+What is the covariance of $X$ and $Y$?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Probability tree \& distribution of $(X,Y)$}
+  \centering
+    \input{figtree1red.tex}\\[3ex]
+  Goal: calculate $C(X,Y) = E[XY] - E[X]E[Y]$
+\end{frame}
+
+\begin{frame}
+  \frametitle{$E[X]$}
+  \begin{columns}
+    \column{0.3\textwidth}
+    \[
+    \begin{array}{ccc}
+      X & Y & \Pr\\ \hline
+      1 & 1 & 0\\
+      1 & 0 & 1/N\\
+      0 & 1 & 1/N\\
+      0 & 0 & (N-2)/N
+      \end{array}
+    \]
+    \column{0.7\textwidth}
+    \begin{eqnarray*}
+      E[X] &=& 1\times 0\\
+      && \mbox{} + 1 \times 1/N \\
+      && \mbox{} + 0\times 1/N\\
+      && \mbox{} + 0\times (N-2)/N\\
+      &=& 1/N
+    \end{eqnarray*}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{$E[Y]$}
+  \begin{columns}
+    \column{0.3\textwidth}
+    \[
+    \begin{array}{ccc}
+      X & Y & \Pr\\ \hline
+      1 & 1 & 0\\
+      1 & 0 & 1/N\\
+      0 & 1 & 1/N\\
+      0 & 0 & (N-2)/N
+      \end{array}
+    \]
+    \column{0.7\textwidth}
+    \begin{eqnarray*}
+      E[Y] &=& 1\times 0\\
+      && \mbox{} + 0 \times 1/N \\
+      && \mbox{} + 1\times 1/N\\
+      && \mbox{} + 0\times (N-2)/N\\
+      &=& 1/N
+    \end{eqnarray*}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{$E[XY]$}
+  \begin{columns}
+    \column{0.3\textwidth}
+    \[
+    \begin{array}{cccc}
+      X & Y & XY & \Pr\\ \hline
+      1 & 1 & 1 & 0\\
+      1 & 0 & 0 & 1/N\\
+      0 & 1 & 0 & 1/N\\
+      0 & 0 & 0 & (N-2)/N
+      \end{array}
+    \]
+    \column{0.7\textwidth}
+    \begin{eqnarray*}
+      E[XY] &=& 1\times 0\\
+      && \mbox{} + 0 \times (\hbox{\small the rest})\\
+      &=& 0
+    \end{eqnarray*}
+  \end{columns}
+
+  \vspace{1cm}
+
+  Covariance of $X$ and $Y$:
+    \[
+    \overbrace{E[XY]}^0 - \overbrace{E[X]}^{1/N}\overbrace{E[Y]}^{1/N}
+    = - 1/N^2
+    \]
+\end{frame}

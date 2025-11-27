@@ -1,0 +1,141 @@
+Beginning in the 1960s, it became possible to compare the amino-acid
+sequences of the same protein in different organisms. These sequences
+are so similar that one can align the proteins of very different
+organisms. One can even align many plant proteins with those of
+animals. It quickly became clear that some proteins (such as
+fibrinopeptides) vary more among species than do others (such as
+histones). Because these differences presumably accumulated over
+evolutionary time, proteins that vary a lot are said to ``evolve
+rapidly.'' But we are seldom able to watch proteins change over
+time. When we say that one evolves faster than another, we really mean
+that it varies more across species. This variation in evolutionary
+rate is one of the observations that the neutral theory was designed
+to explain.
+
+This variation in rate is apparent in comparisons not only between
+proteins but also within them. In many proteins, some portions of the
+amino-acid sequence evolve faster than others. The neutral theory also
+sheds light on these differences.
+
+In the 1970s and 1980s, it became possible to compare the DNA
+sequences of different organisms, and these comparisons confirmed the
+pattern that had been observed in amino-acid sequences. In addition,
+other comparisons became possible: it turned out that portions of the
+genome that encode protein evolve more slowly than those (such as
+introns and pseudogenes) that do not. Furthermore, the 3rd position in
+each codon evolves more rapidly than the 1st and 2nd positions. The
+neutral theory also made sense of these observations.
+
+In addition to these differences in rate of evolution, there are also
+other aspects to the pattern in molecular data. First, differences
+seem to accumulate at a relatively constant rate. In a given
+protein, the number of amino-acid differences between a human and
+another animal is roughly proportional to the time since we last
+shared a common ancestor with that animal. The neutral theory provides
+an explanation for this fact too.
+
+Finally, there is the hierarchical structure in molecular data. For
+example, in the protein cytochrome C, all mammals differ from all
+birds at about 10 amino acids, mammals and birds differ from all fish
+at about 15 amino acids, all vertebrates differ from all insects at
+20--30, and so on. The neutral theory accounts for this too.
+
+Here are some questions that might appear on quizzes:
+\begin{cenum}
+  \item Within the amino-acid sequence of a typical protein, some parts
+    of the sequence evolve rapidly, and other parts evolve slowly. Why
+    (according to the neutral theory) does this happen? Is it because
+    selection is favoring change in the rapidly-changing parts or
+    opposing it in the slowly-changing parts?
+  \item Some proteins evolve faster than others. How does the
+    neutral theory account for this? Is selection favoring change in
+    rapidly-evolving proteins or opposing it in the slowly evolving
+    ones?
+  \item Protein-coding genomic regions evolve more slowly than introns
+    and the non-coding regions between genes. Pseudogenes evolve very
+    rapidly. How does the neutral theory account for this?
+  \item According to the neutral theory, the rate at which one
+    nucleotide replaces another is approximately equal to (a)~the
+    mutation rate time population size, (b)~the mutation rate,
+    (c)~population size, (d)~the ratio of mutation rate to population
+    size. 
+\end{cenum}
+
+\section{The molecular clock}
+The ``molecular clock'' uses known dates to estimate unknown ones by
+capitalizing on the approximately constant rate of molecular
+evolution. In doing so it confronts several difficulties, one of which
+is called \emph{saturation}. This refers to the fact that once a
+particular site has mutated, additional mutations at this site would
+not increase the count of differences. In what follows, we illustrate
+the clock using a concrete example: the date of the last common
+ancestor of chimpanzee and human. To estimate this date, we'll use
+genetic data from human, chimpanzee, and orangutan. We'll also need an
+externally-derived date in order to ``calibrate the clock''---to
+estimate the rate of evolutionary change.
+
+Molecular clocks are ordinarily calibrated using fossils, and this
+process introduces a considerable undertainty into molecular
+dates. Here, we simply assume that the orangutan--human common
+ancestor lived 14~My ago.
+
+The genetic data in this example consists of 929 bases of
+mitochondrial DNA, sequenced in a human, a chimpanzee, and an
+orangutan \citep[Table~1]{Hasegawa:JME-22-160}.  In these data, human
+differs from chimpanzee and orangutan at 79 and 149 nucleotide sites,
+respectively. Re-expressed as fractions of the total sites, these
+numbers become $p_{ch} = 79/929 = 0.085$, and $p_{oh} = 149/929 =
+0.1539$.
+
+As discussed above, some of these nucleotide sites have probably
+changed more than once, so $p_{oh}$ and $p_{ch}$ underestimate the
+number of substitutions (i.e. evolutionary changes) per site. To
+correct for this, we use the simplest of several available
+methods---that of \citet{Jukes:MPM-69-21}. This method assumes that
+each nucleotide state (A, T, G, or C) mutates to each other state at
+the same rate.  Although this is an oversimplification, it is good
+enough for a numerical example.
+
+Under the Jukes-Cantor model, there is a simple relationship between
+the fraction $p$ of sites that differ and the average number $d$ of
+substitutions per site:
+\[
+d = -(3/4)\ln\bigl(1 - (4/3)p\bigr)
+\]
+By plugging $p_{oh}$ and $p_{ch}$ into the right side of this
+equation, we obtain estimates of the corresponding numbers, $d_{oh}$
+and $d_{ch}$, of substitutions per site. This gives $d_{oh} = 0.1723$
+and $d_{ch} = 0.0903$. These numbers are only slightly larger than
+$p_{oh}$ and $p_{ch}$, suggesting that saturation has had only a
+modest effect.
+
+We estimate the rate of evolution by dividing $d_{oh}$ by the combined
+lengths of the two branches leading from orangutan and human back to
+their common ancestor. As this ancestor (by assumption) lived 14~My
+ago, the combined branch length is 28~My, and the rate of evolution is
+$r = 0.0062$ changes per site per million years.  Given this rate, we
+estimate the age of the chimpanzee--human common ancestor as $d_{ch}/2r
+= 7.33$~My.
+
+This analysis is not adequate by modern standards. In the first place,
+it ignores the facts that different parts of this DNA sequence evolve
+at different rates and that, at any given nucleotide site, some
+changes are more likely than others. Furthermore, it assumes that the
+rate of change has been constant and takes no account of
+uncertainties.  Nonetheless, the answer is consistent with current
+knowledge about the age of the chimpanzee--human common ancestor.
+
+\begin{cenum}
+  \item Fossils imply that species A and C last shared a common
+    ancestor 20 million years ago, and we assume that species A and B
+    are more closely related to each other than either is to C. After
+    correcting for saturation, we estimate the number of substitutions
+    per site at $d_{AC} = 0.2$ (for A and C) and $d_{AB} = 0.1$ (for A
+    and B). Use these data to estimate the separation time of species
+    A and B.
+
+    \bigskip
+
+    \emph{Answer:} $r = 0.2/40 = 0.005$ substitutions per
+    myr. Separation time of A and B is $0.1/2r = 10$ myr.
+\end{cenum}

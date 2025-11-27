@@ -1,0 +1,35 @@
+\begin{figure}
+{\centering
+\mbox{\beginpicture
+\setcoordinatesystem units <1in, 3cm>
+\setplotarea x from 0 to 3, y from 0 to 1
+\axis left shiftedto x=-0.1
+  ticks numbered from 0.0 to 1.0 by 0.5 /
+\axis bottom label {Instances of word ``some'' per page}
+  ticks withvalues 0 1 2 / at 0.5 1.5 2.5 / /
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Based on 5267 copies of the word 'may' spread across 79927 pages of size 30.
+% 2397810 words in all
+% Mean=0.065898 Var=0.075418 V/M=1.144469
+%
+% Observed
+\multiput {$\bullet$} at
+%  x    Obs  
+   0.5 0.9401
+   1.5 0.0543
+   2.5 0.0052
+/
+\sethistograms
+% Poisson
+\plot
+%  x Poisson
+   0  0
+   1  0.9362
+   2  0.0617
+/
+\endpicture}\\}
+\caption{Frequency of word ``may'' on 79,927 ``pages'' of text, each page
+  consisting of 30 words.  Bullets $(\bullet)$ show data, and bars
+  show the Poisson distribution function.}
+\label{fig.words}
+\end{figure}

@@ -1,0 +1,17 @@
+Examples of Poisson random variables
+
+\paragraph{Four-leafed clovers} One source claims that 1 clover in
+10,000 is four-leafed.
+
+\paragraph{Deaths caused by horse kicks in the Prussian army}
+
+\paragraph{Number of typographical errors on a page}
+
+\paragraph{Number of fish caught in a day}
+
+\paragraph{Raisins per slice of raisin bread}
+
+See other examples in: Posten, Harry O. 1981. Ch~21 of NCTM 1981
+Yearbook, pp.~160--161. (NCTM=National Council of Teachers of
+Mathematics) 
+

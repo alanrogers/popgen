@@ -1,0 +1,41 @@
+% -*-latex-*-
+\begin{figure}
+\begin{center}
+\mbox{%
+\beginpicture
+\headingtoplotskip=0.25\baselineskip
+\setcoordinatesystem units <0.4in, 0.4in> point at 0 0
+\setplotarea x from -2 to 3, y from -2 to 3
+\axis left label {\lines{Quantiles\cr of $\log_{10}\hat\theta_1$}}
+   shiftedto x=-2.25
+   ticks numbered from -2 to 3 by 1 /
+\axis bottom shiftedto y=-2.25 label {$\log_{10} \theta_1$}
+   ticks numbered from -2 to 3 by 1 /
+\multiput {$\bullet$} at -2 -2 -1 -1 0 0 1 1 2 2 3 3 /
+\setdots
+% x=log10 theta0 y= quantile 0.025 of log10 hat theta0_2
+\plot  1 0.066045 2 1.314945 3 2.315672 /
+\setdashes
+% x=log10 theta0 y= quantile 0.25 of log10 hat theta0_2
+\plot 0.5 -0.116484 1 0.580528 2 1.619688 3 2.636972 /
+\setsolid
+% x=log10 theta0 y= quantile 0.5 of log10 hat theta0_2
+\plot 0 -0.315373 0.5 0.178825 1 0.763900 2 1.794424 3 2.798383 /
+\setdashes
+% x=log10 theta0 y= quantile 0.75 of log10 hat theta0_2
+\plot -2 -0.122112 -1 -0.144424 0 0.035116 0.5 0.433008
+    1 0.950616 2 1.981298 3 2.967431 /
+\setdots
+% x=log10 theta0 y= quantile 0.975 of log10 hat theta0_2
+\plot -2 0.142102 -1 0.156814 0 0.390789 0.5 0.818314
+    1 1.299401 2 2.301716 3 3.304085 /
+\endpicture%
+}
+\end{center}
+\caption{Quantiles of $\hat\theta_1$\label{fig.theta0}.
+1,000 data sets were simulated at each of several values of
+$\theta_1$, and each was used to estimate the model's three
+parameters.  In each run, $\theta_0=1000$, $\tau=7$, and $N=147$. The
+lines and bold dots are interpreted as in figure~\ref{fig.tau}.}
+\label{fig.theta1}
+\end{figure}

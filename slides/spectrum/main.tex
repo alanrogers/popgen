@@ -1,0 +1,232 @@
+% -*-latex-*-
+\documentclass[]{beamer} 
+%\documentclass[handout]{beamer} 
+\usepackage{etex}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    }
+\urlstyle{same}
+
+\let\latexput\put
+\usepackage{pictex}
+\let\pictexput\put
+\let\put\latexput
+
+\newdimen\thusfar
+\newdimen\plotht
+\newdimen\plotwd
+\newdimen\plotsp
+\newdimen\xunit
+\newdimen\yunit
+\newdimen\offsety
+\title{The Site Frequency Spectrum}
+\author{Alan R. Rogers}
+\date{\today}
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{A site frequency spectrum}
+\begin{columns}
+\column{0.5\textwidth}
+\input{figyspec}
+\column{0.5\textwidth}
+Y chromosome data from Underhill et al.
+
+\bigskip
+
+$K=718$ DNA sequences
+
+\end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Calling ancestral and derived alleles}
+  {\centering\input{figancder}\\[2ex]}
+
+  \begin{itemize}
+  \item Two hypotheses about which allele is ancestral.
+  \item ``C'' requires 2 mutations; ``T'' requires 1.
+  \item Because mutations are rare, ``T'' is more likely.
+    \item When the in-group is polymorphic, the ancestral allele is
+      usually the one present in the out-group.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{Unfolded site frequency spectrum}
+\begin{columns}
+\column{0.4\textwidth}
+\begin{verbatim}
+       123456
+Human1 AATAGC
+Human2 ..AC..
+Human3 .TACT.
+Human4 ..ACT.
+-------------
+Chimp  AAAATC
+\end{verbatim}
+
+\vfill
+
+\mbox{}\\
+\column{0.6\textwidth}
+1: fixed.
+
+2: T derived; singleton.
+
+3: T derived; singleton.
+
+4: C derived; tripleton.
+
+5: G derived; doubleton.
+
+6: fixed.
+
+\hrulefill\\
+
+\begin{tabular}{lr}
+Singletons & 2\\
+Doubletons & 1\\
+Tripletons & 1
+\end{tabular}
+\end{columns}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{A site's position in spectrum depends on position in gene
+  tree}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{verbatim}
+----A------
+           |
+           |----B---
+           |        |
+-----------         |
+                    |-----
+                    |
+                    |
+------C-------------
+\end{verbatim}
+\column{0.5\textwidth}
+\raggedleft
+Mutations A and C are singletons; B is a doubleton
+
+\bigskip
+
+Most recent interval: singletons only
+
+\bigskip
+
+2nd most recent: singletons and doubletons
+
+\bigskip
+
+3rd most recent: singletons, doubletons, and tripletons
+\end{columns}
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{A tree with 2 leaves has only singletons}
+\begin{verbatim}
+
+     -------------------
+                        |
+                        |
+                        |-----------
+                        |
+                        |
+     -------------------
+
+    |- 2N generations --| 
+
+\end{verbatim}
+We expect $4Nu=\theta$ mutations, all singletons.
+\end{frame}
+
+\begin{frame}
+\frametitle{3 leaves $\Rightarrow$ $\theta$ singletons and $\theta/2$
+doubletons}
+{\centering\input{figtree3}\\[2.5ex]}
+
+Expect $\theta$ singletons to arise during oldest interval.
+
+\bigskip
+
+Half of these become doubletons at coalescent event: we end up with
+$\theta/2$ doubletons.
+
+\bigskip
+
+New singletons in recent interval: $\frac{2N}{3}
+\times 3 \times u = 2Nu = \theta/2$. This gain exactly compensates for
+the singletons that became doubletons.
+\end{frame}
+
+\begin{frame}
+\frametitle{Expected spectrum in population of constant size}
+\begin{center}
+  \begin{tabular}{cl}
+Sample & Expected spectrum\\
+size   & (singletons, doubletons, $\ldots$)\\ \hline
+2 & $\theta$\\
+3 & $\theta, \quad \theta/2$\\
+4 & $\theta, \quad \theta/2, \quad \theta/3$\\
+5 & $\theta, \quad \theta/2, \quad \theta/3, \quad \theta/4$\\
+\multicolumn{2}{c}{Etcetera}
+\end{tabular}
+\end{center}
+It is remarkable that as we increase sample size, the number of
+mutants in each category doesn't change.  We merely add a new category 
+at the right side of the spectrum.
+
+\bigskip
+
+Details: \href{https://arxiv.org/abs/2103.00335}{Rogers \& Wooding 2021}
+\end{frame}
+
+\begin{frame}
+\frametitle{How to estimate $\theta$?}
+To use this formula with data, we need an estimate of $\theta$.
+
+The sum of the observed spectrum is the number, $S$, of segregating
+sites. 
+
+This is true of the theoretical spectrum only if you use
+$\hat\theta_S$ to estimate $\theta$.
+\end{frame}
+
+\begin{frame}
+\centering\input{figspec}\\
+\end{frame}
+
+\begin{frame}
+  \begin{columns}
+    \column{0.6\textwidth}
+    \includegraphics[width=\linewidth]{Wooding.png}
+    \column{0.4\textwidth}
+    \raggedleft
+    \textcolor{blue}{When population size varies}
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Summary}
+\begin{itemize}
+\item Under neutrality and constant population size, $\theta/i$ is the
+  expected number of sites at which the derived allele is present in
+  $i$ copies.
+\item This does not depend on sample size.
+\item Some human loci conform to this model; many do not.
+\item Departures imply something interesting: selection or changes in
+  population size.
+\end{itemize}
+\end{frame}
+
+\end{document}

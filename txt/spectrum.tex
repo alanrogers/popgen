@@ -1,0 +1,332 @@
+% -*-latex-*-
+\reversemarginpar
+\chapter{The Site Frequency Spectrum}
+\label{ch.spectrum}
+
+\section{The empirical site frequency spectrum\label{sec.empspec}}
+
+In a sample of $K$ genes, a polymorphic site can divide the sample into 1
+mutant and $K-1$ non-mutants, into 2 mutants and $K-2$ non-mutants, and so on.
+There may be at most $K-1$ copies of the mutant if the site is to be
+polymorphic.  In many cases we can't tell which allele is the mutant, so
+category $i$ gets conflated with category $K-i$.  Such spectra are called
+``folded.''  I will call a site a ``singleton'' if the mutant is present in a
+single copy, a ``doubleton'' if it is present in two copies, and so on.
+
+\subsection{An unfolded spectrum}
+
+Consider the set of DNA sequence data below:
+\begin{verbatim}
+               123456
+HumanSequence1 AATAGC
+HumanSequence2 ..AC..
+HumanSequence3 .TACT.
+HumanSequence4 ..ACT.
+---------------------
+ChimpSequence1 AAAATC
+\end{verbatim}
+There are 4 human sequences and a chimpanzee sequence.  There are 6
+sites of which 4 are polymorphic (segregating) within the human
+sample.  We calculate the empirical spectrum by considering the sites
+one at a time.
+\begin{description}
+\item[Site 1] is fixed and therefore does not contribute to the spectrum.
+\item[Site 2] has both an A and a T within the human sample but has only an
+A within the chimpanzee sample.  The odds are that the ancestor of humans and
+chimps had an A at this site, so we can infer that T is the mutant allele.
+Since there is only one copy of T in the human sample, site 2 is a singleton.
+So far, our spectrum looks like this:
+\begin{verbatim}
+Singletons : 1
+Doubletons :
+Tripletons :
+\end{verbatim}
+\item[Site 3] is like site 2.  The human sample has a T and 3 As, and the
+  chimp sample has only As.  We infer that T is the mutant allele and count
+  this site as another singleton.  The spectrum now looks like this:
+\begin{verbatim}
+Singletons : 2
+Doubletons :
+Tripletons :
+\end{verbatim}
+\item[Site 4] has an A and 3 Cs, but it appears that A was the ancestral
+  allele. We count this site as a tripleton, so the spectrum becomes
+\begin{verbatim}
+Singletons : 2
+Doubletons :
+Tripletons : 1
+\end{verbatim}
+\item[Site 5] has 2 Gs and 2 Ts.  It does not matter which of these is
+  ancestral.  Either way, the site is a doubleton.  The spectrum becomes
+\begin{verbatim}
+Singletons : 2
+Doubletons : 1
+Tripletons : 1
+\end{verbatim}
+\item[Site 6] does not contribute to the spectrum.
+\end{description}
+We are done.  The empirical spectrum has 2 singletons, 1 doubleton, and 1
+tripleton.
+
+\subsection{A folded spectrum}
+
+In the preceding section, the chimpanzee sequences were used at each site to
+infer which nucleotide was ancestral and which was the mutant.  Let us now
+pretend that we have no chimpanzee sequences and therefore cannot tell the the
+ancestral allele from the mutant.  Instead of counting mutants, we will count
+the rarest (sometimes called the minor) allele at each site.  This time,
+however, I will omit the invariant sites (1 and 6), which do not contribute to
+the spectrum.
+\begin{description}
+\item[Site 2] The rare allele, T, is present in a single copy, so this site
+  contributes to the singleton category just as it did for the unfolded
+  spectrum. 
+\item[Site 3] Ditto: another singleton
+\item[Site 4] The rare allele, A, is present in a single copy, so this site is
+  a singleton.  Recall that it was a tripleton in the unfolded spectrum.
+\item[Site 5] A doubleton
+\end{description}
+The folded spectrum looks like this:
+\begin{verbatim}
+Singletons : 3
+Doubletons : 1
+\end{verbatim}
+The only difference is that site~4, which was a tripleton in the unfolded
+spectrum, becomes a singleton in the folded spectrum.
+
+In general, the $i$th category of the folded spectrum contains not only
+category $i$ of the unfolded spectrum, but also category $K-i$, where $K$ is
+the number of DNA sequences in the sample.
+
+\section{The expected spectrum under neutrality and constant population size}
+
+This section deals with the special case of selective neutrality and
+constant population size. I will assume initially that we can tell mutants
+from ancestral alleles so that our spectrum will be unfolded.
+
+\subsection{A site's position in the spectrum depends on its position in
+  the gene tree}
+
+Consider the following gene tree:\\
+\begin{minipage}{\textwidth}
+\begin{verbatim}
+
+     ----A------
+                |
+                |----B---
+                |        |
+     -----------         |
+                         |-----------
+                         |
+                         |
+     ------C-------------
+
+\end{verbatim}
+\end{minipage}
+Mutations A and C are singletons, whereas B is a doubleton.  A
+mutation in the most recent coalescent interval can only be a
+singleton.  One in the next most recent interval can be either a
+singleton or a doubleton.  One in the interval before that can be a
+singleton, a doubleton, or a tripleton.  And so on.
+
+\subsection{A tree with two leaves has nothing but singletons}
+
+To get a sense of how the process works, it helps to start with a tree 
+with just two leaves:\\
+\begin{minipage}{\textwidth}
+\begin{verbatim}
+
+     -------------------
+                        |
+                        |
+                        |-----------
+                        |
+                        |
+     -------------------
+
+    |- 2N generations --| 
+
+\end{verbatim}
+\end{minipage}
+Since the hazard is $1/2N$, the mean depth of this tree is $2N$
+generations and the total length is $4N$.  We expect $4Nu=\theta$ 
+mutations, all of which will be singletons.
+
+\subsection{A tree with three leaves has (on average) the same number
+  of singletons and half that number of doubletons}
+
+Now consider a tree with three leaves:\\
+\begin{minipage}{\textwidth}
+\begin{verbatim}
+
+     ---------       
+              |
+              |--------------------
+              |                    |
+     ---------                     |
+                                   |--------
+                                   |
+                                   |
+     ------------------------------
+
+     |--2N/3--|-------- 2N --------| 
+
+              Generations
+
+\end{verbatim}
+\end{minipage}
+If we could look at the spectrum just before the most recent coalescent event,
+it would look just like that of the tree with two leaves: $\theta$ singletons
+and no doubletons.  At the time of the coalescent event, half of these
+mutations (the ones on the upper branch) become doubletons.  There is no
+further change in the number of doubletons, so the expected number of
+doubletons in a 3-leaf gene tree is $\theta/2$.  (We don't need to worry that
+mutation will turn any of our doubletons back into singletons because, under
+the infinite sites model, mutation never strikes the same site twice.)
+
+This argument cheats a bit, because it assumes that the upper branch
+is the one that bifurcated. In reality, the branch that bifurcates is
+equally likely to be the upper or the lower. In either case, however,
+the expected number of doubletons is $\theta/2$. A more rigorous
+calculation would average across these two cases but reach the same
+answer:
+\[
+\frac{1}{2}\left(\frac{\theta}{2} + \frac{\theta}{2} \right) = \frac{\theta}{2}
+\]
+
+The coalescent interval with 3 lines of descent begins with $\theta/2$
+singletons, but then more singletons are added because of new
+mutations.  How many new mutations should we expect to see?  The
+interval's expected length is $2N/3$ generations (see
+section~\ref{sec.ncoalescent.1}), and it contains 3 lines of descent,
+so the sum of the branch lengths within this interval is (on average)
+$2N$ generations.  We therefore expect $2Nu = \theta/2$ new singleton
+mutations.
+
+The number of singletons that is added is precisely equal to the
+number that was lost.  Thus, the new spectrum has $\theta$ singletons
+and $\theta/2$ doubletons.
+
+\subsection{Number of tripletons in a tree with four leaves}
+Suppose now that we add another interval, containing 4 branches, to
+the tree shown above. The 4th branch arises because one of the 3
+existing branches bifurcates, and that branch is chosen at random. If
+the top branch bifurcates, each doubleton becomes a tripleton, so
+we end up with $\theta/2$ tripletons. If the middle branch bifurcates,
+we get the same result. But if the bottom branch bifurcates, we get no
+tripletons at all. The expected number of tripletons is
+\[
+\frac{1}{3}\left(\frac{\theta}{2} + \frac{\theta}{2} + 0\right)
+= \frac{\theta}{3}
+\]
+
+\subsection{The theoretical spectrum for an arbitrary number of
+  leaves}
+\label{sec.thspec-nleaves}
+
+To extend this argument to larger samples, one must make it algebraic
+\citep{Hudson:PLO-10-e0118087, Rogers:arXiv-2103.00335}. I will skip
+those details here. The result (shown below) was first derived by
+\citet{Fu:TPB-48-172}. 
+\begin{center}
+  \begin{tabular}{cl}
+Sample & Expected spectrum\\
+size   & (singletons, doubletons, $\ldots$)\\ \hline
+2 & $\theta$\\
+3 & $\theta, \quad \theta/2$\\
+4 & $\theta, \quad \theta/2, \quad \theta/3$\\
+5 & $\theta, \quad \theta/2, \quad \theta/3, \quad \theta/4$\\
+\multicolumn{2}{c}{Etcetera}
+\end{tabular}
+\end{center}
+It is remarkable that as we increase sample size, the number of
+mutants in each category doesn't change.  We merely add a new category 
+at the right side of the spectrum.
+
+
+To use the theoretical formula with data, we need to substitute some estimate
+of $\theta$.  We might use the mean pairwise difference, $\pi$, or the
+estimator
+\[
+\hat\theta_S = \frac{S}{\sum_{i=1}^{K-1} 1/i}
+\]
+where $K$ is the number of DNA sequences in the sample.  Either of these
+estimators might work, since both of them estimate $\theta$ under the
+stationary neutral model (see the discussion of equation~\ref{eq.thetaS} on
+page~\pageref{eq.thetaS}).  To choose between these estimators, we need some
+additional criterion.
+
+The sum of the observed spectrum is equal to the number $S$ of segregating
+sites.  It would be useful if the theoretical spectrum summed to the same
+value.  This turns out to be so only if $\hat\theta_S$ is used to estimate
+$\theta$. 
+
+\subsection{Folded theoretical spectra}
+\label{sec.foldedspectrum}
+When the spectrum is folded, we cannot distinguish category $i$ from
+category $K-i$.  Consequently, the expected number in category $i$ in
+the folded spectrum is the sum $\theta/i$ and $\theta/(K-i)$, the
+expected numbers in the two corresponding categories in the unfolded
+spectrum.  This works so long as $i < K/2$, for then $i$ and $K-i$ are
+different numbers. If $K$ is even, there is an additional entry at
+which $i=K/2$ and the expected folded spectrum is simply $\theta/i$.
+
+\section{Human site frequency spectra}
+
+Figure~\ref{fig.spec} shows all of the human site frequency spectra that I was
+able to cull from the literature in the year 2000.  In each plot, the
+empirical spectrum is shown as a histogram, and the expected values under
+neutral evolution with constant population size are shown as bold dots.  The
+top row shows three systems in which there is an excess of singletons,
+compared with the stationary neutral model.  The middle row shows three
+systems that seem to fit the neutral model, and the bottom row shows three
+systems in which there is a deficit of singletons and an excess of sites at
+intermediate frequency.
+
+\input{figspec}
+
+\section{Exercises}
+
+\begin{exercise}
+  For this exercise, use the toy data set in
+  section~\ref{sec.toySeqData}, on p.~\pageref{sec.toySeqData}.
+  (1)~Use $S$ to estimate $\theta$, (2)~from this value, calculate the
+  number of sites expected in each frequency category, (3)~fold the
+  resulting theoretical spectrum by summing values for $i$ and $K-i$.
+  (4)~Compare the result with the empirical spectrum that we
+  calculated earlier, in section~\ref{sec.toySeqData-results}. 
+  \answer That example was of a sample of $K=10$ DNA sequences, which
+  had 15 segregating sites.  Thus, we can estimate $\theta$ as
+\[
+\hat\theta_S = \frac{15}{\sum_{i=1}^{9} \frac{1}{i}}
+= 5.3
+\]
+I'll use the symbols $v_u$ and $v_f$ to represent the unfolded and
+folded spectra respectively.  The unfolded theoretical spectrum
+(assuming selective neutrality and constant population size) is
+\[
+v_u = [\theta, \theta/2, \theta/3, \ldots , \theta/9]
+\]
+The first entry in this vector is the expected number of singleton
+sites, the second is the expected number of doubleton sites, and so
+on. Substituting the estimated value of $\theta$ turns this into
+\[
+v_u = [5.30, 2.65, 1.77, 1.33, 1.06, 0.88, 0.76, 0.66, 0.59]
+\]
+The folded spectrum is constructed as follows:
+\begin{eqnarray*}
+v_f &=& [5.30 + 0.59, 2.65 + 0.66, 1.77 + 0.76, 1.33 + 0.88, 1.06]\\
+&=& [5.89, 3.31, 2.53, 2.21, 1.06]
+\end{eqnarray*}
+Thus, we expect 5.89 sites at which the minor allele is present in 1
+copy, 3.31 sites at which it is present in 2 copies, and so on.
+In the real data (see section~\ref{sec.dataAnalysis},
+page~\pageref{sec.dataAnalysis}), we had 
+\[
+\hat v_f = [6, 2, 2, 5, 0]
+\]
+where the ``hat'' indicates that these values refer to data rather
+than from theory.  The theoretical and observed spectra are similar,
+but certainly not identical.  No inference can be drawn from this
+difference, because our sample is very small.
+\end{exercise}

@@ -1,0 +1,148 @@
+% -*-latex-*-
+\chapter{Mean, Variance and Covariance\label{lab.meanvarcov}}
+
+This is not really a lab exercise.  It is a summary and description of
+concepts of mean, variance, and covariance.  It is meant to
+familiarize you with notation and concepts that are used elsewhere.
+
+\section{The mean}
+
+Given a set of numbers such as
+\begin{displaymath}
+x_1 = 10,\quad
+x_2 = 12,\quad
+x_3 = 10,\quad
+x_4 = 8
+\end{displaymath}
+the mean is
+\begin{displaymath}
+\bar x = (10 + 12 + 10 + 8)/4 = 10
+\end{displaymath}
+which can also be written in several other ways, including
+\begin{displaymath}
+\bar x = (x_1 + x_2 + x_3 + x_4)/4
+= \biggl(\sum_{i=1}^4 x_i\biggr)/4
+\end{displaymath}
+In this example there are four elements in the sum.  Often the number
+of elements is represented by a symbol such as $N$.  Then
+\begin{displaymath}
+\bar x = N^{-1} \sum_{i=1}^N x_i
+\end{displaymath}
+The limits of summation are sometimes omitted, as in
+\begin{displaymath}
+\bar x = N^{-1} \sum_i x_i
+\end{displaymath}
+which means that the sum is over all values of $i$, which here runs
+from 1 through 4.
+
+It is often more convenient to express the mean in terms of the
+frequencies of elements with particular values.  For example, let
+$n_x$ denote the number of elements with value $x$.  In our example,
+$n_1 = n_2 = \cdots = n_7 = 0$, $n_8 = 1$, $n_9 = 0$, $n_{10} = 2$,
+$n_{11} = 0$, and $n_{12} = 1$.  With this notation,
+\begin{displaymath}
+\bar x = N^{-1} \sum_x x n_x
+\end{displaymath}
+and
+\begin{displaymath}
+N = \sum_x n_x
+\end{displaymath}
+Yet another formulation defines the relative frequency of elements
+with value $x$ by $p_x = n_x/N$.  Then
+\begin{displaymath}
+p_8 = p_{12} = 1/4,\quad\hbox{and}\quad p_{10} = 1/2
+\end{displaymath}
+and the mean can be written as
+\begin{displaymath}
+\bar x = \sum_x x p_x
+\end{displaymath}
+In this formulation, $p_x$ is the relative frequency of value $x$ in
+the data.
+
+The same formula also turns up in probability theory.  Suppose that
+some variable, $X$, takes values that cannot be predicted exactly, but
+which occur with specified probabilities, $p_1, p_2, \ldots{}$.  Then
+$X$ is called a ``random variable'' and its expectation, $E[x]$, is
+defined as
+\begin{displaymath}
+E[X] =  \sum_x x p_x
+\end{displaymath}
+Note that this is the same as the preceding formulation of the
+mean. 
+
+Finally, suppose that $X$ is a continuous variable, such as stature,
+that takes values over the range from $a$ to $b$.  Then you cannot
+enumerate the possible values that it may take.  Its expectation, or
+average value, is written as
+\begin{displaymath}
+E[X] = \int_a^b x f(x) dx
+\end{displaymath}
+where $f(x) dx$ can be thought of as the probability that $X$ takes a
+value within the (very small) interval from $x$ to $x+dx$, and is thus
+analagous to $p_x$ in the discrete formulation.
+
+\section{Variance}
+
+The variance of a series of numbers is the average squared difference
+from the mean.  For example, the mean of the numbers listed above is
+10, so the variance is
+\begin{displaymath}
+V = ((10 - 10)^2 + (12-10)^2 + (10-10)^2 + (8-10)^2)/4 = 2
+\end{displaymath}
+As with the mean, there is a variety of ways to represent the
+variance, including
+\begin{eqnarray}
+V &=& N^{-1} \sum_i (x_i - \bar x)^2\label{eq.V.2pass}\\
+  &=& \sum_x (x-\bar x^2) p_x\nonumber\\
+  &=& \sum_x x^2 p_x - \bar x^2\\
+  &=& \overline{x^2} - \bar x^2\label{eq.V.1pass}
+\label{eq.variance.def}
+\end{eqnarray}
+The last line says that the variance is the mean square of $x$ minus
+the squared mean.
+
+Equation~\ref{eq.V.2pass} provides the most straightforward method
+of calculating the variance, but it requires two passes through the
+data.   The first pass calculates the mean, and the second sums the
+squared deviations from the mean.  Equation~\ref{eq.V.1pass} is often
+more convenient because it requires only one pass through the data.
+
+\begin{exercise}
+Verify that these formulas are equivalent.
+\end{exercise}
+
+In probability theory, the (theoretical) variance is defined as
+\begin{displaymath}
+V[X] = E\left[ (X - E[X])^2 \right] = E\bigl[ X^2 \bigr] - (E[X])^2
+\end{displaymath}
+These expressions hold irrespective of whether the random variable is
+continuous or discrete, but they have slightly different
+interpretations in the two cases.  For discrete random variables,
+\begin{displaymath}
+E[X^2] = \sum_x x^2 p_x
+\end{displaymath}
+but for continuous random variables
+\begin{displaymath}
+E[X^2] = \int x^2 f(x) dx
+\end{displaymath}
+
+\section{Covariances}
+
+The covariance of two sets of numbers, $x_1,\ldots{},x_N$, and
+$y_1,\ldots{},y_N$, is
+\begin{displaymath}
+Cov(x,y) = \sum_{i=1}^N (x_i - \bar x)(y_i - \bar y)
+\end{displaymath}
+where $\bar x$  and $\bar y$ are the means of the two sets of numbers.
+Alternate expressions for the covariance include
+\begin{eqnarray}
+Cov(x,y) &=& \sum_x\sum_y (x -\bar x)( y - \bar y) p_{x,y}\nonumber\\
+&=& \sum_{xy} (x -\bar x)( y - \bar y) p_{x,y}\nonumber\\
+&=& \sum_{xy} xy p_{x,y} - \bar x \bar y
+\label{eq.covariance.def}
+\end{eqnarray}
+Here $p_{x,y}$ is the relative frequency of pairs of numbers with
+values $(x,y)$ and the sum is taken over all possible of pairs of
+numbers.  The notation $\sum_{xy}$ means the same thing as
+$\sum_x\sum_y$. 
+

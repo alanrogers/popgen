@@ -1,0 +1,150 @@
+%-*-latex-*-
+\let\put\pictexput
+\mbox{%
+\beginpicture
+\headingtoplotskip=0mm
+\valuestolabelleading=0.2\baselineskip
+%%%%%%%%%%%%%%%% row 1 col 1 %%%%%%%%%%%%%%%%
+%point at 2.125in 0in
+\setcoordinatesystem units <2.5in, 1.51in> point at 0.85 0
+\setplotarea x from 0 to 0.5, y from 0 to 0.83
+\axis left label {\lines{Frac.\cr of\cr sites}}  /
+\axis bottom ticks numbered from 0.0 to 0.5 by 0.5 /
+\plotheading{MtDNA$^{a,b}$}
+\put{$\begin{array}{rcl}
+      K &=& 636\\ % number of sequences in sample
+      S &=& 226\\  % number of segregating sites
+       \end{array}$} [tr] at 0.5 0.83
+%Expected site frequency spectrum
+\multiput {\footnotesize$\bullet$} at
+0.013 0.475 0.038 0.104 0.062 0.062 0.088 0.045 0.113 0.036
+0.138 0.030 0.163 0.026 0.188 0.023 0.213 0.020 0.237 0.019
+0.263 0.016 0.288 0.016 0.312 0.015 0.338 0.014 0.363 0.013
+0.388 0.013 0.413 0.012 0.438 0.012 0.463 0.011 0.488 0.011
+/
+%Observed site frequency spectrum
+\sethistograms
+\plot
+0.000 0.000 0.025 0.827 0.050 0.075 0.075 0.044 0.100 0.013
+0.125 0.013 0.150 0.004 0.175 0.004 0.200 0.004 0.225 0.000
+0.250 0.000 0.275 0.000 0.300 0.004 0.325 0.000 0.350 0.004
+0.375 0.000 0.400 0.004 0.425 0.000 0.450 0.000 0.475 0.000
+0.500 0.000
+/
+%%%%%%%%%%%%%%%% row 1 col 2 %%%%%%%%%%%%%%%%
+% point at 0.625in 0in
+\setcoordinatesystem units <1.25in, 1.47in> point at 0.5 0
+\setplotarea x from 0 to 1, y from 0 to 0.85
+\axis bottom ticks numbered from 0 to 1 by 1 /
+\plotheading{Y$^{b,c}$}
+\put{$\begin{array}{rcl}
+      K &=& 718\\ % number of sequences in sample
+      S &=& 20\\  % number of segregating sites
+       \end{array}$} [tr] at 1 0.85
+%Expected site frequency spectrum
+\multiput {\footnotesize$\bullet$} at
+0.033 0.349
+0.100 0.161
+0.167 0.100
+0.233 0.071
+0.300 0.055
+0.367 0.045
+0.433 0.038
+0.500 0.032
+0.567 0.029
+0.633 0.026
+0.700 0.024
+0.767 0.022
+0.833 0.020
+0.900 0.017
+0.967 0.010                      
+/
+%Observed site frequency spectrum
+\sethistograms
+\plot
+0.000 0.000
+0.067 0.850
+0.133 0.050
+0.200 0.050
+0.267 0.000
+0.333 0.000
+0.400 0.000
+0.467 0.000
+0.533 0.000
+0.600 0.000
+0.667 0.000
+0.733 0.000
+0.800 0.000
+0.867 0.000
+0.933 0.000
+1.000 0.000
+/                                              
+%%%%%%%%%%%%%%%% row 2 col 1 %%%%%%%%%%%%%%%%
+% point at 2.125in 1.85in
+\setcoordinatesystem units <2.5in, 2.272in> point at 0.85 0.814
+\setplotarea x from 0 to 0.5, y from 0 to 0.55
+\axis left label {\lines{Frac.\cr of\cr sites}} /
+\axis bottom ticks numbered from 0.0 to 0.5 by 0.5 /
+\plotheading{$\beta$-globin$^e$}
+\put{$\begin{array}{rcl}
+      K &=& 253\\ % number of sequences in sample
+      S &=& 33\\  % number of segregating sites
+       \end{array}$} [tr] at 0.5 0.55
+%Expected site frequency spectrum
+\multiput {\footnotesize$\bullet$} at
+0.025 0.516
+0.075 0.125
+0.125 0.071
+0.175 0.057
+0.225 0.046
+0.275 0.036
+0.325 0.034
+0.375 0.031
+0.425 0.026
+0.475 0.026           
+/
+%Observed site frequency spectrum
+\sethistograms
+\plot
+0.000 0.000
+0.050 0.545
+0.100 0.061
+0.150 0.000
+0.200 0.030
+0.250 0.000
+0.300 0.030
+0.350 0.182
+0.400 0.061
+0.450 0.030
+0.500 0.061
+/                 
+%%%%%%%%%%%%%%%% row 2 col 2 %%%%%%%%%%%%%%%%
+% point at 0.625in 1.85in
+\setcoordinatesystem units <2.5in, 3.125in> point at 0.25 0.592
+\setplotarea x from 0 to 0.5, y from 0 to 0.4
+\axis bottom ticks numbered from 0.0 to 0.5 by  0.5 /
+\plotheading{Misc X$^f$}
+\put{$\begin{array}{rcl}
+      K &=& 10\\ % number of sequences in sample
+      S &=& 20\\  % number of segregating sites
+       \end{array}$} [tr] at 0.5 0.4
+%Expected site frequency spectrum
+\multiput {\footnotesize$\bullet$} at
+0.050 0.393
+0.150 0.216
+0.250 0.157
+0.350 0.128
+0.450 0.071
+/
+%Observed site frequency spectrum
+\sethistograms
+\plot
+0.000 0.000
+0.100 0.400
+0.200 0.200
+0.300 0.100
+0.400 0.250
+0.500 0.050
+/                                       
+\endpicture}
+\let\put\latexput

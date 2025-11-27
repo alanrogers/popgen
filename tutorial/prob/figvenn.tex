@@ -1,0 +1,19 @@
+\begin{figure}
+\def\shadecircle{%
+\hshade -.707 -.707 -.707 <,z,,>  0 -1   -.707 -.707 -.707 -.707 /
+\vshade -.707 -.707  .707 <z,z,,> 0 -1   1     -.707 -.707 -.707 /
+\hshade -.707  .707  .707 <z,,,>  0 .707 1     -.707 -.707 -.707 /}
+\frame <.1in>
+ {\beginpicture
+   \dimen0=.375in
+   \setcoordinatesystem units <\dimen0,\dimen0>
+   \multiput
+     {\beginpicture
+        \circulararc  360 degrees from 1 0 center at 0 0
+        \divide \dimen0 by 11 \setshadegrid span <\dimen0>
+        \setquadratic \shadecircle
+      \endpicture} at 0 0 1 0 /
+   \put {$A$} <-7pt,6pt> at -.707 .707
+   \put {$B$} <6pt,-6pt> at 1.707 -.707
+  \endpicture}
+\end{figure}

@@ -1,0 +1,121 @@
+\let\put\pictexput
+\mbox{%
+\sf
+\beginpicture
+%%%%%%%%%%%%%% left plot
+\setcoordinatesystem units <0.075in, 7.35in> point at 19 0
+%\setcoordinatesystem units <0.151in, 14.7in> point at 19 0
+\setplotarea x from 0 to 19, y from 0 to 0.17
+\axis left label {$F_{ST}$}
+  ticks numbered from 0.0 to 0.15 by  0.05 /
+\axis bottom   label {Generation} 
+  ticks numbered from 0 to 15 by 5 /
+\put {Series I} [rb] at 19 0.01
+\put {\begin{tabular}{cl}
+$\circ$ & theory\\
+$\bullet$ & data
+\end{tabular}} [lt] at 1 0.15
+\multiput {$\circ$} at
+%Gen.     EFstI
+   0  0.0000000
+   1  0.0138889
+   2  0.0270062
+   3  0.0393947
+   4  0.0510950
+   5  0.0621453
+   6  0.0725817
+   7  0.0824382
+   8  0.0917472
+   9  0.1005390
+  10  0.1088424
+  11  0.1166845
+  12  0.1240909
+  13  0.1310859
+  14  0.1376922
+  15  0.1439315
+  16  0.1498242
+  17  0.1553896
+  18  0.1606457
+  19  0.1656098
+/
+\multiput {$\bullet$} at
+%Gen.      FstI
+   0  0.0000000
+   1  0.0060000
+   2  0.0260000
+   3  0.0310000
+   4  0.0420000
+   5  0.0500000
+   6  0.0550000
+   7  0.0620000
+   8  0.0720000
+   9  0.0830000
+  10  0.0900000
+  11  0.1050000
+  12  0.1120000
+  13  0.1230000
+  14  0.1360000
+  15  0.1400000
+  16  0.1550000
+  17  0.1600000
+  18  0.1650000
+  19  0.1700000
+/
+%%%%%%%%%%%%%% right plot
+\setcoordinatesystem units <0.075in, 7.35in> point at -1 0
+%\setcoordinatesystem units <0.15in, 14.7in> point at -1 0
+\setplotarea x from 0 to 19, y from 0 to 0.17
+\axis right label {$F_{ST}$}
+  ticks numbered from 0.0 to 0.15 by  0.05 /
+\axis bottom   label {Generation} 
+  ticks numbered from 0 to 15 by 5 /
+\put {Series II} [rb] at 19 0.01
+%theory
+\multiput {$\circ$} at
+%Gen.  EFstII
+   0  0.00000
+   1  0.01087
+   2  0.02127
+   3  0.03121
+   4  0.04072
+   5  0.04982
+   6  0.05853
+   7  0.06685
+   8  0.07481
+   9  0.08243
+  10  0.08972
+  11  0.09669
+  12  0.10335
+  13  0.10973
+  14  0.11583
+  15  0.12166
+  16  0.12724
+  17  0.13258
+  18  0.13768
+  19  0.14257
+/
+\multiput {$\bullet$} at
+%Gen.     FstII
+   0  0.0000000
+   1  0.0090000
+   2  0.0180000
+   3  0.0240000
+   4  0.0300000
+   5  0.0450000
+   6  0.0520000
+   7  0.0600000
+   8  0.0700000
+   9  0.0720000
+  10  0.0760000
+  11  0.0840000
+  12  0.0940000
+  13  0.1010000
+  14  0.1050000
+  15  0.1170000
+  16  0.1220000
+  17  0.1330000
+  18  0.1390000
+  19  0.1440000
+/
+\endpicture}
+\let\put\latexput

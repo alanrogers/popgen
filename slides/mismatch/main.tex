@@ -1,0 +1,295 @@
+% -*-latex-*-
+\documentclass[]{beamer} 
+%\documentclass[handout]{beamer} 
+\usepackage{etex}
+
+\let\latexput\put
+\usepackage{pictex}
+\let\pictexput\put
+\let\put\latexput
+
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\Het}{\mathcal{H}}
+\newcommand{\mutation}{$\cdot$} 
+\newcommand{\OR}{\;\hbox{or}\;}
+\newcommand{\AND}{\;\&\;}
+\newdimen\thusfar
+\newdimen\plotht
+\newdimen\plotwd
+\newdimen\plotsp
+\newdimen\xunit
+\newdimen\yunit
+\newdimen\offsety
+\title{Mismatch Distributions and Population Growth}
+\author{Alan R. Rogers}
+\date{\today}
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{What is a mismatch distribution?}
+
+Count the number of site differences between each pair of sequences in 
+a sample, and use the resulting counts to build a histogram.  You end
+up with a ``mismatch distribution.''  The $i$th entry of the mismatch
+distribution is the number of pairs of sequences that differ by $i$
+sites.
+\end{frame}
+
+\begin{frame}[containsverbatim]
+\frametitle{Partial mtDNA sequences from Asia}
+{\footnotesize
+\begin{verbatim}
+ 1 CATTAGCACCCAAAGCTAAGATTCTAATTTAAACTATTCTCTGTTCTTTCATGG...
+ 2 CATTAGCACCCAAAGCTAAGATTCTAATTTAAACTATTCTCTGTTCTTTCATGG...
+ 3 CATTAGCACCCAAAGCTAAGATTCTAATTTAAACTATTCTCTGTTCTTTCATGG...
+ 4 CATTAGCACCCAAAGCTAAGATTCTAATTTAAACTATTCTCTGTTCTTTCATGG...
+ 5 CATTAGCACCCAAAGCTAAGATTCTAATTTAAACTATTCTCTGTTCTTTCATGG...
+ 6 CATTAGCACCCAAAGCTAAGATTCTAATTTAAACTATTCTCTGTTCTTTCATGG...
+ 7 CATTAGCACCCAAAGCTAAGATTCTAATTTAAACTATTCTCTGTTCTTTCATGG...
+ 8 CATTAGCACCCAAAGCTAAGATTCTAATTTAAACTATTCTCTGTTCTTTCATGG...
+ 9 CATTAGCACCCAAAGCTAAGATTCTAATTTAAACTATTCTCTGTTCTTTCATGG...
+10 CATTAGCACCCAAAGCTAAGATTCTAATTTAAACTATTCTCTGTTCTTTCATGG...
+11 CATTAGCACCCAAAGCTAAGATTCTAATTTAAACTATTCTCTGTTCTTTCATGG...
+12 CATTAGCACCCAAAGCTAAGATTCTAATTTAAACTATTCTCTGTTCTTTCATGG...
+13 CATTAGCACCCAAAGCTAAGATTCTAATTTAAACTATTCTCTGTTCTTTCATGG...
+14 CATTAGCACCCAAAGCTAAGATTCTAATTTAAACTATTCTCTGTTCTTTCATGG...
+15 CATTAGCACCCAAAGCTAAGATTCTAATTTAAACTATTCTCTGTTCTTTCATGG...
+............................................................
+\end{verbatim}}
+\end{frame}
+
+\begin{frame}
+\frametitle{Mismatch distribution for Asian data}
+\begin{columns}
+\column{0.5\textwidth}
+\begin{tabular}{rrrrrr}
+$i$ & $n$ & $i$ & $n$\\
+\hline
+ 0 &   5 & 10 & 379\\
+ 1 &   5 & 11 & 268\\
+ 2 &  11 & 12 & 186\\
+ 3 &  30 & 13 &  95\\
+ 4 & 131 & 14 &  43\\
+ 5 & 200 & 15 &  17\\
+ 6 & 283 & 16 &   2\\
+ 7 & 390 & 17 &   1\\
+ 8 & 409 \\
+ 9 & 471 \\
+\end{tabular}
+\column{0.5\textwidth}
+\input{figasiamm}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+At mutation-drift equilibrium, a random pair of sequences differs by
+$i$ sites with probability 
+\begin{equation}
+F_i = \left(\frac{1}{\theta + 1}\right)
+\left(\frac{\theta}{\theta + 1}\right)^i, \qquad (i=0,1,2,\ldots)
+\end{equation}
+\mbox{}\hfill (Watterson, 1975)\\
+\end{frame}
+
+\begin{frame}
+\frametitle{mtDNA mismatch distribution doesn't fit equilibrium model}
+\input{figpoorfit}
+\end{frame}
+
+\begin{frame}
+\frametitle{Why does the stationary neutral model fit human data so poorly?}
+There are several hypotheses to consider:
+\begin{enumerate}
+\item Sampling error. (Important because the pairs of genes in our sample are
+  correlated.) 
+\item Selection.
+\item Failure of infinite sites hypothesis.
+\item Non-random mating.
+\item Variation in population size. 
+\end{enumerate}
+Work has been done on all of these possibilities, but I will only try
+to tell you about the last one.
+\end{frame}
+
+\begin{frame}
+\frametitle{Coalescent theory in a population of varying size}
+
+At any given time, $t$, the hazard of a coalescent event is 
+\[
+h_i(t) = \frac{i(i-1)}{4N(t)}
+\]
+But $N(t)$ is no longer constant.
+
+\bigskip
+\[
+E[t_i] \neq 1/h_i
+\]
+We need computer simulations.
+\end{frame}
+
+\begin{frame}
+\frametitle{Expected genealogy of 2 genes}
+\input{figtree2}
+\end{frame}
+
+\begin{frame}
+\frametitle{Expected genealogy of 3 genes}
+\input{figtree3}
+\end{frame}
+
+\begin{frame}
+\frametitle{Expected genealogy of 4 genes}
+\input{figtree4}
+\end{frame}
+
+\begin{frame}
+\frametitle{Principles}
+
+The expected length of a coalescent interval is long
+\begin{itemize}
+\item in large populations
+\item if there are only a few lineages
+\end{itemize}
+\pause
+What if the population changes in size?
+\end{frame}
+
+\begin{frame}
+\begin{columns}
+\column{0.5\textwidth}
+\input{figgro}
+\column{0.5\textwidth}
+{\color{blue}Effect of a population explosion}\\
+
+\bigskip
+
+Middle: genealogy of 50 individuals; dots are mutations.\\
+
+\bigskip
+
+Bottom: $\circ$ = simulated data, line = theory.\\
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\centering\input{figgrospec}\\
+\end{frame}
+
+\begin{frame}
+\frametitle{Simulations of stationary populations}
+\end{frame}
+
+\begin{frame}
+  \centering
+  \input{figeq1}\\
+An equilibrium population with $\theta=7$.
+\end{frame}
+
+\begin{frame}
+  \centering\input{figeq2}\\
+An equilibrium population with $\theta=7$.
+\end{frame}
+
+\begin{frame}
+  \centering\input{figeq3}\\
+  An equilibrium population with $\theta=7$.
+\end{frame}
+
+\begin{frame}
+  \centering\input{figeq4}\\
+  An equilibrium population with $\theta=7$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Simulations of expanded populations}
+\end{frame}
+
+\begin{frame}
+  \centering\input{figgro1}\\
+  A coalescent simulation with growth: $\theta_0=1$, $\theta_1=100$,
+  $\tau=7$.\\
+\end{frame}
+
+\begin{frame}
+  \centering\input{figgro2}\\
+  A coalescent simulation with growth: $\theta_0=1$, $\theta_1=100$,
+  $\tau=7$.
+\end{frame}
+
+\begin{frame}
+  \centering\input{figgro3}\\
+  A coalescent simulation with growth: $\theta_0=1$, $\theta_1=100$,
+  $\tau=7$.
+\end{frame}
+
+\begin{frame}
+  \centering\input{figgro4}\\
+  A coalescent simulation with growth: $\theta_0=1$, $\theta_1=100$,
+  $\tau=7$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Model of sudden change in population size}
+
+  Time variable: $\tau = 2\mu t$, where $\mu$ is the mutation rate and
+  $t$ is time in generations.
+
+  \medskip
+
+  Population size changes suddenly at time 0. $\theta = 4N\mu$
+  measures population size after this change.
+
+  \medskip
+
+  At time 0, $F_i(0)$ is probability that a random pair of sequences
+  differ by $i$ sites. At time $\tau$, this probability becomes
+  $F_i(\tau)$. Converges toward an equilibrium at which $F_i(\tau) =
+  \hat F_i$.
+
+  \medskip
+
+  At time $\tau$,
+  \[
+F_i(\tau) = \hat F_i + e^{-\tau(1+1/\theta)}
+  \sum_{j=0}^i\frac{\tau^j}{j!}\big(F_{i-j}(0)  - \hat F_{i-j}\big).
+  \]
+\mbox{}\hfill (Li, 1977; Rogers \& Harpending, 1992)\\  
+\end{frame}  
+
+\begin{frame}
+\frametitle{Model of sudden growth fit to Asian data}
+\input{figasiafit}
+\end{frame}
+
+\begin{frame}
+\frametitle{Comas et al (1997) studied European mismatch distributions}
+\includegraphics[width=\linewidth]{Comas-map.png}\\
+\end{frame}
+
+\begin{frame}
+\frametitle{Mismatch distributions suggest expansion across Europe}
+\begin{columns}
+\column{0.5\linewidth}
+\includegraphics[width=\linewidth]{Comas-mismatch1.png}\\[4ex]
+\includegraphics[width=\linewidth]{Comas-mismatch2.png}\\
+\column{0.5\linewidth}
+Mid-East and Turkey: early expansions.
+
+\bigskip
+
+British, Basques: late expansions
+
+\bigskip
+
+Paleolithic or Neolithic?
+
+\bigskip
+
+Comas et al thought Paleolithic but may have been misled by mtDNA
+clock. 
+\end{columns}
+\end{frame}
+
+\end{document}

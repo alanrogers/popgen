@@ -1,0 +1,433 @@
+%-*-latex-*-
+\chapter{Summary of Simulation Mismatch Exercises}
+
+\section{sim1.dat}
+
+\subsection{Output of mmgen}
+\begin{verbatim}
+  %theta M tau K
+  1      0 Inf 1
+
+%     theta         mn        tau          K
+%    1.0000     0.0000        Inf          1
+
+%Mutation model = finite-flat. sites=100
+%total sampsize=50 subdivisions=1
+%subdivision sizes: 50
+%Using histograms of size 25
+%iterations=1, sampsize/subpop=50 total sampsize=50
+\end{verbatim}
+
+\subsection{Output of mmest}
+\begin{verbatim}
+%                                   MMEST
+%                  (Estimation from Mismatch Distribution)
+%                             by Alan R. Rogers
+%                                Version 4-3
+%                                 2 Dec 1998
+%                         Type `mmest -- ' for help
+
+% Cmd line: mmest sim1.mm
+% Using histogram of length 9. Input histogram had length 9.
+InputFile = sim1.mm;
+NSequences = 50;
+NSites = 100;
+Mismatch = 522 76 33 33 95 348 67 47 4;
+
+%                       mean           var E[(x-mean)^3]
+   Cumulants =        2.5502       6.30952       3.26703 ;
+
+%       theta0    theta1       tau       MAE     Rghns       Seg
+Est=     1.939     1.347    0.6113   0.07561    0.2331        13;
+
+% mmci ranges are specified by: start-val, end-val, increment
+% Edit the following to control mmci:
+RangeLog10Theta0 = 0 3 0.50 ;
+RangeGrowth = 0 3 1 ;
+RangeTau = 2 12 2 ;
+\end{verbatim}
+
+\begin{figure}
+\footnotesize
+\begin{verbatim}
+Panel 0: N1/N0 = 10^0:       Panel 1: N1/N0 = 10^1:  
+			                             
+l          +-----------+     l          +-----------+
+o    3.00  |      O    |     o    3.00  |O O O O O O|
+g    2.50  |      O    |     g    2.50  |O O O O O O|
+     2.00  |      O    |          2.00  |O O O O O O|
+t    1.50  |      O    |     t    1.50  |O O O O O O|
+h    1.00  |      O    |     h    1.00  |O O O O O O|
+e    0.50  |      *    |     e    0.50  |O O O O O O|
+t    0.00  |      *    |     t    0.00  |O O O O O O|
+a          +-----------+     a          +-----------+
+0                            0                   1 1 
+              undefined                  2 4 6 8 0 2 
+                                                     
+                                                 tau 
+
+Panel 2: N1/N0 = 10^2:       Panel 3: N1/N0 = 10^3:  
+			                             
+l          +-----------+     l          +-----------+
+o    3.00  |O O O O O O|     o    3.00  |O O O O O O|
+g    2.50  |O O O O O O|     g    2.50  |O O O O O O|
+     2.00  |O O O O O O|          2.00  |O O O O O O|
+t    1.50  |O O O O O O|     t    1.50  |O O O O O O|
+h    1.00  |O O O O O O|     h    1.00  |O O O O O O|
+e    0.50  |O O O O O O|     e    0.50  |O O O O O O|
+t    0.00  |O O O O O O|     t    0.00  |O O O O O O|
+a          +-----------+     a          +-----------+
+0                   1 1      0                   1 1 
+            2 4 6 8 0 2                  2 4 6 8 0 2 
+                                                     
+                    tau                          tau 
+                        
+\end{verbatim}
+\caption{Confidence region for sim1}
+\end{figure}
+
+\section{sim2.dat}
+
+Same as sim1.dat
+
+\subsection{Output of mmest}
+\begin{verbatim}
+%                                   MMEST
+%                  (Estimation from Mismatch Distribution)
+%                             by Alan R. Rogers
+%                                Version 4-3
+%                                 2 Dec 1998
+%                         Type `mmest -- ' for help
+
+% Cmd line: mmest sim2.mm
+% Using histogram of length 5. Input histogram had length 5.
+InputFile = sim2.mm;
+NSequences = 50;
+NSites = 100;
+Mismatch = 752 252 133 84 4;
+
+%                       mean           var E[(x-mean)^3]
+   Cumulants =      0.641633      0.897695       1.14257 ;
+
+%       theta0    theta1       tau       MAE     Rghns       Seg
+Est=     0.506     0.629    0.1356   0.02779    0.1819         4;
+
+% mmci ranges are specified by: start-val, end-val, increment
+% Edit the following to control mmci:
+RangeLog10Theta0 = 0 2 0.50 ;
+RangeGrowth = 0 1.5 0.5 ;
+RangeTau = 1 5 2 ;
+\end{verbatim}
+
+\begin{figure}
+\footnotesize
+\begin{verbatim}
+Panel 0: N1/N0 = 10^0:    Panel 1: N1/N0 = 10^0.5:    
+			                              
+l          +-----+	  l          +-----+          
+o    2.00  |  O  |	  o    2.00  |O O O|          
+g    1.50  |  O  |	  g    1.50  |O O O|          
+     1.00  |  O  |	       1.00  |O O O|          
+t    0.50  |  *  |	  t    0.50  |O O O|          
+h    0.00  |  *  |	  h    0.00  |* * *|          
+e          +-----+	  e          +-----+          
+t                 	  t                           
+a       undefined 	  a           1 3 5           
+0                 	  0                           
+                  	                tau           
+                  	                              
+
+Panel 2: N1/N0 = 10^1:     Panel 3: N1/N0 = 10^1.5:
+			                           
+l          +-----+	   l          +-----+      
+o    2.00  |O O O|	   o    2.00  |O O O|      
+g    1.50  |O O O|	   g    1.50  |O O O|      
+     1.00  |O O O|	        1.00  |O O O|      
+t    0.50  |O O O|	   t    0.50  |O O O|      
+h    0.00  |* O O|	   h    0.00  |. O O|      
+e          +-----+	   e          +-----+      
+t                 	   t                       
+a           1 3 5 	   a           1 3 5       
+0                 	   0                       
+              tau 	                 tau       
+                  
+\end{verbatim}
+\caption{Confidence region for sim2}
+\end{figure}
+
+\section{sim3.dat}
+
+\subsection{pophist.ini file}
+
+\begin{verbatim}
+  %theta M tau K
+  100    0   7 1
+    1    0 Inf 1
+\end{verbatim}
+
+\subsection{mmest output}
+\begin{verbatim}
+%                                   MMEST
+%                  (Estimation from Mismatch Distribution)
+%                             by Alan R. Rogers
+%                                Version 4-3
+%                                 2 Dec 1998
+%                         Type `mmest -- ' for help
+
+% Cmd line: mmest sim3.mm
+% Using histogram of length 18. Input histogram had length 18.
+InputFile = sim3.mm;
+NSequences = 50;
+NSites = 100;
+Mismatch = 11 12 19 36 52 93 114 145 174 185 129 96 74 40 24 13 4 4;
+
+%                       mean           var E[(x-mean)^3]
+   Cumulants =       8.16653       8.93227      -2.09649 ;
+
+%       theta0    theta1       tau       MAE     Rghns       Seg
+Est=    0.8751     110.4     7.291  0.008891  0.007306        65;
+
+% mmci ranges are specified by: start-val, end-val, increment
+% Edit the following to control mmci:
+RangeLog10Theta0 = 0 3 1 ;
+RangeGrowth = 0 3 1 ;
+RangeTau = 2 10 2 ;
+\end{verbatim}
+
+\begin{figure}
+\footnotesize
+\begin{verbatim}
+Panel 0: N1/N0 = 10^0:    Panel 1: N1/N0 = 10^1:
+			                        
+l          +---------+	  l          +---------+
+o    3.00  |    O    |	  o    3.00  |O O O O O|
+g    2.00  |    O    |	  g    2.00  |O O O O O|
+     1.00  |    .    |	       1.00  |. * . O O|
+t    0.00  |    O    |	  t    0.00  |O O * * *|
+h          +---------+	  h          +---------+
+e                     	  e                   1 
+t           undefined 	  t           2 4 6 8 0 
+a                     	  a                     
+0                     	  0                 tau 
+                      	                        
+Panel 2: N1/N0 = 10^2:    Panel 3: N1/N0 = 10^3:
+			                        
+l          +---------+	  l          +---------+
+o    3.00  |O O O O O|	  o    3.00  |O O O O O|
+g    2.00  |O O O O O|	  g    2.00  |O O O O O|
+     1.00  |. * O O O|	       1.00  |* . O O O|
+t    0.00  |O O * * *|	  t    0.00  |O O * * O|
+h          +---------+	  h          +---------+
+e                   1 	  e                   1 
+t           2 4 6 8 0 	  t           2 4 6 8 0 
+a                     	  a                     
+0                 tau 	  0                 tau 
+\end{verbatim}
+\caption{Confidence region for sim3}
+\end{figure}
+
+\section{sim4.dat}
+
+\begin{verbatim}
+  %Command line: mmgen -pd -n50 -mf
+  
+  %     theta         mn        tau          K
+  %   10.0000     0.0000        Inf          1
+  
+  %Mutation model = finite-flat. sites=100
+  %total sampsize=50 subdivisions=1
+  %subdivision sizes: 50
+  %Using histograms of size 25
+  %iterations=1, sampsize/subpop=50 total sampsize=50
+\end{verbatim}
+  
+\subsection{mmest output}
+\begin{verbatim}
+%                                   MMEST
+%                  (Estimation from Mismatch Distribution)
+%                             by Alan R. Rogers
+%                                Version 4-3
+%                                 2 Dec 1998
+%                         Type `mmest -- ' for help
+
+% Cmd line: mmest sim4.mm
+% Using histogram of length 31. Input histogram had length 31.
+InputFile = sim4.mm;
+NSequences = 50;
+NSites = 100;
+Mismatch = 103 134 73 60 43 9 3 10 2 9 41 94 124 46 26 14 3 2 0 0 0 0 
+  42 46 61 90 116 50 11 12 1;
+
+%                       mean           var E[(x-mean)^3]
+   Cumulants =       12.8947       98.6738       145.426 ;
+
+%       theta0    theta1       tau       MAE     Rghns       Seg
+Est=     9.262     10.89     3.633   0.02716   0.01833        43;
+
+% mmci ranges are specified by: start-val, end-val, increment
+% Edit the following to control mmci:
+RangeLog10Theta0 = 0 2 1 ;
+RangeGrowth = 0 3 1 ;
+RangeTau = 2 8 2 ;
+\end{verbatim}
+
+\begin{figure}
+\footnotesize
+\begin{verbatim}
+Panel 0: N1/N0 = 10^0:   Panel 1: N1/N0 = 10^1:
+			                       
+l          +-------+	 l          +-------+  
+o    2.00  |    O  |	 o    2.00  |O O O O|  
+g    1.00  |    *  |	 g    1.00  |. O O O|  
+     0.00  |    O  |	      0.00  |O O O .|  
+t          +-------+	 t          +-------+  
+h                   	 h                     
+e         undefined 	 e           2 4 6 8   
+t                   	 t                     
+a                   	 a               tau   
+0                   	 0                     
+
+Panel 2: N1/N0 = 10^2:   Panel 3: N1/N0 = 10^3:
+			                       
+l          +-------+	 l          +-------+  
+o    2.00  |O O O O|	 o    2.00  |O O O O|  
+g    1.00  |. O O O|	 g    1.00  |. O O O|  
+     0.00  |O O O O|	      0.00  |O O O O|  
+t          +-------+	 t          +-------+  
+h                   	 h                     
+e           2 4 6 8 	 e           2 4 6 8   
+t                   	 t                     
+a               tau 	 a               tau   
+0                   	 0                     
+\end{verbatim}
+\caption{Confidence region for sim4}
+\end{figure}
+
+\section{sim5.dat}
+
+\begin{verbatim}
+%                                   MMGEN
+%                         (generate simulated data)
+%                             by Alan R. Rogers
+%                             Version 3.10 alpha
+%                                8 March 1998
+%                         Type `mmgen -- ' for help
+
+%Command line: mmgen -pd -n50 -mf
+
+%     theta         mn        tau          K
+%  100.0000     0.0000        Inf          1
+
+%Mutation model = finite-flat. sites=100
+%total sampsize=50 subdivisions=1
+%subdivision sizes: 50
+%Using histograms of size 25
+%iterations=1, sampsize/subpop=50 total sampsize=50
+\end{verbatim}
+
+\subsection{mmest output}
+\begin{verbatim}
+\end{verbatim}
+
+\begin{figure}
+\footnotesize
+\begin{verbatim}
+Panel 0: N1/N0 = 10^0:       Panel 1: N1/N0 = 10^1:  
+			                             
+l          +-----------+     l          +-----------+
+o    3.00  |      O    |     o    3.00  |O O O O O O|
+g    2.50  |      O    |     g    2.50  |O O O O O O|
+     2.00  |      .    |          2.00  |O O O O O O|
+t    1.50  |      *    |     t    1.50  |* * * * * *|
+h    1.00  |      O    |     h    1.00  |O O O O . .|
+e    0.50  |      O    |     e    0.50  |O O O O O O|
+t    0.00  |      O    |     t    0.00  |O O O O O O|
+a          +-----------+     a          +-----------+
+0                            0                   1 1 
+              undefined                  2 4 6 8 0 2 
+                                                     
+                                                 tau 
+
+Panel 2: N1/N0 = 10^2:       Panel 3: N1/N0 = 10^3:  
+			                             
+l          +-----------+     l          +-----------+
+o    3.00  |O O O O O O|     o    3.00  |O O O O O O|
+g    2.50  |O O O O O O|     g    2.50  |O O O O O O|
+     2.00  |O O O O O O|          2.00  |O O O O O O|
+t    1.50  |* * * * * *|     t    1.50  |* * * * * *|
+h    1.00  |O O O O O O|     h    1.00  |O O O O O O|
+e    0.50  |O O O O O O|     e    0.50  |O O O O O O|
+t    0.00  |O O O O O O|     t    0.00  |O O O O O O|
+a          +-----------+     a          +-----------+
+0                   1 1      0                   1 1 
+            2 4 6 8 0 2                  2 4 6 8 0 2 
+                                                     
+                    tau                          tau 
+\end{verbatim}
+\caption{Confidence region for sim5}
+\end{figure}
+
+\section{sim6.dat}
+\begin{verbatim}
+%                                   MMGEN
+%                         (generate simulated data)
+%                             by Alan R. Rogers
+%                             Version 3.10 alpha
+%                                8 March 1998
+%                         Type `mmgen -- ' for help
+
+%Command line: mmgen -pd -n50 -mf
+
+%     theta         mn        tau          K
+% 1000.0000     0.0000        Inf          1
+
+%Mutation model = finite-flat. sites=100
+%total sampsize=50 subdivisions=1
+%subdivision sizes: 50
+%Using histograms of size 25
+%iterations=1, sampsize/subpop=50 total sampsize=50
+\end{verbatim}
+
+\subsection{mmest output}
+\begin{verbatim}
+\end{verbatim}
+
+\begin{figure}
+\footnotesize
+\begin{verbatim}
+Panel 0: N1/N0 = 10^0:     Panel 1: N1/N0 = 10^1:  
+			                           
+l          +-----------+   l          +-----------+
+o    3.00  |      O    |   o    3.00  |O O O O O O|
+g    2.50  |      O    |   g    2.50  |O O O O O O|
+     2.00  |      O    |        2.00  |O O O O O O|
+t    1.50  |      O    |   t    1.50  |O O O O O O|
+h    1.00  |      O    |   h    1.00  |O O O O O O|
+e    0.50  |      O    |   e    0.50  |O O O O O O|
+t    0.00  |      O    |   t    0.00  |O O O O O O|
+a          +-----------+   a          +-----------+
+0                          0                   1 1 
+              undefined                2 4 6 8 0 2 
+                                                   
+                                               tau 
+Panel 2: N1/N0 = 10^2:     Panel 3: N1/N0 = 10^3:  
+			                           
+l          +-----------+   l          +-----------+
+o    3.00  |O O O O O O|   o    3.00  |O O O O O O|
+g    2.50  |O O O O O O|   g    2.50  |O O O O O O|
+     2.00  |O O O O O O|        2.00  |O O O O O O|
+t    1.50  |O O O O O O|   t    1.50  |O O O O O O|
+h    1.00  |O O O O O O|   h    1.00  |O O O O O O|
+e    0.50  |O O O O O O|   e    0.50  |O O O O O O|
+t    0.00  |O O O O O O|   t    0.00  |O O O O O O|
+a          +-----------+   a          +-----------+
+0                   1 1    0                   1 1 
+            2 4 6 8 0 2                2 4 6 8 0 2 
+                                                   
+                    tau                        tau 
+\end{verbatim}
+\caption{Confidence region for sim6}
+\end{figure}
+
+
+

@@ -1,0 +1,27 @@
+\mbox{\beginpicture
+\setcoordinatesystem units <0.5\textwidth,0.011\textheight> point at 0 0
+\setplotarea x from 0 to 1.5, y from 0 to 50
+\axis bottom label {Time (ky ago)}
+  shiftedto y=-3
+  ticks withvalues {0} {1.2} {2} / at 0 1.2 2 / /
+\axis left label {$N$} shiftedto x=-0.05
+  ticks withvalues {0} {8.5} / at 0 8.5 / /
+\axis right shiftedto x=1.55
+  ticks withvalues {0} {9.244} {18.5} {25} {50} / at 0 9.244 18.5 25 50 / /
+\setsolid
+\plot 0 8.5 1.2 8.5 1.2 18.5 1.5 18.5 /  % best
+\plot 0 50 0.15 50 /
+\put {\footnotesize Best fit} [l] at 0.2 50
+\setdashes
+\plot 0 8.5 1.2 8.5 1.2 50 1.5 50 / % big $N_A$
+\plot 0 46 0.15 46 /
+\put {\footnotesize Big $N_A$} [l] at 0.2 46
+\setdashpattern <5pt, 3pt, 0.7pt, 3pt>
+\plot 0 8.5 1.2 8.5 1.2 25 1.5 25 /
+\plot 0 42 0.15 42 /
+\put {\footnotesize Small $N_A$} [l] at 0.2 42
+\setdots
+\plot 0 9.244 1.5 9.244 /
+\plot 0 38 0.15 38 /
+\put {\footnotesize Constant} [l] at 0.2 38
+\endpicture}

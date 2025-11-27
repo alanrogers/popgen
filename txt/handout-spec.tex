@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage{etex,pictex}
+\usepackage{natbib,times}
+\begin{document}
+\input{figspec}
+\clearpage
+\paragraph{Toy DNA sequence data set}
+\begin{verbatim}
+               123456
+HumanSequence1 AATAGC
+HumanSequence2 ..AC..
+HumanSequence3 .TACT.
+HumanSequence4 ..ACT.
+---------------------
+ChimpSequence1 AAAATC
+ChimpSequence2 AAAATC
+\end{verbatim}
+
+\paragraph{Theoretical unfolded spectrum for various values of $K$,  the haploid sample size}
+\begin{center}
+  \begin{tabular}{cl}
+Sample     & Theoretical spectrum\\
+size $(K)$ & (singletons, doubletons, $\ldots$)\\ \hline
+2 & $\theta$\\
+3 & $\theta, \quad \theta/2$\\
+4 & $\theta, \quad \theta/2, \quad \theta/3$\\
+5 & $\theta, \quad \theta/2, \quad \theta/3, \quad \theta/4$\\
+\multicolumn{2}{c}{Etcetera}
+\end{tabular}
+\end{center}
+
+\paragraph{Calculating folded spectrum}
+\begin{verbatim}
+theta = 1.0
+K = 5
+folded = (K/2+1)*[0]
+for i in range(1,len(folded)):
+     folded[i] = theta/i + theta/(K-i)
+folded[K/2] -= theta/(K/2)
+\end{verbatim}
+Is the entry for $K/2$ correct for all values of $K$?  If not, how
+would you fix it?
+
+%\bibliographystyle{plain}
+%\bibliography{defs,arr,arrpubs,molrec,repeat,tree,gs,mcmc,popecol}
+
+\end{document}

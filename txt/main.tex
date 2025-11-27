@@ -1,0 +1,80 @@
+% -*-latex-*-
+%\includeonly{spectrum}
+\documentclass[11pt,letterpaper]{book}
+%\documentclass[11pt,letterpaper]{report}
+\usepackage{etex,lecture,labexample,url}
+\usepackage{verbatim,exercise} % exercise requires verbatim
+\usepackage[labelfont={sf,bf},textfont=sf]{caption}
+\usepackage[headings]{fullpage}
+\usepackage{float,boxedminipage}
+\usepackage{pictex}
+\usepackage{sideby}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{appendix}
+%\usepackage{hyperref}
+\usepackage{xr}
+\externaldocument[JEPr-]{../prob/main}
+
+\usepackage[backend=biber,
+  natbib=true,
+  style=ext-numeric-comp,
+  sorting=nyt]{biblatex}
+\DeclareFieldFormat % Titles in sentence case
+  [article,inbook,incollection,inproceedings,patent,thesis,unpublished]
+  {titlecase:title}{\MakeSentenceCase*{#1}}
+\renewbibmacro{in:}{ % Don't use "In:" before journal names.  
+  \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}  
+\addbibresource{defs.bib}
+\addbibresource{arr.bib}
+\addbibresource{arrpubs.bib}
+\addbibresource{arrunpub.bib}
+\addbibresource{molrec.bib}
+\addbibresource{repeat.bib}
+\addbibresource{tree.bib}
+\addbibresource{gs.bib}
+\addbibresource{mcmc.bib}
+\addbibresource{popecol.bib}
+
+\newtheorem{trick}{Trick}
+\newcommand{\binom}[2]{{#1\choose #2}}
+\newtheorem{principle}{Principle}
+\floatstyle{ruled}
+\newfloat{algorithm}{tbp}{alg}[chapter]
+\numberexercises{chapter}
+\exercisehead{$\star$\,\footnotesize EXERCISE \normalsize\bf}{}
+\floatstyle{boxed}
+\newfloat{Box}{tbhp}{lob}
+\newdimen\offsety
+\newdimen\yunit
+\newdimen\xunit
+\newdimen\thusfar
+\newdimen\plotht
+\newdimen\plotwd
+\newdimen\plotsp
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\input{titlepage}
+\tableofcontents
+%\include{crib1}
+\include{descrip}
+\include{likelihood}
+\include{drift}
+%\include{homozygosity}
+\include{coalescent}
+\include{theta}
+\include{spectrum}
+\include{mismatch}
+%\include{simsum}
+%\include{str}
+%\include{alu}
+\appendix
+\include{variance}
+
+\printbibliography
+
+\chapter{Answers to Exercises}
+\mbox{}\\
+\listanswers
+\end{document}

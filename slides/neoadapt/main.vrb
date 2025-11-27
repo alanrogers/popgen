@@ -1,0 +1,27 @@
+\begin {columns}
+\column{0.6\textwidth}
+\frametitle{Prediction of Selection Hypothesis}
+\begin{verbatim}
+      X            Y          Z
+ 1 ...c............g..........a
+ 2 ...c............g..........t
+ 3 ...c............c..........a
+ 4 ...c............c..........t
+ 5 ...T............g..........t
+ 6 ...T............g..........t
+ 7 ...T............g..........t
+ 8 ...T............g..........t
+ 9 ...T............g..........A
+10 ...T............g..........t
+\end{verbatim}
+\column{0.4\textwidth}
+\raggedright\small
+\begin{itemize}
+\item Persistence allele is T at site X.
+\item No recombinants at nearby site Y.
+\item Only one at site Z
+\item A block of nearly identical sites surrounds persistence allele at
+site X.
+\item Linkage disequilibrium (LD)
+\end{itemize}
+\end{columns}

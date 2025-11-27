@@ -1,0 +1,31 @@
+% Darwin-Wedgewood Genealogy
+\let\put\pictexput
+\mbox{\beginpicture
+\setcoordinatesystem units <1cm,1cm>
+\setplotarea x from -3 to 3, y from -4 to 1
+%\setdots
+%\axis invisible bottom ticks andacross numbered from -3 to 3 by 1 /
+%\axis invisible left ticks andacross numbered from -4 to 1 by 1 /
+%\setsolid
+\Large
+\put {$\circ$~$\bullet$} at 0 0
+\circulararc 360 degrees from 0 -0.75 center at 0 0
+%
+\put {$\bullet$~$\circ$} at -2 -2
+\circulararc 360 degrees from -2 -2.75 center at -2 -2
+%
+\put {$\circ$~$\bullet$} at 2 -2
+\circulararc 360 degrees from 2 -2.75 center at 2 -2
+%
+\arrow <10pt> [.2,.67] from -0.2 0 to -1.7 -1.9
+\arrow <10pt> [.2,.67] from 0.2 0 to 2.1 -1.9
+%
+\put {\textsf{a}} [t] at -2 -4
+\put {\textsf{b}} [t] at 2 -4
+\setdots
+\setplotsymbol ({\small$\cdot$})
+\setquadratic
+\plot -1.7 -2.1  -1.5 -3  -2 -4 /
+\plot  2.3 -2.1   2.5 -3   2 -4 /
+\endpicture}
+\let\put\latexput

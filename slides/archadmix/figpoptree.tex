@@ -1,0 +1,17 @@
+%-*-latex-*-
+\let\put\pictexput
+\mbox{\beginpicture
+\headingtoplotskip=\baselineskip
+\setcoordinatesystem units <0.35cm, 0.35cm> point at 16 1
+\setplotarea x from 1 to 15, y from 1 to 15
+\axis bottom invisible ticks length <0pt>
+  withvalues {$X$} {$Y$} {$N$} {$C$} /  at 2 6 10 14 / /
+\setsolid
+\setplotsymbol ({\normalsize .})
+\plot 1 1 7 13 7 15 /
+\plot 3 1 4 3 5 1 / 
+\plot 7 1 5 5 6 7 9 1 /
+\plot 11 1 7 9 8 11 13 1 /
+\plot 15 1 9 13 9 15 /
+\endpicture}
+\let\put\latexput

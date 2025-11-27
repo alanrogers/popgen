@@ -1,0 +1,59 @@
+\section{Genetic systems with dominance}
+
+When there is dominance, two or more genotypes may be
+indistinguishable.  For example, suppose that phenotype~1 comprises
+genotypes $A_1A_1$ and $A_1A_2$, and that phenotype~2 consists only of
+genotype $A_2A_2$.   If our sample contains $N_1$ subjects of
+genotype~1 and $N_2$ of genotype~2, then
+\begin{eqnarray*}
+N_1 &=& n_{11} + n_{12}\\
+N_2 &=& n_{22}
+\end{eqnarray*}
+The easiest ways to estimate allele frequencies in such systems rely
+on the assumption that the sample is drawn from a population in
+Hardy-Weinberg equilibrium.
+
+Since $N_2$ is the number of $A_2A_2$ homozygotes, the Hardy-Weinberg
+formula says that it should equal
+\[
+N_2 = N q^2
+\]
+where $N \equiv N_1 + N_2$ is the number of subjects and $q$ is the
+frequency of $A_2$.  Thus,
+\begin{equation}
+q = \sqrt{N_2/N}
+\label{eq.phat.dominance}
+\end{equation}
+\begin{example}
+Estimate $p$ from a sample in which $N_1=75$ and $N_2=25$.
+\end{example}
+\begin{showanswer}
+\[
+\hat p = 1-\hat q = 1 - \sqrt{25/100} = 1/2.
+\]
+\end{showanswer}
+
+There is every reason to be skeptical of this answer, since we have
+justified equation~\ref{eq.phat.dominance} only by an heuristic
+argument.  It turns out, however, that this is also the maximum
+likelihood estimator of $p$.
+
+\hardstuff\textsf{\small The likelihood and log likelihood are 
+\begin{eqnarray*}
+L &=& (1 - q^2)^{N_1} q^{2N_2}\\
+\ln L &=& N_1\ln(1 - q^2) + 2N_2\ln q
+\end{eqnarray*}
+The derivative of $\ln L$ is
+\[
+\frac{d\ln L}{dq} = \frac{-2qN_1}{1 - q^2} + \frac{2N_2}{q}
+\]
+The maximum value of $\ln L$ occurs at a value of $q$ at which this
+derivative equals zero.  To find this value, set $d\ln L/dq = 0$ and
+solve the resulting equation.  This leads to
+\[
+q^2 = \frac{N_2}{N_1 + N_2}
+\]
+Taking the square root gives equation~\ref{eq.phat.dominance}.  This
+shows that our simply-derived formula is in fact a maximum likelihood
+estimator. 
+}

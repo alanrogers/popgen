@@ -1,0 +1,220 @@
+% -*-latex-*-
+%\documentclass[handout]{beamer}
+\documentclass[]{beamer}
+\usepackage{etex}
+\usepackage{graphicx}
+
+\let\latexput\put
+\usepackage{pictex}
+\let\pictexput\put
+\let\put\latexput
+
+\setbeamercovered{transparent}
+\setbeamertemplate{footline}[frame number]
+\author{Alan R. Rogers}
+\date{\today}
+\title{Using Genetic Data to Build Intuition about Population History}
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Notation}
+{\centering
+  \input{fignotation}\hspace{5mm}\input{figcongruent}\\}
+
+\bigskip
+
+$xy \succ yn$ will mean that $xy$ is more common than $yn$.
+$xy \sim yn$ will mean that the two are about equal in frequency.
+\end{frame}
+
+\begin{frame}
+\frametitle{Calling ancestral alleles}
+{\centering\input{figancder}\\}
+
+\bigskip
+
+When one allele is present in the outgroup, but two are present in the
+ingroup, the outgroup allele is likely to be ancestral.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Observed site pattern frequencies}
+  \begin{columns}
+    \column{0.5\textwidth}
+  \includegraphics[width=\linewidth]{xynd-frq.pdf}
+  \column{0.5\textwidth}
+  \raggedleft
+
+  $X$ is Africa; $Y$, Europe; $N$, Neanderthal, $D$, Denisovan.\\
+
+  \bigskip
+  
+  ``Dots'' in circles are 95\% confidence intervals.\\
+  
+  \bigskip
+
+  $x \succ y$
+
+  \bigskip
+
+  \textit{d} $\succ$ all other singletons.\\
+
+  \bigskip
+
+  \textit{xy}, \textit{nd} $\succ$ other doubletons.\\
+
+  \bigskip
+
+  $xy \succ nd$\\
+  \end{columns}
+
+  \bigskip
+
+\flushright  
+  \textit{yn} $\succ$ other rare doubletons;
+  \textit{xyn} $\succ$ other tripletons
+
+\end{frame}
+
+\begin{frame}
+  \frametitle{Why are $xy$, $nd$ $\succ$ other doubletons?}
+  \begin{center}
+    \input{fig2fork}
+  \end{center}
+$(X,Y)$ and $(N,D)$ are pairs of closely related populations. Close
+relatives share ancestors, and mutations in these ancestors generate
+\textit{xy} and \textit{nd}.           
+\end{frame}
+
+\begin{frame}
+\frametitle{Why is $xy \succ nd$?}
+\begin{center}
+  \input{fig2fork}
+\end{center}
+Either $N$ and $D$ split earlier than $X$ and $Y$, or \textit{ND} was
+larger than \textit{XY}.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Where do counterintuitive site patterns come from?}
+  \begin{columns}
+    \column{0.3\textwidth}
+    \input{figcongruent}
+    \column{0.7\textwidth}
+    \raggedleft
+    It's easy to understand where $xy$ comes from.
+
+    \bigskip
+
+    But why do $xn$ and $yn$ exist?
+
+    \bigskip
+
+    One answer is \emph{incomplete lineage sorting}\ldots
+    \end{columns}
+\end{frame}  
+
+\begin{frame}
+\frametitle{Incomplete lineage sorting}
+\centering
+\input{figlinsort}\\
+\end{frame}
+
+\begin{frame}
+  \frametitle{Two puzzles}
+  \begin{columns}
+    \column{0.5\textwidth}
+  \includegraphics[width=\linewidth]{xynd-frq.pdf}
+  \column{0.5\textwidth}
+  \raggedleft
+  Incomplete lineage sorting predicts that $yn \sim xn$, and $yd \sim xd$.
+  
+  \bigskip
+
+  It's true that $yd \sim xd$.
+
+  \bigskip
+
+  However, $yn \succ xn$: why?
+
+  \bigskip
+
+  Also, $x \succ y$: why?
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{$N\rightarrow Y$ admixture inflates \textit{yn} and $x$}
+\centering
+\input{figmix}\\
+\end{frame}
+
+\begin{frame}
+  \frametitle{Evidence for Neanderthal admixture into Eurasians}
+  \begin{columns}
+    \column{0.5\textwidth}
+  \includegraphics[width=\linewidth]{xynd-frq.pdf}
+  \column{0.5\textwidth}
+  \raggedleft
+   $yn \succ xn$ and $x \succ y$
+
+  \bigskip
+
+  This suggest admixture from Neanderthals into Eurasians.
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Another puzzle}
+  \begin{columns}
+    \column{0.5\textwidth}
+  \includegraphics[width=\linewidth]{xynd-frq.pdf}
+  \column{0.5\textwidth}
+  \raggedleft
+  Note that $d$ $\succ$ other singletons and that $xyn$ $\succ$ other
+  tripletons.
+
+  \bigskip
+
+  Why should this be?
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{$S\rightarrow D$ gene flow inflates \textit{d} and
+  \textit{xyn}}
+\centering
+\input{fighyparch}\\
+\end{frame}
+
+\begin{frame}
+  \frametitle{Observed site pattern frequencies}
+  \begin{columns}
+    \column{0.5\textwidth}
+  \includegraphics[width=\linewidth]{xynd-frq.pdf}
+  \column{0.5\textwidth}
+  \raggedleft
+  High frequencies of $d$ and $xyn$ suggest $S \rightarrow D$ admixture.\\
+  \end{columns}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Conclusions}
+  We have used no formal model; we have tested no hypotheses. All
+  we've done is to look at the data. Yet this informal analysis has
+  been productive. It suggests
+  \begin{enumerate}
+  \item modern Europeans and Africans are closely related,
+  \item so were Neanderthals and Denisovans,
+    \item the separation between Europeans and
+Africans was more recent than that between Neanderthals and
+Denisovans,
+\item Neanderthals contributed DNA to Europeans, and
+\item superarchaics contributed DNA to Denisovans.
+  \end{enumerate}
+
+\end{frame}
+\end{document}
+

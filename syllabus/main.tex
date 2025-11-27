@@ -1,0 +1,235 @@
+%-*-latex-*-
+\documentclass[11pt]{article}
+\newcommand{\blank}{\rule{2in}{0.4pt}}
+\usepackage[letterpaper,margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage[backend=biber,
+  natbib=true,
+  style=ext-numeric-comp,
+  sorting=nyt]{biblatex}
+\DeclareFieldFormat % Titles in sentence case
+  [article,inbook,incollection,inproceedings,patent,thesis,unpublished]
+  {titlecase:title}{\MakeSentenceCase*{#1}}
+\renewbibmacro{in:}{ % Don't use "In:" before journal names.  
+  \ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}  
+\addbibresource{defs.bib}
+\addbibresource{arr.bib}
+\addbibresource{molrec.bib}
+\addbibresource{arrpubs.bib}
+\addbibresource{arrunpub.bib}
+\addbibresource{qchar.bib}
+%\usepackage{datetime}
+%\renewcommand{\dateseparator}{-}
+%\yyyymmdddate
+%\usepackage{jeep}
+%\cfoot{\thepage}
+\newcommand{\heading}[1]{\bigskip\noindent\textbf{#1}~}
+\usepackage{xr-hyper}
+\externaldocument[H-]{../homework/prob}
+\externaldocument[H-]{../homework/drift}
+\externaldocument[H-]{../homework/randommate}
+\externaldocument[H-]{../homework/theta}
+\externaldocument[H-]{../homework/neutraltheo}
+\externaldocument[H-]{../homework/tree-b}
+\externaldocument[H-]{../homework/seln}
+\externaldocument[H-]{../homework/twoloc}
+\externaldocument[H-]{../homework/inbreed}
+\externaldocument[H-]{../homework/pstruc}
+\externaldocument[H-]{../homework/admix}
+\externaldocument[H-]{../homework/qchar}
+\externaldocument[H-]{../homework/mmspec}
+\begin{document}
+\begin{flushleft}
+Biol 5221     \hfill  Generated \today\\
+Profs: Angela Hancock, Alan Rogers, Jon Seger\\
+Lecture: Tue,Thu 10:45AM--12:05PM \hfill Lab: Wed 1--3PM\\
+\end{flushleft}
+\begin{center}
+  \url{https://content.csbs.utah.edu/~rogers/tch/ant5221/index.php}
+\end{center}
+
+\section*{\centering Human Evolutionary Genetics}
+
+\heading{Description} This course covers theories and methods of
+molecular population genetics, with emphasis on human examples. Using
+these tools, genetic data can inform us about population history and
+adaptive evolution. Laboratory exercises with the Python programming
+language connect theory to data. Satisfies Quantitative Intensive
+Requirement.
+
+We will meet twice a week for lecture and once a week for
+lab. Lectures are in person. For labs, students will log onto Zoom
+sessions via Canvas.
+
+\heading{Prerequisites} You should be comfortable with algebra and
+first-semester calculus.  No prior knowledge of Python is
+needed.
+
+\heading{Grading} is based on labs, homework assignments, and
+quizzes. Each lab, homework assignment, and quiz contributes equally
+toward the final grade.
+
+\heading{Extra credit} A 2-point extra credit assignment is available
+on the course website. It provides practice in algebra and is
+available only during the first half of the semester. The due date is
+listed in the schedule below.
+
+\heading{Quizzes} are administered via Canvas and are open book.  Most
+questions will be multiple choice, but you may need to do calculations
+to choose the right answer.
+
+\heading{Weekly computer lab} In this lab, students do projects using
+the Python programming language. The lab assignments are short enough
+to complete during the two-hour lab. The lab syllabus is available on
+the class web site. The projects themselves are described in JEPy and
+in the \emph{Lab Manual for Biol 5221}, which is also available on the
+website.
+
+\heading{Homework} There are also paper-and-pencil homework
+assignments, which are due at roughly weekly intervals as indicated in
+the schedule below. The homework assignments are available on the
+class website. Answers to even-numbered problems are in the back of
+the book of assignments. Only odd-numbered problems will be graded.
+
+Write your homework assignments on paper, with your name and the title
+of the assignment at the top. Number each page. If there are 3 pages,
+the numbers should look like ``1/3,'' ``2/3,'' and ``3/3,'' so that we
+can tell that we have all the pages. Finally, scan the assignment or
+take a cell-phone photograph, and upload to Canvas. There is a Canvas
+cell-phone app, will allow you to photograph several pages, one
+at a time, and upload them all together.
+
+\heading{Late assignments} If assignments are late, but not more than
+one week late, we'll deduct 10\% of the grade. We intended not to
+accept assignments more than one week, but that policy was not
+reflected in the syllabus. To keep the promise made in the original
+syllabus, we're modifying the policy as follows. For assignments due
+on or before 9 March 2024, we will accept submissions until the last
+week of class, with a 50\% penalty if they are more than one week
+late. For assignments due after 9 March, we will not accept
+assignments more than one week late. No late assignments will be
+accepted during the last week of the course. If the assignment is
+delayed because of a medical problem or other crisis, there is no
+penalty.
+
+\heading{Required readings} are listed numerically in the outline
+below. The full reference corresponding to each number is in the list
+of references at the end. The main text,
+\begin{quote}
+Gillespie, John. 2004.
+\emph{Population Genetics, a Concise Guide}, 2nd edition
+\end{quote}
+is available at the campus bookstore (also in paper and electronic
+versions on the web). All other readings are on the class website. In
+addition, we will occasionally assign other published papers and notes
+of our own.  When we do, they will be available either on paper or on
+the course web site.
+
+There are also two excellent texts, which are freely available online:
+\begin{enumerate}
+  \item
+    \href{https://web.stanford.edu/group/pritchardlab/HGbook.html}{Pritchard,
+      Jonathan. 2024} \emph{An Owner's Guide to the Human Genome:
+      An Introduction to Human Population Genetics, Variation and
+      Disease}.
+  \item
+    \href{https://github.com/cooplab/popgen-notes/releases/tag/v1.1}{Coop,
+      Graham. 2024.} \emph{Population and Quantitative Genetics}.
+\end{enumerate}
+These are not required, but you may find them helpful. We suggest
+portions of them as optional readings on the course website.
+
+\heading{Contact} Feel free to contact us either through Canvas or by
+email. \emph{Hancock} \url{hancock@mpipz.mpg.de}; \emph{Rogers}:
+\url{rogers@anthro.utah.edu}; \emph{Seger}:
+\url{seger@biology.utah.edu}.
+
+\heading{Learning outcomes}
+\begin{description}
+\item[Evolution] Students will be able to use the principles of evolutionary
+theory to interpret patterns of variation within species, and of change over
+time.
+
+\item[Scientific reasoning] Students will be able to apply the method
+  of critical scientific reasoning to identify knowledge gaps,
+  formulate hypotheses, and test them against experimental and
+  observational data to advance an understanding of the natural world.
+
+\item[Quantitative reasoning] Students will be able to use
+  mathematical and computational methods and tools to describe living
+  systems and be able to apply quantitative approaches, such as
+  statistics, quantitative analysis of dynamic systems, or
+  mathematical modeling.
+\end{description}
+
+\heading{Americans with Disabilities Act} The University of Utah seeks
+to provide equal access to its programs, services, and activities for
+people with disabilities. If you will need accommodations in this
+class, reasonable prior notice should be given to the Center for
+Disability and Access, 162 Olpin Union Building, (801) 581-5020.
+
+\heading{Attendance} Given the nature and goals of this course,
+attendance is required and adjustments cannot be granted to allow
+non-attendance. However, if you need to seek an ADA accommodation to
+request an exception to this attendance policy due to a disability,
+please contact the Center for Disability and Access (CDA). CDA will
+work with us to determine what, if any, ADA accommodations are
+reasonable and appropriate
+
+\heading{University Safety Statement} The University of Utah values
+the safety of all campus community members. To report suspicious
+activity or to request a courtesy escort, call campus police at
+801-585-COPS (801-585-2677). You will receive important emergency
+alerts and safety messages regarding campus safety via text
+message. For more information regarding safety and to view available
+training resources, including helpful videos, visit
+\url{https://safeu.utah.edu}.
+
+\heading{Sexual Misconduct} Title~IX makes clear that violence and
+harassment based on sex and gender (including sexual orientation and
+gender identity/expression) is a civil rights offense subject to the
+same kinds of accountability and support applied to offenses against
+other protected categories such as race, national origin, color,
+religion, age, status as a person with a disability, veteran’s status
+or genetic information. If you or someone you know has been harassed
+or assaulted, you are encouraged to report it to the Title~IX
+Coordinator in the Office of Equal Opportunity and Affirmative Action,
+383 South University Street, 801--581--8365, or the Dean of Students,
+270 Union Building, 801--581--7066. For support and confidential
+consultation contact the Center for Student Wellness, 426~SSB,
+801--581--7776. To report to the police, contact the Department of
+Public Safety, 801-585-2677 (COPS).
+
+\heading{Academic Misconduct} It is expected that students adhere to
+University of Utah policies regarding academic honesty, including but
+not limited to refraining from cheating, plagiarizing, misrepresenting
+one's work, and/or inappropriately collaborating. This includes the
+use of generative artificial intelligence (AI) tools without citation,
+documentation, or authorization. Students are expected to adhere to
+the prescribed professional and ethical standards of the
+profession/discipline for which they are preparing. Any student who
+engages in academic dishonesty or who violates the professional and
+ethical standards for their profession/discipline may be subject to
+academic sanctions as per the University of Utah’s 
+\href{https://regulations.utah.edu/academics/6-410.php}{Student Code}. 
+
+\setlength\LTleft{0pt}
+\setlength\LTright{0pt}
+\setlength\tabcolsep{0.25em}
+
+\bigskip
+
+\raggedright
+\begin{longtable}{l@{\,}lp{0.55\textwidth}lp{0.3\textwidth}}
+  \multicolumn{5}{c}{\Large\bf Schedule}\\
+\multicolumn{2}{l}{\textbf{Date}}&\textbf{Lecture}&&\textbf{Reading}\\ \hline
+\input{syllabus}
+\end{longtable}  
+
+\printbibliography
+\end{document}
+
+\end{document}
+
+

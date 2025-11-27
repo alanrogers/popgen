@@ -1,0 +1,5 @@
+AuthType basic
+AuthName "Readings for Anth/Biol 5221"
+AuthUserFile /www/data2/html-docs/rogers/htpwd
+AuthGroupFile /dev/null
+Require user anbi5221

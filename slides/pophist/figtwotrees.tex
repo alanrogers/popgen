@@ -1,0 +1,37 @@
+% -*-latex-*-
+%
+%%%%%%%%%%%%%% Tree in PicTeX Format %%%%%%%%%%%%%%
+%
+%Sample size   = 2
+%Do mutation = 1
+%     theta         mn        tau          K
+%   10.0000     0.0000        Inf          1
+%maxmm=13.000000 maxtau=0.000000 maxtree=20.077202 maxx=20.077202
+\let\put\pictexput
+\mbox{\beginpicture
+\def\mutation{\tiny$\bullet$}
+\small
+\valuestolabelleading=.4\baselineskip
+\headingtoplotskip=0.4\baselineskip
+%
+%%%%%%%%%%%%%% Gene Genealogy %%%%%%%%%%%%%%
+%
+\setcoordinatesystem units <0.04\linewidth, 5ex> point at 0 0
+\setplotarea x from 0 to 21, y from 0 to 3
+\putrule from 0.000000 0.000000 to 18.252001 0.000000
+\put {\mutation} at 12.763110 0.000000
+\putrule from 0.000000 1.000000 to 18.252001 1.000000
+\putrule from 18.252001 1.000000 to 18.252001 0.000000
+\putrule from 18.252001 0.500000 to 21.000000 0.500000
+\setbox0=\hbox{$\swarrow$}%
+\put {$\swarrow$ \raise \ht0 \hbox{MRCA}}
+   <0.3ex,0.3ex> [bl] at 18.252001 0.500000
+%%%%%%%%%%%%%% Gene Genealogy %%%%%%%%%%%%%%
+\putrule from 0.000000 2 to 5.022242 2
+\putrule from 0.000000 3 to 5.022242 3
+\putrule from 5.022242 3 to 5.022242 2
+\putrule from 5.022242 2.500000 to 21 2.500000
+\put {$\swarrow$ \raise \ht0 \hbox{MRCA}}
+   <0.3ex,0.3ex> [bl] at 5.022242 2.500000
+\endpicture}
+\let\put\latexput

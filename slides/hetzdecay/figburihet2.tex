@@ -1,0 +1,86 @@
+% Buri, Peter. 1956. Gene frequency in small populations
+% of mutant drosophila
+% Heterozygosity in lines I and II.
+\let\put\pictexput
+\beginpicture
+%\setcoordinatesystem units <0.15in, 0.04in>
+\setcoordinatesystem units <0.035\textwidth, 0.04in>
+\setplotarea x from 1 to 19, y from 0 to 50
+\axis left label {$H$}
+  ticks withvalues 0.00 0.25 0.50 / at 0 25 50 / /
+\axis bottom 
+  label {Generation} ticks
+  withvalues 1 5 10 15 19 / at 1 5 10 15 19 / /
+% Heterozygosity in line I
+\multiput {$\bullet$} at
+%t    H
+ 1  51.4
+ 2  46.4
+ 3  50.4
+ 4  45.6
+ 5  44.8
+ 6  42.8
+ 7  40.3
+ 8  40.2
+ 9  35.8
+10  34.8
+11  32.5
+12  30.5
+13  26.3
+14  25.5
+15  21.6
+16  20.2
+17  21.0
+18  19.7
+19  18.3
+/
+\setbox0=\hbox{$2N=18$}%
+\put {$2N=18$\raise\ht0\hbox{$\nearrow$}} [tr] at 9   31.7
+%2N = 18
+\plot   
+ 1   50.0
+ 2   47.2
+ 3   44.6
+ 4   42.1
+ 5   39.8
+ 6   37.6
+ 7   35.5
+ 8   33.5
+ 9   31.7
+10   29.9
+11   28.2
+12   26.7
+13   25.2
+14   23.8
+15   22.5
+16   21.2
+17   20.0
+18   18.9
+19   17.9
+/
+\setbox0=\hbox{$\swarrow$}%
+\put {$\swarrow$\raise\ht0\hbox{$2N=32$}} [bl] at 15 32.1
+%2N=32
+\plot
+1 50.0
+ 2 48.4
+ 3 46.9
+ 4 45.5
+ 5 44.0
+ 6 42.7
+ 7 41.3
+ 8 40.0
+ 9 38.8
+10 37.6
+11 36.4
+12 35.3
+13 34.2
+14 33.1
+15 32.1
+16 31.1
+17 30.1
+18 29.1
+19 28.2
+/
+\endpicture 
+\let\put\latexput

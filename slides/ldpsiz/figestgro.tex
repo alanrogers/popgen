@@ -1,0 +1,43 @@
+\mbox{\beginpicture
+\headingtoplotskip=-0.5ex
+\setcoordinatesystem units <1cm,0.714cm> point at 2.5 2
+\setplotarea x from 0 to 2.5, y from 2 to 8
+\axis left label {\large $2N$} 
+  ticks withvalues {$10^3$} {$10^4$} {$10^5$} {$10^6$} {$10^7$} / 
+  at 3 4 5 6 7 / /
+\axis bottom /
+%
+\put {$2N_0$} [b] at 1 7.5
+\putrule from 1 4.2457 to 1 7.1628
+\put {$\circ$} at 1 4.4542
+\setdashes
+\plot 0.5 6 1.5 6 /
+\setsolid
+%
+\put {$2N_1$} [b] at 2 3.5
+\putrule from 2 2.9408 to 2 3.0167
+\put {$\circ$} at 2 2.9836
+\setdashes
+\plot 1.5 3 2.5 3 /
+\setsolid
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcoordinatesystem units <1cm,0.0214cm> point at -0.5 200
+\setplotarea x from 0 to 2, y from 200 to 400
+\axis right label {\large $t$} 
+  ticks numbered from 200 to 400 by 100 /
+\axis bottom /
+%
+\put {$t_0$} [b] at 1 350
+\putrule from 1 283.56 to 1 334.83
+\put {$\circ$} at 1 314.01
+\setdashes
+\plot 0.5 300 1.5 300 /
+\setsolid
+\endpicture}
+%
+%# twoNinv0:     0.0005 3.5138e-05 (6.8736e-08,5.6794e-05)
+%#    t0:       1000     314.01         (283.56,334.83)
+%# twoNinv1:     0.0005  0.0010386   (0.00096238,0.001146)
+%
+%log10twoN0 = 4.4542 (4.2457,7.1628)
+%log10twoN1 = 2.9836 (2.9408,3.0167)

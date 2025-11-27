@@ -1,0 +1,32 @@
+% -*-latex-*-
+\begin{figure}
+\begin{center}
+\mbox{\beginpicture
+\def\mutation{\tiny$\times$}
+%\def\mutation{$\cdot$}
+\def\hunit{0.2143in}
+\footnotesize
+\valuestolabelleading=.4\baselineskip
+\setcoordinatesystem units <\hunit, 0.002in> point at 0 0
+\setplotarea x from 0 to 14, y from 0 to 500
+\axis left shiftedto x=-0.5 
+  ticks  withvalues {$N_0$} {$N_1$} / 
+  at 1 500 / /
+\axis bottom shiftedto y=-50
+  label {Time before present, measured in generations}
+  ticks withvalues 0 {$t$} / at 0 7 / /
+\put{\em Population Size} [rt] at 14 500
+\plot 0 500 7 500 7 1 14 1 /
+\endpicture}
+\end{center}
+\caption{At $t$ generations before the present, the population expands
+from female size $N_1$ to female size $N_0$.  The model's 3 parameters
+are $\theta_0 \equiv 2uN_0$, $\theta_1 \equiv 2uN_1$, and $\tau \equiv
+2ut$, where $u$ is the aggregate mutation rate over all sites.}
+\label{fig.sudden}
+\end{figure}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

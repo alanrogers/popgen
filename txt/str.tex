@@ -1,0 +1,346 @@
+% -*-latex-*-
+\chapter{Microsatellites\label{ch.str}}
+
+\section{Repeat polymorphisms: Nomenclature}
+\begin{description}
+\item[tandem repeat polymorphisms] A particular sequence is repeated
+again and again.  For example, if the repeated sequence is AT, then
+one chromosome might have a sting of three repeats (ATATAT) and
+another might have a string of five (ATATATATAT).  They are called
+``tandem'' repeats because the repeated units are stuck together
+end-to-end.  There are several categories of repeat polymorphism:
+\begin{description}
+\item[Minisatellite] the repeated unit is fairly large
+\item[Microsatellite] the repeated unit is small, commonly 2--6
+nucleotides.  
+\item[Short tandem repeat (STR)] a synonym for ``microsatellite''
+\end{description}
+\item[dispersed repeat polymorphisms] These also consist of a sequence
+that is repeated again and again, but in these polymorphisms the
+repeated units are adjacent to one another.   They are not even close
+together.  They are widely dispersed within the genome.  The \emph{Alu
+polymorphisms} are an example of this class of polymorphism.
+\end{description}
+
+\section{Properties relevant to statistical analysis}
+
+\begin{description}
+\item[Rapid evolution] Mutation rate in the neighborhood of 1/1000 per
+  generation \citep{Weber:HMG-2-1123}. 
+\item[Di- and tetra-nucleotide repeats are likely to be neutral] A
+  tetranucleotide repeat doesn't work very well within a reading
+  frame, because each mutation produces a frame-shift mutation, which
+  probably has catastrophic consequences.  Most of the di- and
+  tetra-nucleotide repeats that we find are outside of reading frames.
+\item[Tri-nucleotide repeats] are known within reading frames, and
+  some cause genetic disease. 
+\item[There are lots of microsatellite loci]
+\item[Mutational process poorly understood]  Statistical analysis
+  usually assumes that mutations add or subtract one repeat unit with
+  equal probability.  The is almost certainly too simple.
+\end{description}
+
+\section{A sample of 60 STR loci}
+
+Figure~\ref{fig.str} shows the frequency distributions of repeat
+counts at a sample of 60 tetra-nucleotide repeat loci described by
+Jorde and his colleagues \citep{Jorde:AJH-57-523, Jorde:PNA-94-3100}.
+Each horizontal axis there shows the number of copies of the repeat
+unit, and each vertical axis shows the number of chromosomes in the
+sample that exhibited that number of copies.
+
+\input{figstr}
+\clearpage
+
+\section{Remark about statistical methods}
+
+A variety of statistical methods have been introduced for analysis of
+STRs.  Many of these seem useful, but none of them have yet become
+widely used.  It is not obvious which should be included in an
+introductory account.
+
+\section{Descriptive statistics}
+
+Several of the statistical methods used with STRs involve the so-called
+``moments'' of the distribution of repeat counts.
+
+\paragraph{The mean} For any given locus, the mean is the average
+number of repeat counts in the sample.  For example, suppose we had
+data on 4 haploid genomes with repeat counts 4, 4, 5, and 6.  The mean 
+would be
+\[
+m = (4 + 4 + 5 + 6)/4 = 4.75
+\]
+The mean is also known as the ``first moment'' of the distribution.
+
+\paragraph{The variance} is the mean squared deviation from the mean.
+With the data above, this is%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\footnote{In a statistics course, you would learn to divide by 3
+  rather than 4 here in order to obtain an unbiased estimate.  I am
+  ignoring such niceties.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\[
+V = \Bigl(
+(4 - 4.75)^2 + (4 - 4.75)^2 + (5 - 4.75)^2 + (6 - 4.75)^2
+\Bigr)/4 = 0.6875
+\]
+The variance is also called the ``second moment'' of the distribution.
+
+\paragraph{The fourth moment} is the mean of the fourth powers of
+deviations from the mean.  With the example data,
+\[
+m_4 = \Bigl(
+(4 - 4.75)^4 + (4 - 4.75)^4 + (5 - 4.75)^4 + (6 - 4.75)^4
+\Bigr)/4 = 0.7695
+\]
+
+\paragraph{Gene identity} is defined as usual: it is the probability
+that a random pair of genes is identical.  In the example data there
+are 4 genes, so there are $(4 \times 3)/2 = 6$ pairs.  Only one of
+these pairs is identical, so the gene identity is
+\[
+J = 1/6;
+\]
+This is \emph{not} a moment of the distribution.
+
+\section{The method of Kimmel et al \citep{Kimmel:G-148-1921}}
+
+Kimmel et al show that, at equilibrium between mutation and drift, 
+\begin{eqnarray*}
+  V &=& \theta\\
+  J &=& 1 \Big / \sqrt{1 + 2\theta}
+\end{eqnarray*}
+Thus, $\theta$ can be estimated either by $V$ or by $(1/J^2 - 1)/2$.
+The ratio
+\begin{equation}
+\beta = \frac{V}{(1/J^2 - 1)/2}
+\end{equation}
+ought to equal unity at migration-drift equilibrium.
+
+\begin{wrapfigure}{r}{0.3\textwidth}
+\vspace{-1.5\baselineskip}
+%\kern 0.25\baselineskip
+\includegraphics[width=0.3\textwidth]{kimmel-fig3.png}
+\caption{From \citep[fig.~3]{Kimmel:G-148-1921}} 
+\label{fig.kimmel} 
+\vspace{-4\baselineskip}
+\end{wrapfigure}
+After a population increase, $\theta$ becomes larger so the numerator
+and denominator of this ratio will both begin to increase.  The
+denominator, however, increases faster.  Thus, $\beta < 1$ for some
+time after a population expansion.  For the 60 tetranucleotide repeats 
+shown in figure~\ref{fig.str},
+\begin{center}
+  \begin{tabular}{lc}
+    Population & $\beta$\\ \hline
+    Asia       & 1.8221\\
+    Europe     & 1.3364\\
+    Africa     & 1.1163\\ \hline
+  \end{tabular}
+\end{center}
+This pattern does not match that predicted by a population expansion.
+On the other hand, Kimmel et al show that these numbers do depart
+significantly from unity, so the hypothesis of mutation-drift
+equilibrium doesn't hold either.  What \emph{is} going on?
+
+%\begin{figure}
+%{\centering\includegraphics[width=0.3\textwidth]{kimmel-fig3.png}\\}
+%\caption{Figure 3 of Kimmel et al}
+%\end{figure}
+
+When population size decreases, $\beta$ is elevated above unity and then
+slowly decreases toward its equilibrium value of unity.  Taken at face
+value, these data seem to imply a population collapse in the late
+Pleistocene---precisely the opposite of the conclusions reached from
+archaeology and mtDNA.  
+
+In an effort to reconcile these contradictory findings, Kimmel et al
+consider the effect of a ``bottleneck,'' or temporary reduction in
+population size.  At the start of the bottleneck, $\theta$ decreases so
+$\beta$ is elevated above unity.  After the population grows large again,
+this process will reverse and $\beta$ will eventually converge to its
+equilibrium value of unity.  However, the increase in $\beta$ happens
+faster than the subsequent decrease.  Consequently, $\beta$ remains
+elevated for a long time after the bottleneck has ended.  Kimmel et al show
+that the elevation would still be apparent for several thousand generations
+after the end of the bottleneck.
+
+\section{A method-of-moments estimate of $\tau$}
+
+\subsection{Method}
+
+Consider a model of population history in which the population was constant
+in size except for one instantaneous change, which occurred $t$ generations
+ago.  The number of genes was $N_0$ before the change and $N_1$ after.  The
+effect of this history on genetic data can be fully described by three
+parameters:
+\begin{eqnarray*}
+\theta_0 &\equiv& 2uN_0\\
+\theta_1 &\equiv& 2uN_1\\
+\tau     &\equiv& 2ut
+\end{eqnarray*}
+My goal is to estimate these parameters.
+
+\input{figstrmm}
+
+Figure~\ref{fig.strmm} shows the mismatch distributions from our sample of 60
+STR loci.  In each panel there, the horizontal axis shows the magnitude of the
+pairwise difference, and the vertical axis shows the numbers of pairs of
+chromosomes in the sample that exhibited such a difference.
+
+\paragraph{Doing theory with samples of size 2}
+Rather than attempt a statistical theory for mismatch distributions from
+samples of size $n$, I work instead with theory for samples of size~2.  This
+simpler theory should provide some guidance, since the expected values of the
+components of a mismatch distribution do not depend on sample size
+\citep[footnote~4, p.~61]{Rogers:PPG-97-55}.  Nonetheless, other statistical
+properties \emph{do} depend on sample size, so caution is in order.  The
+simple theory of random pairs will provide insight concerning which statistics
+are likely to be useful.  Before these insights can be trusted, however, they
+must be tested by computer simulation.
+
+\paragraph{The stepwise mutation model}
+I use a very simple model of mutation, which assumes that each
+mutation either adds or subtracts exactly one repeat unit, the two
+alternatives having equal probability.
+
+\input{figsw}
+
+We already have a theory describing the effect of population history
+on mutational differences \citep{Li:G-85-331, Rogers:MBE-9-552}, and the
+stepwise mutational assumption makes it easy to calculate the
+probability that two chromosomes differ by $y$ repeat units given that
+they are separated by $x$ mutations.
+
+Figure~\ref{fig.sw} shows the effect of two population histories.  The
+distribution of mutational changes shows a pronounced wave whose
+position reflects the time of the population expansion.  This
+principle has proved useful in estimating expansion times from
+mitochondrial sequence data, where most mutations can be detected in
+comparisons between sequences \citep{Rogers:E-49-608}.  But the lower
+panel shows that the distribution of stepwise differences is far less
+sensitive to differences in population history.  Each mutation has an
+even chance of erasing the effect of the preceding mutation, and
+changes in the distribution are subtle.  On the other hand, our sample
+of 60 STR polymorphisms provides information about 60 essentially
+independent gene genealogies, whereas the mtDNA provide information
+about just one.  It is not yet clear which will be more informative.
+
+The different histories shown in figure~\ref{fig.sw} leave the mode of
+the stepwise mismatch distribution unchanged but do affect its width.
+Thus, it seems natural to look for look for effects on the moments of
+the distribution (defined above).  One can obtain estimators of
+$\theta_0$ and $\tau$ by equating the moments of the sample with
+theoretical moments in a sample of size 2.  This gives
+\begin{eqnarray}
+\hat\theta_0 &=& \sqrt{(m_4-V)/3 - V^2}\label{eq.hattau.str}\\
+\hat\tau     &=& V - \hat\theta_0 \label{eq.hatth0.str}
+\end{eqnarray}
+These formulas are analogous to the two-parameter method of moments
+estimators introduced in lecture~\ref{ch.mismatch}.  There is no
+estimator for $\theta_1$ here because the formulas assume that
+$\theta_1$ is extremely large.  They are not likely to be useful
+unless the population has in fact expanded.
+
+\input{figtaustr}
+\input{figth0str}
+To verify that these formulas are useful as estimators, I examined
+their behavior with simulated data.  At each of a series of values of
+$\tau$, I generated 1000 10-locus data sets and calculated $\hat\tau$
+using each data set.  The distribution of the results, shown in
+figure~\ref{fig.taustr}, is gratifying.  The sampling distribution of
+the estimator is relatively narrow and its central tendency increases
+in response to increases in $\tau$.  There is a modest upward bias,
+but since this bias can be measured, it can be corrected.  
+The behavior of $\hat\theta_0$, shown in figure~\ref{fig.th0str}, is
+less encouraging.  The sampling distribution is wide and its central
+tendency varies little in response to changes in $\theta_0$.  Thus,
+$\hat\theta_0$ does not appear to be a useful estimator of $\theta_0$.
+
+\subsection{Results}
+
+The present method provides a useful estimate of $\tau$ but not of
+$\theta_0$.  This makes it useful for estimating the time of an expansion
+but useless for establishing that an expansion has in fact occurred.
+Fortunately, the study of Shriver et al.\ \citep{Shriver:GR-7-586} has shown
+that the very data under study here \emph{do} imply a population expansion.
+Thus, I address myself here to the task of estimating the time of this
+expansion.  
+
+\begin{table}
+\centering
+\caption{Estimates of $\tau$\label{tab.tau}}
+\begin{tabular}{lcccccc}
+\hline
+           & \multicolumn{3}{c}{60 STR loci$^\dag$}
+           & \multicolumn{3}{c}{mtDNA$^\ddag$}\\ \cline{2-4}\cline{5-6}
+Population & L$^*$ & \rule{0pt}{12pt}$\bar{\hat\tau}$ & U$^{**}$ 
+           & L$^*$ &$\hat\tau$& U$^{**}$ \\
+\hline
+Africa   & 3.83 & 5.75 & 8.11 & 2.5 & 12.0 & 27.5 \\
+Asia     & 2.92 & 4.80 & 7.19 & 3.5 & 8.4 & 12.5 \\
+Europe   & 3.04 & 5.37 & 8.51 & --- & 3.6 &  ---  \\
+\hline
+\multicolumn{6}{l}{$^\dag$Bootstrapped confidence intervals}\\
+\multicolumn{6}{l}{$^\ddag$Simulation-based confidence intervals}\\
+\multicolumn{6}{l}{$^*$Lower end of 95\% confidence interval}\\
+\multicolumn{6}{l}{$^{**}$Upper end of confidence interval.}\\
+\end{tabular}
+\end{table}
+
+To estimate $\tau$ from STR data, I applied
+equation~\ref{eq.hattau.str} to each of the 60 loci.  The averages of
+these estimates are shown in table~\ref{tab.tau} under the column
+labeled $\bar{\hat\tau}$.  To measure the precision of the STR
+estimates, I repeated the calculations with each of 10000 bootstrap
+replicates.  Each bootstrap data set contains 60 STR loci, which were
+selected by sampling with replacement from the original 60 loci.  The
+STR and mitochondrial estimates agree in suggesting an earlier
+expansion in Africa than in Europe or Asia.
+
+\begin{table}
+\centering
+\caption{Estimates of $t$\label{tab.t}}
+\begin{tabular}{lcccccc}
+\hline
+           & \multicolumn{3}{c}{60 STR loci$^\dag$}
+           & \multicolumn{3}{c}{mtDNA$^\ddag$}\\ \cline{2-4}\cline{5-6}
+Population & L$^*$ & \rule{0pt}{12pt}$\bar{\hat t}$ & U$^{**}$ 
+           & L$^*$ &$\hat t$& U$^{**}$ \\
+\hline
+Africa   & 48,000 & 72,000 & 101,000 & 31,000 & 150,000 & 344,000\\
+Asia     & 37,000 & 60,000 & 90,000  & 44,000 & 105,000 & 156,000 \\
+Europe   & 38,000 & 67,000 & 106,000 &  ---   &  45,000 &   ---\\
+\hline
+\multicolumn{6}{l}{$^\dag$Bootstrapped confidence intervals}\\
+\multicolumn{6}{l}{$^\ddag$Simulation-based confidence intervals}\\
+\multicolumn{6}{l}{$^*$Lower end of 95\% confidence interval}\\
+\multicolumn{6}{l}{$^{**}$Upper end of confidence interval.}\\
+\end{tabular}
+\end{table}
+
+To convert $\tau$ from mutational time into years, we must divide by
+$2u$ and multiply by the generation time, say 25 years.
+\citet{Weber:HMG-2-1123} suggest that mutation rates at many STR loci
+are near 1/1000 per generation.  This estimate is undoubtedly rough,
+and it ignores variation across loci, but we set these issues aside in
+order to obtain the estimates of $\hat t$ in the STR column of
+table~\ref{tab.t}.  The corresponding estimates in the mitochondrial
+column assume a per-nucleotide divergence rate of 14\% per million
+years \citep[p.~1506]{Vigilant:S-253-1503}, or about $u=1/1000$ per
+generation for 630 nucleotides.
+
+For Africa and Asia, the mitochondrial and STR estimates differ by
+roughly a factor of two---well within the range of statistical error.
+For Europe, the two estimates are even closer.  Thus, the STR
+estimates are in broad agreement with the mitochondrial estimates.
+
+The confidence intervals are narrower with STR data than with
+mitochondrial data.  The mitochondrial interval is six times as long
+as the STR interval for Africa and twice as long for Asia.  For
+Europe, the mtDNA interval is infinite, but the STR interval is 68,000
+years.  Thus, STR estimates are appreciably more precise.  This
+difference may reflect either the increased information available when
+one studies 60 loci rather than one, or possibly a lack of efficiency
+in the statistical method used for mtDNA.

@@ -1,0 +1,77 @@
+#-*-text-*-
+
+Introduction: Scope of course :: :: S
+Probability 1 :: \citep[sec.~1--2]{Rogers:JEPr}:: R
+
+Probability 3 :: \citep[sec.~3]{Rogers:JEPr} :: R
+
+Describing and partitioning phenotypic variation :: :: S
+Homework~\ref{H-hw.prob} due.
+
+Genomes and their variation ::\citep[sec.~1.0--1.3]{Gillespie:PGC-04}:: H
+
+Random mating ::\citep[sec.~1.4]{Gillespie:PGC-04}:: S
+Decay of heterozygosity ::\citep[sec.~2.0--2.2]{Gillespie:PGC-04}:: S
+
+Mutation versus drift::\citep[sec.~2.3]{Gillespie:PGC-04}:: H
+
+Describing DNA sequence variation :: \citep[Ch.~1]{Rogers:LNGG} :: S
+
+Gene genealogies :: \citep[Ch.~4]{Rogers:LNGG} :: R
+Homework~\ref{H-hw.randommate} due.
+
+Connecting gene genealogies to genetics::\citep[Ch.~5]{Rogers:LNGG}; \citep[sec.~2.6]{Gillespie:PGC-04}:: R
+Homework~\ref{H-hw.drift} due.
+
+Site frequency spectrum :: \citep[Ch.~6]{Rogers:LNGG} :: H
+
+Mismatch distribution and population growth:: \citep[Ch.~7]{Rogers:LNGG} :: R
+
+The neutral theory of molecular evolution 1::\citep[sec.~2.4]{Gillespie:PGC-04}:: S
+
+The neutral theory of molecular evolution 2::\citep[sec.~2.5]{Gillespie:PGC-04}::S
+Homework~\ref{H-hw.theta} due.
+
+Selection ::\citep[sec.~3.0--3.3]{Gillespie:PGC-04};\citep{Rogers:seln}:: H
+Extra credit assignment due.
+
+Mutation versus selection::\citep[sec.~3.4]{Gillespie:PGC-04}; \citep{Fu:N-493-216}::S
+Genetic load::\citep[sec.~3.5]{Gillespie:PGC-04}::S
+Homework~\ref{H-hw.mmspec} due.
+
+Fixation of mutations::\citep[sec.~3.9--3.10]{Gillespie:PGC-04}::S
+
+Neutral evolution at two loci::\citep[sec.~4.0--4.1]{Gillespie:PGC-04}::R
+Homework~\ref{H-hw.neutraltheo} due.
+
+Selection at two loci::\citep[sec.~4.2]{Gillespie:PGC-04}:: R
+Why LD helps us find selective sweeps::\citep{Rogers:LDseln}::R
+
+Inbreeding ::\citep[sec.~5.0--5.3]{Gillespie:PGC-04}:: R
+Homework~\ref{H-hw.seln} due.
+
+Population structure::\citep[sec.~5.5]{Gillespie:PGC-04};\citep{Rogers:PopStruc}::H
+
+Detecting natural selection::\citep{Vitti:ARG-47-1, Hejase:TG-36-243}::H
+Homework~\ref{H-hw.twoloc} due.
+
+Genetic draft::\citep[sec.~4.3]{Gillespie:PGC-04}:: S
+
+Population history from whole genomes :: \citep{Li:N-475-493} :: R
+Homework~\ref{H-hw.inbreed} due.
+
+Archaic genes in modern humans :: \citep{Rogers:arXiv-2201.02668} :: R
+Selection on archaic genes :: :: R
+
+Quantitative genetics: genes, environment, heritability::\citep[sec.~6.0--6.2]{Gillespie:PGC-04}::S
+Homework~\ref{H-hw.pstruc} due.
+
+Response to selection:: \citep{Rogers:lande} :: S
+
+Trait mapping ::\citep{Tam:NRG-20-467,Uffelmann:NRM-1-59} :: H
+Homework~\ref{H-hw.admix} due.
+
+Finding the missing heritability: trait prediction and prospects for personalized medicine::\citep{Manolio:N-461-747,NHGRI:PRS,Massarat:N-617-256} :: H
+
+Evolution of quantitative traits :: \citep{Barghi:NRG-21-769} :: H
+Homework~\ref{H-hw.qchar} due.

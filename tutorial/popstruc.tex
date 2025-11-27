@@ -1,0 +1,214 @@
+\documentclass[twocolumn]{article}
+\usepackage{pictex,fullpage}
+\usepackage[numbers,sort&compress]{natbib}
+%\setcounter{secnumdepth}{0}
+\begin{document}
+\title{Geographic Population Structure}
+\author{Alan R. Rogers}
+\maketitle
+
+In Buri's \citep{Buri:E-10-367} drift experiment, heterozygosity ($H$)
+declined.  At the same time, the variance ($V$) among populations
+increased.  We already have a model describing the first of these
+phenomena.  Here, we consider the second---the variance among
+populations---assuming throughout that genetic drift is the only
+evolutionary force at work.
+
+\begin{figure*}
+{\centering\input{figburihvI}\\}
+\caption{In Buri's \citep{Buri:E-10-367} drift experiment,
+  heterozygosity ($H$) declined.  At the same time, the variance ($V$)
+  among populations increased.  Data are from Buri's series~I and are
+  tabulated in Table~\ref{tab.buri}.}
+  \label{fig.buri}
+\end{figure*}
+
+First a few terms.  In the initial generation, the allele frequency
+was $p_0$.  We will treat this as a constant, not a random variable.
+In generation $t$, the corresponding quantity $p_t$ is a random
+variable, the randomness having been introduced by the process of
+genetic drift.  For convenience, we set $q_t = 1-p_t$.  The
+heterozygosity in generation $t$ (also a random variable) is $H_t =
+2p_t q_t$.  We are interested in the evolutionary change that has
+happened since generation~0.
+
+\section{Genetic drift does not change the expected allele 
+frequency} 
+
+Let us begin with the expected value of $p_1$, the allele frequency in
+the generation~1.  According to the urn model, the number of copies of
+allele $A$ in each subpopulation is a Binomial random variable with
+mean $Np_0$.  The expected allele frequency is thus $Np_0/N = p_0$.
+This demonstrates a remarkable fact: the expected allele frequency is
+unchanged by genetic drift.  This is true not only of the first
+generation, but of each succeeding generation.  No matter how many
+generations are involved, the allele frequency of each subpopulation
+is a random variable whose expected value is $p_0$.  In symbols,
+\begin{equation}
+E[p_t] = p_0.
+\label{eq.Ept}
+\end{equation}
+
+\section{The Wahlund Principle and $F_{ST}$}
+In contrast to $p_t$, the variance $V_t$ has an expected value that
+does change with time.  To model the variance, we begin with its
+definition:
+\[
+V_t = E[p_t^2] - p_0^2
+\]
+This is just the standard definition of the variance, modified
+slightly in light of Eqn.~\ref{eq.Ept}.  Note that, in view of
+this definition,
+\begin{equation}
+E[p_t^2] = V_t + p_0^2
+\label{eq.Ep2}
+\end{equation}
+We'll need this fact in a minute.
+
+Let us turn now to the heterozygosity.  Its expected value in
+generation $t$ is
+\begin{eqnarray}
+E[2p_t q_t] &=& 2E[p_t] - 2E[p_t^2]\nonumber\\
+ &=& 2p_0 - 2(V_t + p_0^2)\qquad 
+\hbox{using Eqns.~\ref{eq.Ept}--\ref{eq.Ep2}}\nonumber\\
+ &=& 2p_0q_0 - 2V_t
+\label{eq.wahlund}
+\end{eqnarray}
+This is another important fact: average heterozygosity in
+generation~$t$ will be smaller than that in generation~0.  The amount
+of the reduction is \emph{exactly twice} the variance of group allele
+frequencies about their expected value $p_0$.  This is known as
+Wahlund's principle \citep{Wahlund:75}.  It shows that there is a close
+and necessary connection between the decline of heterozygosity (shown
+on the left in Fig.~\ref{fig.buri}) and the increase in variance
+(shown on the right).  In effect, genetic drift converts
+heterozygosity into variance among groups.
+
+It is often useful to express the absolute reduction in heterozygosity
+$(2V_t)$ as a proportion of the original heterozygosity $(2p_0q_0)$.
+This proportional reduction is
+\begin{equation}
+F_{ST} = \frac{2V_t}{2p_0q_0} = \frac{V_t}{p_0q_0} 
+\label{eq.fst}
+\end{equation}
+The notation $F_{ST}$ was introduced by Sewall Wright
+\citep{Wright:AE-15-323} and is now conventional within population
+genetics.  Gillespie defines $F_{ST}$ using different notation (his
+Eqn.~5.3), which was introduced by \citet{Nei:PNA-70-3321}.  Although
+the two definitions look different, they are interchangeable.  In view
+of Eqn.~\ref{eq.fst}, we can re-express Eqn.~\ref{eq.wahlund} as
+\begin{equation}
+E[2p_t q_t] = 2p_0q_0(1-F_{ST})
+\label{eq.hfst}
+\end{equation}
+Now $E[2p_t q_t]$ is the expected heterozygosity in generation $t$,
+and $2p_0q_0$ is that in generation 0. Thus, Eqn.~\ref{eq.hfst} says
+that $F_{ST}$ is the proportional reduction in heterozygosity caused
+by genetic drift. There are corresponding increases in expected
+homozygosity. The expected frequencies of the three genotypes at a
+biallelic locus are:
+\[
+\begin{array}{lc}
+\hbox{Genotype} & \hbox{Frequency}\\
+\hline
+AA & E[p_t^2] = p_0^2 + p_0q_0F_{ST}\\
+Aa & E[2p_t q_t] = 2p_0q_0(1-F_{ST})\\
+aa & E[q_t^2] = q_0^2 + p_0q_0F_{ST}\\
+\end{array}
+\]
+These formulas are identical to those for pedigree inbreeding, because
+genetic drift is a form of inbreeding.
+
+\section{Model of completely isolated subpopulations}
+\label{sec.nomig}
+
+In Eqn.~\ref{eq.hfst}, we express the expected heterozygosity
+$(2p_tq_t)$ in generation~$t$ as a function of that in generation~0.
+Early in the semester, we derived a similar result:
+\begin{equation}
+E[2p_t q_t] = 2p_0q_0\bigl(1-1/2N\bigr)^t
+\label{eq.hetdecay}
+\end{equation}
+To refresh your memory, see Gillespie's Eqn.~2.3.  These equations
+look very different, yet both are correct.  They provide a simple way
+to derive the rule by which $F_{ST}$ changes with time.  Set
+Eqns.~\ref{eq.hfst} and~\ref{eq.hetdecay} equal to each other, and
+solve for $F_{ST}$.  You will discover that
+\begin{eqnarray}
+F_{ST} &=& 1 - \bigl(1-1/2N\bigr)^t\nonumber\\
+  &\approx& 1 - e^{-t/2N}
+\label{eq.fst.noneq}
+\end{eqnarray}
+The last line above uses the approximation that $e^x \approx 1+x$ if
+$x$ is near zero.  Eqn.~\ref{eq.fst.noneq} applies when the
+populations are totally separated.  It shows that $F_{ST}$ increases
+according to a very simple rule, increasing gradually toward its
+maximal value, 1.0.
+
+\section{Migration in addition to drift}
+
+If there is migration between populations, we cannot use any of the
+results in section~\ref{sec.nomig}.  This case demands a different
+theory, which is discussed by Gillespie.  Under the ``island-model''
+of population structure, $F_{ST}$ converges toward an equilibrium at
+which
+\begin{equation}
+F_{ST} = \frac{1}{4Nm+1}
+\label{eq.fst.eq}
+\end{equation}
+as shown on Gillespie's p.~136.
+
+We have two equations for $F_{ST}$.  Eqn.~\ref{eq.fst.eq} refers to
+equilibrium under the island model, and Eqn.~\ref{eq.fst.noneq} to the
+case of totally isolated populations.  In the exercises below, we will
+consider human data under these two extreme cases.
+
+\section*{Exercises}
+\begin{enumerate}
+\item
+Plot the $V_t$ data in Table~\ref{tab.buri}, to make a graph like that
+on the right side of Fig.~\ref{fig.buri}.
+
+\item
+Combine Eqns.~\ref{eq.fst} and~\ref{eq.fst.noneq} to obtain a
+formula for the variance, $V_t$.  Plot this formula as a line in your
+graph, assuming as Buri did that $2N = 18$.  How well do Buri's
+variance data fit the model?
+
+\begin{table}[htb]
+  \caption{Data from series I of Buri's \citep{Buri:E-10-367} drift
+    experiment, as plotted in Fig.~\ref{fig.buri}. Key: $t$, generation;
+    $H_t$, mean heterozygosity $(2pq)$ within subpopulations; $V_t$,
+    variance among group allele frequencies.}
+\label{tab.buri}
+\centering
+\begin{tabular}{rrr|rrr}
+ $t$ & $H_t$ & $V_t$ & $t$ & $H_t$ & $V_t$ \\ \hline
+ 0 & 1.000 & 0.000 & 10 & 0.348 & 0.090\\
+ 1 & 0.514 & 0.006 & 11 & 0.325 & 0.105\\
+ 2 & 0.464 & 0.026 & 12 & 0.305 & 0.112\\
+ 3 & 0.504 & 0.031 & 13 & 0.263 & 0.123\\
+ 4 & 0.456 & 0.042 & 14 & 0.255 & 0.136\\
+ 5 & 0.448 & 0.050 & 15 & 0.216 & 0.140\\
+ 6 & 0.428 & 0.055 & 16 & 0.202 & 0.155\\
+ 7 & 0.403 & 0.062 & 17 & 0.210 & 0.160\\
+ 8 & 0.402 & 0.072 & 18 & 0.197 & 0.165\\
+ 9 & 0.358 & 0.083 & 19 & 0.183 & 0.170\\
+\hline
+\end{tabular}
+\end{table}
+
+\item In the continental human populations, $F_{ST} \approx 1/9$.  Use
+  this value to estimate $Nm$ (under the equilibrium model).
+
+\item Now assume that the human continental populations have been
+  totally isolated, and use the observed $F_{ST}$ to estimate $t/2N$. 
+  Then convert this into an estimate of the time in years since the
+  human populations separated.  (Assume that $N=10,000$ and that
+  generations are 25 years long.) 
+\end{enumerate}
+
+\bibliographystyle{plainnat}
+\bibliography{defs,gs,arr,molrec}
+
+\end{document}

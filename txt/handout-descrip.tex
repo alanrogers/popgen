@@ -1,0 +1,43 @@
+\documentclass[pdftex]{article}
+\begin{document}
+\begin{verbatim}
+% Data    1 2 3 4 5 6 7 8 9
+seq1      A T G A T G A T G
+seq2      . . . G . . . . C
+seq3      G . . G . . . . C
+seq4      . A . . . . G . C
+\end{verbatim}
+
+\noindent
+\rule{\textwidth}{0.5pt}
+
+
+\begin{verbatim}
+%                                  seqstat
+%                (descriptive statistics from sequence data)
+%                             by Alan R. Rogers
+%                                Version 5-1
+%                                 8 Feb 2000
+%                        Type `seqstat -- ' for help
+
+% Cmd line: seqstat foo.dat -e
+% Results will include the reference sequence (line 1).
+
+% Population 0
+   sequence         : 4
+   sites            : 9
+   segregating sites: 5
+
+   meanPairwiseDiff
+      per sequence  : 2.66667
+      per site      : 0.296296
+
+   mismatch         : 0 1 1 3 1 ;
+   spectrum         : 4 1 ;
+
+   theta estimated from segregating sites
+      per sequence  : 2.72727
+      per site      : 0.30303
+\end{verbatim}
+
+\end{document}

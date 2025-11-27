@@ -1,0 +1,42 @@
+% -*-latex-*-
+\begin{center}
+\mbox{%
+\beginpicture
+\headingtoplotskip=0.25\baselineskip
+\setcoordinatesystem units <0.3in, 0.3in> point at 0 0
+\setplotarea x from -3 to 3, y from -3 to 3
+\axis left label {\small\lines{Quantiles\cr of $\log_{10}\hat\theta_0$}}
+   shiftedto x=-3.3
+   ticks numbered from -3 to 3 by 1 /
+\axis bottom shiftedto y=-3.3 label {$\log_{10}\theta_0$}
+   ticks numbered from -3 to 3 by 1 /
+\multiput {$\bullet$} at -3 -3 -2 -2 -1 -1 0 0 1 1 2 2 3 3 /
+\setdots
+% x=log10 theta0 y= quantile 0.025 of log10 hat theta0_2
+\plot -3 -0.775396 -2 -0.791821 -1 -0.841830 0 -0.678428 1 0.092183 2
+1.293974 3 2.330290 /
+\setdashes
+% x=log10 theta0 y= quantile 0.25 of log10 hat theta0_2
+\plot -3 -0.285418 -2 -0.272473 -1 -0.266854 0 -0.204335 1 0.554529 2
+1.586990 3 2.607434 /
+\setsolid
+% x=log10 theta0 y= quantile 0.5 of log10 hat theta0_2
+\plot -3 -0.117841 -2 -0.098595 -1 -0.095869 0 -0.027779 1 0.771205 2
+1.775497 3 2.794216 /
+\setdashes
+% x=log10 theta0 y= quantile 0.75 of log10 hat theta0_2
+\plot -3 0.001799 -2 0.021846 -1 0.025855 0 0.123607 1 0.980033 2
+1.955938 3 2.973172 /
+\setdots
+% x=log10 theta0 y= quantile 0.975 of log10 hat theta0_2
+\plot -3 0.168626 -2 0.198499 -1 0.186335 0 0.393973 1 1.303687 2
+2.290758 3 3.303566 /
+\endpicture%
+}
+\end{center}
+%
+\footnotesize At least 1,000 data sets were simulated at each of
+several values of $\theta_0$, and each was used to estimate the
+model's three parameters.  In each run, $\theta_1=1000$, $\tau=7$, and
+$N=147$.
+

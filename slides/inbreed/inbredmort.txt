@@ -1,0 +1,45 @@
+# Source: Bittles and Neel. 1994. The costs of human inbreeding and
+# their implications for variations at the DNA level. Nature Genetics
+# 8:117-121. 
+#
+# Mortalities are in percent
+#                                   --Mortality----
+pop                       F      cousin  outbred
+Delhi_urban_sunni         0.0201   32.0    13.3
+Uttar_Pradesh_urban_sunni 0.0172   39.2    23.7
+Rajasthan                 0.0228   22.4    15.2
+Tamil_Nadu_rural1         0.0371   28.3    26.3
+Tamil_Nadu_urban          0.0203   29.0    27.7
+Tamil_Nadu_rural2         0.0371   16.2    13.8
+Tamil_Nadu_urban2         0.0204   20.8    19.3
+Karnataka_hindu           0.0333    4.4     3.9
+Karnataka_muslim          0.0160    3.6     3.3
+Karnataka_christian       0.0173    5.0     4.2
+Lahore                    0.0269   33.5    20.9
+Sheikhupura               0.0271   26.0    20.3
+Gujrat                    0.0277   25.8    19.2
+Jhelum                    0.0262   21.3    10.7
+Rawalpindi                0.0286   22.1    18.2
+Gujranwala                0.0323   19.7    14.6
+Sahiwal                   0.0295   18.0    17.4
+Fairalabad                0.0293   16.4    15.9
+Sialkot                   0.0261   17.9    13.0
+Hiroshima                 0.0027   11.4     7.7
+Nagasaki                  0.0037   10.4     9.5
+Fukuoka                   0.0029    5.3     3.1
+Hirado                    0.0061   22.3    19.0
+Shizuoka_rural            0.0081   14.7    12.9
+Shizuoka_urban_rural      0.0047   14.7    10.9
+Shizuoka_urban            0.0024   13.1     8.7
+Kuwait                    0.0260   17.3    16.2
+Yoruba                    0.0242   28.8    24.1
+RioGrandeDelSol           0.0076   46.2    39.5
+MinasGeraisI_white        0.0060   25.5    25.9
+MinasGeraisI_mixed        0.0043   32.7    29.2
+MinasGeraisI_black        0.0034   40.2    37.0
+MinasGeraisII_white       0.0093   27.2    28.2
+MinasGeraisII_mixed       0.0049   35.9    28.1
+MinasGeraisII_black       0.0056   25.9    24.0
+ParanaState               0.0005   22.7    11.8
+Morbihan                  0.0005   25.0    12.9
+Loir_et_Cher              0.0010   17.7    11.3

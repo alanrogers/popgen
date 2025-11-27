@@ -1,0 +1,13 @@
+# academic calendar
+ 8 Jan 2024 # classes begin
+15 Jan 2024 # MLK day
+19 Feb 2024 # Presidents' day
+ 3 Mar 2024 # spring break 
+ 4 Mar 2024 # spring break 
+ 5 Mar 2024 # spring break 
+ 6 Mar 2024 # spring break 
+ 7 Mar 2024 # spring break 
+ 8 Mar 2024 # spring break 
+ 9 Mar 2024 # spring break 
+10 Mar 2024 # spring break 
+23 Apr 2024 # classes end

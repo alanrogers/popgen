@@ -1,0 +1,95 @@
+\subsection{Relative frequency}
+\label{sec.relfrq}
+
+There is a close relationship between the concepts of probability and
+relative frequency.  Since relative frequency is more familiar, we
+cover it first.  As an example, consider a toy data set consisting of 10
+items, which represent genotypes in a sample of diploid individuals:
+$[GG, CG, GG, GG, CG, CG, CG, GG, GG, CC]$.  We can describe these
+data concisely by counting the number of copies of each value in the
+list.  The resulting counts are tabulated in panel~a of
+Fig~\ref{fig.toydat}.  That table also shows the \emph{relative
+frequency} of each value in the data.  The relative frequency is
+simply the count as a proportion of sample size.  For example, the
+value ``$CG$'' appears 4 times in the data, and there are 10 items in
+all.  Thus, the relative frequency of ``$CG$'' is $0.4$.  Confusingly,
+the word ``frequency'' is used interchangeably for counts and relative
+frequencies.  You have to catch the meaning from context.
+
+The bottom row of the table in Fig.~\ref{fig.toydat} shows the sums of
+the two distributions.  The counts sum to the sample size, and the
+relative frequencies sum to unity.
+
+\begin{exercise}
+Make a table showing the relative frequency distribution of the
+following data: $[A, B, B, A, A, A, C, A, B, C]$.  Verify that it sums
+to unity.
+\answer
+The frequency distribution is:
+\begin{center}
+\begin{tabular}{cc}
+        & Relative\\
+Value   &frequency\\
+\hline 
+ $A$   & 0.5\\
+ $B$   & 0.3\\
+ $C$   & 0.2\\
+\cline{2-2}
+        & 1.0
+\end{tabular}
+\end{center}
+\end{exercise}
+
+\begin{figure}
+\begin{boxedminipage}{\columnwidth}
+\centering
+\subfloat[Frequency distribution table]
+{\begin{tabular}{ccc}
+       &           & Relative\\
+Value  & Count     &frequency\\
+\hline 
+ $GG$  &   5  & 0.5\\
+ $CG$  &   4  & 0.4\\
+ $CC$  &   1  & 0.1\\
+\cline{2-3}
+       &  10  & 1.0
+\end{tabular}}\\
+\subfloat[Histogram]{\input{figtoyhist}}
+\end{boxedminipage}
+\caption{Toy data set summarized using (a)~a table of relative
+  frequencies and (b)~a histogram.}
+\label{fig.toydat}
+\end{figure}
+
+Distributions of counts and relative frequencies are often shown using
+graphs rather than tables.  In Fig.~\ref{fig.toydat}, panel~b uses a
+histogram to display the data from panel~a.
+
+\begin{exercise}
+Make a histogram showing the relative frequency distribution that you
+tabulated in the preceding exercise.
+\answer
+The histogram is:
+\begin{center}
+\mbox{\beginpicture
+\setcoordinatesystem units <0.4in, 2in> 
+\setplotarea x from 0 to 3, y from 0 to 0.5
+\axis left shiftedto x=-0.1 label {\lines{Relative\cr frequency}} 
+  ticks numbered from 0.00 to 0.50 by 0.25 /
+\axis bottom
+   label {Value}
+%   ticks numbered from 0 to 2 by 1 /
+   ticks length <0pt> withvalues {$A$} {$B$} {$C$} / at 0.5 1.5 2.5 / /
+\sethistograms
+\plot 0 0 1 0.5 2 0.3  3 0.2 
+/
+\endpicture}
+\end{center}
+\end{exercise}
+
+This section has talked about three ideas: relative frequencies,
+frequency distributions, and histograms.  Make sure you understand
+them, for they will all reappear (slightly modified) throughout the
+pages that follow.  Probability, for example, is just a special kind
+of relative frequency.  It is the subject of the remainder of this
+chapter.

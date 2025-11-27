@@ -1,0 +1,48 @@
+ 1 Aug 22 M Introduction to the course, and to variation                          
+ 2     24 W Describing and partitioning phenotypic variation                          
+ 3     26 F Genomes and their variation              G:1.0--1.3               
+ 4     29 M Probability 1                            JEPr:1--2                
+ 5     31 W Probability 2                            JEPr:3                   
+ 6 Sep 02 F Python 1                                 JEPy:1-2                 
+       05 M *** NO CLASS                                                      
+ 7     07 W Python 2                                 XXXX                     
+ 8     09 F Python 3                                 XXXX                     
+ 9     12 M Random mating                            G:1.4                    
+10     14 W Genetic drift and heterozygosity         G:2.0--2.2, R:1          
+11     16 F Mutation versus drift                    G:2.3, R:1               
+12     19 M DNA sequence variation                   R:1                      
+13     21 W Gene genealogies                         R:4                      
+14     23 F Connecting gene genealogies to genetics  R:5; G:2.6               
+15     26 M Catch-up and review                                               
+16     28 W Exam 1                                                            
+17     30 F Site frequency spectrum                  R:6                      
+18 Oct 03 M Mismatch distribution                    R:7                      
+19     05 W Population growth and gene genealogies   Huff et al 2010          
+20     07 F Molecular evolution                      G:2.4                    
+       10 M *** NO CLASS                                                      
+       12 W *** NO CLASS                                                      
+       14 F *** NO CLASS                                                      
+21     17 M Molecular variation and neutral theory 1 G:2.5                    
+22     19 W Molecular variation and neutral theory 2 G:2.5                    
+23     21 F Selection 1                              G:3.0--3.3               
+24     24 M Selection 2                                                       
+25     26 W Mutation versus selection                G:3.4                    
+26     28 F Genetic load                             G:3.5                    
+27     31 M Fixation of advantageous mutations       G:3.9--3.10              
+28 Nov 02 W Two-locus dynamics                       G:4.0--4.1               
+29     04 F Two-locus selection                      G:4.2                    
+30     07 M Catch-up and review                                               
+31     09 W Exam 2                                                            
+32     11 F Linkage disequilibrium in the human genome TBA                      
+33     14 M Genomic traces of selective sweeps       Sabeti et al 2006, Voight et al 2006
+34     16 W Genetic draft                            G:4.3                    
+35     18 F Inbreeding 1                             G:5.0--5.3               
+36     21 M Inbreeding 2                                                      
+37     23 W Population subdivision                   G:5.5                    
+       25 F *** NO CLASS                                                      
+38     28 M Are we Neandertals?                      Green et al 2010         
+39     30 W Quantitative Genetics: genes and environment G:6.0--6.1               
+40 Dec 02 F Quantitative Genetics: heritability      G:6.2                    
+41     05 M Quantitative Genetics: evolution in nature G:6.3                    
+42     07 W QTL mapping and ``missing'' heritability TBA                      
+43     09 F Catch-up and review                                               

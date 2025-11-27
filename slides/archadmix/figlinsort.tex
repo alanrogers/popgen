@@ -1,0 +1,59 @@
+%-*-latex-*-
+\let\put\pictexput
+\mbox{\beginpicture
+\headingtoplotskip=\baselineskip
+\setcoordinatesystem units <0.35cm, 0.35cm> point at 16 1
+\setplotarea x from 1 to 15, y from 1 to 15
+\axis bottom invisible ticks length <0pt>
+  withvalues {$X$} {$Y$} {$N$} {$C$} /  at 2 6 10 14 / /
+\axis bottom invisible shiftedto y=-0.5 ticks length <0pt>
+  withvalues {1} {0} {1} {0} /  at 2 6 10 14 / /
+\setdots
+\axis left invisible ticks andacross unlabeled at 7 / /
+%\axis top ticks andacross numbered from 1 to 15 by 1 /
+\plotheading{Pattern $xn$}
+\setsolid
+\setplotsymbol ({\normalsize .})
+\plot 1 1 7 13 7 15 /
+\plot 3 1 4 3 5 1 / 
+\plot 7 1 5 5 6 7 9 1 /
+\plot 11 1 7 9 8 11 13 1 /
+\plot 15 1 9 13 9 15 /
+% gene tree...
+\setplotsymbol ({\textcolor{red}{\footnotesize .}})
+\plot 2 1 6.5 10 /
+\plot 10 1 6 9 /
+\setplotsymbol ({\textcolor{blue}{\footnotesize .}})
+\plot 6.5 10 8 13 8 15 /
+\plot 6 1 4.25 4.5 7 10 7 11 /
+\plot 14 1 8 13 /
+\put {$\bullet$} at 6.5 10
+%%%%%%%%%%%%% Right plot %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setcoordinatesystem units <0.35cm, 0.35cm> point at 0 1
+\setplotarea x from 1 to 15, y from 1 to 15
+\axis bottom invisible ticks length <0pt>
+  withvalues {$X$} {$Y$} {$N$} {$C$} /  at 2 6 10 14 / /
+\axis bottom invisible shiftedto y=-0.5 ticks length <0pt>
+  withvalues {0} {1} {1} {0} /  at 2 6 10 14 / /
+\setdots
+\axis right invisible ticks andacross unlabeled at 7 / /
+\setsolid
+\plotheading{Pattern $yn$}
+\setplotsymbol ({\normalsize .})
+\plot 1 1 7 13 7 15 /
+\plot 3 1 4 3 5 1 / 
+\plot 7 1 5 5 6 7 9 1 /
+\plot 11 1 7 9 8 11 13 1 /
+\plot 15 1 9 13 9 15 /
+% gene tree...
+\setplotsymbol ({\textcolor{blue}{\footnotesize .}})
+\plot 2 1 8 13 8 15 /
+\setplotsymbol ({\textcolor{red}{\footnotesize .}})
+\plot 6 1 4.25 4.5 6.5 9 /
+\plot 10 1 6.5 8 6.5 9  6.8 9.9 /
+\setplotsymbol ({\textcolor{blue}{\footnotesize .}})
+\plot 6.8 9.9 7.5 12 /
+\plot 14 1 8 13 /
+\put {$\bullet$} at 6.8 9.9
+\endpicture}
+\let\put\latexput

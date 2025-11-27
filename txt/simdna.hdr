@@ -1,0 +1,26 @@
+%                                   MMGEN
+%                         (generate simulated data)
+%                             by Alan R. Rogers
+%                             Version 3.10 alpha
+%                                8 March 1998
+%                         Type `mmgen -- ' for help
+
+%Command line: mmgen -i1 -n50 -pd -mf -ph -ps -D
+
+%     theta         mn        tau          K
+%   75.0000     0.0000     6.0000          1
+%    0.5000     0.0000        Inf          1
+
+%Mutation model = finite-flat. sites=100
+%total sampsize=50 subdivisions=1
+%subdivision sizes: 50
+%Using histograms of size 25
+%iterations=1, sampsize/subpop=50 total sampsize=50
+mean pairwise diff=5.825306
+h=  22  12  22  50 133 237 276 278 150  39   6
+%normalized mismatch distribution inPicTeX format:
+\multiput {$\circ$} at  0 0.017959 1 0.009796 2 0.017959 3 0.040816
+   4 0.108571 5 0.193469 6 0.225306 7 0.226939 8 0.122449
+   9 0.031837 10 0.004898
+/
+

@@ -1,0 +1,25 @@
+% -*-latex-*-
+%\documentclass[handout]{beamer} 
+\documentclass[]{beamer} 
+%\includeonlyframes{tpage,coin,urn,urntab,urnprobdat,whymultiply,condprob%
+%,condfrq,condfrq2,prodrule,sumrulefrq,sumrule,sumrulemutexc%
+%,countrelfrq,calcvar,probdist}
+\usepackage{etex}
+
+% PicTeX and Beamer redefine \put in inconsistent ways, so it is
+% necessary to distinguish between the two definitions.
+\let\latexput\put
+\usepackage{pictex}
+\let\pictexput\put
+\let\put\latexput
+
+\usepackage{amsmath}
+\newcommand{\OR}{\;\hbox{or}\;}
+\newcommand{\AND}{\;\&\;}
+%\setbeamercovered{transparent}
+\begin{document}
+
+\input{prob1}
+\input{prob2}
+\input{prob3}
+\end{document}

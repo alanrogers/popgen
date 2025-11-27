@@ -1,0 +1,48 @@
+% -*-latex-*-
+\reversemarginpar
+\chapter{The Method of Maximum Likelihood}
+\label{ch.likelihood}
+
+Before doing this exercise, please read \emph{Using Likelihood}, which
+you can find at
+\url{http://www.anthro.utah.edu/~rogers/pubs/index.html}.
+
+\section{Maximum likelihood exercises with genetics problems}
+
+\begin{exercise}
+Suppose that we have data from a genetic system with two alleles, and
+that we observe $N_1$ individuals of genotype $A_1A_1$, $N_2$ of
+genotype $A_1A_2$, and $N_3$ of genotype $A_2A_2$.  If the (unknown)
+genotype frequencies are $P_1$, $P_2$, and $P_3$, then the likelihood
+function is
+\[
+L \propto P_1^{N_1} P_2^{N_2} (1-P_1 - P_2)^{N_3}
+\]
+I have used the symbol ``$\propto$'' (which stands for ``is
+proportional to'') rather than the equals sign because this expression
+ignores a proportional constant that will not affect the answer.  The
+log likelihood is
+\begin{eqnarray*}
+\ln L &=& \hbox{const.} + N_1 \ln P_1 + N_2 \ln P_2 \\
+&& \mbox{} + N_3 \ln (1-P_1 - P_2)
+\end{eqnarray*}
+Find the values of $P_1$, $P_2$, and $P_3$ that maximize the
+likelihood.
+\answer
+The parameter values that maximize this expression are
+\begin{eqnarray}
+\hat P_1 &=& \frac{N_1}{N_1 + N_2 + N_3}\\
+\hat P_2 &=& \frac{N_2}{N_1 + N_2 + N_3}
+\end{eqnarray}
+\end{exercise}
+
+\begin{exercise}
+If we assume that the population is in Hardy-Weinberg equilibrium
+then the likelihood and log likelihood functions are
+\begin{eqnarray*}
+L &\propto& [p^2]^{N_1} [2p(1-p)]^{N_2} [(1-p)^2]^{N_3}\\
+\ln L &=& \hbox{const.} + (2N_1 + N_2)\ln p \\
+ &&\mbox{} + (N_2 + 2N_3)\ln(1-p)
+\end{eqnarray*}
+Find the value of $p$ that maximizes the likelihood.
+\end{exercise}

@@ -1,0 +1,21 @@
+[0] Config.pm:311> INFO - This is Biber 2.16
+[0] Config.pm:314> INFO - Logfile is 'main.blg'
+[132] biber-darwin:340> INFO - === Fri Jan  6, 2023, 17:13:14
+[180] Biber.pm:415> INFO - Reading 'main.bcf'
+[317] Biber.pm:952> INFO - Found 3 citekeys in bib section 0
+[335] Biber.pm:4340> INFO - Processing section 0
+[351] Biber.pm:4531> INFO - Looking for bibtex format file 'defs.bib' for section 0
+[555] bibtex.pm:1689> INFO - LaTeX decoding ...
+[605] bibtex.pm:1494> INFO - Found BibTeX data source '/Users/rogers/bib/defs.bib'
+[620] Biber.pm:4531> INFO - Looking for bibtex format file 'tree.bib' for section 0
+[840] bibtex.pm:1689> INFO - LaTeX decoding ...
+[1240] bibtex.pm:1494> INFO - Found BibTeX data source '/Users/rogers/bib/tree.bib'
+[1318] Biber.pm:4531> INFO - Looking for bibtex format file 'arrunpub.bib' for section 0
+[1526] bibtex.pm:1689> INFO - LaTeX decoding ...
+[1570] bibtex.pm:1494> INFO - Found BibTeX data source '/Users/rogers/bib/arrunpub.bib'
+[1599] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1599] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1599] Biber.pm:4168> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[1599] Biber.pm:4174> INFO - No sort tailoring available for locale 'en-US'
+[1619] bbl.pm:654> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[1623] bbl.pm:757> INFO - Output to main.bbl

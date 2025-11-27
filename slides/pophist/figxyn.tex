@@ -1,0 +1,71 @@
+%auto-ignore
+%-*-latex-*-
+\mbox{\beginpicture
+\headingtoplotskip=0.2\baselineskip
+\setcoordinatesystem units <2mm, 1.8mm>
+\setplotarea x from -2 to 17.5, y from 0 to 20
+\color{black}
+\plotheading{$XY{\rightarrow}N$}
+\axis bottom invisible ticks length <0pt>
+  withvalues {$X$} {$Y$} {$N$} {$D$} {$H$} /  at 1 6 9 13 17 / /
+\color{red}
+\axis bottom invisible shiftedto y=-2.5 ticks length <0pt>
+  withvalues {\llap{$d$:}} {0} {0} {0} {1} /
+  at 0 1 6 9 13 / /
+\color{cyan}
+\axis bottom invisible shiftedto y=-5 ticks length <0pt>
+  withvalues {\llap{$xyn$:}} {1} {1} {1} {0} /
+  at 0 1 6 9 13 / /
+\color{black} % I issue this command twice, because otherwise,
+\color{black} % the rest of the document is cyan.
+%\axis left ticks andacross numbered from 0 to 20 by 2 /
+%\axis top ticks andacross numbered from 0 to 16 by 2 /
+\setplotsymbol ({\normalsize .})
+\plot 0 0 6 12 6 20 /   %X
+\plot 2 0 3.5 3 5 0 /   %XY
+\plot 7 0 4.5 5 7.12486206354179 10.249724127083585 /    %Y
+\plot 8.17572 0 9.1757 5 10.036 6.7206 / %N
+\plot 10 0 11 5 /       %N
+\plot 12 0 11 5 /            %Dl
+\plot 8 16 14.21226360816738 8.468963009740001 15.684 0 / %Hl
+\plot 8 20 8 18.8112 15.8936 9.24189 17.4997 0 / %Hr
+\plot 13.684 0 12.8151 5 11.3389 7.9523 8 12 8 16 / %Dr
+\plot 7.12486206354179 10.249724127083585 10.036 6.7206 / % ND l
+%\arrow <10pt> [.2,.67] from 8.57571931984138 2 to 6 2
+%\arrow <0pt> [.2,.67] from 11.75 1 to 10.25 1
+%\arrow <10pt> [.2,.67] from 8.32572 1 to 6.5 1
+%\put {\small $m_N$} [b]  <0pt,5pt> at 7.5 2
+%\put {\small $m_D$} [t]  <0pt,-5pt> at 11 1
+\put {\small $m_{XY}$} [b]  <0pt,5pt> at 7.3 6
+\arrow <10pt> [.2,.67] from 5 6 to 9.6 6
+%\put {\small $m_H$} [b]  <0pt,5pt> at 13.9889 4
+%\arrow <10pt> [.2,.67] from 14.9889 4 to 12.9889 4
+\setplotsymbol ({\footnotesize .})
+\setdashes
+\plot 1 0 5 8 /         % x, bottom of xy
+\setplotsymbol ({\textcolor{cyan}{\footnotesize .}})
+\setsolid
+\plot 5 8 7 12 7 13 /  % top of xy
+\setplotsymbol ({\footnotesize .})
+\setdashes
+\plot 7 13 7 20 /             % top of xynd
+\plot 6 0 4 4 4 6 / %y
+\setplotsymbol ({\textcolor{red}{\footnotesize .}})
+\setsolid
+\plot
+   12.649562539059012 0.5
+   11.946500312472102 4
+   10.581012916966557 7.465564584832791
+   7.31003 11.4308
+   7 13
+/ % d and nd
+\setplotsymbol ({\footnotesize .})
+\setdashes
+\plot
+   9.187899999999999 0.5
+   10.287899999999999 6
+   5 6
+   5 8
+   / % n
+\setsolid
+\endpicture}

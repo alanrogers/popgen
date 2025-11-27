@@ -1,0 +1,935 @@
+\section{Random Variables and Expectations}
+\label{sec.distrv}
+
+It is time to introduce some vocabulary.  For any experiment, the set
+of possible outcomes is called the \emph{sample space}.  For example,
+there were four possible outcomes ($RR$, $RG$, $GR$, and $GG$) in
+Kerrich's urn experiment.  These constitute the sample space of that
+experiment.  There is nothing new here except the term itself.
+
+We will also need the idea of a \emph{random variable}.  A variable
+$X$ is called a \emph{random variable} if the values it takes are
+numbers and it takes each value with a specified probability.  For
+example, we might define $X$ as the result of one roll of a die.  The
+sample space of $X$ is \{1, 2, 3, 4, 5, 6\}.  If the die is fair, it
+takes each of these values with probability $1/6$.  Another random
+variable is $Y=X^2$.  The sample space of $Y$ is \{1, 4, 9, 16, 25,
+36\} and again it takes each value with probability $1/6$.  $X$ and
+$Y$ are distinct random variables even though the underlying
+experiment---rolling a die---is the same in both cases.
+
+\begin{exercise}
+  Consider the experiment of throwing two dice, one red and one white.
+  What is the sample space?  If the dice are fair, what are the
+  associated probabilities?  Do not enumerate the entire sample space;
+  just describe it.
+\answer
+The sample space consists of all possible $(X,Y)$ pairs, where $X$ is
+the number on the red die and $Y$ the number on the white.  $X$ and
+$Y$ are both integers between 1 and 6, so there are 36 possible
+outcomes.  If the dice are fair, then each outcome has probability
+$1/36$.
+\end{exercise}
+
+\begin{exercise}
+What is the sample space of $X$, the number of heads in two spins of a
+fair coin?  (Hint: the events $HT$ and $TH$ both yield the same number
+of heads.)
+\answer
+The sample space is $\{0, 1, 2\}$.
+\end{exercise}
+
+\subsection{Averages and expectations}
+\label{sec.expectation}
+
+There are two ways to calculate an average, one using relative
+frequencies and the other using the method you learned in grade
+school.  Take for example the following toy data set: $[0, 0, 0, 1, 1,
+2, 2, 2]$.  There are 8 numbers here, and their sum is also 8, so
+their average is 1.  Let us now repeat this calculation using the
+relative frequencies of these data, which are shown in
+Table~\ref{tab.toynum}.
+
+\begin{table}
+\caption{Frequency distribution of toy data.  $f_i$ is the relative
+  frequency of value $i$.}
+\label{tab.toynum}
+
+\centering
+\begin{tabular}{cc}
+       &  Relative\\
+Value  & frequency\\
+\hline
+    0  &  $f_0=3/8$\\
+    1  &  $f_1=2/8$\\
+    2  &  $f_2=3/8$
+\end{tabular}
+\end{table}
+
+In ``sigma notation,'' the average (or mean) is\footnote{If you are
+  unfamiliar with the ``$\Sigma$'' symbol, see
+  appendix~\ref{sec.sigma}.}
+\begin{equation}
+\hbox{mean} = \sum_{x} x f_x
+\label{eq.mean}
+\end{equation}
+where $x$ is a sample value and $f_x$ is the relative frequency of
+that value.  Using the relative frequencies from
+Table~\ref{tab.toynum}, this gives $(0 \times 3/8) + (1 \times 2/8) +
+(2 \times 3/8) = 1$, just as we calculated using the grade-school
+method.  If the data set is large, relative frequencies often make the
+problem easier.
+
+\begin{exercise}
+Calculate the mean of the numbers 1, 1, and 3 using both methods.
+\answer
+The mean  is $5/3$, since there are 3 numbers that sum to 5.  Using
+relative frequencies, the problem becomes
+$1 \times  (2/3) + 3\times (1/3) = 2/3 + 3/3 = 5/3$.
+\end{exercise}
+
+As the sample size grows large, the relative frequencies in
+Eqn.~\ref{eq.mean} get closer and closer to the corresponding
+probabilities.  As this happens, the mean converges toward what is
+called the \emph{expected value} of the corresponding random variable.
+The expected value of $X$ is written ``$E[X]$'' and is calculated just
+as you calculate a mean:
+\begin{equation}
+E[X] = \sum_x x \Pr[X=x]
+\label{eq.expectation}
+\end{equation}
+Note the similarity between Eqns.~\ref{eq.mean}
+and~\ref{eq.expectation}.  Relative frequencies $(f_x)$ have been
+replaced by probabilities $(\Pr[X=x])$; the two formulas are otherwise
+the same.
+
+\paragraph{Example}  If you spin a coin twice, the number $X$ of heads
+must equal either 0, 1, or 2.  If the coin is fair, then these events
+have probabilities $1/4$, $1/2$, and $1/4$, respectively.  The
+expectation of $X$ is
+\[
+E[X] = (0\times 1/4) + (1\times 1/2) + (2\times 1/4) = 1
+\]
+\begin{exercise}
+What is the expected value of $X^2$?
+\answer
+\[
+E[X^2] = (0\times 1/4) + (1\times 1/2) + (4\times 1/4) = 1.5
+\]
+\end{exercise}
+
+\begin{exercise}
+What is the expected value of $X+X^2$?
+\answer
+\begin{eqnarray*}
+E[X + X^2]&=& ((0+0)\times 1/4) + ((1+1)\times 1/2)\\
+ &&\mbox{} + ((2+4)\times 1/4)\\
+& =& 2.5
+\end{eqnarray*}
+Compare this answer to that of the preceding exercise, and you will
+see that $E[X + X^2] = E[X] + E[X^2]$.
+\end{exercise}
+
+Expected values have several properties that make them easy to
+manipulate.  If $X$ and $Y$ are random variables and $a$ is a
+constant, then
+\begin{eqnarray}
+E[a] &=& a\label{eq.E[a]}\\
+E[aX] &=& aE[X]\label{eq.E[aX]}\\
+E[X + Y] &=& E[X] + E[Y]\label{eq.E[X+Y]}
+\end{eqnarray}
+If $X$ and $Y$ are statistically independent, it is also true that
+\begin{equation}
+E[XY] = E[X]E[Y]\label{eq.E[XY]}
+\end{equation}
+These are really properties of averages.  They apply to expectations
+because expectations are a kind of average.  Rather than proving them,
+I will illustrate them using averages.
+
+\paragraph{The average of a constant}
+The average of 4, 4, and 4 is 4.  This is why $E[a]=a$ when $a$ is a
+constant.
+
+\paragraph{The average of $aX$}  Start with the numbers 1, 3, and 5.  The
+sum of these numbers is 9, and their average is 3.  Now multiply each
+number by a constant $a$.  The average of the resulting numbers is
+\[
+(a + 3a + 5a)/3 = a\times(1+3+5)/3 = 3a
+\]
+which is $a$ times the original average.  This illustrates that $E[aX]
+= aE[X]$.
+
+\paragraph{The average of $X+Y$}  Consider the following table
+\[
+\begin{array}{rccc}
+&X & Y & X+Y\\
+\cline{2-4}\cline{2-4}
+&0 & 2 &   2\\
+&2 & 3 &   5\\
+&7 & 7 &  14\\
+\cline{2-4}  
+\hbox{sum}& 9 &12 &  21\\
+\hbox{average}& 3 &4 &  7\\
+\end{array}
+\]
+The average of $X$ is 3 and that of $Y$ is 4.  The sum of these is 7,
+which is also the average of $X+Y$.  This illustrates that
+$E[X+Y] = E[X] + E[Y]$.
+
+\begin{exercise}
+What is $E[3]$?
+\answer
+$E[3]=3$
+\end{exercise}
+
+\begin{exercise}
+If $E[X]=5$, then what is $E[2X]$?
+\answer
+$E[2X] = 10$
+\end{exercise}
+
+\begin{exercise}
+If $E[X]=5$ and $E[Y]=6$, then what is $E[2X + 3Y]$?
+\answer
+$E[2X + 3Y] = 10 + 18 = 28$
+\end{exercise}
+
+\begin{exercise}
+What is $E[aX + bY^2]$, assuming that $a$ and $b$ are constant and the
+values of $E[X]$ and $E[Y^2]$ are unknown?
+\answer
+$E[aX + bY^2] = aE[X] + bE[Y^2]$
+\end{exercise}
+
+\begin{exercise}
+Prove that $E[(X + Y)^2]=E[X^2] + 2E[X]E[Y] + E[Y^2]$
+if $X$ and $Y$ are statistically independent. Hint:
+Begin by expanding $(X+Y)^2 = X^2 + 2XY + Y^2$. Then use
+Eqns.~\ref{eq.E[X+Y]} and~\ref{eq.E[XY]}.
+\answer
+First expand the squared term:
+\[
+E[(X + Y)^2] = E[X^2 + 2XY + Y^2]
+\]
+Next, use Eqn.~\ref{eq.E[X+Y]} to turn the expectation of a sum into a
+sum of expectations:
+\[
+E[X^2 + 2XY + Y^2] = E[X^2] + E[2XY] + E[Y^2]
+\]
+Finally, re-express the middle term using
+Eqns.~\ref{eq.E[aX]} and~\ref{eq.E[XY]}:
+\[
+E[X^2] + E[2XY] + E[Y^2] = E[X^2] + 2E[X]E[Y] + E[Y^2]
+\]
+\end{exercise}
+
+\subsection{Variance}
+\label{sec.variance}
+
+We are often interested in quantities that vary.  There are several
+ways to measure variation, of which the most important is the
+\emph{variance}.  We can measure variance either in a data set or in a
+random variable.  The procedures are similar so let's begin with data.
+
+The variance is the \emph{average squared difference from the mean}.
+Take for example the numbers 10, 12, 10, and 8.  Their mean is 10, so
+their variance is $V = ((10 - 10)^2 + (12-10)^2 + (10-10)^2 +
+(8-10)^2)/4 = 2$. There are several ways to write the variance,
+including
+\begin{eqnarray}
+V &=& N^{-1} \sum_i (x_i - \bar x)^2\label{eq.variance.a}\\
+  &=& \sum_x (x-\bar x)^2 f_x\label{eq.variance.b}\\
+  &=& \sum_x x^2 f_x - \bar x^2\label{eq.variance.c}
+\end{eqnarray}
+Here, $\bar x$ is the average of the $x_i$ and $N^{-1}$ means $1/N$.
+
+\begin{exercise}
+Verify that the formulas Eqn.~\ref{eq.variance.a}--\ref{eq.variance.c}
+are equivalent, using the numbers 10, 12, 10, and 8.
+\answer
+%
+The text used Eqn~\ref{eq.variance.a} to calculate that $m=10$ and
+$V=2$.  For the other versions, we need relative frequencies: $f_8=1/4$,
+$f_{10}=1/2$, and $f_{12}=1/4$.  Eqn.~\ref{eq.variance.b} gives
+\begin{eqnarray*}
+V&=&(1/4)(8-10)^2 + (1/2)(10-10)^2 \\
+ && \mbox{} + (1/4)(12-10)^2\\
+ &=& 1 + 0 + 1 = 2
+\end{eqnarray*}
+For the Eqn.~\ref{eq.variance.c}, we need
+\begin{eqnarray*}
+\sum x^2 f_x &=& 8^2/4 +10^2/2 + 12^2/4\\
+ &=& 16 + 50 + 36 = 102
+\end{eqnarray*}
+We also need $m^2 = 10^2 = 100$.  Subtracting gives $V = 102 - 100 =
+2$.
+\end{exercise}
+
+\begin{exercise}
+What are the mean and variance of the numbers 3, 9, 15, and 8?
+\answer
+The mean and variance are 8.75 and 18.1875.
+\end{exercise}
+
+If $X$ is a random variable (rather than data), its variance is
+\begin{equation}
+V[X] = E\left[ (X - E[X])^2 \right]\label{eq.V1}
+\end{equation}
+Note the similarity between this expression and
+Eqn.~\ref{eq.variance.b}.  The variance can also be written in either
+of the following ways:
+\begin{eqnarray}
+V[X] &=& E\bigl[ X^2 \bigr] - E[X]^2\label{eq.V2}\\
+     &=& E\bigl[ X(X - E[X]) \bigr]\label{eq.V3}
+\end{eqnarray}
+
+\begin{exercise}
+Suppose that the random variable $X$ takes the values 0, 1, and 2 with
+probabilities 1/3, 1/2, and 1/6.  What are the mean and variance of
+$X$?
+\answer
+The mean is
+\[
+E[X] = 0 \times 1/3 + 1\times 1/2 + 2 \times 1/6 = 0.833.
+\]
+The variance is
+\begin{eqnarray*}
+V[X] &=& (0-0.833)^2 \times 1/3\\
+&&\mbox{} + (1-0.833)^2\times 1/2\\
+&&\mbox{} + (2-0.833)^2 \times 1/6\\
+&=& 0.472.
+\end{eqnarray*}
+\end{exercise}
+
+\begin{exercise}
+In a previous exercise, you verified that
+Eqns.~\ref{eq.variance.b}--\ref{eq.variance.c} were equivalent, using
+as data the numbers 8, 10, 10, and 12.  This illustrates that
+Eqns.~\ref{eq.V1} and~\ref{eq.V2} are equivalent, since they are the
+same formulas in a different notation.  Now use the same method and
+data to verify the equivalence of Eqn.~\ref{eq.V3}.
+%
+\answer
+%
+In the data, the relative frequencies are $f_8=1/4$, $f_{10} = 2/4$,
+and $f_{12} = 1/4$.  The mean is $10$.  According to Eqn.~\ref{eq.V3},
+the variance is
+\begin{eqnarray*}
+V &=& (1/4)\times 8\times(8-10)\\
+ &&\mbox{} + (1/2)\times 10\times (10-10)\\
+ &&\mbox{} + (1/4)\times 12\times (12-10)\\
+ &=& (1/4)\times (-16)\\
+ &&\mbox{} + (1/2)\times 0\\
+ &&\mbox{} + (1/4)\times 24\\
+ &=& -4 + 6 = 2\\
+\end{eqnarray*}
+\end{exercise}
+
+\begin{exercise}
+Prove that if $a$ is a constant and $X$ a random variable, then $V[aX]
+= a^2 V[X]$.
+\answer
+First, $E[aX] = aE[X]$ by equation~\ref{eq.E[aX]}.  Next,
+\begin{eqnarray*}
+V[aX] &=& E[(aX - aE[x])^2]\\
+ &=& E[a^2(X - E[x])^2]\\
+ &=& a^2E[(X - E[x])^2] \qquad \hbox{using (\ref{eq.E[aX]}) again}\\
+ &=& a^2 V[X]
+\end{eqnarray*}
+\end{exercise}
+
+\subsection{Covariance}
+\label{sec.covariance}
+
+In addition to variation, we are often interested in the
+\emph{relationship} between variables.  Fig.~\ref{fig.scatplot}
+illustrates this idea.  The scatterplot on the left illustrates a
+positive relationship: one in which $Y$ tends to increase when $X$
+increases.  On the right we see the opposite case: $Y$ decreases as
+$X$ increases, so the relationship is negative.  The two relationships
+differ not only in direction but also in strength.  The one on the
+right is the stronger of the two.
+
+\begin{figure}
+{\centering\input{figscatplot}\\}
+\caption{Examples of positive and negative relationship
+  between variables}
+\label{fig.scatplot}
+\end{figure}
+
+These two ideas---strength and direction of relationships---come up
+all the time, and we need ways to measure them.  Several statistics
+have been invented for this purpose, but most are based on the same
+idea: if the relationship is positive, the $X$ and $Y$ will often be
+on the same side of their respective means, so $(X-E[X])(Y-E[Y])$ is
+positive for most $(X,Y)$ pairs.  For a negative relationship, this
+product tends to be negative.  We can measure a relationship by
+\begin{equation}
+C[X,Y] = E\big[ (X-E[X])(Y-E[Y]) \big]
+\label{eq.C1}
+\end{equation}
+which is called the \emph{covariance}.  It is positive for positive
+relationships but negative for negative ones.  It is far from zero for
+strong relationships but near zero for weak ones.  Thus, it measures
+both the strength and direction of relationships.
+
+The covariance, like the variance, can be written in several different
+ways:
+\begin{eqnarray}
+C[X,Y] &=& E[XY] - E[X] E[Y] \label{eq.C2}\\
+     &=& E[ X(Y - E[Y]) ]\label{eq.C3}
+\end{eqnarray}
+In calculations, it is often most convenient to use (\ref{eq.C2}).
+
+\begin{table}
+\caption{A bivariate probability distribution}
+\label{tab.bivdist}
+
+{\centering\begin{tabular}{cccc}
+$X$ & $Y$ & $P_{XY}$ & $(X-E[X])(Y-E[Y])$\\
+\hline
+0 & 0 & 0.4 & +0.25\\
+0 & 1 & 0.1 & --0.25\\
+1 & 0 & 0.1 & --0.25\\
+1 & 1 & 0.4 & +0.25\\
+\end{tabular}\\
+\begin{minipage}{0.9\columnwidth}
+Here, $P_{XY}$ is the probability of the pair $(X,Y)$, and $E[X] =
+E[Y] = 0.5$.
+\end{minipage}\\}
+\end{table}
+
+To get familiar with covariances, consider the two random variables in
+Table~\ref{tab.bivdist}.  The probabilities imply that we should see
+lots of $(X,Y)$ pairs like $(0,0)$ or $(1,1)$ but few like $(0,1)$ or
+$(1,0)$.  For the most part then, $X$ and $Y$ will vary in the same
+direction, and their relationship should be positive.
+
+The first step is to calculate $E[X]$ and $E[Y]$.  I leave the details
+to you, but you should find that both equal 0.5.  Next, calculate
+$(X-0.5)(Y-0.5)$ for each $(X,Y)$ pair.  These values appear in the
+right column of the table.  Finally, we take the expectation by
+multiplying column~3 by column~4 and summing the results.  (If this
+seems mysterious, consult Eqn.~\ref{eq.expectation}.)  Here is the
+calculation in detail:
+\begin{eqnarray*}
+C[X, Y] &=& \sum_{x,y} P_{xy} (x-0.5)(y - 0.5) \\
+   &=& (0.4 \times 0.25) - (0.1\times 0.25) \\
+   && \mbox{} - (0.1\times 0.25) + (0.4 \times 0.25)\\
+   &=& 0.15
+\end{eqnarray*}
+The covariance is positive, just as expected.
+
+\begin{exercise}
+  In Table~\ref{tab.bivdist}, suppose that the $P_{XY}$ values were
+  0.3, 0.2, 0.2, and 0.3.  First use your intuition to figure out what
+  this would do to the relationship between $X$ and $Y$.  Is it still
+  positive?  Does it become stronger or weaker?  Then calculate
+  $C[X,Y]$ to check your intuition.
+%
+  \answer With the new probabilities, we expect fewer $(0,0)$ and
+  $(1,1)$ pairs but more $(0,1)$ and $(1,0)$.  There is still a
+  tendency for $X$ and $Y$ to vary in the same direction, but that
+  tendency is weaker.  In other words, the relationship is weaker but
+  still positive.  The covariance turns out to be $C[X,Y] = 0.05$.
+\end{exercise}
+
+\begin{exercise}
+Construct a bivariate probability distribution in which the
+relationship between $X$ and $Y$ is negative, and use it to calculate
+$C[X,Y]$.
+\answer
+One way is to replace the $P_{XY}$ values in Table~\ref{tab.bivdist}
+with 0.1, 0.4, 0.4, and 0.1.  This yields $C[X,Y] = -0.15$.
+\end{exercise}
+
+\begin{exercise}
+  So far we have been dealing with the covariance between random
+  variables.  To deal with data, we need formulas analogous to
+  Eqns,~\ref{eq.variance.a}--\ref{eq.variance.c}.  Write these
+  formulas down and use them to estimate the covariance of $X$ and $Y$
+  in the following collection of $(X,Y)$ values: (0,0), (0,0), (1,0),
+  (0,1), (1,1), (1,1).
+\answer
+The corresponding formulas are
+\begin{eqnarray}
+C[X,Y] &=& N^{-1} \sum_i (x_i - \bar x)(y_i - \bar y)\label{eq.cov.a}\\
+  &=& \sum_{x,y} (x-\bar x)(y-\bar y) f_{xy}\label{eq.cov.b}\\
+  &=& \sum_{x,y} xy f_{xy} - \bar x\bar y\label{eq.cov.c}
+\end{eqnarray}
+where $f_{xy}$ is the frequency of $(X,Y)$ pairs in the data for
+which $X=x$ and $Y=y$.  Using any of these formulas, the given data
+imply that $C[X,Y] = 0.0833$.
+\end{exercise}
+
+You may have been wondering what the magnitude of the covariance
+really means.  If the covariance is 0.25, is the relationship a strong
+one or a weak one?  It is impossible to say.  The problem is that the
+magnitude of $C[X,Y]$ depends not only on the strength of the
+relationship but also on the units of measurement. For example, the
+value of $C[X,Y]$ would change if we decided to measure $X$ and $Y$ in
+millimeters rather than centimeters. To avoid such effects, data
+analysts often normalize their covariances to obtain what is called a
+\emph{correlation coefficient}.  This topic is not covered here.
+
+\section{Probability distributions}
+
+By now you are familiar with distributions of relative frequencies,
+and you know that as $N$ grows large, relative frequencies converge to
+probabilities.  It is thus easy to see that a frequency distribution
+will converge to a distribution of probabilities.
+Section~\ref{sec.urnmodel} above described a model of Kerrich's urn
+experiment, which led to the probabilities in the right column of
+Fig.~\ref{fig.tree}.  These constitute a \emph{probability
+  distribution}.
+
+In that case, it was easy to list the events in the sample space and
+their probabilities.  This is the simplest and most obvious way to
+describe a probability distribution.  There is also another approach,
+which involves thinking of probability distributions as functions.  A
+function, you may remember, is a translation rule.  The function $f(x)
+= x^2$ for example would translate 2 into 4, or 3 into 9.  Similarly,
+the probability distribution from the urn model in Fig.~\ref{fig.tree}
+translates the event $RR$ into the probability $1/4$, and $RG$ into
+$1/2$.  It is thus a function too. Every probability distribution is a
+function that translates events into probabilities.
+
+\begin{exercise}
+What is the probability distribution of the number $X$ of heads
+in two spins of a fair coin?  (You wrote down the sample space in a
+previous exercise.)
+\answer
+The sample space is $\{0, 1, 2\}$; the corresponding probabilities
+are $1/4$, $1/2$, and $1/4$.
+\end{exercise}
+
+In the case of random variables, we are translating numbers into
+numbers, and the function can often be expressed in mathematical
+form. This chapter will cover several probability functions that are
+widely used in science.  These fall into two categories:
+\emph{discrete} and \emph{continuous}.  The random variables that we
+have discussed thus far are discrete, but it will be easier to define
+continuous ones first.
+
+A continuous random variable is one whose sample space is a continuum,
+such as space or time.  The remarkable thing about a continuum is that
+between any two points there is an infinity of other points.  In
+biology, continuous random variables are used to model such things as
+lifespan and body size.  Section~\ref{sec.continuousfun} will describe
+the methods to describe them.
+
+If a sample space is not continuous, it is discrete.  This does not
+make it finite.  For example, there is an infinity of integers, but
+they are not continuous.  There is no integer, for example, between 2
+and 3.  Discrete random variables are used to describe things that you
+can count: the number of heads in $N$ spins of a coin, and so forth.
+The methods used to describe these random variables are described
+below in section~\ref{sec.discretefun}.
+
+
+\subsection{Discrete random variables}
+\label{sec.discretefun}
+
+For discrete random variables, the \emph{probability distribution
+  function}, $P_x$, gives the probability associated with each point
+$x$ in the sample space.  In genetics and many other parts of biology,
+the discrete distributions used most often are the binomial and the
+Poisson.
+
+\subsubsection{The binomial distribution}
+
+Kerrich's coin experiment is a good example of a binomial experiment.
+There are $N$ independent trials (in Kerrich's case, $N=10,000$), and
+in each trial we observe some event with probability $p$.  (In
+Kerrich's case, the event was ``heads'' and $p$ was apparently close
+to $1/2$.)  The number $x$ of events is a binomial random variable.
+Its distribution function is
+\begin{equation}
+P_x = \binom{N}{x} p^x (1-p)^{N-x}
+\label{eq.binomial}
+\end{equation}
+Here, $\binom{N}{x}$ is pronounced ``$N$ choose $x$'' and represents
+the number of ways of obtaining $x$ heads and $N-x$ tails.  For
+example, there are are two ways ($HT$ and $TH$) of obtaining one head
+in two spins, so $\binom{2}{1} = 2$.  The expression $p^x(1-p)^{N-x}$
+is the probability of obtaining any given sequence of $x$ heads and
+$N-x$ tails.  The binomial distribution is illustrated in
+Fig.~\ref{fig.binom} for $N=20$ and two values of $p$.  The mean and
+variance of the binomial distribution are $E[X] = Np$ and $V[X] =
+Np(1-p)$.
+
+\input{figbinom}
+
+
+The form of the binomial distribution function is not hard to
+understand.  To see why, consider the probability of the following
+outcome:
+\[
+\overbrace{
+\overbrace{H\;H\;\ldots H}^{\hbox{$x$ tosses}}
+\;
+\overbrace{T\;T\;\ldots T}^{\hbox{$N-x$ tosses}}
+}^{\hbox{$N$ tosses}}
+\]
+Here, the coin has been tossed $N$ times, producing heads on the first
+$x$ tosses and tails on the remaining $N-x$.  Since each heads is an
+event of probability $p$ and each tails is an event of probability
+$1-p$, the probability of the outcome observed on this sequence of
+tosses is $p^x (1-p)^{N-x}$.  But this is not the only outcome that
+would yield $x$ heads in $N$ tosses.  No matter what order the heads
+and tails appear in, if there are $x$ heads in $N$ tosses we have
+observed an event of probability $p^x (1-p)^{N-x}$.  If we don't know
+the order in which the heads and tails appear, we have to sum across
+all the ways in which $x$ heads and $N-x$ tails can be re-ordered.
+This sum accounts for the term $\binom{N}{x}$ in
+equation~\ref{eq.binomial}.
+
+\paragraph{Example} Population geneticists use the binomial
+distribution to model the random component of evolutionary
+change---genetic drift.  Suppose that in the parental generation there
+are $N$ diploid individuals.  At each diploid locus, the population
+contains $2N$ genes, of which a fraction $p$ are copies of allele
+$A_1$ and $1-p$ are copies of $A_2$.  The model assumes that each of
+the $2N$ genes in the offspring generation is (in effect) drawn at
+random with replacement from an urn with $2Np$ copies of allele $A_1$
+and $2N(1-p)$ copies of $A_2$.  The number of copies of $A_1$ among
+the offspring is binomial with mean $2Np$ and variance $2Np(1-p)$.
+
+\begin{exercise}
+Suppose that a population contains 1000 diploid individuals and that
+the relative frequency of $A_1$ is $1/1000$.  If this population
+produces 1000 offspring, what is the probability (under the binomial
+model) that allele $A_1$ will not be represented among the offspring?
+\answer
+The allele disappears with probability
+\[
+P_0 = \binom{2000}{0} p^0 (1-p)^{2000} \approx 0.135
+\]
+In this calculation, there is no need to calculate $\binom{2000}{0}$;
+it must equal 1 because there is only 1 way to choose 0 of something.
+In addition, $p^0 = 1$ because \emph{anything} raised to the zeroth
+power equals 1.  The only part that needs calculating is
+$(1-p)^{2000}$.
+\end{exercise}
+
+\subsubsection{The Bernoulli distribution}
+
+The binomial distribution has an important special case: that in which
+we observe just one trial.  For example, suppose we toss a coin a
+single time, and let $x=1$ if the result is ``heads'' or~0 if the
+result is ``tails.''  The distribution function has just two values:
+\begin{equation}
+P_x = \cases{p & \hbox{if $x=1$}\cr
+             1-p & \hbox{if $x=0$}\cr}
+\label{eq.bernoulli}
+\end{equation}
+This is just a special case of Eqn.~\ref{eq.binomial}.
+
+\begin{exercise}
+Prove Eqn.~\ref{eq.bernoulli} by substituting $N=1$ into
+Eqn.~\ref{eq.binomial}.
+\answer
+For the Bernoulli distribution, there is only one event.
+Consequently, $N=1$ and Eqn.~\ref{eq.binomial} becomes
+\[
+P_x = \frac{1!}{1! \times 0!} p^x (1-p)^{1-x}
+\]
+Recall that $0! = 1! = 1$.  (See appendix~\ref{sec.factorial} for
+details.)  Consequently, $1!/(1! \times 0!) = 1$ and drops out of the
+equation.  If $x=0$, then $p^x = p^0=1$, and this term drops out.
+Eqn.~\ref{eq.binomial} becomes $P_0 = 1-p$.  On the other hand, if
+$x=1$, then $(1-p)^{1-x} = (1-p)^0 = 1$ and drops out.  We are then
+left with $P_1 = p$.
+\end{exercise}
+
+It is also easy to derive the mean and variance of the Bernoulli
+distribution, simply by setting $N=1$ in the corresponding formulas
+for the Binomial: $E[X] = p$, and $V[X] = p(1-p)$.
+
+\begin{exercise}
+Consider the experiment of tossing a fair coin a single time, and
+recording $X=1$ if the result is ``heads,'' or $X=0$ if ``tails.''
+What are the mean and variance of this random variable?
+\answer
+$E[X] = 1/2$ and $V[X] = 1/4$.
+\end{exercise}
+
+\begin{exercise}
+Consider the experiment of drawing a copy of a single gene at random
+from some population, and scoring $X=1$ if the result is allele $A_1$,
+or $X=0$ otherwise.  If allele $A_1$ has frequency $p$, then what are
+the mean and variance of random variable $X$?
+\answer
+Since $A_1$ has frequency $p$, that is also the probability that we
+have drawn a copy of this allele.  It follows that $E[X] = p$ and
+$V[X] = p(1-p)$.
+\end{exercise}
+
+\subsubsection{The Poisson distribution}
+
+This distribution comes up a lot when we are interested in counts.
+How many prey items will a forager encounter during one hour?  How
+many gamma rays will strike the tube of a Geiger counter in one
+minute?  How many rain drops will strike your roof during one second,
+in the middle of a storm?  How many mutations occurred along the
+lineage that connects you to your mother's mother's mother's
+mother's\ldots mother, who lived 10,000 years ago?  In each case, if
+the events in question are independent and occur at a constant rate,
+then the random variable is Poisson.
+
+\input{figkick}
+
+At the end of the 19th century, Ladislaus von Bortkiewicz fit the
+Poisson to some peculiar data involving deaths in the Prussian Army.
+In those days, the army's supply train involved wagons pulled by
+mules.  Mules have tempers and are seldom eager to pull wagons.  Every
+now and then, a soldier was killed by the kick of a mule.  Military
+records list the number of soldiers killed this way in each year
+within each army corps.  These data, as tabulated by von Bortkiewicz,
+are shown as bullets ($\bullet$) in Fig.~\ref{fig.kick}.  The
+histogram shows the corresponding Poisson distribution function.
+
+The distribution has one parameter, the mean $(\lambda)$.  The
+probability that $x$ events occur is
+\begin{equation}
+P_x = \frac{\lambda^x e^{-\lambda}}{x!}
+\label{eq.poisson}
+\end{equation}
+Here, $e\approx 2.718$ is the base of natural logarithms; $x!$ is
+pronounced ``$x$ factorial'' and represents the number of ways of
+rearranging $x$ items.  (See appendix~\ref{sec.factorial} for
+details.)  The variance of the Poisson is the same as the mean:
+$E[X] = V[X] = \lambda$.
+
+\input{figpoisson}
+
+The shape of the Poisson varies in response to the parameter
+$\lambda$, as shown in Fig.~\ref{fig.poisson}.  When $\lambda$ is
+small (as shown in the left-hand graph), the distribution function is
+asymmetric, with a high left shoulder.  When $\lambda$ is large (as
+shown in the right-hand graph), the function becomes symmetrical.  For
+large $\lambda$, the Poisson is very nearly identical to the normal
+distribution (discussed below).
+
+Because $P_x$ depends in such a simple fashion on the mean, $\lambda$,
+the Poisson is among the easiest distributions to fit to data.  For
+example, in von Bortkiewicz's data there are on average 0.61 mule-kick
+deaths per corps per year.  To fit these data to the Poisson, we
+simply set $\lambda = 0.61$.  That is all there is to it.  With
+$\lambda$ known we can calculate numerical probabilities.  For
+example, the probability of a single death is $P_1 = \lambda
+e^{-\lambda} = 0.331$.  In other words, we expect a death in any given
+corp 1 year in 3.  There were 200 corps-years in von Bortkiewicz's
+data, so the number of these with a single mule-kick death should have
+been $0.331\times 200 = 66.2$.  There were 65 in the real data.
+
+\begin{exercise}
+Use the same procedure to calculate the expected number of corps-years
+with 2 mule-kick deaths.  Compare this expected value to the real
+value, 22.
+%
+\answer For $x=2$ and $\lambda = 0.61$, the Poisson formula gives $P_2
+= 0.101$.  We therefore expect to see about $0.101\times 200 = 20.2$
+corps-years with 2 mule-kick deaths.  This is close to the real number
+of 22.
+\end{exercise}
+
+
+\paragraph{Example} Consider the lineage that connects me to an
+ancestor who lived $t$ generations ago.  The expected number of
+mutations along that lineage is $\lambda = ut$, where $u$ is the
+mutation rate.  The probability that $x$ mutations occurred is given
+by the Poisson distribution function.  If $u=10^{-3}$ and $t=2000$
+generations, then $\lambda=2$.  The probability that 1 mutation
+occurred is $\lambda e^{-\lambda} = 0.271$.
+
+\begin{exercise}
+What is the probability that no mutation occurred?
+\answer
+The probability of no mutation is
+$P_0 = e^{-2} \approx 0.135$.
+Note that this answer is identical to that of the preceding exercise.
+This illustrates the fact that, when $N$ is large and $p$ is small,
+the Poisson is a good approximation to the binomial.
+\end{exercise}
+
+\begin{exercise}
+What is the probability that at least one mutation occurred?
+\answer
+The probability of ``at least one mutation'' is $\Pr[X>0]$.
+There are two ways to think about this problem. The hard way sums
+across all non-zero entries of the Poisson distribution:
+\[
+\Pr[X>0] = \sum_{x=1}^\infty \frac{\lambda^x e^{-\lambda}}{x!}
+\]
+As I said, that is the hard way and is not recommended. The easy
+solution proceeds from the observation that all probability
+distributions sum to~1. For a non-negative random variable such as the
+Poisson, this implies that $\Pr[X=0] + \Pr[X>0] = 1$. Thus,
+\[
+\Pr[X>0] = 1 - \Pr[X=0] = 1 -e^{-\lambda}
+\]
+In the current question, $\lambda=2$, so $\Pr[X>0] \approx 0.865$.
+\end{exercise}
+
+\subsection{Continuous random variables}
+\label{sec.continuousfun}
+
+Board games often come with a device for generating random numbers.
+One type consists of a flat piece of cardboard to which a needle is
+attached.  You spin the needle, and it ends up pointing in a random
+direction.  In the real world, these devices probably have
+irregularities that make the needle more likely to land in some
+positions than others.  But let's ignore that.  In our hypothetical
+world, the needle is equally likely to point in any direction.  What
+is the probability that it stops exactly 87.729543328 degrees
+clockwise of where it started?
+
+This is a trick question.  The problem is that there is a continuum of
+possible outcomes, all equally probable.  The probability of any
+particular outcome, such as 87.729543328, is zero.  Why?  With an
+infinity of equally probable outcomes, the probability of each must be
+something like $1/\infty$.
+
+It makes more sense to talk about the probability that the random
+variable will lie within some range of values.  Let us define a
+function $f(x)$ such that\footnote{The symbol ``$\int$'' is from
+  calculus, which you will need from here on.}
+\[
+\int_a^b f(x) dx
+\]
+is the probability that the random variable lies between $a$ and $b$.
+Here, $f(x)$ is called the \emph{probability density function (pdf)}.
+Loosely speaking, $f(x) dx$ is the probability that the random
+variable lies within the small range from $x$ to $x + dx$.
+
+In biology, the most widely used continuous distributions are the
+uniform, the exponential, and the normal.
+
+\subsubsection{The uniform distribution}
+\label{sec.uniform}
+
+A \emph{uniform distribution} (which we encountered above on
+p.~\pageref{pg.simuni}) is equally likely to take any value between
+two constants $a$ and $b$ but never takes values outside this range.
+Thus, its density function is very simple: $f(x) = 1/(b-a)$, as shown
+in Fig.~\ref{fig.uniform}.  The mean and variance are $E[X] = (a+b)/2$
+and $V[X] = (b-a)^2/12$.  An important special case is the
+\emph{standard uniform distribution}, for which $a=0$, $b=1$, and
+$f(x) = 1$.
+
+\input{figuniform}
+
+\begin{exercise}
+  Make a graph of the standard uniform distribution function, and
+  shade the area that corresponds to the range from 0.2 to 0.3.  What
+  is the area of this shaded region?  What is the probability that a
+  standard uniform r.v.\ will lie between these values?
+%
+\answer
+The graph is:
+%
+\input{figuniform2}
+%
+The area of the shaded rectangle is $(0.3-0.2) \times 1 = 0.1$.  This
+is also the probability that $0.2 < X < 0.3$.
+\end{exercise}
+
+\begin{exercise}
+Solve the same problem using calculus.
+\answer
+For any continuous r.v., the probability that $X$ lies between two
+values $a$ and $b$ is $\int_a^b f(x) dx$.  In this problem, $a=0.2$,
+$b=0.3$, and $f(x)=1$.  The integral is thus equal to 0.1.
+\end{exercise}
+
+\subsubsection{The exponential distribution}
+\label{sec.exponential}
+
+We are often interested in the waiting time until some event.  If
+these events happen at a constant rate (or hazard) $h$, then the
+waiting time has an exponential distribution.  The density function is
+\begin{equation}
+f(x) = h e^{-hx}
+\label{eq.exponential}
+\end{equation}
+for values of $x$ between 0 and $\infty$.  As shown in
+Fig.~\ref{fig.exponential}, the density is greatest at $x=0$ and
+declines smoothly with increasing $x$.  The rate of decline increases
+with $h$.  The mean of the exponential is $E[X] = 1/h$ and its
+variance is $V[x] = 1/h^2$. For this distribution, the standard
+deviation (the square root of the variance) is equal to the mean.
+
+\input{figexp}
+
+\begin{exercise}
+What is the probability that $X < 1$?
+\answer
+%
+An exponential variable is $<1$ with probability
+$\int_0^1 h e^{-hx} dx = 1-e^{-h}$.
+\end{exercise}
+
+\begin{exercise}
+  In Europe, the crude death rate (including individuals of all ages)
+  is close to $0.01$ deaths per individual per year.  If this rate
+  were constant throughout life, what would be the average lifespan?
+  \answer 100~years, because the mean is $1/h$, and the problem says
+  that $h=0.01$.
+\end{exercise}
+
+\begin{exercise}
+The mutation rate in autosomal DNA is roughly $10^{-9}$ per nucleotide
+site per year.  If we follow a single copy of a single nucleotide
+forward across the generations, how long must we wait on average until
+it mutates?  What is the variance of this number?
+\answer
+The mean is $10^9$ years; the variance is $10^{18}$.
+\end{exercise}
+
+\subsubsection{The normal distribution}
+
+The density function of the normal distribution is the familiar
+bell-shaped curve, two examples of which are shown in
+Fig.~\ref{fig.normal}.  The normal distribution has two parameters,
+the mean $\mu$ and the variance $\sigma^2$.  As Fig.~\ref{fig.normal}
+illustrates, $\mu$ controls the location of the center (peak) of the
+distribution and $\sigma$ controls its width.  The density function is
+\begin{equation}
+f(x) = \frac{1}{\sqrt{2\pi \sigma^2}}
+\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)
+\label{eq.normal}
+\end{equation}
+\input{fignormal}
+
+The normal distribution is widely used in statistics.  There are
+several reasons, but chief among them is this: any variable that is
+the sum of many other random variables tends to look normal.  The
+larger the number of variables, the more normal their sum will look.
+We have already passed over two special cases of this.  A binomial
+r.v.\ is a sum of $N$ smaller r.v.s, one for each toss of the coin.
+If you look closely at the binomial distributions in
+Fig.~\ref{fig.binom}, you will see that they closely resemble the
+normal.  The Poisson is also approximately normal if $\lambda$ is
+large, as you can see from panel~b of Fig.~\ref{fig.poisson}.  To
+understand why, recall that the Poisson describes the number of events
+that occur in a fixed interval of time.  But we can think of this as
+the sum of the numbers of events that occur in a series of
+sub-intervals.  Thus, the Poisson is also a sum.
+
+In addition to these technical concerns, there is a very practical
+reason for wide interest in the normal distribution: many of the
+variables studied in biology, agriculture, and medicine seem to be
+approximately normal.  Why should the same pattern appear so often and
+in so many different contexts?  The answer to this question is very
+likely the same business about sums that we discussed just above.
+Many of the variables we study are affected by a multitude of causes.
+Many genetic loci, for example, contribute to variation in human
+stature.  To the extent that these loci act additively, stature is a
+sum.  Stature, of course, is affected by environmental causes as well
+as genetic ones.  To the extent that these environmental factors act
+additively, they contribute to the sum.  In this sense, many of the
+variables we study are sums of a sort, and it makes sense that their
+distributions should look normal.
+
+

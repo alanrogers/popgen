@@ -1,0 +1,605 @@
+% -*-latex-*-
+\reversemarginpar
+\chapter{Gene Genealogies}
+\label{ch.coalescent} 
+
+The coalescent process \citep{Kingman:SPA-13-235, Hudson:OSE-7-1}
+describes the ancestry of a sample of genes.  As we trace the ancestry
+of each modern gene backwards from ancestor to ancestor, we
+occasionally encounter common ancestors---genes whose descendants
+include more than one gene in the modern sample.  Each time this
+happens, the number of ancestors shrinks in size.  Eventually, we
+reach the gene that is ancestral to the entire modern sample, and the
+process ends.
+
+Since the mid-1980s, this model has revolutionized our understanding
+of the effects of genetic drift and mutation.  Many of the results
+obtained this way have been entirely new.  Others have merely
+confirmed results that were obtained long before.  Either way, the
+coalescent model provides a method of studying drift and migration
+that is far easier than the methods that geneticists used to use.
+We begin with a few mathematical tricks, which will be useful later.
+
+\section{Preliminaries}
+
+\begin{trick}
+If the hazard of death is $h$ per day, then the expected life-span is
+$1/h$ days.
+\label{trick.1/h}
+\end{trick}
+For concreteness, suppose that we are talking about the life-span of a
+piece of kitchen glassware.  Eventually, someone will drop it and it
+will break.  Suppose that the hazard of breakage is $h$ per day
+and its expected lifespan is $T$ days. Trick~\ref{trick.1/h} tells us
+that $T=1/h$. 
+
+We are envisioning time here as a continuous variable and assuming
+that the glass may break at any instant. It makes no sense to talk
+about the probability of breakage at a particular instant, because
+that has to be zero. Instead, $h$ is a \emph{probability density}.
+(See \emph{Just Enough Probability}.)  Specifically, it is the density
+that the glass will break at a particular instant given that it has
+not broken already. This sort of density is often called a
+\emph{hazard}, and we are assuming that the hazard does not
+change. This implies that the lifespan $(t)$ is a random variable
+whose probability distribution is \emph{exponential}.  The mean of
+this distribution is $1/h$, as shown in appendix~\ref{sec.hCalculus}.
+In the exercise below, you will derive this formula for the case in
+which time is discrete.
+
+\begin{exercise}
+Trick~\ref{trick.1/h} refers to the case in which time is continuous,
+but the result also holds when time is discrete. For example, suppose
+you are tossing a glass into the air and then catching it. On each
+toss, there is a probability $h$ that you will drop the glass and
+break it. How many times, on average, can you toss the glass before
+dropping it? The answer is $1/h$, just as in Trick~\ref{trick.1/h}.
+In this exercise, you will derive this formula. To do so, consider
+what happens on the first toss. Either you drop it or you catch it. If
+you drop it (probability $h$), it breaks, and its lifespan is 1
+toss. The first component of $T$ is therefore $h \times 1$. If you
+catch it (probability $1-h$), the expected lifespan is $1+T$. Why?
+Because $h$ doesn't change. Our 1-toss-old glass can expect to survive
+$T$ additional tosses, so its expected lifespan is $1+T$.  The second
+component of $T$ is therefore $(1-h)(1+T)$. Write down an equation
+saying that $T$ is the sum of these two components, and then solve
+that equation for $T$.
+\answer The equation is $T = h + (1-h)(1+T)$. Re-arranging this
+expression gives $T = 1/h$.
+\end{exercise}
+
+\begin{trick}
+\label{trick.pairs}
+There are $k(k-1)/2$ ways to choose 2 items out of $k$.
+\end{trick}
+There are $k$ ways to choose the first item.  Having chosen the first,
+there are $k-1$ ways to choose the second, so there are $k(k-1)$
+pairs.  But this counts pair $AB$ separately from $BA$.  We are
+interested in unordered pairs, so the number is $k(k-1)/2$.
+
+\section{Coalescence time in a sample of two genes}
+
+The genealogy of two genes, X and Y, is shown in
+figure~\ref{fig.2gene}.  Genes X and Y live in the present generation,
+and their common ancestor A lived $t$ generations ago.  Consequently,
+as we look backward from the present into the past, the two lines of
+descent remain distinct for $t$ generations, at which time they
+\emph{coalesce} into a single line of descent.  In a given generation,
+the lines coalesce if the two genes in that generation are copies of a
+single parental gene in the generation before.  Otherwise, the two
+lines remain distinct.
+
+\begin{figure}[t]
+\begin{verbatim}
+   X -----------------------|
+                            A------
+   Y -----------------------|
+    
+   |--------- t ------------|
+
+\end{verbatim}
+\caption{Coalescence of a sample of two genes\label{fig.2gene}}
+\end{figure}
+
+What can we say about the length of time, $t$, that they remain distinct?  The
+problem is a lot like the one above involving kitchen glassware.  If we knew
+the hazard, $h$, that the lines of descent will coalesce during a generation,
+then trick~\ref{trick.1/h} would tell us immediately the mean number of
+generations until the two lineages coalesce.
+
+\begin{figure}[t]
+\centering
+\begin{alltt}
+               ________Population__________
+Generation 0:  0  Z  0  0  0  0  0  0  0  0
+                  |
+Generation 1:  0  X  0  Y  0  0  0  0  0  0
+\end{alltt}
+\caption{A sample of two genes (X and Y) in a population of
+size~10.  Gene Z is the parent of gene X.\label{fig.2samp}} 
+\end{figure}
+
+Consider the tiny population shown in figure~\ref{fig.2samp}.  Each
+row illustrates the population in a single generation, and within each
+row each character represents a gene.  The generations are numbered
+backwards, so that generation~0 is the present and generation~1
+contains the parents of generation~0.  The vertical line indicates
+that gene Z is the parent of gene X.  What is the probability that it
+is also the parent of gene Y?  If each gene in generation~1 is equally
+likely to be Y's parent, then this probability is
+\[
+h = 1/10
+\]
+since there are 10 genes in generation~1.  This answer would be the
+same no matter which gene in generation~1 had been X's parent.
+
+Trick~\ref{trick.1/h} immediately tells us that the mean coalescence
+time is 10 generations.  Of course, 10 is really the number of genes
+in the population.  If there are $2N$ genes in the population, then
+\begin{equation}
+h = 1/2N
+\label{eq.h}
+\end{equation}
+Now the answer becomes somewhat more interesting.  The average pair of
+genes last shared a common ancestor \label{pg.mpd} $2N$ generations
+ago.  This provides a connection between population size and the
+genealogy of genes.  As we shall see in lecture~\ref{ch.addmut}, this
+connection lets us use genetics to study the history of population
+size.
+
+In equation~\ref{eq.h}, the symbol $N$ is a little confusing.  If we
+are talking about an autosomal locus, then there are two genes for
+every person and $N$ is the number of people in the population.  The
+meaning of $N$ is different, however, if we are talking about a
+mitochondrial locus.  In that case, the gene is transmitted only
+through women, and locus is effectively haploid.  Consequently, the
+number $(2N)$ of genes is the number of females in the population, and
+the symbol $N$ represents half the number of females.
+
+\begin{example}
+Suppose that we somehow knew that the average pair of mitochondrial
+genes last shared a common ancestor 100,000 years ago.  What would
+this imply about population size?  (Ignore the issue of statistical
+error.) 
+\end{example}
+\begin{showanswer}
+100,000 years is about 4000 generations, so the assumption
+implies that
+\[
+2N = 4000
+\]
+Since we are talking about a mitochondrial gene, this is really the
+number of women.  If there are as many men as women, then the
+population would contain 8000 individuals.  This is about the size of
+a large village or a very small town.
+\end{showanswer}
+
+\section{Coalescence times in a sample of $K$ 
+genes\label{sec.ncoalescent.1}}
+
+Now consider a sample of $K$ genes.  (Figure~\ref{fig.4gene} shows the
+case in which $K=4$.)  As we move backwards in time from the present,
+the first coalescent event that we encounter reduces our sample from
+$K$ to $K-1$, the second from $K-1$ to $K-2$, and so on.  After $K-1$
+coalescent events, only a single lineage is left and no further
+coalescent events can occur.  There are thus $K-1$ intervals to
+consider.  The first (i.e.\ the most recent) interval is the one in
+which there are $K$ lines of descent.  This interval is $t_K$
+generations.  The next interval has $K-1$ lines of descent and is
+$t_{K-1}$ generations long.  The last interval is the one with two
+lines of descent and is $t_2$ generations long.  Since the length of
+each interval is independent of all the other lengths, we can consider
+them one at a time.
+
+\begin{figure}
+\begin{verbatim}
+   W --------|                               
+             |------------|                  
+   X --------|            |                  
+                          |--------------|   
+   Y ---------------------|              |---
+                                         |   
+   Z ------------------------------------|   
+   
+   |-- t_4 --|---- t_3 ---|------ t_2 ---|
+\end{verbatim}
+\caption{Coalescence of a sample of four genes\label{fig.4gene}}
+\end{figure}
+
+Consider a generation during which the sample has $i$ genes.  By
+trick~\ref{trick.pairs} there are $i(i-1)/2$ pairs of genes.  For any given
+pair, the probability that the two genes are copies of the same parental gene
+is equal to $1/2N$.  Consequently, we might expect the probability of a
+coalescent event to be close to
+\begin{equation}
+h_i = \frac{i(i-1)}{4N}
+\label{eq.hi}
+\end{equation}
+per generation.  Although this argument is loose, it turns out that the result
+is correct.  (To find out why, see section~\ref{sec.coalescent.hard}.)  The
+expected length of this interval is given by trick~\ref{trick.1/h} and equals
+\begin{equation}
+1/h_i = \frac{4N}{i(i-1)}
+\label{eq.hinv}
+\end{equation}
+
+For example, in a sample of size 5, the four coalescent intervals have 
+hazards and expected lengths as follows:\\
+\begin{center}
+\def\mystrut{\rule{0pt}{1em}}
+\begin{tabular}{ccc}
+         & Coalescent & Expected\\
+Interval & hazard     & length\\ \hline
+5 & $h_5 = \displaystyle \frac{\mystrut 5 \times 4}{4N} = 10/2N$ & $2N/10$\\
+4 & $h_4 = \displaystyle \frac{\mystrut 4 \times 3}{4N} = 6/2N$  & $2N/6$\\
+3 & $h_3 = \displaystyle \frac{\mystrut 3 \times 2}{4N} = 3/2N$  & $2N/3$\\
+2 & $h_2 = \displaystyle \frac{\mystrut 2 \times 1}{4N} = 1/2N$  & $2N$\\[7pt] 
+\hline
+\end{tabular}
+\end{center}
+
+\section{The depth of a gene tree\label{sec.treedepth}}
+
+The \emph{depth} of a gene tree is the time (usually in generations)
+since the \emph{Last Common Ancestor} (LCA) of all the genes in the
+sample.  The tree's depth is simply the sum of its coalescent
+intervals, and we already have a formula for the expected length of
+each interval.  For example, in a sample 2 genes, the expected depth
+of the gene tree is $2N$ generations.  In a sample of 3 genes it is
+$2N + 2N/3 = 8N/3$ generations.  Here are a few more examples:
+\begin{center}
+\begin{tabular}{cr@{$\;=\;$}l}
+Sample & \multicolumn{2}{c}{Mean depth} \\
+size   & \multicolumn{2}{c}{of tree} \\ \hline
+2 & $1/h_2$ & $2N$\\ 
+3 & $1/h_3 + 1/h_2$ & $8N/3$\\
+4 & $1/h_4 + 1/h_3 + 1/h_2$ & $3N$\\
+5 & $1/h_5 + 1/h_4 + 1/h_3  + 1/h_2$ & $16N/5$\\ \hline
+\end{tabular}
+\end{center}
+Notice that in each case, the mean tree depth is equal to
+\begin{equation}
+4N(1 - 1/K)
+\label{eq.treedepth}
+\end{equation}
+where $K$ is the number of gene copies in the sample.  This formula
+turns out to be true in general, as shown in Box~\ref{box.Edepth}
+\citep[p.~132]{Tavare:TPB-26-119}. In a large sample, the $1/K$ term
+is unimportant and the answer is even simpler: the average depth of a
+gene tree is approximately $4N$ generations.
+
+\begin{Box}[tbp]
+The coalescent interval containing $i$ lineages has expected depth
+$1/h_i = 4N/i(i-1)$, so the total expected depth in a sample of $K$
+gene copies is
+\[
+4N\sum_{i=2}^K 1/i(i-1)
+\]
+This sum is easy to simplify once you notice that
+\[
+\frac{1}{i(i-1)} = \frac{1}{i-1} - \frac{1}{i}
+\]
+With this substitution, the series becomes
+\[
+4N\left( \frac{1}{1} - \frac{1}{2} + \frac{1}{2} - \cdots 
+- \frac{1}{K-1} + \frac{1}{K-1} - \frac{1}{K} \right)
+\]
+Adjacent terms cancel, and we are left with
+equation~\ref{eq.treedepth} \citep[p.~132]{Tavare:TPB-26-119}.
+\caption{The expected depth of a gene genealogy}
+\label{box.Edepth}
+\end{Box}
+
+\begin{exercise}
+Box~\ref{box.Edepth} uses the fact that
+\[
+\frac{1}{i(i-1)} = \frac{1}{i-1} - \frac{1}{i}
+\]
+Verify that this is true by deriving the left side from the
+right.
+\answer
+Beginning with the right side of the expression, we end up with the
+left side:
+\[
+\frac{1}{i-1} - \frac{1}{i} = \frac{i}{i(i-1)} -
+\frac{i-1}{i(i-1)}
+= \frac{1}{i(i-1)}
+\]
+\end{exercise}
+
+\begin{exercise}
+Suppose that we draw a sample of size $K=10$ from a population with $2N =
+5000$ genes.  What are the expected lengths (in generations) of all
+the coalescent intervals? 
+\answer
+The intervals are:\\
+\begin{tabular}{cc}
+$i$ & $4N/(i(i-1))$\\\hline
+10 & 111.1111111\\
+ 9 & 138.8888889\\
+ 8 & 178.5714286\\
+ 7 & 238.0952381\\
+ 6 & 333.3333333\\
+ 5 & 500.0000000\\
+ 4 & 833.3333333\\
+ 3 & 1666.666667\\
+ 2 & 5000.000000\\               
+\end{tabular}
+\end{exercise}
+
+\begin{exercise}
+In a sample of 10,000 genes, what is the expected age of the LCA?
+What fraction of this age is accounted for by the interval during
+which the tree contained only two lineages?
+\answer
+Since the sample is large, the mean age of the LCA is close to $4N$
+generations.  Half of this period is accounted for by the interval
+during which the tree contained only two lineages.
+\end{exercise}
+
+\begin{figure}
+\begin{verbatim}
+-|                                                          
+ |--|                                                       
+-|  |                                                       
+    |---|                                                   
+---||   |                                                   
+   ||   |                                                   
+---|    |---|                                               
+        |   |                                               
+--------|   |-------------------------------------------|   
+            |                                           |   
+------------|                                           |   
+                                                        |   
+------|                                                 |   
+      |                                                 |   
+---|  |-------|                                         |   
+   |--|       |                                         |---
+---|          |------|                                  |   
+              |      |                                  |   
+-|            |      |                                  |   
+ |------------|      |                                  |   
+-|                   |                                  |   
+                     |                                  |   
+-------------|       |----------------------------------|   
+             |       |                                      
+-|           |-|     |                                      
+ |-----------| |     |                                      
+-|             |     |                                      
+               |     |                                      
+|              |     |                                      
+|---|          |-----|                                      
+|   |          |                                            
+    |-|        |                                            
+----| |        |                                            
+      |        |                                            
+-|    |--------|                                            
+ ||   |                                                     
+-||   |                                                     
+  |---|                                                     
+--|                   
+\end{verbatim}
+\caption{Coalescence of a sample of twenty genes\label{fig.20gene}}
+\end{figure}
+
+When the sample is large, $K(K-1)/2$ is a large number.  Consequently,
+initial coalescent intervals tend to be short.  In a sample of size
+20, the most recent coalescent interval is (on average) 0.5 percent as
+long as the interval that ends with the root.  Figure~\ref{fig.20gene}
+shows an example.  Note the short terminal branches and the deep basal
+branch. 
+
+\begin{subappendices}
+\section{A more detailed treatment (optional)}
+\label{sec.coalescent.hard} 
+
+\subsection{Preliminaries}
+
+Before explaining the formula for the general case---that of a
+coalescent interval during which the sample has $K$ genes---we need
+one additional mathematical trick.
+
+\begin{trick}
+The sum of the numbers from 1 through $k$ is $k(k+1)/2$.
+\label{trick.sum1tok}
+\end{trick}
+This trick was supposedly discovered by the mathematician Carl
+Friedrich Gauss when he was just six years old.  According to the
+story, Gauss's teacher gave the class an assignment to keep it busy
+while he graded papers: Sum the numbers from 1 through 100.  Two
+minutes later, Gauss walked to the front of the room with his answer.
+The answer was correct, but Gauss was punished for failing to do the
+work the hard way.  Here is how he did it.
+
+First he wrote down
+\[
+1 + 2 + \cdots + 99 + 100
+\]
+Then, being bored and discouraged, he wrote it out backwards just
+below:
+\[
+\begin{array}{ccccccccc}
+1 &+& 2 &+& \cdots &+& 99 &+& 100 \\
+100 &+& 99 &+& \cdots &+& 2 &+& 1
+\end{array}
+\]
+Then the insight struck---he noticed that each of the columns added to
+101: 
+\[
+\begin{array}{ccccccccc}
+1 &+& 2 &+& \cdots &+& 99 &+& 100 \\
+100 &+& 99 &+& \cdots &+& 2 &+& 1\\ \hline
+101 &+& 101 &+& \cdots &+& 101 &+& 101
+\end{array}
+\]
+Since there are 100 columns, the sum of all the numbers here is $100
+\times 101$.  And this is twice the sum that he was looking for.
+Thus,
+\[
+1 + 2 + \cdots + 99 + 100 = \frac{100 \times 101}{2}
+\]
+In the general case,
+\[
+1 + 2 + \cdots + k = \frac{k (k+1)}{2}
+\]
+
+\begin{trick}
+$e^{x}$ is approximately $1+x$ when $x$ is small.
+\label{trick.exp}
+\end{trick}
+Here $e^x$ is the exponential function, and is also written 
+$\exp(x)$.  You can verify the trick with a calculator.
+
+\subsection{Coalescence times in an interval with three genes}
+
+Figure~\ref{fig.3gene} shows the genealogy of a sample of three genes.
+It has two coalescent events, one at node $A$ (the root) and another
+at node $B$.  The time between the present and the root can be broken
+into two intervals of length $t_2$ and $t_3$, where $t_2$ is the
+number of generations during which the genealogy has two lines of
+descent and $t_3$ is the number of generations during which it had
+three.  What can we say about the lengths of these intervals?
+
+\begin{figure}
+\begin{verbatim}
+   X --------------------|                   
+                         B---------------|   
+   Y --------------------|               |   
+                                         A---
+   Z ------------------------------------|
+   
+   
+   |--------- t_3 -------|------ t_2 ----|  
+\end{verbatim}
+\caption{Coalescence of a sample of three genes\label{fig.3gene}}
+\end{figure}
+
+The first point to notice is that the intervals are independent.  As
+we ponder the length of one interval, we need not worry about the
+length of the other.  And we already know the mean of $t_2$: the
+preceding section showed that the mean coalescence time for a sample
+of two genes is $2N$ generations.
+
+This leaves us with only one question to answer:  What is the mean
+time until the first coalescent event in a sample of three genes?  We
+could answer this question using trick~\ref{trick.1/h} if we knew the
+hazard of a coalescent event in a sample of that size.  Let us
+therefore consider the probability that a coalescent event occurs
+during some given generation.
+
+It is easier to calculate first the probability of the event that all
+three lines of descent remain distinct.  This requires that
+\begin{enumerate}
+\item
+X and Y are copies of different parental genes.  We already know that
+this event has probability $1 - 1/2N$.
+\item
+Z is neither a copy of X's parent nor a copy of Y's parent.  This event
+has probability $(2N - 2)/2N$.  (Of the $2N$ genes that we can choose
+between, 2 produce a coalescent event and $2N-2$ do not.)  This
+probability can also be written as $1 - 2/2N$.
+\end{enumerate}
+Thus, the probability that no coalescent event occurs in some
+particular generation is equal to
+\[
+1-h = (1 - 1/2N)(1 - 2/2N)
+\]
+Now it is time to invoke trick~\ref{trick.exp}.  If the population is
+large, then $2N$ will be a large number and $1/2N$ and $2/2N$ will both
+be small.  Trick~\ref{trick.exp} thus allows the probability above to
+be re-expressed as
+\[
+1-h \approx e^{-1/2N} e^{-2/2N} = e^{-3/2N}
+\]
+Now invoke trick~\ref{trick.exp} once again to simplify the exponential:
+\begin{eqnarray*}
+1-h &\approx& 1 - 3/2N\\
+h & \approx & 3/2N
+\end{eqnarray*}
+Having found the hazard of a coalescent event in a sample of three
+genes, trick~\ref{trick.1/h} now gives us the mean length of the part
+of the genealogy during which there were three lines of descent:
+\[
+\hbox{mean of}\quad t_3 = 2N/3
+\]
+
+In a sample of three genes, the hazard of a coalescent event is three
+times as large as the hazard in a sample of two.  Consequently, the
+mean waiting time until the first coalescent event is only 1/3 as
+large.  The expected depth of the tree is the expected sum of $t_2$
+and $t_3$.  It equals $2N + 2N/3$, or $8N/3$.  Three quarters of this
+total is taken up by the portion of the genealogy during which there
+are only two lines of descent.
+
+\begin{example}
+In a population of $10^7$, what is the mean time in years until a
+sample of three mitochondrial genes coalesce to a single line of
+descent. 
+\end{example}
+\begin{showanswer}
+  If there are $10^7$ people, there will be about half that many
+  females, so $2N = 5\times 10^6$.  The coalescence time is $8N/3 =
+  6.67 \times 10^6$ generations.  If generations are 25 years long,
+  this is $167 \times 10^6$ years.  So the Last Common Ancestor (LCA)
+  should have lived during the Jurassic period. Incidentally, this
+  example is far-fetched for humans, because it implies far more
+  mitochondrial variation than really exists.
+\end{showanswer}
+
+\subsection{Coalescence times in an interval with $i$ genes}
+
+As in the case of three lines of descent, it is easiest to calculate
+$1-h$, the probability that no coalescent event occurs during some
+particular generation.  When there are $i$ genes in the sample, this requires
+\begin{center}
+\begin{tabular}{lc}
+\multicolumn{1}{c}{Event} & Probability\\ \hline
+Gene~2 and gene~1 have different parents & $1-1/2N$\\
+Gene~3's parent differs from the preceding 2 parents
+   & $1 - 2/2N$\\
+Gene~4's parent differs from the preceding 3 parents
+   & $1 - 3/2N$\\
+\multicolumn{2}{c}{\dotfill}\\
+Gene~$i$'s parent differs from the preceding $i-1$ parents
+   & $1 - (i-1)/2N$\\
+\hline
+\end{tabular}
+\end{center}
+The probability that a coalescent event does \emph{not} occur is
+\[
+\begin{array}{rcll}
+1-h &=& (1-1/2N)(1-2/2N)\cdots(1-(i-1)/2N)\\
+    &\approx& e^{-1/2N}e^{-2/2N}\cdots e^{-(i-1)/2N} 
+                             & \hbox{(trick~\ref{trick.exp})}\\
+    &=& \exp\left[-\frac{1}{2N}(1 + 2 + \cdots + (i-1))\right]\\
+    &=& \exp\left[-\frac{i(i-1)}{4N}\right]
+                         & \hbox{(trick~\ref{trick.sum1tok})}\\
+    &\approx& 1 - \frac{i(i-1)}{4N}
+                             & \hbox{(trick~\ref{trick.exp})}
+\end{array}
+\]
+Thus,
+\begin{equation}
+h \approx \frac{i(i-1)}{4N}
+\label{eq.coalescent.h}
+\end{equation}
+
+\section{The mean of an exponential random variable (optional)}
+\label{sec.hCalculus}
+If $t$ is an exponential random variable, then its density function is
+$he^{-ht}$.  The mean of this distribution is:
+\[
+E[t] = \int_0^\infty ht e^{-ht} dt
+\]
+Substituting $x=ht$ turns this into
+\[
+E[t] = h^{-1}\int_0^\infty x e^{-x} dx
+\]
+On integrating by parts, the integral on the right becomes
+\[
+\int_0^\infty x e^{-x} dx
+  = - xe^{-x}|_0^\infty - \int_0^\infty (-e^{-x}) dx
+\]
+The first term on the right is 0 and the second is $-e^{-x}|_0^\infty
+= 1$.  Thus, $E[t] = 1/h$.
+\end{subappendices}

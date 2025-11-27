@@ -1,0 +1,51 @@
+% -*-latex-*-
+\begin{center}
+\mbox{%
+\beginpicture
+\headingtoplotskip=0.5\baselineskip
+\setcoordinatesystem units <.1in, .1in> point at 0 0
+\setplotarea x from 0 to 12, y from -0.4 to 12
+\axis left label {\small\lines{Quantiles\cr of $\hat\tau$}} shiftedto x=-1
+   ticks numbered from 0 to 12 by 3 /
+\axis bottom shiftedto y=-1.4
+  label {$\tau$} ticks numbered from 0 to 12 by 3 /
+\multiput {$\bullet$} at 0 0 2 2 4 4 6 6 8 8 10 10 12 12 /
+\setdots
+%x=tau y=quantile 0.025 for tau hat
+\plot 0 -0.470163 2 1.264931 4 2.621103 6 4.041647 8 5.189375 10
+6.512056 12 7.781337 /
+\setdashes
+%x=tau y=quantile 0.25 for tau hat
+\plot 0 0.093195 2 1.899364 4 3.533029 6 5.129342 8 6.560104 10
+7.886912 12 9.24927 /
+\setsolid
+%x=tau y=quantile 0.5 for tau hat
+\plot 0 0.583741 2 2.356760 4 4.016899 6 5.727125 8 7.253701 10
+8.664867 12 10.022979 /
+\setdashes
+%x=tau y=quantile 0.75 for tau hat
+\plot 0 0.941562 2 2.807729 4 4.520144 6 6.302821 8 7.922965 10
+9.332856 12 10.799049 /
+\setdots
+%x=tau y=quantile 0.975 for tau hat
+\plot 0 1.625900 2 3.622672 4 5.643163 6 7.436202 8 9.148493 10
+10.937300 12 12.206018 /
+\endpicture%
+}
+\end{center}
+%
+\footnotesize At least 1000 data sets were simulated at each of
+several values of $\tau$, and each was used to estimate the model's
+parameters.  The bold dots indicate points at which $\hat\tau=\tau$.
+The solid line is the median, the dashed lines enclose the central
+50\% of the distribution, and the dotted lines the central 95\%.  Each
+simulated data set was generated using the coalescent algorithm with
+$\theta_0 = 1$, $\theta_1 = 100$, and $N=147$.
+
+
+
+
+
+
+
+

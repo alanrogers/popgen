@@ -1,0 +1,30 @@
+\begin{thebibliography}{4}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{{\tt #1}}\fi
+
+\bibitem[Buri(1956)]{Buri:E-10-367}
+P.~Buri.
+\newblock Gene frequency in small populations of mutant \emph{Drosophila}.
+\newblock {\em Evolution}, 10:\penalty0 367--402, 1956.
+
+\bibitem[Nei(1973)]{Nei:PNA-70-3321}
+Masatoshi Nei.
+\newblock Analysis of gene diversity in subdivided populations.
+\newblock {\em Proceedings of the National Academy of Sciences, USA},
+  70\penalty0 (12):\penalty0 3321--3323, 1973.
+
+\bibitem[Wahlund(1975)]{Wahlund:75}
+Sten Wahlund.
+\newblock Composition of populations and of genotypic correlations from the
+  viewpoint of population genetics.
+\newblock In Kenneth~M. Weiss and Paul~A. Ballanoff, editors, {\em Demographic
+  Genetics}, pages 224--263. Wiley, New York, 1975.
+\newblock [Translation].
+
+\bibitem[Wright(1951)]{Wright:AE-15-323}
+Sewall Wright.
+\newblock The genetical structure of populations.
+\newblock {\em Annals of Eugenics}, 15:\penalty0 323--354, 1951.
+
+\end{thebibliography}

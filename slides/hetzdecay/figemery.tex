@@ -1,0 +1,66 @@
+% -*-latex-*-
+% figprev: summary of previous results from Emeryville
+\begin{center}\mbox{%
+\beginpicture
+\headingtoplotskip=1.5ex
+\linethickness=0.8pt
+%%%%%%%%%%%%%% bottom left %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%point at .3in right 1.5in up
+%\setcoordinatesystem units <0.2in,3.333in> point at 1.5 1.15
+\setcoordinatesystem units <0.2in,3.333in> point at 0 1.15
+\setplotarea x from -10 to -1, y from 0.7 to 1
+\plotheading{Artiodactyl/Carnivore}
+\axis left %label {\lines{Artiodactyl--\cr Carnivore\cr Index}} 
+   shiftedto x=-10.25
+   ticks numbered from 0.7 to 1 by 0.1 /
+\axis right shiftedto x=-0.75 /
+\axis bottom  label {Stratum} 
+   shiftedto y=0.685
+   ticks withvalues 9 7 5 3 1 /
+           at  -9 -7 -5 -3 -1 / /
+\axis top shiftedto y=1.015 /
+%% x: level below ground. 1 is nearest surface; 10 is deepest
+%% y: artiodactyl-carnivore index
+\multiput {$\bullet$} at
+-1 .98  -1 .991  -2 .982  -3 .968  -3 1
+-4 .806  -5 .783  -6 .835  -7 .723  -7 .830
+-8 .837  -8 .847  -9 .897  -9 .803  -10 .848
+-10 .836  -10 .934
+/ 
+\pause
+%%%%%%%%%%%%%%%%% bottom right %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%point at 1.5in up
+%\setcoordinatesystem units <0.2in,1in> point at -9 1.5
+\setcoordinatesystem units <0.2in,1in> point at -10 1.5
+\setplotarea x from -10 to -1, y from 0 to 1
+\plotheading{Artiodactyl/Sea otter}
+\axis right %label {\lines{Artiodactyl--\cr Sea otter\cr Index}} 
+   shiftedto x=-0.75
+   ticks numbered from 0 to 1 by 1 /
+\axis left shiftedto x=-10.25  /
+\axis bottom label {Stratum} 
+   shiftedto y=-0.05
+   ticks withvalues 9 7 5 3 1 /
+           at -9 -7 -5 -3 -1 / /
+\axis top shiftedto y=1.05 /
+% x: stratum. 1 is nearest surface; 10 is deepest
+% y:
+\multiput {$\bullet$} at
+-1  .954  -1  1.000  -2  .955  -3  .923
+-3  1.000  -4  .721  -5  .455  -6  .362
+-7  .220  -7  .272  -8  .437  
+-8      .269  -9      .816  -9      .664  -10     .679
+-10     .640  -10     .584
+/
+\endpicture%
+}
+\end{center}
+%
+\emph{Left panel:}~Frequency of artiodactyls relative to small
+carnivores.  \emph{Right panel:}~Frequency of artiodactyls
+relative to sea otters
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

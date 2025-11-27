@@ -1,0 +1,284 @@
+\title{Drift When Populations Vary in Size}
+\author{Alan R. Rogers}
+\date{\today}
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Why is heterozygosity so often lower than we expect?}
+\begin{itemize}
+\item 
+Urn model assumes $N$ is constant.  What if it varies?
+\item 
+Bottleneck: a temporary reduction in $N$
+\item 
+Decline in $\Het$ is faster than recovery.
+\item 
+Effective population size is harmonic mean of $N_t$
+\item
+Harmonic mean is sensitive to small sizes.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{A bottleneck in population size}
+\input{figdecay}
+$\mathcal{H}$ declines rapidly, recovers slowly.  Why?
+\end{frame}
+
+\begin{frame}
+\frametitle{What is a half-life?}
+\input{fighlife}
+\end{frame}
+
+\begin{frame}
+\frametitle{Why the decline is faster than the recovery}
+
+\begin{columns}
+\column{0.45\textwidth}
+Gene diversity converges toward equilibrium with a half-life of
+\[
+t_h = \frac{\ln 2}{2u + 1/2N}
+\]
+Small $N$ $\Rightarrow$ short half-life.
+
+\medskip
+
+$N$ has little effect if $2u \gg 1/2N$, i.e.\ if $\theta \gg 1$.
+\column{0.55\textwidth}
+\begin{tabular}{crrr}
+&&\multicolumn{2}{c}{Half-life of}\\
+     && \multicolumn{2}{c}{convergence}\\ \cline{3-4}
+$2N$ &$\theta$& \multicolumn{1}{c}{(gen.)} & (years)\\ \hline\hline
+$\infty$ &$\infty$ & 347 & 1,041\\
+$10^6$   &2000.00 &  346 & 1,038\\
+$10^5$   &200.00 &  345 & 1,035\\
+$10^4$   &20.00 &  330 &   990\\
+$10^3$   &2.00 & 231 &   693\\
+$10^2$   &0.20 &  58  &   174\\
+$10$     &0.02 &   7  &    21\\
+\hline
+\multicolumn{3}{c}{(Assumes $u=0.001$)}
+\end{tabular}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Oscillations in population size}
+
+We've been considering a single bottleneck in population size. What if
+it is always varying?
+
+To see that this is plausible, consider the record of climate change
+during the past 250,000 years.
+\end{frame}
+
+\begin{frame}
+\frametitle{History of global temperature}
+\begin{columns}
+\column{0.65\textwidth}
+\includegraphics[width=\textwidth]{grip.pdf}
+\column{0.4\textwidth}
+What did this do to population size?
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\noindent\includegraphics[width=0.9\textwidth]{neigraur.png}\\
+Heterozygosity, $\Het$, versus population size, $Ng$, where $g$ is
+ploidy. Solid line: expected curve for neutral alleles; dotted:
+slightly overdominant; dot-dashed: slightly deleterious.\\
+\mbox{}\hfill\small (Nei \& Graur 1984)\\ 
+\end{frame}
+
+\begin{frame}
+For many species, $\Het$ is much smaller than would be expected on the basis
+of their population sizes.  Could this be a result of population size
+bottlenecks during the Pleistocene?
+\end{frame}
+
+\begin{frame}
+  \frametitle{Effective population size, $N_e$}
+
+ Goal: Find a value of $N$ that makes our idealized population behave like a
+ more complicated one.
+
+ Example: In a randomly mating population of constant size, heterozygosity
+ (gene diversity) is equal to
+\[
+\Het = \frac{4Nu}{4Nu+1}
+\]
+What if the population varies in size?
+\end{frame}
+
+\begin{frame}
+\frametitle{Review: $\Het$ in a population of constant size}
+\begin{eqnarray*}
+  \Het_1 &=& \Het_{0} \left(1 - \frac{1}{2N}\right)\\
+\end{eqnarray*}
+\end{frame}
+
+\begin{frame}
+\frametitle{Another generation}
+\begin{eqnarray*}
+  \Het_1 &=& \Het_{0}\left(1 - \frac{1}{2N}\right)\\
+  \Het_2 &=& \Het_{1}\left(1 - \frac{1}{2N}\right)\\
+\end{eqnarray*}
+\end{frame}
+
+\begin{frame}
+\begin{eqnarray*}
+  \Het_1 &=& \Het_{0}\left(1 - \frac{1}{2N}\right)\\
+  \Het_2 &=& \Het_{1}\left(1 - \frac{1}{2N}\right)\\
+         &=& \Het_{0}\left(1 - \frac{1}{2N}\right)^2\\
+\end{eqnarray*}
+\end{frame}
+
+\begin{frame}
+\frametitle{General form}
+\begin{eqnarray*}
+  \Het_t &=& \Het_{0}\left(1 - \frac{1}{2N}\right)^t\\
+         &\approx& \Het_{0} \exp[-t/2N]
+\end{eqnarray*}
+
+\bigskip
+
+Note approximation: $1-x \approx e^{-x}$ when $x$ is small.
+\end{frame}
+
+\begin{frame}
+\frametitle{$\Het$ in a population of varying size}
+\begin{eqnarray*}
+  \Het_1 &=& \Het_{0} \left(1 - \frac{1}{2N_0}\right)\\
+\end{eqnarray*}
+where $N_0$ is population size in generation~0.
+\end{frame}
+
+\begin{frame}
+\frametitle{Another generation}
+\begin{eqnarray*}
+  \Het_1 &=& \Het_{0}\left(1 - \frac{1}{2N_0}\right)\\
+  \Het_2 &=& \Het_{1}\left(1 - \frac{1}{2N_1}\right)\\
+\end{eqnarray*}
+\end{frame}
+
+\begin{frame}
+\frametitle{Two generations}
+\begin{eqnarray*}
+  \Het_2 &=& \Het_{0}\left(1 - \frac{1}{2N_0}\right)
+                     \left(1 - \frac{1}{2N_1}\right)\\
+\end{eqnarray*}
+\end{frame}
+
+\begin{frame}
+\frametitle{Two generations again}
+\begin{eqnarray*}
+  \Het_2 &=& \Het_{0}\left(1 - \frac{1}{2N_0}\right)
+                     \left(1 - \frac{1}{2N_1}\right)\\
+ &=& \Het_{0} \prod_{i=0}^{1}\left(1 - \frac{1}{2N_{i}}\right)
+\end{eqnarray*}
+
+\bigskip
+
+where $\prod$ is the product operator.
+\end{frame}
+
+\begin{frame}
+\frametitle{General form}
+\begin{eqnarray*}
+  \Het_t &=& \Het_{0} \prod_{i=0}^{t}\left(1- \frac{1}{2N_{i}}\right)\\
+  &\approx& \Het_{0}\exp\left[-\sum_{i=0}^{t-1}\frac{1}{2N_{i}}\right]
+\end{eqnarray*}
+\end{frame}
+
+\ifthenelse{\theshowthis=0}{%
+\begin{frame}
+\frametitle{Approximation}
+\begin{eqnarray*}
+  \Het_t &=& \Het_{0} \prod_{i=0}^{t}\left(1 - \frac{1}{2N_{i}}\right)\\
+  &\approx& \Het_{0} \prod_{i=0}^{t-1}\exp[-1/2N_{i}]\\
+\end{eqnarray*}
+
+\bigskip
+
+How do you simplify a product of exponentials?
+\end{frame}
+
+\begin{frame}
+\frametitle{Remember rule for product of exponentials}
+\[
+e^a e^b = \exp[a + b]
+\]
+\end{frame}
+
+\begin{frame}
+\frametitle{Product of exponentials is exponential of sum}
+\begin{eqnarray*}
+  \Het_t &\approx& \Het_{0} \prod_{i=0}^{t-1}\exp[-1/2N_{i}]\\
+  &=& \Het_{0}\exp\left[-\sum_{i=0}^{t-1}\frac{1}{2N_{i}}\right]
+\end{eqnarray*}
+\end{frame}
+}{}
+
+\begin{frame}
+\frametitle{Compare results for fixed and varying $N$}
+\[
+\begin{array}{rclrcl}
+  \multicolumn{3}{c}{\hbox{Fixed $N$}} &
+  \multicolumn{3}{c}{\hbox{Varying $N$}}\\
+  \Het_t &\approx& \Het_{0} \exp[-t/2N_e]
+  &&=&\Het_{0} \exp\left[-\sum_{i=0}^{t-1}\frac{1}{2N_{i}}\right]
+\end{array}
+\]
+\begin{itemize}
+\item
+$N_e$ is called effective population size.
+\item It is the constant population size that makes the two sides equal.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+The two sides are equal when
+\[
+1/N_e = \frac{1}{t}\sum_{i=0}^{t-1}\frac{1}{N_{i}}
+\]
+The effective population size, $N_e$, is the ``harmonic mean'' of $N_0, N_1,
+\ldots, N_{t-1}$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{What is $N_e$ good for?}
+
+In a population of varying size, average heterozygosity at neutral
+loci is
+\[
+\Het = \frac{4N_eu}{4N_eu+1}
+\]
+where $N_e$ is the effective population size.
+\end{frame}
+
+\begin{frame}
+\frametitle{Example}
+\begin{itemize}
+\item
+What is the arithmetic mean of 1, 50, and 100?
+\item
+What is the harmonic mean?
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Answer}
+\begin{itemize}
+\item
+Arithmetic mean: $(1 + 50 + 100)/3 = 50.3333$.
+\item
+Harmonic mean: $1/((1 + 1/50 + 1/100)/3) = 2.9126$.
+\end{itemize}
+Harmonic mean is \emph{much} smaller than arithmetic mean.\\
+\end{frame}
+
+\begin{frame}
+\frametitle{Approach toward equilibrium when size varies}
+{\centering\input{figvaryn}\\}
+\end{frame}
+

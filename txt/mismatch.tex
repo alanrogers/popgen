@@ -1,0 +1,472 @@
+% -*-latex-*-
+\reversemarginpar
+\chapter{The Mismatch Distribution\label{ch.mismatch}}
+
+\section{The observed mismatch distribution}
+\label{sec.mmobs}
+
+Count the number of site differences between each pair of sequences in 
+a sample, and use the resulting counts to build a histogram.  You end
+up with a ``mismatch distribution.''  The $i$th entry of the mismatch
+distribution is the number of pairs of sequences that differ by $i$
+sites. 
+
+For example, consider this data set:
+\begin{center}
+\begin{tabular}{lc@{}c@{}c@{}c@{}c@{$\;$}c@{}c@{}c@{}c@{}c}
+S01   &   A&A&A&C&T& G&T&C&A&T\\
+S02   &   .&.&.&.&.& A&.&T&.&.\\
+S03   &   .&.&G&.&.& A&.&.&.&.\\
+S04   &   .&.&G&.&.& A&.&T&.&.\\
+S05   &   .&.&.&.&.& A&.&.&.&.\\
+\end{tabular}
+\end{center}
+To calculate the mismatch distribution, we need to count the
+differences between every pair of sequences. Here are my counts:
+\begin{center}
+\begin{tabular}{cc}
+     & Pairwise\\
+Pair & differences\\
+\hline
+$1\times 2$ & 2\\
+$1\times 3$ & 2\\
+$1\times 4$ & 3\\
+$1\times 5$ & 1\\
+$2\times 3$ & 2\\
+$2\times 4$ & 1\\
+$2\times 5$ & 1\\
+$3\times 4$ & 1\\
+$3\times 5$ & 1\\
+$4\times 5$ & 2\\
+\end{tabular}
+\end{center}
+There are five 1s, four 2s, and one 3. Thus, the mismatch distribution
+is
+\begin{center}
+\begin{tabular}{cc}
+            & Number\\
+Pairwise    &   of\\
+differences & pairs\\
+\hline
+0 & 0\\
+1 & 5\\
+2 & 4\\
+3 & 1
+\end{tabular}
+\end{center}
+Here, the right column gives the number of pairs that exhibit each
+level of difference. We often re-express these as fractions of the
+number of pairs of sequences. Since there are 10 pairs in our data
+set, this gives:
+\begin{center}
+\begin{tabular}{cc}
+            & Fraction\\
+Pairwise    &   of\\
+differences & pairs\\
+\hline
+0 & 0.0\\
+1 & 0.5\\
+2 & 0.4\\
+3 & 0.1
+\end{tabular}
+\end{center}
+Now the numbers in the right column sum to 1---they are relative
+frequencies. This is the \emph{observed} or \emph{empirical} mismatch
+distribution. 
+
+\section{The expected mismatch distribution under neutral 
+evolution with constant population size}
+\label{sec.mmconst}
+
+The previous section concerned the observed mismatch distribution,
+which we calculate from genetic data. Each entry in this distribution
+is a random variable, so it is natural to wonder about its expected
+value. This is easy to calculate, under a model of constant size and
+selective neutrality: a random pair of sequences differs by $i$
+sites with probability \citep{Watterson:TPB-7-256}
+\begin{equation}
+F_i = \left(\frac{1}{\theta + 1}\right)
+\left(\frac{\theta}{\theta + 1}\right)^i, \qquad (i=0,1,2,\ldots)
+\label{eq.eqmismatch}
+\end{equation}
+where $\theta = 4Nu$, $u$ is the mutation rate per generation, and
+$2N$ is the number of genes in the population.  This formula is
+graphed in figure~\ref{fig.poorfit} along with an empirical mismatch
+distribution from human mtDNA. (The empirical distribution, shown as
+open circles, is analogous to the one calculated in
+section~\ref{sec.mmobs}.)
+
+\begin{figure}
+{\centering\input{figpoorfit}\\}
+\caption{The poor fit of the equilibrium distribution}
+\label{fig.poorfit} \small The open circles show the empirical
+pairwise difference distribution of \citet{Cann:N-325-31}, based on
+their figure~1.  The solid line is an equilibrium distribution with
+the same mean.
+\end{figure}
+
+The poor fit between the observed and expected curves is striking.  As
+usual, there are several hypotheses to consider:
+\begin{description}
+\item[Sampling error] Perhaps the poor fit is an artifact attributable 
+  to sampling error.  This possibility is especially important here
+  because the pairs of sequences in this analysis are not
+  independent:  They are correlated both because each sequence
+  participates in several pairs and also because of the genealogical
+  relationships among sequences.
+\item[Selection] More on this later
+\item[Failure of infinite sites hypothesis]
+\item[Non-random mating]
+\item[Variation in population size] 
+\end{description}
+Work has been done on all of these possibilities, but we will consider
+only the last.
+
+\section{Coalescent theory in a population of varying size}
+\label{sec.coalvaryn}
+
+The principles of coalescent theory still hold in a population of
+varying size.  At any given time, $t$, the hazard of a coalescent
+event is 
+\[
+h_i(t) = \frac{i(i-1)}{4N(t)}
+\]
+where $i$ is the number of distinct lines of descent in the gene
+genealogy at time $t$ and $2N(t)$ is the number of genes in the
+population size at time $t$.
+
+It is no longer true, however, that the mean waiting time until a
+coalescent event is $1/h_i$.  That only works in populations of
+constant size.  Some theoretical results are still possible, but the
+more complex the model the more we are forced to base inferences on
+computer simulations.
+
+\section{The coalescent as an algorithm for computer simulations}
+
+Fortunately, coalescent theory is just as useful in computer
+simulations as in theoretical work.  The style of reasoning is the
+same, except that coalescent intervals are generated from random
+numbers.   As in the case of constant population size, intervals tend
+to be long in those parts of the tree where there are only a few lines 
+of descent.  
+
+Now, however, there is an additional factor to consider: Coalescent
+intervals also tend to be long when the population size is large.
+It is not hard to understand why this should be so.  Two random genes
+drawn from a large population are likely to be distantly related and
+thus separated by a long genealogical path.  In a small population, a
+pair of genes is likely to be separated by a shorter path.
+
+Computer simulations are most useful if they deal with only a few
+parameters at a time.  Thus, we need some economical way to describe
+the history of a population that changes in size.
+
+\section{Stepwise models of population history}
+
+Population growth is ordinarily regulated by density-dependent
+mechanisms that allow small populations to grow and cause large ones
+to shrink.  Consequently, most biologists think that the sizes of most
+populations are roughly constant most of the time.  Now and then,
+something happens to disturb this equilibrium, and the population
+either grows or shrinks until a new equilibrium is attained.  Over a
+long time scale, the periods of change would look like relatively
+sudden changes in the size of a population that was otherwise roughly
+constant.
+
+This is the conventional view of demographic history, and it motivates
+the stepwise model of population history that is used here.  I will
+assume that history can be divided into a series of epochs during
+which the population does not change.  Epochs are separated by
+episodes of rapid change, which I treat as instantaneous.  They are
+numbered backwards from the most recent (epoch~0) to the most
+ancient.\footnote{\citet{Rogers:MBE-9-552} numbered them in the
+  opposite direction.}
+
+\begin{table}
+\caption{Hypothetical two-epoch population history}
+\label{tab.ph1}
+\centering
+\begin{tabular}{ccc}
+\hline
+      &   $2N_i$    &   $t_i$  \\ 
+Epoch &   (genes) & (generations)\\ 
+\hline\hline
+    0 &  $10^6$ &   2000  \\
+    1 &  $10^4$ & $\infty$ \\
+\hline
+\end{tabular}
+\end{table}
+
+\input{figsudden}
+
+Table~\ref{tab.ph1} shows the parameters of a hypothetical population
+history with two epochs.  The table describes a population that was
+small (10,000 people) early in time, grew suddenly 2000 generations
+ago, and has been large (1,000,000 people) ever since.  The history of
+this hypothetical population is graphed in figure~\ref{fig.sudden}. 
+
+\begin{table}
+\caption{Alternate parameterization of the same population history}
+\label{tab.ph2}
+\centering
+\begin{tabular}{ccc}
+\hline
+Epoch &   $\theta_i$ & $\tau_i$ \\ 
+\hline\hline
+    0 &  2000 &   4      \\
+    1 &    20 & $\infty$ \\
+\hline
+\end{tabular}
+\end{table}
+
+With genetic data is it not possible to estimate $N_i$ and $t_i$
+directly.  We can, however, estimate the related parameters
+\begin{eqnarray}
+\theta_i &=& 4N_i u\label{eq.thetai}\\
+\tau_i &=& 2 u t_i\label{eq.taui}
+\end{eqnarray}
+where $u$ is the mutation rate.  $\theta_i$ measures the size of the
+population during epoch $i$ in units of $1/(2u)$ genes; $\tau_i$
+measures the length of this epoch in units of $1/(2u)$ generations.
+The population history of table~\ref{tab.ph1} can be
+re-expressed in terms of $\theta$ and $\tau$ by multiplying each
+parameter by $2u$.  For example, if the mutation rate is 0.001 (per
+sequence per generation), then we obtain table~\ref{tab.ph2}.
+
+\section{Simulations of stationary populations}
+
+Figures~\ref{fig.eq1}--\ref{fig.eq4}, on
+pages~\pageref{fig.eq1}--\pageref{fig.eq4}, each show a simulation of
+a population with constant size.  In each figure, the upper panel
+shows the time path of population size, which is simply a horizontal
+line in these first four figures.  Proceding down each page, you will
+find the gene genealogy, the mismatch distribution and the spectrum.
+The expected mismatch distribution is shown as a solid line; the
+expected spectrum is shown as a series of filled circles.  In both
+cases, the expected values refer to a model of neutral evolution in
+a population of constant size.
+
+These figures make use of what I will call the ``mutational time
+scale.''  A unit of mutational time is the amount of time it takes, on 
+average, for one mutation to accumulate along the genealogical path
+separating two sequences.  Thus, if two sequences have been separate
+for 5 units of mutational time, we expect them to differ at about 5
+nucleotide sites.  Each unit of mutational time is equal to $1/(2u)$
+generations.  
+\begin{example}
+  In human mitochondrial D-loop sequence, it has been estimated that
+  the mutation rate is $4.1\times 10^{-6}$ per nucleotide per
+  generation \citep{Ward:PNA-88-8720}.  In the Jorde et al HVSI data
+  there are 430 nucleotides, so $u = 430 \times 4.1\times 10^{-6} =
+  0.0018$ per generation.  Each unit of mutational time is $1/(2u) =
+  278$ generations, which would correspond roughly to 6950 years.
+\end{example}
+
+Notice that neither the mismatch distributions nor the spectra of
+these equilibrium populations look much like the theoretical formulas
+would predict.  Far from showing the smooth decline seen in the
+theoretical curves, the simulated mismatch distributions tend to be
+ragged, with multiple peaks.  The site frequency spectra also exhibit
+pronounced departures from their expected values.  In order to get
+answers that look like the theory, we would need to run the
+simulations many times and average the results.  This is bad news,
+since in real data analysis we cannot rewind the evolutionary process
+and look at it again and again.  The situation is not hopeless, but it
+is clear that merely inspecting graphs such as these is not going to
+give us dependable answers.  We are going to need more sophisticated
+statistical methods.
+
+\begin{figure}
+\centering
+\input{figeq1}
+\caption{An equilibrium population with $\theta=7$\label{fig.eq1}}
+\end{figure}
+
+\begin{figure}
+\centering
+\input{figeq2}
+\caption{An equilibrium population with $\theta=7$\label{fig.eq2}}
+\end{figure}
+
+\begin{figure}
+\centering
+\input{figeq3}
+\caption{An equilibrium population with $\theta=7$\label{fig.eq3}}
+\end{figure}
+
+\begin{figure}
+\centering
+\input{figeq4}
+\caption{An equilibrium population with $\theta=7$\label{fig.eq4}}
+\end{figure}
+\clearpage
+
+\section{Simulations of expanded populations}
+\label{sec.popgrow}
+
+Figures~\ref{fig.gro1}--\ref{fig.gro4}, on
+pages~\pageref{fig.gro1}--\pageref{fig.gro4}, show simulations of
+populations that grew suddenly by 100-fold at 7 units of mutational
+time before the present.  In these graphs, the solid lines drawn for
+mismatch distributions refer to the expectation under the model of
+population history that was used in the simulations.  On the other
+hand, the filled circles shown with the site frequency spectra refer
+as before to a model of constant population size.
+
+\paragraph{The gene genealogies} of these expanded populations look
+different.  Coalescent events occur only rarely during the period when 
+the population was large, but occur rapidly in the earlier period when 
+the population was small.  This gives the gene genealogies a comb-like 
+shape, which seldom appears in the genealogies of stationary
+populations.  Many pairs of individuals differ by just over 7 units of 
+mutational time.
+
+\paragraph{The mismatch distributions} in these simulations are all
+unimodal, with peaks just a little before 7.  This reflects the fact
+that many pairs of individuals differ by just over 7 units of
+mutational time.
+
+\paragraph{The spectra} in these simulations exhibit an excess of
+singletons.  This is because the terminal branches in the gene
+genealogies are long and attract a disproportionate number of the
+mutations.  The mutations that fall on these long terminal branches
+are all singletons.  Methods for calculating the expected spectrum are
+introduced by \citet{Harpending:PNA-95-1961} and by
+\citet{Wooding:G-161-1641}.
+
+\begin{figure}
+\centering
+\input{figgro1}
+\caption{A coalescent simulation with growth: $\theta_0=1$, $\theta_1=100$,
+  $\tau=7$. $\star$: expected; $\bullet$: expected
+if population size is constant.}\label{fig.gro1}
+\end{figure}
+
+\begin{figure}
+\centering
+\input{figgro2}
+\caption{A coalescent simulation with growth: $\theta_0=1$, $\theta_1=100$,
+  $\tau=7$. $\star$: expected; $\bullet$: expected
+if population size is constant.}\label{fig.gro2}
+\end{figure}
+
+\begin{figure}
+\centering
+\input{figgro3}
+\caption{A coalescent simulation with growth: $\theta_0=1$,
+  $\theta_1=100$, $\tau=7$. $\star$: expected; $\bullet$: expected if
+  population size is constant.}\label{fig.gro3}
+\end{figure}
+
+\begin{figure}
+\centering
+\input{figgro4}
+\caption{A coalescent simulation with growth: $\theta_0=1$,
+  $\theta_1=100$, $\tau=7$. $\star$: expected; $\bullet$: expected if
+  population size is constant.}\label{fig.gro4}
+\end{figure}
+\clearpage
+
+\begin{subappendices}
+
+\section{Point estimators for expanded populations (optional)}
+
+If the expansion has been dramatic, the mismatch distribution will be
+a smooth wave with a single mode.  In that case, the time of the
+expansion and the size of the pre-expansion population can be
+estimated using the following statistics \citep{Rogers:E-49-608}:
+\begin{eqnarray}
+\hat\theta_1 &=& \sqrt{v - \pi}\label{eq.hat.theta1}\\
+\hat\tau_0 &=& m - \hat\theta_1\label{eq.hat.tau0}
+\end{eqnarray}
+where $\pi$ is the mean pairwise difference per sequence within the
+sample, $m$ is the mean of pairwise differences, and $v$ is the
+variance.
+
+\section{Statistical properties of point estimates (optional)}
+
+To determine the statistical properties of $\hat\theta_1$ and
+$\hat\tau_0$, I used the coalescent algorithm \citep{Hudson:OSE-7-1}
+to generate 1,000 simulated data sets at each of a wide variety of
+parameter values.  In order to allow for changes in population size, I
+used a modified version of the coalescent algorithm, which is
+described elsewhere \citep{Rogers:PPG-97-55}.  I estimated $\theta_1$
+and $\tau_0$ from each simulated data set, thus obtaining an estimate
+of the sampling distribution of the estimators for each set of
+parameter values.
+
+\input{figtau}
+%
+Figure~\ref{fig.tau} shows how the sampling distribution of $\hat\tau_0$
+changes in response to variation in the underlying parameter $\tau_0$.
+If $\hat\tau_0$ is in fact an estimator of $\tau_0$, we would expect the
+median of $\hat\tau_0$ (shown as a solid line in the figure) to increase
+in response to increases in $\tau_0$.  This is indeed the case.  An
+ideal estimator should also have a relatively narrow distribution at
+each value of $\tau_0$.  The dashed and dotted lines show that
+$\hat\tau_0$ also satisfies this test.  The dashed lines enclose the
+central 50\% of the distribution, and the dotted lines the central
+95\%.  Both sets of lines enclose a relatively narrow interval about
+the median.  In all of these respects, $\hat\tau_0$ behaves as an
+estimator of $\tau_0$.
+
+\input{figtheta1}
+%
+Figure~\ref{fig.theta1} performs a similar analysis on $\hat\theta_1$,
+and shows it to perform well as an estimator when $\theta_1>1$.  The
+distribution is tightly centered about the bold dots, showing that
+$\hat\theta$ is rich in information and nearly unbiased when
+$\hat\theta_1>1$.  But when $\theta_1<1$, the upper quantiles of
+$\log_{10}\hat\theta_1$ are horizontal, while the median and lower
+quantiles of $\hat\theta_1$ equal 0.  Thus an estimate of
+$\hat\theta_1\approx 1$ is equally consistent with the hypotheses that
+$\theta_1=1$ and that $\theta_1=0$.  Although $\hat\theta_1$ will
+always allow us to place an upper bound on $\theta_1$, it can provide
+no lower bound unless $\hat\theta_1$ is much greater than 1.  This is
+no serious problem; it means only that when the estimate is near
+unity, the confidence interval will reach all the way to 0.
+
+\input{figALLmm}
+
+(Need some prose to go with figure~\ref{fig.ALLmm}.)
+
+%\section{Confidence intervals (optional)}
+
+\def\hunit{0.05in}
+\def\vunit{0.18in}
+\def\accept{{$\bullet$}}
+\def\99pct{{$\cdot$}}
+\def\reject{{\footnotesize$\circ$}}
+%% Use the following to hide the 1% region
+\def\99pct{\reject}
+
+\begin{figure}
+{\centering\input{figci4}\\}
+\caption{An experiment designed to test the method for generating
+  confidence regions.}
+\label{fig.ci4} 
+\small Rather than beginning with a real data set, this experiment
+began with a simulated data set that was generated under the
+assumptions that $N=147$, and $(\tau,\theta_0, \theta_1) = (4, 1,
+500)$.  A confidence region was then generated as described in the text.
+Open circles $(\circ)$ represent points outside the 95\% confidence
+region; closed circles $(\bullet)$ represent points within.  Note that
+the correct hypothesis $\{(\tau,\theta_0, \theta_1) = (4, 1,
+500)\}$ falls inside the confidence region.
+\end{figure}
+
+\begin{figure}
+{\centering
+\input{figcswci}\\}
+\caption{95\% confidence region for the Cann-Stoneking-Wilson data}
+\label{fig.cswci} 
+\small Open circles $(\circ)$ represent points outside the 95\%
+confidence region; closed circles $(\bullet)$ represent points within.
+The marginal confidence regions are $\tau: [5,8]$, $\theta_0: [0,
+4.6]$, and $\theta_1/\theta_0: (100, \infty]$.  If the mutation rate
+is $u = 0.001$ per sequence per generation, and generations are 25
+years, these intervals become $t: [62, 100]$ thousand years, and $N_0:
+[0, 2320]$ females.
+\end{figure}
+
+\end{subappendices}

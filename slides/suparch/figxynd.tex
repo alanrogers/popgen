@@ -1,0 +1,45 @@
+%-*-latex-*-
+\let\put\pictexput
+\mbox{\beginpicture
+\headingtoplotskip=\baselineskip
+\setcoordinatesystem units <4mm, 4mm> point at 16 1
+\setplotarea x from 1 to 15, y from 1 to 15
+\small
+\axis bottom invisible ticks length <0pt>
+  withvalues {$X$} {$Y$} {$N$} {$D$} /  at 2 7 10 14 / /
+%\axis bottom invisible shiftedto y=-0.3 ticks length <0pt>
+%  withvalues {$x$} {$y$} {$n$} {$d$} /  at 2 7 10 14 / /
+\axis left invisible ticks length <0pt>
+  withvalues {$T_{XY}$} {$T_{XYND}$} /
+   at 4 11.249724127083585 / /
+\axis right invisible ticks length <0pt>
+  withvalues {$T_{ND}$}  / at 6 / /
+\put {\small Pops:} [r] <0pt, 3pt> at 1 0
+%\put {\small Samples:} [rt] <0pt, -4pt> at 1 -0.3
+\setdots
+\putrule from 1 4 to 4.5 4   % $T_{XY}$
+\putrule from 12 6 to 15 6 % $T_{ND}$
+%\putrule from 12.75 2 to 15.75 2 % $T_D$
+\putrule from 1 11.249724127083585
+   to 8.12486206354179 11.249724127083585 % $T_{XYND}$
+\setsolid
+\setplotsymbol ({\normalsize .})
+\plot 1 1 7 13 7 15 /   %X
+\plot 3 1 4.5 4 6 1 /   %XY
+\plot 8 1 5.5 6 8.12486206354179 11.249724127083585 /    %Y
+\plot 9.17572 1 10.1757 6 11.036 7.7206 / %N
+\plot 11 1 12 6 /       %N
+\plot 13 1 12 6 /            %D
+\plot 14.684 1 13.8151 6 12.3389 8.9523 9 13 9 15 / %Dr
+\plot 8.12486206354179 11.249724127083585 11.036 7.7206 / % ND l
+\arrow <10pt> [.2,.67] from 9.57571931984138 3 to 7 3
+%\arrow <0pt> [.2,.67] from 12.75 2 to 11.25 2
+%\arrow <10pt> [.2,.67] from 9.32572 2 to 7.5 2
+\put {\small $N_{XY}$} at 6 9
+\put {\small $N_{ND}$} at 11.2 9
+\put {\small $N_N$}   at 10.7 4.3
+\put {\small $N_{XYND}$} [b] <0pt,2pt> at 8 15
+\put {\small $\alpha$} [b]  <0pt,5pt> at 8.5 3
+%\put {\small $\epsilon$} [t]  <0pt,-5pt> at 12 2
+\endpicture}
+\let\put\latexput

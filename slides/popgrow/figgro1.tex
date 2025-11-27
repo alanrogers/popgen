@@ -1,0 +1,400 @@
+% -*-latex-*-
+%
+%%%%%%%%%%%%%% Tree in PicTeX Format %%%%%%%%%%%%%%
+%
+%Sample size   = 50
+%Mutation rate = 1
+%     theta         mn        tau          K
+%  100.0000     0.0000     7.0000          1
+%    1.0000     0.0000        Inf          1
+%maxmm=20.000000 maxtau=7.700000 maxtree=8.748507 maxx=20.000000
+%\newdimen\offsety
+%\newdimen\yunit
+%\newdimen\xunit
+%\newdimen\thusfar
+%\newdimen\plotht
+%\newdimen\plotwd
+%\newdimen\plotsp
+\thusfar=0.000000in  % Keeps track of what's above
+\plotht=0.250000in   % Height of each plot
+\plotwd=0.7\textwidth   % Width of each plot
+\plotsp=0.500000in   % Spacing between plots
+\begin{center}
+\mbox{\beginpicture
+\def\mutation{\tiny$\bullet$}
+\small
+\valuestolabelleading=.4\baselineskip
+\headingtoplotskip=0.4\baselineskip
+%
+%%%%%%%%%%%%%% Population size %%%%%%%%%%%%%%
+%
+\yunit=\plotht
+\xunit=\plotwd
+\Divide <\xunit> by <20.000000pt> forming <\xunit>
+\Divide <\yunit> by <120.000008pt> forming <\yunit>
+\advance\thusfar by \plotht
+\advance\thusfar by \plotsp
+\Divide <\thusfar> by <\yunit> forming <\offsety>
+\placevalueinpts of <\offsety> in {\mktree_tmp}
+\setcoordinatesystem units <\xunit, \yunit> point at 0 {\mktree_tmp}
+\setplotarea x from 0.000000 to 20.000000, y from 0.000000 to 120.000008
+\advance\thusfar by 0.030000\plotht
+\axis left label {\lines{Population\cr size}} /
+\axis bottom shiftedto y=-3.600000
+    label {Mutational time before present}
+    ticks numbered from 0 to 20 by 10 /
+\putrule from 0.000000 100.000000 to 7.000000 100.000000
+\putrule from 7.000000 100.000000 to 7.000000 1.000000
+\putrule from 7.000000 1.000000 to 20.000000 1.000000
+%
+%%%%%%%%%%%%%% Gene Genealogy %%%%%%%%%%%%%%
+%
+\yunit=\plotht
+\xunit=\plotwd
+\Divide <\xunit> by <20.000000pt> forming <\xunit>
+\Divide <\yunit> by <49.000000pt> forming <\yunit>
+\advance\thusfar by \plotht
+\advance\thusfar by \plotsp
+\Divide <\thusfar> by <\yunit> forming <\offsety>
+\placevalueinpts of <\offsety> in {\mktree_tmp}
+\setcoordinatesystem units <\xunit, \yunit> point at 0 {\mktree_tmp}
+\setplotarea x from 0.000000 to 20.000000, y from 0.000000 to 49.000000
+\axis left invisible label {\lines{Gene\cr genealogy}} /
+\axis bottom invisible
+     label {Mutational time before present} /
+\putrule from 0.000000 0.000000 to 7.627243 0.000000
+\put {\mutation} at 7.511514 0.000000
+\put {\mutation} at 3.887524 0.000000
+\put {\mutation} at 5.560976 0.000000
+\putrule from 0.000000 1.000000 to 0.136694 1.000000
+\putrule from 0.000000 2.000000 to 0.136694 2.000000
+\putrule from 0.136694 2.000000 to 0.136694 1.000000
+\putrule from 0.136694 1.500000 to 7.006217 1.500000
+\put {\mutation} at 1.224997 1.500000
+\put {\mutation} at 1.389629 1.500000
+\put {\mutation} at 2.431011 1.500000
+\put {\mutation} at 5.308657 1.500000
+\put {\mutation} at 3.022621 1.500000
+\putrule from 0.000000 3.000000 to 2.133670 3.000000
+\put {\mutation} at 1.563863 3.000000
+\putrule from 0.000000 4.000000 to 2.133670 4.000000
+\put {\mutation} at 0.411467 4.000000
+\putrule from 2.133670 4.000000 to 2.133670 3.000000
+\putrule from 2.133670 3.500000 to 2.843236 3.500000
+\putrule from 0.000000 5.000000 to 0.251554 5.000000
+\putrule from 0.000000 6.000000 to 0.251554 6.000000
+\putrule from 0.251554 6.000000 to 0.251554 5.000000
+\putrule from 0.251554 5.500000 to 0.845390 5.500000
+\putrule from 0.000000 7.000000 to 0.845390 7.000000
+\put {\mutation} at 0.452105 7.000000
+\putrule from 0.845390 7.000000 to 0.845390 5.500000
+\putrule from 0.845390 6.250000 to 2.843236 6.250000
+\put {\mutation} at 0.847289 6.250000
+\putrule from 2.843236 6.250000 to 2.843236 3.500000
+\putrule from 2.843236 4.875000 to 7.006217 4.875000
+\put {\mutation} at 4.334228 4.875000
+\put {\mutation} at 4.408728 4.875000
+\putrule from 7.006217 4.875000 to 7.006217 1.500000
+\putrule from 7.006217 3.187500 to 7.340049 3.187500
+\put {\mutation} at 7.020493 3.187500
+\putrule from 0.000000 8.000000 to 7.125215 8.000000
+\put {\mutation} at 6.773659 8.000000
+\put {\mutation} at 3.924935 8.000000
+\put {\mutation} at 4.348257 8.000000
+\putrule from 0.000000 9.000000 to 7.125215 9.000000
+\put {\mutation} at 4.086046 9.000000
+\put {\mutation} at 4.149639 9.000000
+\put {\mutation} at 3.990512 9.000000
+\put {\mutation} at 3.135542 9.000000
+\put {\mutation} at 7.043122 9.000000
+\put {\mutation} at 6.415633 9.000000
+\putrule from 7.125215 9.000000 to 7.125215 8.000000
+\putrule from 7.125215 8.500000 to 7.133833 8.500000
+\putrule from 0.000000 10.000000 to 7.133833 10.000000
+\put {\mutation} at 0.106589 10.000000
+\put {\mutation} at 5.752342 10.000000
+\put {\mutation} at 6.010053 10.000000
+\putrule from 7.133833 10.000000 to 7.133833 8.500000
+\putrule from 7.133833 9.250000 to 7.340049 9.250000
+\putrule from 7.340049 9.250000 to 7.340049 3.187500
+\putrule from 7.340049 6.218750 to 7.627243 6.218750
+\putrule from 7.627243 6.218750 to 7.627243 0.000000
+\putrule from 7.627243 3.109375 to 7.953188 3.109375
+\putrule from 0.000000 11.000000 to 6.726050 11.000000
+\put {\mutation} at 0.620364 11.000000
+\put {\mutation} at 0.690726 11.000000
+\put {\mutation} at 5.391620 11.000000
+\put {\mutation} at 3.257604 11.000000
+\put {\mutation} at 3.841564 11.000000
+\put {\mutation} at 4.610816 11.000000
+\put {\mutation} at 4.919965 11.000000
+\putrule from 0.000000 12.000000 to 1.519580 12.000000
+\putrule from 0.000000 13.000000 to 1.519580 13.000000
+\put {\mutation} at 0.833057 13.000000
+\put {\mutation} at 0.432966 13.000000
+\put {\mutation} at 1.007880 13.000000
+\putrule from 1.519580 13.000000 to 1.519580 12.000000
+\putrule from 1.519580 12.500000 to 4.231307 12.500000
+\put {\mutation} at 4.184648 12.500000
+\put {\mutation} at 2.260075 12.500000
+\put {\mutation} at 2.769642 12.500000
+\putrule from 0.000000 14.000000 to 0.716411 14.000000
+\put {\mutation} at 0.066226 14.000000
+\putrule from 0.000000 15.000000 to 0.716411 15.000000
+\putrule from 0.716411 15.000000 to 0.716411 14.000000
+\putrule from 0.716411 14.500000 to 4.231307 14.500000
+\put {\mutation} at 1.717686 14.500000
+\put {\mutation} at 1.464990 14.500000
+\put {\mutation} at 2.175282 14.500000
+\putrule from 4.231307 14.500000 to 4.231307 12.500000
+\putrule from 4.231307 13.500000 to 6.726050 13.500000
+\put {\mutation} at 6.559241 13.500000
+\putrule from 6.726050 13.500000 to 6.726050 11.000000
+\putrule from 6.726050 12.250000 to 7.154037 12.250000
+\putrule from 0.000000 16.000000 to 1.567791 16.000000
+\putrule from 0.000000 17.000000 to 0.628280 17.000000
+\putrule from 0.000000 18.000000 to 0.628280 18.000000
+\put {\mutation} at 0.482753 18.000000
+\putrule from 0.628280 18.000000 to 0.628280 17.000000
+\putrule from 0.628280 17.500000 to 1.567791 17.500000
+\put {\mutation} at 1.315146 17.500000
+\putrule from 1.567791 17.500000 to 1.567791 16.000000
+\putrule from 1.567791 16.750000 to 7.154036 16.750000
+\putrule from 7.154036 16.750000 to 7.154036 12.250000
+\putrule from 7.154036 14.500000 to 7.338073 14.500000
+\put {\mutation} at 7.327387 14.500000
+\putrule from 0.000000 19.000000 to 1.153078 19.000000
+\put {\mutation} at 0.326220 19.000000
+\putrule from 0.000000 20.000000 to 1.153078 20.000000
+\put {\mutation} at 0.386781 20.000000
+\put {\mutation} at 0.002759 20.000000
+\put {\mutation} at 0.360504 20.000000
+\put {\mutation} at 0.339855 20.000000
+\put {\mutation} at 0.909012 20.000000
+\put {\mutation} at 0.589890 20.000000
+\putrule from 1.153078 20.000000 to 1.153078 19.000000
+\putrule from 1.153078 19.500000 to 7.070724 19.500000
+\put {\mutation} at 4.651176 19.500000
+\put {\mutation} at 6.627040 19.500000
+\put {\mutation} at 1.334290 19.500000
+\putrule from 0.000000 21.000000 to 0.057312 21.000000
+\putrule from 0.000000 22.000000 to 0.057312 22.000000
+\putrule from 0.057312 22.000000 to 0.057312 21.000000
+\putrule from 0.057312 21.500000 to 5.097942 21.500000
+\put {\mutation} at 0.993268 21.500000
+\put {\mutation} at 4.325611 21.500000
+\put {\mutation} at 2.202307 21.500000
+\put {\mutation} at 0.389805 21.500000
+\put {\mutation} at 1.326711 21.500000
+\put {\mutation} at 2.656885 21.500000
+\put {\mutation} at 2.687060 21.500000
+\put {\mutation} at 3.788157 21.500000
+\put {\mutation} at 3.124467 21.500000
+\putrule from 0.000000 23.000000 to 2.999591 23.000000
+\put {\mutation} at 1.637203 23.000000
+\putrule from 0.000000 24.000000 to 2.999591 24.000000
+\put {\mutation} at 0.145192 24.000000
+\put {\mutation} at 1.442032 24.000000
+\putrule from 2.999591 24.000000 to 2.999591 23.000000
+\putrule from 2.999591 23.500000 to 3.423567 23.500000
+\putrule from 0.000000 25.000000 to 1.382004 25.000000
+\put {\mutation} at 0.293163 25.000000
+\putrule from 0.000000 26.000000 to 1.382004 26.000000
+\put {\mutation} at 0.723168 26.000000
+\putrule from 1.382004 26.000000 to 1.382004 25.000000
+\putrule from 1.382004 25.500000 to 3.423567 25.500000
+\putrule from 3.423567 25.500000 to 3.423567 23.500000
+\putrule from 3.423567 24.500000 to 5.097942 24.500000
+\putrule from 5.097942 24.500000 to 5.097942 21.500000
+\putrule from 5.097942 23.000000 to 7.027488 23.000000
+\put {\mutation} at 5.332838 23.000000
+\put {\mutation} at 5.887644 23.000000
+\putrule from 0.000000 27.000000 to 7.027488 27.000000
+\put {\mutation} at 3.786136 27.000000
+\put {\mutation} at 2.942184 27.000000
+\put {\mutation} at 1.580147 27.000000
+\put {\mutation} at 4.647880 27.000000
+\put {\mutation} at 3.306496 27.000000
+\putrule from 7.027488 27.000000 to 7.027488 23.000000
+\putrule from 7.027488 25.000000 to 7.070724 25.000000
+\putrule from 7.070724 25.000000 to 7.070724 19.500000
+\putrule from 7.070724 22.250000 to 7.309804 22.250000
+\putrule from 0.000000 28.000000 to 1.193126 28.000000
+\put {\mutation} at 1.172986 28.000000
+\putrule from 0.000000 29.000000 to 1.193126 29.000000
+\put {\mutation} at 0.982344 29.000000
+\putrule from 1.193126 29.000000 to 1.193126 28.000000
+\putrule from 1.193126 28.500000 to 7.037893 28.500000
+\put {\mutation} at 3.994942 28.500000
+\putrule from 0.000000 30.000000 to 2.179040 30.000000
+\putrule from 0.000000 31.000000 to 0.396843 31.000000
+\putrule from 0.000000 32.000000 to 0.396843 32.000000
+\putrule from 0.396843 32.000000 to 0.396843 31.000000
+\putrule from 0.396843 31.500000 to 2.179041 31.500000
+\putrule from 2.179041 31.500000 to 2.179041 30.000000
+\putrule from 2.179041 30.750000 to 3.315289 30.750000
+\put {\mutation} at 2.994316 30.750000
+\putrule from 0.000000 33.000000 to 3.315288 33.000000
+\put {\mutation} at 0.772321 33.000000
+\putrule from 3.315288 33.000000 to 3.315288 30.750000
+\putrule from 3.315288 31.875000 to 3.393521 31.875000
+\putrule from 0.000000 34.000000 to 0.665897 34.000000
+\putrule from 0.000000 35.000000 to 0.665897 35.000000
+\putrule from 0.665897 35.000000 to 0.665897 34.000000
+\putrule from 0.665897 34.500000 to 2.361441 34.500000
+\put {\mutation} at 0.859023 34.500000
+\putrule from 0.000000 36.000000 to 0.135048 36.000000
+\putrule from 0.000000 37.000000 to 0.135048 37.000000
+\put {\mutation} at 0.031401 37.000000
+\putrule from 0.135048 37.000000 to 0.135048 36.000000
+\putrule from 0.135048 36.500000 to 1.303917 36.500000
+\putrule from 0.000000 38.000000 to 0.875026 38.000000
+\putrule from 0.000000 39.000000 to 0.875026 39.000000
+\putrule from 0.875026 39.000000 to 0.875026 38.000000
+\putrule from 0.875026 38.500000 to 1.303917 38.500000
+\putrule from 1.303917 38.500000 to 1.303917 36.500000
+\putrule from 1.303917 37.500000 to 2.361441 37.500000
+\putrule from 2.361441 37.500000 to 2.361441 34.500000
+\putrule from 2.361441 36.000000 to 3.393521 36.000000
+\putrule from 3.393521 36.000000 to 3.393521 31.875000
+\putrule from 3.393521 33.937500 to 7.037893 33.937500
+\put {\mutation} at 5.088339 33.937500
+\put {\mutation} at 4.904209 33.937500
+\putrule from 7.037893 33.937500 to 7.037893 28.500000
+\putrule from 7.037893 31.218750 to 7.039517 31.218750
+\putrule from 0.000000 40.000000 to 3.453931 40.000000
+\putrule from 0.000000 41.000000 to 3.453931 41.000000
+\put {\mutation} at 2.301917 41.000000
+\putrule from 3.453931 41.000000 to 3.453931 40.000000
+\putrule from 3.453931 40.500000 to 7.002421 40.500000
+\put {\mutation} at 6.435420 40.500000
+\putrule from 0.000000 42.000000 to 2.783494 42.000000
+\put {\mutation} at 1.295345 42.000000
+\put {\mutation} at 2.278445 42.000000
+\put {\mutation} at 0.571229 42.000000
+\putrule from 0.000000 43.000000 to 2.783494 43.000000
+\put {\mutation} at 0.600403 43.000000
+\put {\mutation} at 2.601781 43.000000
+\put {\mutation} at 1.600289 43.000000
+\putrule from 2.783494 43.000000 to 2.783494 42.000000
+\putrule from 2.783494 42.500000 to 6.639799 42.500000
+\put {\mutation} at 3.518412 42.500000
+\put {\mutation} at 3.170515 42.500000
+\put {\mutation} at 3.563039 42.500000
+\put {\mutation} at 3.468022 42.500000
+\putrule from 0.000000 44.000000 to 5.296117 44.000000
+\put {\mutation} at 2.695622 44.000000
+\put {\mutation} at 1.220775 44.000000
+\putrule from 0.000000 45.000000 to 0.551007 45.000000
+\putrule from 0.000000 46.000000 to 0.551007 46.000000
+\putrule from 0.551007 46.000000 to 0.551007 45.000000
+\putrule from 0.551007 45.500000 to 3.608453 45.500000
+\put {\mutation} at 3.289145 45.500000
+\putrule from 0.000000 47.000000 to 0.356757 47.000000
+\put {\mutation} at 0.172152 47.000000
+\putrule from 0.000000 48.000000 to 0.356757 48.000000
+\putrule from 0.356757 48.000000 to 0.356757 47.000000
+\putrule from 0.356757 47.500000 to 3.608452 47.500000
+\put {\mutation} at 3.325210 47.500000
+\putrule from 3.608452 47.500000 to 3.608452 45.500000
+\putrule from 3.608452 46.500000 to 5.296117 46.500000
+\put {\mutation} at 4.097186 46.500000
+\putrule from 5.296117 46.500000 to 5.296117 44.000000
+\putrule from 5.296117 45.250000 to 6.639799 45.250000
+\put {\mutation} at 5.562236 45.250000
+\put {\mutation} at 6.121646 45.250000
+\putrule from 6.639799 45.250000 to 6.639799 42.500000
+\putrule from 6.639799 43.875000 to 7.002421 43.875000
+\putrule from 7.002421 43.875000 to 7.002421 40.500000
+\putrule from 7.002421 42.187500 to 7.031114 42.187500
+\putrule from 0.000000 49.000000 to 7.031114 49.000000
+\putrule from 7.031114 49.000000 to 7.031114 42.187500
+\putrule from 7.031114 45.593750 to 7.039518 45.593750
+\putrule from 7.039518 45.593750 to 7.039518 31.218750
+\putrule from 7.039518 38.406250 to 7.309804 38.406250
+\put {\mutation} at 7.265698 38.406250
+\putrule from 7.309804 38.406250 to 7.309804 22.250000
+\putrule from 7.309804 30.328125 to 7.338074 30.328125
+\putrule from 7.338074 30.328125 to 7.338074 14.500000
+\putrule from 7.338074 22.414062 to 7.953188 22.414062
+\putrule from 7.953188 22.414062 to 7.953188 3.109375
+\putrule from 7.953188 12.761719 to 20.000000 12.761719
+%
+%%%%%%%%%%%%%% Mismatch Distribution %%%%%%%%%%%%%%
+%
+\yunit=\plotht
+\xunit=\plotwd
+\Divide <\xunit> by <20.000000pt> forming <\xunit>
+\Divide <\yunit> by <0.149388pt> forming <\yunit>
+\advance\thusfar by \plotht
+\advance\thusfar by \plotsp
+\Divide <\thusfar> by <\yunit> forming <\offsety>
+\placevalueinpts of <\offsety> in {\mktree_tmp}
+\setcoordinatesystem units <\xunit, \yunit> point at 0 {\mktree_tmp}
+\setplotarea x from 0.000000 to 20.000000, y from 0.000000 to 0.149388
+\axis left label {\lines{Mismatch\cr distribution}} /
+\axis bottom
+   label {Pairwise differences}
+   ticks numbered from 0 to 20 by 10 /
+\multiput {$\circ$} at
+ 0 0.008980 1 0.023673 2 0.029388 3 0.017959 4 0.038367
+ 5 0.055510 6 0.097143 7 0.149388 8 0.127347 9 0.123265
+ 10 0.080000 11 0.068571 12 0.054694 13 0.029388 14 0.036735
+ 15 0.023673 16 0.016327 17 0.011429 18 0.000000 19 0.006531
+ 20 0.001633
+/
+%Pr[random pair differs by i sites]
+\plot 0 0.010318 1 0.012924 2 0.021443 3 0.039166 4 0.065612
+      5 0.095054 6 0.118885 7 0.130095 8 0.126489 9 0.110838
+      10 0.088640 11 0.065416 12 0.044995 13 0.029106 14 0.017854
+      15 0.010466 16 0.005906 17 0.003230 18 0.001723 19 0.000901
+      20 0.000464 /                                                                           
+\plotht=1.100000\plotht
+%
+%%%%%%%%%%%%%% Simulated site frequency spectrum %%%%%%%%%%%%%%
+%
+\yunit=\plotht
+\xunit=\plotwd
+\Divide <\xunit> by <25.000000pt> forming <\xunit>
+\Divide <\yunit> by <0.615596pt> forming <\yunit>
+\advance\thusfar by \plotht
+\advance\thusfar by \plotsp
+\Divide <\thusfar> by <\yunit> forming <\offsety>
+\placevalueinpts of <\offsety> in {\mktree_tmp}
+\setcoordinatesystem units <\xunit, \yunit> point at 0 {\mktree_tmp}
+\setplotarea x from 0.000000 to 25.000000, y from 0.000000 to 0.615596
+\axis left invisible label {\lines{Site\cr frequency\cr spectrum}} /
+\axis bottom
+   label {Frequency of minor allele}
+   ticks withvalues 0 {1/2} / at 0 25 / /
+\linethickness 1.2pt
+\axis top /
+\linethickness 0.4pt
+\sethistograms
+\plot 0 0 1 0.559633 2 0.302752 3 0.018349 4 0.018349
+ 5 0.036697 6 0.018349 7 0.009174 8 0.009174 9 0.000000
+ 10 0.018349 11 0.000000 12 0.000000 13 0.000000 14 0.000000
+ 15 0.000000 16 0.000000 17 0.000000 18 0.000000 19 0.000000
+ 20 0.000000 21 0.000000 22 0.009174 23 0.000000 24 0.000000
+ 25 0.000000
+/
+\setlinear
+%
+%%%%%%%%%%%%%% Neutral expectation of site freq spectrum %%%%%%%%%%%%%%
+%
+\multiput {$\bullet$} at 
+     0.500000 0.22781  1.500000 0.116278  2.500000 0.079168  3.500000 0.0606668  4.500000 0.049612
+     5.500000 0.0422829  6.500000 0.0370854  7.500000 0.0332223  8.500000 0.0302512  9.500000 0.0279067
+     10.500000 0.0260203  11.500000 0.0244796  12.500000 0.0232073  13.500000 0.0221482  14.500000 0.0212623
+     15.500000 0.0205197  16.500000 0.0198978  17.500000 0.0193797  18.500000 0.0189519  19.500000 0.0186045
+     20.500000 0.0183295  21.500000 0.0181213  22.500000 0.0179754  23.500000 0.0178889  24.500000 0.0178603
+/
+\endpicture}\\
+A coalescent simulation with growth: $\theta_0=1$, $\theta_1=100$,
+  $\tau=7$
+\end{center}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 

@@ -1,0 +1,24 @@
+% -*-latex-*-
+%\documentclass[pdftex,handout]{beamer} 
+\documentclass[pdftex,12pt]{beamer} 
+\usepackage{etex,pictex}
+\newcommand{\G}{\mathcal{G}}
+\newcommand{\Het}{\mathcal{H}}
+\newcommand{\mutation}{$\cdot$} 
+\newcommand{\OR}{\;\hbox{or}\;}
+\newcommand{\AND}{\;\&\;}
+\usepackage{ifthen}
+\newcounter{showthis}
+\setcounter{showthis}{1}
+\newdimen\thusfar
+\newdimen\plotht
+\newdimen\plotwd
+\newdimen\plotsp
+\newdimen\xunit
+\newdimen\yunit
+\newdimen\offsety
+\setbeamercovered{transparent}
+\begin{document}
+\input{popgrow}
+\input{varyn}
+\end{document}

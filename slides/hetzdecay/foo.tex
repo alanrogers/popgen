@@ -1,0 +1,346 @@
+% -*-Latex-*-
+\title{How Drift Affects Heterozygosity}
+\author{Alan R. Rogers}
+\date{\today}
+\frame{\titlepage}
+
+\begin{frame}
+\frametitle{Heterozygosity is variance}
+\begin{columns}
+\column{0.5\textwidth}
+\textcolor{blue}{Assumptions}
+\begin{itemize}
+\item Random mating
+\item Allele $A$ has frequency $p$
+\item $N$ diploid individuals
+\end{itemize}
+
+\pause
+
+Let $X$ (0,1, or 2) be the number of copies of $A$ within a random
+individual.
+
+\smallskip
+
+\pause
+What is the probability distribution of $X$? 
+
+\smallskip
+\pause
+What is the variance of $X$?
+
+\column{0.5\textwidth}
+\pause
+\begin{itemize}
+\item
+$X$ is binomial with $N=2$ and $p$ equal to the frequency of $A$
+within the population.
+\pause
+\item
+Variance of a binomial is $N p (1-p)$
+\pause
+\item
+Variance of $X$ is $2p(1-p)$.
+\pause
+\item
+Same as heterozygosity
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+We begin with data from an experiment, described by Peter Buri in
+1956.  (Gene frequency in small populations of mutant
+\emph{Drosophila}, Evolution, 10:367--402)
+\end{frame}
+
+\begin{frame}
+\begin{columns}
+\column{0.6\textwidth}
+\includegraphics[width=\textwidth]{buridist1.eps}
+\column{0.5\textwidth}
+{\bf Buri's drift experiment~I}
+\begin{itemize}
+\item Each generation: 107 bottles, each w/ 
+  8~male \& 8~female fruit flies. 
+\item Generation~0: all flies heterozygous.
+\item Rows show distribution of allele frequency in 19 successive
+  generations. 
+\end{itemize}
+\mbox{}\hfill \small Peter Buri, 1956
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\begin{columns}
+\column{0.6\textwidth}
+\includegraphics[width=\textwidth]{buridist2.eps}
+\column{0.5\textwidth}
+{\bf Buri's drift experiment~II}
+\begin{itemize}
+\item Each generation: 105 somewhat larger bottles
+\item Otherwise like experiment~I.
+\end{itemize}
+\mbox{}\hfill \small Peter Buri, 1956
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Decay of heterozygosity in Buri's two experiments}
+\begin{columns}
+\column{0.6\textwidth}
+\input{figburihet}
+\column{0.4\textwidth}
+\begin{itemize}
+\item Heterozygosity $(H)$ starts at 0.5
+\pause
+\item Declines to about 0.2
+\pause
+\item Why?
+\end{itemize}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{As heterozygosity declined w/i bottles, the variance among
+  them increased}
+\includegraphics[width=\textwidth]{burivar1.ps}
+\end{frame}
+
+\begin{frame}
+\frametitle{As heterozygosity declined w/i bottles, the variance among
+  them increased}
+\includegraphics[width=\textwidth]{burivar2.ps}
+\end{frame}
+
+\begin{frame}
+\frametitle{Computer Simulations of Genetic Drift}
+\input{figdrift}
+\end{frame}
+
+\begin{frame}
+\frametitle{The Urn Metaphor}
+
+Imagine two urns: metaphors for a population in two successive
+generations.  Urn~1 has 50 balls, some red, some white, representing
+parental gene copies.  Urn~2 is empty until urn~1 has ``reproduced''
+as follows:
+
+\pause
+(1) Examine a random ball from urn~1.
+
+\pause
+(2) Put a ball of the same color into urn~2.
+
+\pause
+(3) Replace the ball from urn~1.
+
+\pause
+(4) Repeat until there are 50 balls in urn~2.
+
+\pause
+The number of red balls in urn~2 is likely to differ from that in urn~1,
+because of random sampling.  This metaphor is used as a model of genetic
+drift.
+\end{frame}
+
+\begin{frame}
+The urn model behaves a lot like genetic drift in real populations:
+\begin{enumerate}
+\pause
+\item variation between populations increases
+\pause
+\item variation within populations decreases
+\end{enumerate}
+\pause
+Yet real organisms don't reproduce as our urns do.  The best urn model is
+unlikely to be one in which the number of balls matches the number of
+gene copies.
+\end{frame}
+
+\begin{frame}
+\frametitle{Decay of Heterozygosity: Notation}
+\begin{tabular}{r@{$\;=\;$}p{4in}}
+$N$&\# of diploid individuals in population\\
+\pause
+$2N$&\# of gene copies in population\\
+\pause
+$\G$&Probability that two random gene copies, drawn with
+  replacement from generation $t$, are copies of the same allele.\\
+\pause
+$\G'$&same thing in the generation $t+1$.
+\end{tabular}
+\end{frame}
+
+\begin{frame}
+\frametitle{Decay of Heterozygosity: Logic}
+Two gene copies may be identical in state either because
+\begin{enumerate}
+\item they are copies of the same parental gene copy, or 
+\pause
+\item they are copies of distinct parental gene copies, which happen
+  to be identical in state. 
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Two gene copies either are or are not copies of the same
+  parental gene copy} 
+\begin{center}
+\setlength{\unitlength}{1cm}
+\begin{picture}(9,4.6)(-3,-1)
+%\put(0,75){\small Generation $t$}
+%\put(0,25){\small Generation $t+1$}
+\put(0,0){\circle*{2}}
+\put(2,0){\circle*{2}}
+\put(3.5,0){\circle*{2}}
+\put(5.5,0){\circle*{2}}
+%
+\put(1,3){\circle*{2}}
+\put(3.5,3){\circle*{2}}
+\put(5.5,3){\circle*{2}}
+%
+\put(1,3){\vector(-1,-3){0.9}}
+\put(1,3){\vector(1,-3){0.9}}
+\put(3.5,3){\vector(0,-3){2.7}}
+\put(5.5,3){\vector(0,-3){2.7}}
+%
+\put(-3,2.85){\large Generation 0}
+\put(-3,-0.15){\large Generation 1}
+%\put(0.25,-2){\normalsize $\frac{1}{2N}$}
+%\put(3.5,-2){\normalsize $1-\frac{1}{2N}$}
+\put(0.75,-1){\Large $\frac{1}{2N}$}
+\put(4.0,-1){\Large $1-\frac{1}{2N}$}
+\end{picture}
+\end{center}
+Two genes are copies of the same parental gene with probability $1/(2N)$, and
+of distinct parental genes with probability $1-1/(2N)$.
+\end{frame}
+
+\begin{frame}
+\begin{center}
+\begin{tabular}{|p{3in}|l|}
+\hline
+Event & Prob\\
+\hline
+Individual carries 2 copies of same parental gene & $1/(2N)$\\
+\hline
+\end{tabular}
+\end{center}
+Explanation:
+\begin{enumerate}
+\item First draw a random gamete from among those produced by the parental
+  generation.  This gamete is equally likely to have been produced by any of
+  the $2N$ parental genes.
+\pause
+\item Next draw another gamete.  It is equally likely to have been produced by
+  any of the $2N$ parental genes.  There is 1 chance in $2N$ that the second
+  gene is a copy of the same parental gene as the first.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\begin{center}
+\begin{tabular}{|p{3in}|l|}
+\hline
+Event & Prob\\
+\hline
+Individual carries copies of 2 distinct parental genes, which are themselves
+  identical. & $(1 - 1/(2N))\G$\\
+\hline
+\end{tabular}
+\end{center}
+Explanation:
+\begin{enumerate}
+\item
+The two random gene are copies of distinct parental genes with probability
+$1 - 1/(2N)$.
+\pause
+\item
+These distinct parental genes are copies of the same allele with probability
+$\G$---that is the definition of $\G$.
+\pause
+\item \emph{Both} things are true with probability:
+\[\left(1 - \frac{1}{2N}\right) \G\]
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+In short, the two genes are identical if they are copies either of
+\begin{enumerate}
+\item the same parental gene (probability $1/2N$), or of
+\item distinct but identical genes (probability $(1 - 1/2N)\G$).
+\end{enumerate}
+Altogether,
+\[
+\G' = \frac{1}{2N} + \left(1 - \frac{1}{2N}\right) \G
+\]
+\end{frame}
+
+\begin{frame}
+To see where this goes, it is easier to work with the probability that the two
+genes are copies of \emph{different} alleles, i.e.\ with the heterozygosity,
+\begin{eqnarray*}
+\Het' &=& 1-\G'\\
+%&=& 1 - \frac{1}{2N} - \left(1 - \frac{1}{2N}\right) \G\\
+%&=& \left(1 - \frac{1}{2N}\right)(1-\G)\\
+\pause
+&=& \left(1 - \frac{1}{2N}\right)\Het \qquad \mbox{(after some algebra).}\\
+\end{eqnarray*}
+\pause
+Can you supply the algebra?
+\end{frame}
+
+\begin{frame}
+\frametitle{The Time-path of Heterozygosity}
+\begin{eqnarray*}
+\Het_1 &=& \left(1 - \frac{1}{2N}\right)\Het_0\\[4pt]
+\pause
+\Het_2 &=& \left(1 - \frac{1}{2N}\right)\Het_1\\[4pt]
+\pause
+       &=& \left(1 - \frac{1}{2N}\right)^2\Het_0\\[4pt]
+\pause
+\Het_t &=& \left(1 - \frac{1}{2N}\right)^t\Het_0\\
+\end{eqnarray*}
+where $\Het_0$ is the original heterozygosity and $\Het_t$ is the
+heterozygosity in generation $t$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Example}
+In Peter Buri's experiment, $\Het_1=1/2$ because half the population were
+heterozygotes after the first generation of random mating.
+
+\pause
+18 generations later:
+\[
+\Het_{19} = \frac{1}{2} \left(1 - \frac{1}{2N}\right)^{18}
+\]
+
+\pause
+But what is $2N$?
+\end{frame}
+
+\begin{frame}
+\frametitle{Heterozygosity: Buri's experiment~I vs.\ urn model}
+\input{figburihet2}
+\end{frame}
+
+\begin{frame}
+\frametitle{Heterozygosity: Buri's experiment~I vs.\ urn model}
+\begin{columns}
+\column{0.5\textwidth}
+\input{figburihet2}
+\column{0.5\textwidth}
+\begin{itemize}
+\item There were 32 gene copies in each bottle.
+\pause
+\item Yet $2N=32$ provides a poor fit to data.
+\pause
+\item Better fit with $2N=18$.
+\pause
+\item 18 is the ``\emph{effective population size}''
+\end{itemize}
+\end{columns}
+\end{frame}
+

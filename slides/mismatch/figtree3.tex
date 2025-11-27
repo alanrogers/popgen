@@ -1,0 +1,33 @@
+\plotht=3.500000cm   % Height of each plot
+\plotwd=10.000000cm   % Width of each plot
+\let\put\pictexput
+\mbox{\beginpicture
+\def\mutation{\tiny$\bullet$}
+\linethickness=0.75pt
+\setplotsymbol ({\small .})
+\valuestolabelleading=\baselineskip
+\tickstovaluesleading=0.5\baselineskip
+%
+%%%%%%%%%%%%%% Tree in PicTeX format %%%%%%%%%%%%%%
+%
+\yunit=\plotht
+\xunit=\plotwd
+\Divide <\xunit> by <1.463000pt> forming <\xunit>
+\Divide <\yunit> by <2.000000pt> forming <\yunit>
+\setcoordinatesystem units <\xunit, \yunit>
+   point at 0 0
+\setplotarea x from 0.000000 to 1.463000, y from 0.000000 to 2.000000
+\axis left invisible ticks length <0pt> withvalues  {C}  {B}  {A}  /
+at  0  1  2  / /
+\axis bottom shiftedto y=-0.2 label {Generations} 
+  ticks withvalues 0 {$2N/3$} {$2N\bigl(\frac{1}{3} + 1\bigr)$} / 
+  at 0 0.33 1.33 / /
+\plot 0.000000 0.000000 1.330000 0.000000 /
+\plot 0.000000 1.000000 0.330000 1.000000 /
+\plot 0.000000 2.000000 0.330000 2.000000 /
+\plot 0.330000 2.000000 0.330000 1.000000 /
+\plot 0.330000 1.500000 1.330000 1.500000 /
+\plot 1.330000 1.500000 1.330000 0.000000 /
+\plot 1.330000 0.750000 1.463000 0.750000 /
+\endpicture}
+\let\put\latexput

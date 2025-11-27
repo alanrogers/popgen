@@ -1,0 +1,48 @@
+% -*-latex-*-
+% Quantiles of estimates from 10 str loci w/ initial pop history:
+%     theta         mn        tau          K
+% 1000.0000     0.0000     0.0000          1
+%   10.0000     0.0000        Inf          1
+% and with this history modified by substitution of various values of tau
+% Quantiles are approximated from 1000 simulated data sets times 10 loci.
+\begin{figure}[p]
+\pagestyle{empty}
+\begin{center}
+\mbox{%
+\beginpicture
+\headingtoplotskip=0.5\baselineskip
+\setcoordinatesystem units <.02in, .0148in> point at 0 0
+\setplotarea x from 0 to 100, y from 0 to 135
+\axis left label {\lines{Quantiles\cr of $\hat\tau$}} shiftedto x=-5
+   ticks numbered from 0 to 125 by 25 /
+\axis bottom shiftedto y=-5
+  label {$\tau$} ticks numbered from 0 to 100 by 25 /
+\multiput {$\bullet$} at 0 0 25 25 50 50 75 75 100 100 /
+\setdots
+%x=tau y=quantile 0.025 for tau hat
+\plot 0 5.629322 25 26.065634 50 44.634373 75 60.677677 100 77.054039 /
+\setdashes
+%x=tau y=quantile 0.25 for tau hat
+\plot 0 11.550186 25 35.444641 50 56.488640 75 77.832001 100 97.54421 /
+\setsolid
+%x=tau y=quantile 0.5 for tau hat
+\plot 0 15.360001 25 39.556000 50 63.582008 75 86.358009 100 110.241989 /
+\setdashes
+%x=tau y=quantile 0.75 for tau hat
+\plot 0 20.357555 25 45.145523 50 69.984726 75 94.590004 100 121.653992 /
+\setdots
+%x=tau y=quantile 0.975 for tau hat
+\plot 0 33.657997 25 58.08800 50 84.214783 75 114.093994 100 143.552002 /
+\endpicture%
+}
+\end{center}
+\caption{Quantiles of $\hat\tau$ from STR simulations.  1000 10-locus
+  data sets were simulated at each of several values of $\tau$, and
+  each was used to estimate the model's parameters.  The bold dots
+  indicate points at which $\hat\tau=\tau$.  The solid line is the
+  median, the dashed lines enclose the central 50\% of the
+  distribution, and the dotted lines the central 95\%.  Each simulated
+  data set was generated using the coalescent algorithm with $\theta_0
+  = 10$, $\theta_1 = 1000$, and $N=100$.}
+\label{fig.taustr}
+\end{figure}
