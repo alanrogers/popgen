@@ -21,7 +21,8 @@ these missing files.
 The website from the most recent version of the course can be found
 [here](https://content.csbs.utah.edu/~rogers/tch/ant5221/index.php). 
 
-The contents of this top-level directory are as follows:
+The contents of the top-level directory in this github repository are
+as follows: 
 
 * **homework** contains a 43-page collection of algebraic homework
   exercises, with answers to even-numbered exercises at the back.
