@@ -46,6 +46,8 @@ Markdown, and the sources are in various subdirectories below:
   files mentioned above, the next step is to copy it into the
   appropriate position with the `website` subdirectory.
 
+* **Makefile** is described below.
+
 ## Pushing files onto a remote web server
 
 On my websites, I use PHP code to display the time at which each file
@@ -56,20 +58,60 @@ so I don't use its hosting service. The following paragraphs describe
 the method I use for pushing files from the `website` directory below
 onto a web server at the University of Utah.
 
+On my personal computer, there is a directory for each course, and
+each of these has a subdirectory called `website`. When I modify a
+file, the next step is to copy the file (sometimes changing its name)
+into the appropriate place within the `website` subdirectory for the
+course.
+
+There is also a global `website` directory immediately below the home
+directory on my personal computer. This is a mirror image of my
+website on the remote server. It contains (among other things) a
+subdirectory for each course. When I've made changes to the `website`
+subdirectory of a course, the next step is to push them into this
+global `website` directory. To do this, `cd` into the top-level
+directory of the course and type `make website`. This calls the `make`
+command, which reads the file `Makefile` in the current directory and
+then copies the course `website` tree into the global `website`.
+
+The final step is to push the global `website` onto the remote server.
+I do this using a shell script whose contents are shown below. It uses
+the `rsync` command to copy an entire directory tree from one place to
+another. The `--delete` option deletes remote files that are not in
+the local `website` directory. This means that you can delete files
+from the server simply by removing them from the local directory.
+
+If your hosting service allows you to use the rsync command directly,
+then add `-e ssh` to the rsync command below. This compresses and
+encrypts the content and makes things much faster. My university's
+hosting service no longer supports this. One must instead mount the
+remote directory using SMB (Windows) or SAMBA (Linux or Mac). In this
+new setup, `-e ssh` would not save time or improve security, because
+the compression and decompression steps would both happen on the local
+machine. In this new setup, the process of pushing to the server is
+*much* slower.
+
+The shell script below should be copied into a file within your own
+`$HOME/bin` directory and marked as executable. You'll need to modify
+the rsync command so that it specifies a destination on your own web
+hosting service.
 
     #!/bin/sh
+
+    # Remove backup files made by the text editor
     find ~/website -name "*~" -exec rm {} \;
-    chmod -R go+r ~/website/* 
+
+    # Make everything readable by everyone
+    chmod -R go+r ~/website/*
+
+    # Make directories executable
     find ~/website -type d -exec chmod +x {} \;
 	
-	# Removed "-e ssh" from rsync command because (in my U's computing
-	# environment) it is no longer to transfer files between machines
-	# using "rsync". One must instead mount a remote directory using
-	# SMB (Windows) or SAMBA (Linux or Mac). In this new setup, "-e
-    # ssh" would not save time or improve security, because the
-    # encryption and decryption steps would both happen on the local
-	# machine. In this new setup, the process of pushing to the server
-	# is *much* slower.
+    # Copy the directory tree below $HOME/website onto the remote
+	# server, which is mounted using SMB/SAMBA. The --delete
+	# arguments deletes remote files that are not in the local
+	# website. If you can use rsync directly rather than mounting
+	# the remote tree locally, add "-e ssh" to the rsync command.
 	
     cd; rsync -rptvz --copy-links --delete website/    \
 	  /Volumes/u0028949/html-docs/public_html/
