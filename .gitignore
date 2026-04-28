@@ -2,6 +2,6 @@
 *.aux
 *.bcf
 *.blg
-main.log
+*.log
 main.out
-main.toc
+*.toc
